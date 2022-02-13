@@ -1,1 +1,38 @@
 /* TODO Add site wide styles */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  height: 100vh;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--gray-primary);
+  font-family: var(--font);
+}
+
+#root {
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* DISABLE THE BACKGROUND COLOR FILL FOR INPUT ON AUTOCOMPLETE */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: 0 0 0px 1000px white inset;
+}

@@ -1,0 +1,9 @@
+:root {
+    --gray-primary: #262626;
+    --gray-secondary: gray;
+
+    --border-light: 1px solid lightgray;
+    --border-dark: 1px solid gray;
+
+    --font: Arial, Helvetica, sans-serif;
+}
