@@ -14,7 +14,7 @@ const LoginForm = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if(email.includes('@') && password.length >= 6) {
+    if (email.includes('@') && password.length >= 6) {
       setButtonDisabled(false)
     } else {
       setButtonDisabled(true)
@@ -41,6 +41,13 @@ const LoginForm = () => {
     return <Redirect to='/' />;
   }
 
+  const handleDemo = (e) => {
+    e.preventDefault()
+    const email = 'demo@aa.io'
+    const password = 'password'
+    dispatch(login(email, password))
+  }
+
   return (
     <main className='auth-form-page'>
       <div className='login-form-container form-container'>
@@ -50,7 +57,7 @@ const LoginForm = () => {
               <div key={ind}>{error}</div>
             ))}
           </div>
-          <div className='form-group'>
+          <div className='form-group margin-bottom-small'>
             <label htmlFor='email'>Email</label>
             <input
               id='email'
@@ -61,7 +68,7 @@ const LoginForm = () => {
               onChange={updateEmail}
             />
           </div>
-          <div className='form-group'>
+          <div className='form-group margin-bottom-small'>
             <label htmlFor='password'>Password</label>
             <input
               id='password'
@@ -71,7 +78,12 @@ const LoginForm = () => {
               value={password}
               onChange={updatePassword}
             />
+          </div>
+          <div className='form-button-container margin-bottom-small'>
             <button disabled={buttonDisabled} type='submit'>Login</button>
+          </div>
+          <div className='form-button-container margin-bottom-small'>
+            <button type='button' onClick={handleDemo}>Demo login</button>
           </div>
         </form>
       </div>

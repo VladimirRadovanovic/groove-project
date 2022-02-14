@@ -10,6 +10,8 @@
     height: 70rem;
     width: 53rem;
     background-color: var(--gray-tertiary);
+    display: flex;
+    justify-content: center;
 }
 
 .auth-form input {
@@ -23,11 +25,11 @@
 }
 
 .auth-form input:focus {
-    border-bottom: .3rem solid var(--green);
+    border-bottom: .3rem solid transparent;
 }
 
 .auth-form input:placeholder-shown:focus {
-    border-bottom: .3rem solid var(--orange);
+    border-bottom: .3rem solid var(--orange-primary);
 }
 
 .auth-form button {
@@ -35,11 +37,15 @@
     height: 2.6rem;
     padding: 1.2rem 1.6rem;
     color: var(--white);
-    background-color: var(--orange);
+    background-color: var(--orange-primary);
     border: none;
     transition: all .3s;
 }
 
 .auth-form button:hover {
     background-color: var(--black);
+}
+
+.auth-form button:disabled {
+    background-color: var(--orange-secondary);
 }

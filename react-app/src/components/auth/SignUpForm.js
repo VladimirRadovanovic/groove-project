@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
-import { signUp } from '../../store/session';
+import { signUp, login } from '../../store/session';
 
 import './AuthForm.css'
 
@@ -39,6 +39,14 @@ const SignUpForm = () => {
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
   };
+
+  const handleDemo = (e) => {
+    e.preventDefault()
+    const email = 'demo@aa.io'
+    const password = 'password'
+    dispatch(login(email, password))
+  }
+
 
   if (user) {
     return <Redirect to='/' />;
@@ -90,7 +98,12 @@ const SignUpForm = () => {
               required={true}
             ></input>
           </div>
-          <button type='submit'>Sign Up</button>
+          <div className='form-button-container margin-bottom-small'>
+            <button type='submit'>Sign Up</button>
+          </div>
+          <div className='form-button-container margin-bottom-small'>
+            <button type='button' onClick={handleDemo}>Demo login</button>
+          </div>
         </form>
       </div>
     </main>
