@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { signUp, login } from '../../store/session';
 
 import './AuthForm.css'
@@ -56,6 +56,10 @@ const SignUpForm = () => {
     <main className='auth-form-page'>
       <div className='signup-form-container form-container'>
         <form className='signup-form auth-form' onSubmit={onSignUp}>
+          <h2 className='form-header margin-bottom-small'>
+            Create an Account
+          </h2>
+          <p className='margin-bottom-small'>Or <Link to='/login'> Login here</Link></p>
           <div>
             {errors.map((error, ind) => (
               <div key={ind}>{error}</div>
@@ -98,10 +102,10 @@ const SignUpForm = () => {
               required={true}
             ></input>
           </div>
-          <div className='form-button-container margin-bottom-small'>
+          <div className='form-button-container margin-bottom-small signup-button'>
             <button type='submit'>Sign Up</button>
           </div>
-          <div className='form-button-container margin-bottom-small'>
+          <div className='form-button-container margin-bottom-small demo-button'>
             <button type='button' onClick={handleDemo}>Demo login</button>
           </div>
         </form>

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { login } from '../../store/session';
+
 
 import './AuthForm.css'
 
@@ -20,6 +21,9 @@ const LoginForm = () => {
       setButtonDisabled(true)
     }
   }, [email, password])
+
+
+
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -52,6 +56,10 @@ const LoginForm = () => {
     <main className='auth-form-page'>
       <div className='login-form-container form-container'>
         <form className='login-form auth-form' onSubmit={onLogin}>
+          <h2 className='form-header margin-bottom-small'>
+            Login
+          </h2>
+          <p className='margin-bottom-small'>Don't have an account?<Link to='/sign-up'> Register here</Link> </p>
           <div>
             {errors.map((error, ind) => (
               <div key={ind}>{error}</div>
@@ -79,10 +87,10 @@ const LoginForm = () => {
               onChange={updatePassword}
             />
           </div>
-          <div className='form-button-container margin-bottom-small'>
+          <div className='form-button-container margin-bottom-small login-button'>
             <button disabled={buttonDisabled} type='submit'>Login</button>
           </div>
-          <div className='form-button-container margin-bottom-small'>
+          <div className='form-button-container margin-bottom-small demo-button'>
             <button type='button' onClick={handleDemo}>Demo login</button>
           </div>
         </form>

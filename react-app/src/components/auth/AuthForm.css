@@ -5,32 +5,38 @@
     align-items: center;
     justify-content: center;
 }
-
-.login-form-container {
-    height: 70rem;
-    width: 53rem;
+.form-container {
     background-color: var(--gray-tertiary);
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 53rem;
+}
+
+.login-form-container {
+    /* height: 70rem; */
 }
 
 .auth-form input {
     width: 42rem;
     height: 2.5rem;
     padding: 1.2rem 1.6rem;
-    border: var(--border-light);
+    border: none;
     border-bottom: .3rem solid transparent;
     display: block;
     transition: all .3s;
+    border-radius: .2rem;
 }
 
 .auth-form input:focus {
     border-bottom: .3rem solid transparent;
 }
 
+
 .auth-form input:placeholder-shown:focus {
-    border-bottom: .3rem solid var(--orange-primary);
+    border-bottom: .3rem solid var(--orange-secondary);
 }
+
 
 .auth-form button {
     width: 42.1rem;
@@ -40,6 +46,8 @@
     background-color: var(--orange-primary);
     border: none;
     transition: all .3s;
+    border-radius: .2rem;
+    font-weight: 600;
 }
 
 .auth-form button:hover {
@@ -48,4 +56,35 @@
 
 .auth-form button:disabled {
     background-color: var(--orange-secondary);
+}
+
+.auth-form label {
+    font-size: 1.6rem;
+    color: var(--black);
+}
+
+.form-header {
+    font-size: 4rem;
+    font-weight: 600;
+    margin-top: 4rem;
+
+}
+
+.auth-form a,
+.auth-form p{
+    font-size: 1.6rem;
+}
+
+.auth-form a {
+    font-weight: 600;
+    color: #00247a;
+}
+
+.login-button,
+.signup-button {
+    margin-top: 6rem;
+}
+
+.demo-button {
+    margin-bottom: 3rem;
 }

@@ -3,14 +3,15 @@
     --gray-secondary: gray;
     --gray-tertiary: #f7f7f7;
     --orange-primary: #fb6620;
-    --orange-secondary: #fd8248;
+    --orange-secondary: #fd8b56;
     --yellow: #facd34;
     --green: #55c57a;
     --white: white;
     --black: black;
 
-    --border-light: 1px solid #ededed;
+    --border-light-thick: 2px solid #ededed;
     --border-dark: 1px solid gray;
+    --border-light: 1px solid #ededed;
 
     --font: 'Zen Kaku Gothic Antique', sans-serif;
     --font-color: #272727;
