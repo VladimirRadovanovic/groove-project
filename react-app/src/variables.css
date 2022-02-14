@@ -1,9 +1,16 @@
 :root {
-    --gray-primary: #262626;
+    --gray-primary: #2b2a2a;
     --gray-secondary: gray;
+    --gray-tertiary: #f7f7f7;
+    --orange: #fb6620;
+    --yellow: #facd34;
+    --green: #55c57a;
+    --white: white;
+    --black: black;
 
-    --border-light: 1px solid lightgray;
+    --border-light: 1px solid #ededed;
     --border-dark: 1px solid gray;
 
-    --font: Arial, Helvetica, sans-serif;
+    --font: 'Zen Kaku Gothic Antique', sans-serif;
+    --font-color: #272727;
 }
