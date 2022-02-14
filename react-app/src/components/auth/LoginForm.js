@@ -11,10 +11,16 @@ const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [buttonDisabled, setButtonDisabled] = useState(true)
+  const [validClass, setValidClass] = useState('')
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (password.length < 6 && password.length > 0) {
+      setValidClass('input-invalid')
+    } else {
+      setValidClass('')
+    }
     if (email.includes('@') && password.length >= 6) {
       setButtonDisabled(false)
     } else {
@@ -79,6 +85,7 @@ const LoginForm = () => {
           <div className='form-group margin-bottom-small'>
             <label htmlFor='password'>Password</label>
             <input
+              className={validClass}
               id='password'
               name='password'
               type='password'

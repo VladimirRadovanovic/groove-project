@@ -66,8 +66,10 @@ const SignUpForm = () => {
             ))}
           </div>
           <div className='form-group'>
-            <label>User Name</label>
+            <label htmlFor='username'>User Name</label>
             <input
+              placeholder='Username'
+              id='username'
               type='text'
               name='username'
               onChange={updateUsername}
@@ -75,17 +77,21 @@ const SignUpForm = () => {
             ></input>
           </div>
           <div className='form-group'>
-            <label>Email</label>
+            <label htmlFor='email-signup'>Email</label>
             <input
-              type='text'
+              placeholder='name@email.com'
+              id='email-signup'
+              type='email'
               name='email'
               onChange={updateEmail}
               value={email}
             ></input>
           </div>
           <div className='form-group'>
-            <label>Password</label>
+            <label htmlFor='password-signup'>Password</label>
             <input
+              placeholder='*********'
+              id='password-signup'
               type='password'
               name='password'
               onChange={updatePassword}
@@ -93,8 +99,10 @@ const SignUpForm = () => {
             ></input>
           </div>
           <div className='form-group'>
-            <label>Repeat Password</label>
+            <label htmlFor='repeat_password'>Repeat Password</label>
             <input
+              placeholder='*********'
+              id='repeat_password'
               type='password'
               name='repeat_password'
               onChange={updateRepeatPassword}

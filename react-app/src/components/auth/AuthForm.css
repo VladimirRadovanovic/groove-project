@@ -13,9 +13,6 @@
     width: 53rem;
 }
 
-.login-form-container {
-    /* height: 70rem; */
-}
 
 .auth-form input {
     width: 42rem;
@@ -26,12 +23,17 @@
     display: block;
     transition: all .3s;
     border-radius: .2rem;
+    margin-bottom: 2rem;
 }
 
 .auth-form input:focus {
     border-bottom: .3rem solid transparent;
 }
 
+
+.auth-form input:focus:invalid {
+    border-bottom: .3rem solid var(--orange-secondary);
+}
 
 .auth-form input:placeholder-shown:focus {
     border-bottom: .3rem solid var(--orange-secondary);
@@ -86,5 +88,13 @@
 }
 
 .demo-button {
-    margin-bottom: 3rem;
+    margin-bottom: 4.5rem;
 }
+
+.input-invalid {
+    border-bottom: .3rem solid var(--orange-secondary)!important;
+}
+
+/* .input-valid {
+    border-bottom: .3rem solid var(--orange-secondary);
+} */
