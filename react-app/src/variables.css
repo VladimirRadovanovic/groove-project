@@ -2,6 +2,8 @@
     --gray-primary: #2b2a2a;
     --gray-secondary: gray;
     --gray-tertiary: #f7f7f7;
+    --gray-hover-dark: #4e4c4c;
+    --gray-hover-light: #eceaea;
     --orange-primary: #fb6620;
     --orange-secondary: #fd8b56;
     --yellow: #facd34;
@@ -10,7 +12,7 @@
     --black: black;
 
     --border-light-thick: 2px solid #ededed;
-    --border-dark: 1px solid gray;
+    --border-dark: 1px solid #2b2a2a;
     --border-light: 1px solid #ededed;
 
     --font: 'Zen Kaku Gothic Antique', sans-serif;

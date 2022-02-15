@@ -65,8 +65,8 @@ function DropdownMenu() {
                         <div className="profile-dropdown">
                             {/* <div><button className="login-button" onClick={() => setShowLoginModal(true)}>Log In</button></div>
                             <div><button onClick={() => setShowSignupModal(true)}>Sign Up</button></div> */}
-                            <div><NavLink to='/login'>Login</NavLink></div>
-                            <div><NavLink to='/sign-up'>Create Account</NavLink></div>
+                            <div><NavLink className='profile-link' to='/login'>Login</NavLink></div>
+                            <div><NavLink className='profile-link' to='/sign-up'>Create Account</NavLink></div>
                         </div>
 
                     )}
