@@ -25,7 +25,7 @@
 .bars {
     font-size: 1.6rem;
     color: var(--gray-primary);
-    margin-left: 1rem;
+    margin-left: .7rem;
 }
 
 .profile-dropdown {
@@ -34,12 +34,9 @@
     right: 3.3rem;
     list-style: none;
     background-color: white;
-    /* display: flex; */
     justify-content: flex-end;
     align-items: flex-start;
-    /* flex-direction: column; */
     border: var(--border-light);
-    /* border-radius: .8rem; */
     width: 22rem;
     height: fit-content;
     margin-top: 1rem;
@@ -59,7 +56,7 @@
     height: 2.1rem;
     color: var(--font-color);
     text-align: center;
-    font: var(--font);
+    font-family: var(--font);
     font-size: 1.6rem;
     font-weight: 600;
     padding-top: .9rem;
@@ -69,7 +66,6 @@
 .profile-dropdown div button {
     color: var(--white);
     background-color: var(--gray-primary);
-    /* padding: 1.3rem 0; */
     transition: all .3s;
 }
 
@@ -79,8 +75,6 @@
 
 .profile-link {
     border: var(--border-dark);
-    /* padding-top: .9rem;
-    padding-bottom: 1.5rem; */
     transition: all .3s;
 }
 

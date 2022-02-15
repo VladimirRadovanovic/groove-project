@@ -66,7 +66,7 @@ const LoginForm = () => {
             Login
           </h2>
           <p className='margin-bottom-small'>Don't have an account?<Link to='/sign-up'> Register here</Link> </p>
-          <div>
+          <div className='auth-errors-container'>
             {errors.map((error, ind) => (
               <div key={ind}>{error}</div>
             ))}

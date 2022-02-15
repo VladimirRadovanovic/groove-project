@@ -10,12 +10,13 @@ const SignUpForm = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [repeatPassword, setRepeatPassword] = useState('');
+  const [repeat_password, setRepeat_password] = useState('');
   const [buttonDisabled, setButtonDisabled] = useState(true)
   const [validClass, setValidClass] = useState('')
-  const [validRepeatPassword, setValidRepeatPassword] = useState('')
+  const [validRepeat_password, setValidRepeat_password] = useState('')
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+
 
   useEffect(() => {
     if (password.length < 6 && password.length > 0) {
@@ -24,24 +25,25 @@ const SignUpForm = () => {
       setValidClass('')
     }
 
-    if (repeatPassword.length < 6 && repeatPassword.length > 0 || (repeatPassword !== password && repeatPassword.length > 0)) {
-      console.log(password, repeatPassword)
-      setValidRepeatPassword('repeat-input-invalid')
+    if ((repeat_password.length < 6 && repeat_password.length > 0) || (repeat_password !== password && repeat_password.length > 0)) {
+      setValidRepeat_password('repeat-input-invalid')
     } else {
-      setValidRepeatPassword('')
+      setValidRepeat_password('')
     }
 
-    if (email.includes('@') && password.length >= 6 && password === repeatPassword) {
+    if (email.includes('@') && password.length >= 6 && password === repeat_password) {
       setButtonDisabled(false)
     } else {
       setButtonDisabled(true)
     }
-  }, [email, password, repeatPassword])
+  }, [email, password, repeat_password])
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+    if (password === repeat_password) {
+      console.log(repeat_password, 'repeat password')
+      console.log(password, 'password')
+      const data = await dispatch(signUp(username, email, password, repeat_password));
       if (data) {
         setErrors(data)
       }
@@ -60,8 +62,8 @@ const SignUpForm = () => {
     setPassword(e.target.value);
   };
 
-  const updateRepeatPassword = (e) => {
-    setRepeatPassword(e.target.value);
+  const updateRepeat_password = (e) => {
+    setRepeat_password(e.target.value);
   };
 
   const handleDemo = (e) => {
@@ -84,7 +86,7 @@ const SignUpForm = () => {
             Create an Account
           </h2>
           <p className='margin-bottom-small'>Or <Link to='/login'> Login here</Link></p>
-          <div>
+          <div className='auth-errors-container'>
             {errors.map((error, ind) => (
               <div key={ind}>{error}</div>
             ))}
@@ -126,13 +128,13 @@ const SignUpForm = () => {
           <div className='form-group'>
             <label htmlFor='repeat_password'>Repeat Password</label>
             <input
-              className={validRepeatPassword}
+              className={validRepeat_password}
               placeholder='*********'
               id='repeat_password'
               type='password'
               name='repeat_password'
-              onChange={updateRepeatPassword}
-              value={repeatPassword}
+              onChange={updateRepeat_password}
+              value={repeat_password}
               required={true}
             ></input>
           </div>

@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField
-from wtforms.validators import DataRequired, Email, ValidationError
+from wtforms.validators import DataRequired, Email, ValidationError, Length
 from app.models import User
 
 
@@ -20,8 +20,27 @@ def username_exists(form, field):
         raise ValidationError('Username is already in use.')
 
 
+def match_passswords(form, field):
+    password = form.data['password']
+    print(form.data)
+    print(form.data['repeat_password'])
+    print(form.data['password'])
+
+    repeat_password = form.data['repeat_password']
+
+    if password != repeat_password:
+        raise ValidationError('Password and repeat password input values must match.')
+
+
 class SignUpForm(FlaskForm):
     username = StringField(
-        'username', validators=[DataRequired(), username_exists])
-    email = StringField('email', validators=[DataRequired(), user_exists])
-    password = StringField('password', validators=[DataRequired()])
+        'Username', validators=[DataRequired(),
+        Length(min=1, max=50, message="Username address must be between 1 and 50 characters long"),
+        username_exists])
+    email = StringField('Email', validators=[DataRequired(),
+        Email(message="Please enter a valid email address"),
+        Length(min=6, max=255, message="Email address must be between 6 and 255 characters long"),
+        user_exists])
+    password = StringField('Password', validators=[DataRequired(), match_passswords,
+        Length(min=6, max=50, message="Password must be between 6 and 50 characters long")])
+    repeat_password = StringField('Repeat Password', validators=[DataRequired()])

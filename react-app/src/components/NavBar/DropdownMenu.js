@@ -36,7 +36,7 @@ function DropdownMenu() {
                     <button className="profile-button" onClick={openMenu}>
                         <i className="fas fa-bars bars" />
                         <div className="profile-img-container">
-                            <img className="profile-img" src={user ? user.profileImgUrl ? user.profileImgUrl : logo : logo} alt='profile picture' />
+                            <img className="profile-img" src={user ? user.profileImgUrl ? user.profileImgUrl : logo : logo} alt='profile' />
                         </div>
                     </button>
                     {showMenu && (
@@ -57,14 +57,12 @@ function DropdownMenu() {
                     <button className="profile-button" onClick={openMenu}>
                         <i className="fas fa-bars bars" />
                         <div className="profile-img-container">
-                            <img className="profile-img" src={logo} alt='profile picture placeholder' />
+                            <img className="profile-img" src={logo} alt='profile placeholder' />
                         </div>
 
                     </button>
                     {showMenu && (
                         <div className="profile-dropdown">
-                            {/* <div><button className="login-button" onClick={() => setShowLoginModal(true)}>Log In</button></div>
-                            <div><button onClick={() => setShowSignupModal(true)}>Sign Up</button></div> */}
                             <div><NavLink className='profile-link' to='/login'>Login</NavLink></div>
                             <div><NavLink className='profile-link' to='/sign-up'>Create Account</NavLink></div>
                         </div>
