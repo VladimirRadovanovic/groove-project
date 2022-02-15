@@ -45,14 +45,3 @@ class CreateListingForm(FlaskForm):
 
 
 
-    # username = StringField(
-    #     'Username', validators=[DataRequired(),
-    #     Length(min=1, max=50, message="Username address must be between 1 and 50 characters long"),
-    #     username_exists])
-    # email = StringField('Email', validators=[DataRequired(),
-    #     Email(message="Please enter a valid email address"),
-    #     Length(min=6, max=255, message="Email address must be between 6 and 255 characters long"),
-    #     user_exists])
-    # password = StringField('Password', validators=[DataRequired(), match_passswords,
-    #     Length(min=6, max=50, message="Password must be between 6 and 50 characters long")])
-    # repeat_password = StringField('Repeat Password', validators=[DataRequired()])
