@@ -8,4 +8,5 @@ listing_routes = Blueprint('listings', __name__)
 @listing_routes.route('/all')
 def get_all_listings():
     listings = Listing.query.all()
-    return {'listings': listings.to_dict()}
+    print({'listings': {listing.to_dict()['id']: listing.to_dict() for listing in listings}})
+    return {'listings': {listing.to_dict()['id']: listing.to_dict() for listing in listings}}

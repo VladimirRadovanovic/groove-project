@@ -13,7 +13,7 @@ class Listing(db.Model):
     genre = db.Column(db.String(100), nullable=False)
     description = db.Column(db.String(255), nullable=False)
     condition = db.Column(db.String(50), nullable=False)
-    price = db.Column(db.Numeric, nullable=False)
+    price = db.Column(db.Float, nullable=False)
     num_copies_available = db.Column(db.Integer, nullable=False)
 
     #one seller has many listings
