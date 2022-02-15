@@ -4,19 +4,22 @@ import LogoutButton from '../auth/LogoutButton'
 import logo from '../../images/logo.svg'
 
 import './NavBar.css'
+import DropdownMenu from './DropdownMenu';
 
 const NavBar = () => {
   return (
     <nav>
       <div className='nav-container'>
-
           <div className='logo-container'>
             <NavLink className='logo-link' to='/' exact={true} activeClassName='active'>
               <img className='logo-img' src={logo} alt='logo'/> <h1 className='logo-text'>Groove</h1>
             </NavLink>
           </div>
           <div>
-            <NavLink to='/login' exact={true} activeClassName='active'>
+            <DropdownMenu />
+          </div>
+          {/* <div> */}
+            {/* <NavLink to='/login' exact={true} activeClassName='active'>
               Login
             </NavLink>
           </div>
@@ -32,7 +35,7 @@ const NavBar = () => {
           </div>
           <div>
             <LogoutButton />
-          </div>
+          </div> */}
 
       </div>
     </nav>

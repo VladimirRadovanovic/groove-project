@@ -1,0 +1,124 @@
+.profile-img {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    margin-left: 10px;
+
+
+}
+
+.profile-img-container {
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+
+}
+
+.profile-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    width: 80px;
+    cursor: pointer;
+    border: 1px solid lightgray;
+    margin-right: 60px;
+    margin-left: 10px;
+}
+.bars {
+    font-size: 15px;
+
+}
+/* .dropdown-container {
+    position: relative;
+} */
+
+.profile-dropdown {
+    position: fixed;
+    /* z-index: 2; */
+    list-style: none;
+    background-color: white;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-direction: column;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    width: 220px;
+    height: fit-content;
+    /* margin-left: -138px; */
+    right: 50px;
+    margin-top: 10px;
+    box-shadow: 0 10px 24px 3px rgb(0 0 0 / 14%);
+
+}
+
+
+.profile-dropdown button, a {
+    background: none!important;
+    border: none;
+    font-family: arial, sans-serif;
+    color: rgb(107, 107, 107);
+    width: 100%;
+    text-align: start;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 7px 8px;
+    font-size: 15px;
+}
+.profile-dropdown div {
+    width: 100%;
+    border-radius: 7px;
+    transition: 0.1s;
+}
+
+.profile-dropdown div:hover {
+    background-color: rgb(241, 241, 241);
+}
+
+/* .login-button, */
+.logout-button {
+    font-weight: bolder;
+}
+
+.dropdown-user-info {
+    padding: 7px 8px;
+    font-size: 15px;
+    color: rgb(107, 107, 107);
+    font-family: arial, sans-serif;
+
+
+}
+
+.logout-container {
+    border-top: 1px solid lightgray;
+    width: 100%;
+    padding: 0;
+
+}
+
+.user-profile-link-container {
+    border-top: 1px solid lightgray;
+    border-radius: none!important;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-size: 15px;
+    /* font-weight: bolder; */
+    width: 100%;
+
+
+}
+
+.demo-button-container {
+    border-top: 1px solid lightgray;
+    border-top-left-radius: 0!important;
+    border-top-right-radius: 0!important;
+}
+
+.profile-link {
+    width: 100%;
+    display: block;
+}
+
+
