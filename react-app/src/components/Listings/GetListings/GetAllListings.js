@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllListings } from '../../../store/listings';
 
+import './GetAllListings.css'
+
 function GetAllListings() {
     const dispatch = useDispatch()
     useEffect(() => {
@@ -9,13 +11,21 @@ function GetAllListings() {
     }, [])
     const listings = useSelector(state => state.listings)
     const listingsList = Object.values(listings)
-    console.log(listingsList, 'list')
+    console.log(listingsList[0], 'list')
 
     return (
         <div className='listings-list'>
-            {listingsList?.map(listing => {
-                <div key={listing.id}>{listing.artist}</div>
-            })}
+            <ul>
+            {listingsList?.map(listing => (
+                <li key={listing.id}>
+                    {listing.id}
+                    {listing.album}
+                    {listing.album}
+                    {listing.album}
+                    {listing.album}
+                </li>
+            ))}
+            </ul>
         </div>
     )
 }

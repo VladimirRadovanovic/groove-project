@@ -1,0 +1,9 @@
+.listings-list {
+    width: 50rem;
+    height: 50rem;
+    background-color: pink;
+}
+li {
+    color: black;
+    font-size: 2rem;
+}
