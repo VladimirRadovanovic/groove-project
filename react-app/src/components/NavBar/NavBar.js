@@ -15,7 +15,7 @@ const NavBar = () => {
               <img className='logo-img' src={logo} alt='logo'/> <h1 className='logo-text'>Groove</h1>
             </NavLink>
           </div>
-          <div>
+          <div className='dropdown-button-container'>
             <DropdownMenu />
           </div>
           {/* <div> */}

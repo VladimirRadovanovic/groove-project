@@ -40,19 +40,16 @@ function DropdownMenu() {
                         </div>
                     </button>
                     {showMenu && (
-                        <div className="dropdown-container">
-                            <div className="profile-dropdown">
-                                <div className="user-profile-link-container">
-                                    <NavLink className='profile-link' to='/api/user/profile' >Profile</NavLink>
-                                </div>
-                                <span className="logout-container">
-                                    <div>
-                                        <LogoutButton />
-                                    </div>
 
-                                </span>
+                        <div className="profile-dropdown">
+                            <div className="user-profile-link-container">
+                                <NavLink className='profile-link' to='/api/user/profile' >Profile</NavLink>
+                            </div>
+                            <div>
+                                <LogoutButton />
                             </div>
                         </div>
+
                     )}
                 </>
             ) : (
