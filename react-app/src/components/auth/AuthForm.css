@@ -108,6 +108,11 @@
     margin-top: 10rem;
 }
 
+.auth-errors-container {
+    font-family: var(--font);
+    font-size: 1.6rem;
+}
+
 @keyframes moveDown {
     0% {
         opacity: 0;
