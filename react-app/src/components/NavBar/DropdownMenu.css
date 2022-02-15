@@ -25,6 +25,7 @@
 .bars {
     font-size: 1.6rem;
     color: var(--gray-primary);
+    margin-left: 1rem;
 }
 
 .profile-dropdown {
