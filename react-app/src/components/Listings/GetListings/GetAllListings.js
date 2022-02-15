@@ -6,12 +6,13 @@ import './GetAllListings.css'
 
 function GetAllListings() {
     const dispatch = useDispatch()
+    const user = useSelector(state => state.session.user)
     useEffect(() => {
         dispatch(getAllListings())
-    }, [])
+    }, [user])
     const listings = useSelector(state => state.listings)
     const listingsList = Object.values(listings)
-    console.log(listingsList[0], 'list')
+
 
     return (
         <div className='listings-list'>

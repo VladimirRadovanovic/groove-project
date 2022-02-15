@@ -30,5 +30,6 @@ class Listing(db.Model):
             'condition': self.condition,
             'price': self.price,
             'created_at': self.created_at,
-            'seller': self.seller.to_dict_first()
+            'seller': self.seller.to_dict_first(),
+            'num_copies_available': self.num_copies_available
         }
