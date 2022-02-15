@@ -1,5 +1,6 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
+from .listings import seed_listings, undo_listings
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -22,4 +23,6 @@ def undo():
 @seed_commands.command('reset')
 def reset():
     undo_users()
+    undo_listings()
     seed_users()
+    seed_listings()
