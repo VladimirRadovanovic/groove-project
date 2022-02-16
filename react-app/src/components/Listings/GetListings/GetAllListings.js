@@ -25,10 +25,11 @@ function GetAllListings({ user }) {
     }
 
     return (
-        <div className='listings-list'>
-
+        <>
+            <h2 className='section-3-title'>CLASSIC RECORDS</h2>
+        <div className='splash-article-container'>
                 {listingsList?.map(listing => (
-                    <article key={listing?.id}>
+                    <article className='section-3-article' key={listing?.id}>
                         {listing?.id}
                         {listing?.album}
                         {listing?.artist}
@@ -38,6 +39,7 @@ function GetAllListings({ user }) {
                 ))}
 
         </div>
+        </>
     )
 }
 
