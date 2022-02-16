@@ -14,21 +14,28 @@ function GetAllListings({ user }) {
         dispatch(getAllListings())
     }, [user, url])
     const listings = useSelector(state => state.listings)
-    const listingsList = Object.values(listings)
-
+    let listingsList;
+    if (!user) {
+        listingsList = Object.values(listings)
+    }
+    if (user) {
+        listingsList = Object.values(listings).filter(listing => (
+            listing.seller_id !== user.id
+        ))
+    }
 
     return (
         <div className='listings-list'>
             <ul>
-            {listingsList?.map(listing => (
-                <li key={listing.id}>
-                    {listing.id}
-                    {listing.album}
-                    {listing.album}
-                    {listing.album}
-                    {listing.album}
-                </li>
-            ))}
+                {listingsList?.map(listing => (
+                    <li key={listing.id}>
+                        {listing.id}
+                        {listing.album}
+                        {listing.album}
+                        {listing.album}
+                        {listing.album}
+                    </li>
+                ))}
             </ul>
         </div>
     )
