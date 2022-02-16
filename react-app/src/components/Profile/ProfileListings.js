@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { deleteListing } from "../../store/listings";
+import RemoveListing from "../Listings/RemoveListing/RemoveListing";
 
 
 function ProfileListings({ listingsList, userId }) {
@@ -25,7 +26,7 @@ function ProfileListings({ listingsList, userId }) {
                         {listing?.artist}
                         {listing?.genre}
                         {listing?.description}
-                        <button id={listing?.id} onClick={handleDelete}>Delete</button>
+                        <RemoveListing listing={listing} handleDelete={handleDelete} />
                     </li>
                 ))}
             </ul>

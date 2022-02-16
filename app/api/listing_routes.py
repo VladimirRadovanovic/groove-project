@@ -15,7 +15,7 @@ def get_all_listings():
 
 @listing_routes.route('/<int:id>/edit', methods=['PATCH'])
 @login_required
-def edit_listing():
+def edit_listing(id):
     form = CreateListingForm()
     if form.validate_on_submit():
         id = request.id
@@ -62,8 +62,7 @@ def create_listing():
 
 @listing_routes.route('/<int:id>/remove', methods=['DELETE'])
 @login_required
-def remove_listing():
-    id = request.json
+def remove_listing(id):
     listing = Listing.query.get(id)
     db.session.delete(listing)
     db.session.commit()
