@@ -32,7 +32,7 @@ class CreateListingForm(FlaskForm):
     )
     description = StringField(
         'Description', validators=[DataRequired(),
-        Length(max=100, message='Description must be less than 255 characters long.')
+        Length(min=6, max=255, message='Description must be between 6 and 255 characters long.')
         ]
     )
     condition = StringField(
@@ -42,6 +42,3 @@ class CreateListingForm(FlaskForm):
     )
     price = FloatField('Price', validators=[DataRequired(), check_price])
     num_copies_available = IntegerField('Num_copies_available', validators=[DataRequired(), check_num_copies])
-
-
-
