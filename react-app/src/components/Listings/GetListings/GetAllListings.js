@@ -28,12 +28,12 @@ function GetAllListings({ user }) {
         <div className='listings-list'>
             <ul>
                 {listingsList?.map(listing => (
-                    <li key={listing.id}>
-                        {listing.id}
-                        {listing.album}
-                        {listing.album}
-                        {listing.album}
-                        {listing.album}
+                    <li key={listing?.id}>
+                        {listing?.id}
+                        {listing?.album}
+                        {listing?.artist}
+                        {listing?.genre}
+                        {listing?.description}
                     </li>
                 ))}
             </ul>

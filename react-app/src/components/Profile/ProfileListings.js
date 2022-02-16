@@ -11,6 +11,17 @@ function ProfileListings({ listingsList, userId }) {
     console.log(profileListings, 'profile liatings')
     return (
         <>
+            <ul>
+                {profileListings?.map(listing => (
+                    <li key={listing?.id}>
+                        {listing?.id}
+                        {listing?.album}
+                        {listing?.artist}
+                        {listing?.genre}
+                        {listing?.description}
+                    </li>
+                ))}
+            </ul>
         </>
     )
 }
