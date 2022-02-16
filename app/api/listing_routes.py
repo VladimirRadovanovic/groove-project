@@ -10,8 +10,29 @@ listing_routes = Blueprint('listings', __name__)
 @listing_routes.route('/all')
 def get_all_listings():
     listings = Listing.query.all()
-
     return {'listings': {listing.to_dict()['id']: listing.to_dict() for listing in listings}}
+
+
+@listing_routes.route('/<int:id>/edit', methods=['PATCH'])
+@login_required
+def edit_listing():
+    form = CreateListingForm()
+    if form.validate_on_submit():
+        id = request.id
+        listing = Listing.query.get(id)
+        data = form.data
+        listing.artist=data['artist']
+        listing.album=data['album']
+        listing.genre=data['genre']
+        listing.description=data['description']
+        listing.condition=data['condition']
+        listing.price=data['price']
+        listing.num_copies_available=data['num_copies_available']
+
+        db.session.add(listing)
+        db.session.commit()
+
+        return {'listing': listing.to_dict()}
 
 
 @listing_routes.route('/create', methods=['POST'])
@@ -39,7 +60,7 @@ def create_listing():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-@listing_routes.route('/remove', methods=['DELETE'])
+@listing_routes.route('/<int:id>/remove', methods=['DELETE'])
 @login_required
 def remove_listing():
     id = request.json

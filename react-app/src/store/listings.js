@@ -1,6 +1,7 @@
 const LOAD_ALL_LISTINGS = 'listings/LOAD_ALL_LiSTINGS'
 const CREATE_LISTING = 'listings/CREATE_LISTING'
 const REMOVE_LISTING = 'listings/REMOVE_LISTING'
+const UPDATE_LISTING = 'listings/UPDATE_LISTING'
 
 const loadListings = (listings) => {
     return {
@@ -23,8 +24,39 @@ const removeListing = (id) => {
     }
 }
 
+const updateListing = (listing) => {
+    return {
+        type: UPDATE_LISTING,
+        listing
+    }
+}
+
+
+export const editListing = (listing) => async(dispatch) => {
+    const response = await fetch(`/api/listings/${listing.id}/edit`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(listing)
+    })
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(updateListing(data.listing))
+        return null
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ['An error occurred. Please try again.']
+    }
+}
+
+
 export const deleteListing = (id) => async(dispatch) => {
-    const response = await fetch('/api/listings/remove', {
+    const response = await fetch(`/api/listings/${id}/remove`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
@@ -64,15 +96,15 @@ export const getAllListings = () => async(dispatch) => {
         dispatch(loadListings(data.listings))
         return null
     }
-    // else {
-    //     return ['An error occurred. Please try again.']
-    // }
 }
 
 
 const listingReducer = (state = {}, action) => {
     let newState = {}
     switch(action.type) {
+        case UPDATE_LISTING:
+            newState = {...state, [action.listing.id]: action.listing}
+            return newState
         case REMOVE_LISTING:
             newState = {...state}
             delete newState[action.id]
