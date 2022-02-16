@@ -17,8 +17,10 @@ def get_all_listings():
 @login_required
 def edit_listing(id):
     form = CreateListingForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    
     if form.validate_on_submit():
-        id = request.id
+        # id = request.id
         listing = Listing.query.get(id)
         data = form.data
         listing.artist=data['artist']
@@ -33,7 +35,7 @@ def edit_listing(id):
         db.session.commit()
 
         return {'listing': listing.to_dict()}
-
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @listing_routes.route('/create', methods=['POST'])
 @login_required

@@ -1,31 +1,60 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
-// import { Redirect } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams, useHistory } from 'react-router-dom';
 
+import { editListing, getAllListings, createListing } from '../../../store/listings';
 import './CreateListing.css'
-import { createListing } from '../../../store/listings';
+
 
 
 function CreateListing({ user }) {
+    const history = useHistory()
     const dispatch = useDispatch()
-    const [artist, setArtist] = useState('')
-    const [album, setAlbum] = useState('')
-    const [genre, setGenre] = useState('')
-    const [description, setDescription] = useState('')
-    const [price, setPrice] = useState('')
-    const [condition, setCondition] = useState('')
-    const [num_copies_available, setNum_copies_available] = useState('')
+    const { recordId } = useParams()
+
+    useEffect(() => {
+        dispatch(getAllListings())
+    }, [recordId])
+
+    const listings = useSelector(state => state.listings)
+
+    let listing;
+    if (recordId) {
+        const listingId = Number(recordId)
+        listing = listings[listingId]
+    }
+
+
+    const [artist, setArtist] = useState(listing?.artist || '')
+    const [album, setAlbum] = useState(listing?.album || '')
+    const [genre, setGenre] = useState(listing?.genre || '')
+    const [description, setDescription] = useState(listing?.description || '')
+    const [price, setPrice] = useState(listing?.price || '')
+    const [condition, setCondition] = useState(listing?.condition || '')
+    const [num_copies_available, setNum_copies_available] = useState(listing?.num_copies_available || '')
     const [errors, setErrors] = useState([])
     // if (!user) return <Redirect to='/login' />
 
     // const url = window.location.href
     // console.log(url, 'create url')
 
-    const handleSubmit = async(e) => {
+
+    const reset = () => {
+        setArtist('')
+        setAlbum('')
+        setGenre('')
+        setDescription('')
+        setPrice('')
+        setCondition('')
+        setNum_copies_available('')
+    }
+
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
         const formData = new FormData();
+
+
         formData.append('artist', artist)
         formData.append('album', album)
         formData.append('genre', genre)
@@ -34,12 +63,28 @@ function CreateListing({ user }) {
         formData.append('num_copies_available', num_copies_available)
         formData.append('condition', condition)
 
-        const data = await dispatch(createListing(formData))
+        if(!listing) {
 
-        if(data) {
-            setErrors(data);
+            const data = await dispatch(createListing(formData))
+
+            if (data) {
+                setErrors(data);
+            } else {
+                reset()
+            }
+
+        } else {
+            // formData.append('id', listing.id)
+            const data = await dispatch(editListing(formData, listing.id))
+
+            if (data) {
+                setErrors(data);
+            } else {
+                reset()
+            }
         }
 
+        history.push(`/users/${user?.id}/profile`)
     }
 
     return (
@@ -52,53 +97,56 @@ function CreateListing({ user }) {
             <form onSubmit={handleSubmit}>
                 <label>Artist</label>
                 <input
-                type='text'
-                placeholder='Artist'
-                value={artist}
-                onChange={(e) => setArtist(e.target.value)}
+                    type='text'
+                    placeholder='Artist'
+                    value={artist}
+                    onChange={(e) => setArtist(e.target.value)}
                 />
                 <label>Album</label>
                 <input
-                type='text'
-                placeholder='Album'
-                value={album}
-                onChange={(e) => setAlbum(e.target.value)}
+                    type='text'
+                    placeholder='Album'
+                    value={album}
+                    onChange={(e) => setAlbum(e.target.value)}
                 />
                 <label>Genre</label>
                 <input
-                type='text'
-                placeholder='Genre'
-                value={genre}
-                onChange={(e) => setGenre(e.target.value)}
+                    type='text'
+                    placeholder='Genre'
+                    value={genre}
+                    onChange={(e) => setGenre(e.target.value)}
                 />
                 <label>Description</label>
                 <textarea
-                placeholder='Description'
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
+                    placeholder='Description'
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
                 />
                 <label>Condition</label>
                 <input
-                type='text'
-                placeholder='Condition'
-                value={condition}
-                onChange={(e) => setCondition(e.target.value)}
+                    type='text'
+                    placeholder='Condition'
+                    value={condition}
+                    onChange={(e) => setCondition(e.target.value)}
                 />
                 <label>Price</label>
                 <input
-                type='number'
-                placeholder='Price'
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
+                    type='number'
+                    placeholder='Price'
+                    value={price}
+                    onChange={(e) => setPrice(e.target.value)}
                 />
                 <label>Number of copies available</label>
                 <input
-                type='number'
-                placeholder='Number of copies available'
-                value={num_copies_available}
-                onChange={(e) => setNum_copies_available(e.target.value)}
+                    type='number'
+                    placeholder='Number of copies available'
+                    value={num_copies_available}
+                    onChange={(e) => setNum_copies_available(e.target.value)}
                 />
-                <button>Make a listing</button>
+                {listing ?
+                    <button>Edit Listing</button> :
+                    <button>Make a Listing</button>
+                }
             </form>
         </>
     )

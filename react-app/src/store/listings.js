@@ -32,13 +32,16 @@ const updateListing = (listing) => {
 }
 
 
-export const editListing = (listing) => async(dispatch) => {
-    const response = await fetch(`/api/listings/${listing.id}/edit`, {
+export const editListing = (listing, id) => async(dispatch) => {
+    console.log(id, 'thunc listing id***********')
+    console.log(listing, 'thunc listing id***********')
+    const response = await fetch(`/api/listings/${id}/edit`, {
         method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(listing)
+        // headers: {
+        //     'Content-Type': 'application/json'
+        // },
+        // body: JSON.stringify(listing)
+        body: listing
     })
     if (response.ok) {
         const data = await response.json()
@@ -71,6 +74,8 @@ export const deleteListing = (id) => async(dispatch) => {
 
 
 export const createListing = (listing) => async(dispatch) => {
+    console.log(listing, 'create thunc listing id***********')
+
     const response = await fetch('/api/listings/create', {
         method: 'POST',
         body: listing

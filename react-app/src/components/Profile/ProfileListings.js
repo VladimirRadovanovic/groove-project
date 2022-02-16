@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 
 import { deleteListing } from "../../store/listings";
 import RemoveListing from "../Listings/RemoveListing/RemoveListing";
+import EditListing from "../Listings/EditListing/EditListing";
 
 
 function ProfileListings({ listingsList, userId }) {
@@ -27,6 +28,7 @@ function ProfileListings({ listingsList, userId }) {
                         {listing?.genre}
                         {listing?.description}
                         <RemoveListing listing={listing} handleDelete={handleDelete} />
+                        <EditListing listing={listing} userId={userId} />
                     </li>
                 ))}
             </ul>

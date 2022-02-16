@@ -17,7 +17,6 @@ function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
-  const user = useSelector(state => state.session.user)
   const url = window.location.href
 
   useEffect(() => {
@@ -27,6 +26,8 @@ function App() {
     })();
   }, [dispatch, url]);
 
+  const user = useSelector(state => state.session.user)
+  
   if (!loaded) {
     return null;
   }
@@ -51,6 +52,9 @@ function App() {
           <GetAllListings user={user} />
         </Route>
         <ProtectedRoute path='/users/:userId/records/sell-record'>
+            <CreateListing user={user} />
+        </ProtectedRoute>
+        <ProtectedRoute path='/records/:recordId/edit-record'>
             <CreateListing user={user} />
         </ProtectedRoute>
       </Switch>
