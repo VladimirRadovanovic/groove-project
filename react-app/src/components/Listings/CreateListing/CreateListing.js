@@ -71,6 +71,7 @@ function CreateListing({ user }) {
                 setErrors(data);
             } else {
                 reset()
+                history.push(`/users/${user?.id}/profile`)
             }
 
         } else {
@@ -81,10 +82,11 @@ function CreateListing({ user }) {
                 setErrors(data);
             } else {
                 reset()
+                history.push(`/users/${user?.id}/profile`)
             }
         }
 
-        history.push(`/users/${user?.id}/profile`)
+
     }
 
     return (
