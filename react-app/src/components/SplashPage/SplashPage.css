@@ -16,6 +16,8 @@
     color: var(--white);
     font-weight: 800;
     text-align: center;
+    text-shadow: .3rem .3rem 1.5rem var(--black);
+
 }
 
 .section-icon {
@@ -32,14 +34,12 @@
 
 
 .section-1-title{
-    /* margin-left: 1.5vw; */
     width: 50%;
 }
 
 
 .splash-section-2 {
     background-image: linear-gradient(90deg,
-    /* transparent 0%, */
     transparent 60%,
     rgba(159, 29, 192, 0.3) 60%,
     rgba(159, 29, 192, 0.3) 100%),url('../../images/splash1.jpg');
@@ -50,6 +50,21 @@
 }
 
 .section-2-title {
-    /* margin-right: 10vw; */
     width: 40%;
+}
+
+.section:hover .section-icon {
+    animation: moveRight 2s infinite;
+}
+
+@keyframes moveRight {
+    0% {
+        transform: translate(0);
+    }
+    50% {
+        transform: translateX(3rem);
+    }
+    100% {
+        transform: translate(0);
+    }
 }
