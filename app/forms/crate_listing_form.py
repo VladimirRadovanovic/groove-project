@@ -1,12 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, FloatField, IntegerField
-from wtforms.validators import DataRequired, Email, ValidationError, Length
+from wtforms.validators import DataRequired, Email, ValidationError, Length, NumberRange
 from app.models import Listing
 
-def check_price(form, field):
-    price = field.data
-    if price <= 0 or price > 1000:
-        raise ValidationError('Price must be more than $0.00 and less than $1,000.00.')
 
 def check_num_copies(form, field):
     num_copies_available = field.data
@@ -40,5 +36,7 @@ class CreateListingForm(FlaskForm):
         Length(max=50, message='Condition must be less than 50 characters long.')
         ]
     )
-    price = FloatField('Price', validators=[DataRequired(), check_price])
+    price = FloatField('Price', validators=[DataRequired(),
+        NumberRange(min=0, max=1000, message='Price must be more than $0.00 and less than $1,000.00.')
+     ])
     num_copies_available = IntegerField('Num_copies_available', validators=[DataRequired(), check_num_copies])
