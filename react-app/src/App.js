@@ -8,7 +8,7 @@ import Footer from './components/Footer/Footer';
 import NavBar from './components/NavBar/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
-import User from './components/User';
+import Profile from './components/Profile/Profile';
 import { authenticate } from './store/session';
 import GetAllListings from './components/Listings/GetListings/GetAllListings';
 import CreateListing from './components/Listings/CreateListing/CreateListing';
@@ -44,8 +44,8 @@ function App() {
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
+        <ProtectedRoute path='/users/:userId/profile' exact={true} >
+          <Profile />
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <GetAllListings user={user} />

@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-function User() {
+import ProfileListings from './ProfileListings';
+import { getAllListings } from '../../store/listings';
+
+function Profile() {
+  const dispatch = useDispatch()
   const [user, setUser] = useState({});
-  const { userId }  = useParams();
+  const { userId } = useParams();
 
   useEffect(() => {
     if (!userId) {
@@ -16,11 +21,23 @@ function User() {
     })();
   }, [userId]);
 
+
+  useEffect(() => {
+    dispatch(getAllListings())
+  }, [userId])
+
+
+  const listings = useSelector(state => state.listings)
+  const listingsList = Object.values(listings)
+
+
   if (!user) {
     return null;
   }
 
+
   return (
+    <>
     <ul>
       <li>
         <strong>User Id</strong> {userId}
@@ -32,6 +49,8 @@ function User() {
         <strong>Email</strong> {user.email}
       </li>
     </ul>
+    <ProfileListings listingsList={listingsList} userId={userId} />
+    </>
   );
 }
-export default User;
+export default Profile;
