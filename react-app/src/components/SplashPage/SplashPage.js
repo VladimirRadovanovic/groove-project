@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 
 import './SplashPage.css'
 import GetAllListings from '../Listings/GetListings/GetAllListings';
+import ClassicRecords from './ClassicRecords';
 
 
 function SplashPage({ user }) {
@@ -23,7 +24,7 @@ function SplashPage({ user }) {
                     </h2>
                 </NavLink>
             </section>
-            <GetAllListings user={user} />
+            <ClassicRecords user={user} />
         </main>
     )
 }
