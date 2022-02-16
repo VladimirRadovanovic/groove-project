@@ -1,14 +1,20 @@
 import React, { useState } from "react";
-// import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+import { deleteListing } from "../../store/listings";
 
 
 function ProfileListings({ listingsList, userId }) {
-
+    const dispatch = useDispatch()
     const profileListings = listingsList.filter(listing => (
         listing.seller_id === Number(userId)
     ))
 
-    console.log(profileListings, 'profile liatings')
+    const handleDelete = (e) => {
+        const id = Number(e.target.id)
+        dispatch(deleteListing(id))
+    }
+
     return (
         <>
             <ul>
@@ -19,6 +25,7 @@ function ProfileListings({ listingsList, userId }) {
                         {listing?.artist}
                         {listing?.genre}
                         {listing?.description}
+                        <button id={listing?.id} onClick={handleDelete}>Delete</button>
                     </li>
                 ))}
             </ul>

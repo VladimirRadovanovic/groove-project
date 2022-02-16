@@ -37,3 +37,13 @@ def create_listing():
         db.session.commit()
         return {'listing': new_listing.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@listing_routes.route('/remove', methods=['DELETE'])
+@login_required
+def remove_listing():
+    id = request.json
+    listing = Listing.query.get(id)
+    db.session.delete(listing)
+    db.session.commit()
+    return {"message": "Deleted"}

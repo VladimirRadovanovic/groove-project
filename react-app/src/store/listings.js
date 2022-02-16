@@ -1,5 +1,6 @@
 const LOAD_ALL_LISTINGS = 'listings/LOAD_ALL_LiSTINGS'
 const CREATE_LISTING = 'listings/CREATE_LISTING'
+const REMOVE_LISTING = 'listings/REMOVE_LISTING'
 
 const loadListings = (listings) => {
     return {
@@ -15,13 +16,31 @@ const addListing = (listing) => {
     }
 }
 
+const removeListing = (id) => {
+    return {
+        type: REMOVE_LISTING,
+        id
+    }
+}
+
+export const deleteListing = (id) => async(dispatch) => {
+    const response = await fetch('/api/listings/remove', {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(id)
+    })
+    const data = await response.json()
+    if (data.message === 'Deleted') {
+        dispatch(removeListing(id))
+    }
+}
+
+
 export const createListing = (listing) => async(dispatch) => {
     const response = await fetch('/api/listings/create', {
         method: 'POST',
-        // headers: {
-        //     'Content-Type': 'application/json'
-        // },
-        // body: JSON.stringify(listing)
         body: listing
     })
     if (response.ok) {
@@ -54,6 +73,10 @@ export const getAllListings = () => async(dispatch) => {
 const listingReducer = (state = {}, action) => {
     let newState = {}
     switch(action.type) {
+        case REMOVE_LISTING:
+            newState = {...state}
+            delete newState[action.id]
+            return newState
         case CREATE_LISTING:
             newState = {...state, [action.listing.id]: action.listing}
             return newState
