@@ -8,3 +8,22 @@
     background-size:cover;
 
 }
+
+.section-1-link {
+    display: flex;
+    height: 70rem;
+    align-items: center;
+}
+
+.section-1-title{
+    display: inline-block;
+    font-size: 9rem;
+    color: var(--white);
+    font-weight: 600;
+    margin-left: 1.5vw;
+}
+
+.section-1-play {
+    padding-left: 2rem;
+    font-size: 8rem;
+}
