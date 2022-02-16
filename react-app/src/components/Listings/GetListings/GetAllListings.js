@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import { getAllListings } from '../../../store/listings';
+import placeholder from '../../../images/vinyl.jpg'
 
 import './GetAllListings.css'
 
@@ -26,10 +27,14 @@ function GetAllListings({ user }) {
 
     return (
         <>
-            <h2 className='section-3-title'>CLASSIC RECORDS</h2>
+        <h2 className='section-3-title'>CLASSIC RECORDS</h2>
         <div className='splash-article-container'>
                 {listingsList?.map(listing => (
                     <article className='section-3-article' key={listing?.id}>
+                        <div className='section-3-img-container'>
+                            <img src={listing?.images?.img_url ? listing?.images?.img_url : placeholder}
+                             className='section-3-img' alt='record' />
+                        </div>
                         {listing?.id}
                         {listing?.album}
                         {listing?.artist}

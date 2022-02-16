@@ -1,20 +1,16 @@
 .splash-section-3 {
-    width: 100%;
-    height: 80rem;
-    background-color: beige;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 7rem;
 }
 
 .splash-article-container {
-    width: 80%;
-    height: 80%;
-    background-color: chocolate;
+    width: 70%;
     display: grid;
-    grid-template-columns: repeat(6, minmax(18rem, 1fr));
-    gap: .5rem;
+    grid-template-columns: repeat(5, minmax(18rem, 1fr));
+    gap: 1.8rem;
 }
 
 .section-3-title {
@@ -24,6 +20,18 @@
 }
 
 .section-3-article {
-    height: 12rem;
-    background-color: blue;
+    height: 40rem;
+    border: var(--border-medium);
+    box-shadow: rgba(149, 157, 165, 0.2) 0rem .4rem 1.4rem;
+
+}
+
+.section-3-img-container {
+    width: 100%;
+    height: 60%;
+}
+.section-3-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
