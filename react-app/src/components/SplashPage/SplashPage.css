@@ -1,29 +1,55 @@
-.splash-section-1 {
-    background-image: linear-gradient(105deg,
-    rgba(29, 80, 192, 0.3) 0%,
-    rgba(29, 80, 192, 0.3) 50%,
-    transparent 50%),url('../../images/splash2.jpg');
+.section {
     width: 100%;
     min-height: 70rem;
     background-size:cover;
-
 }
 
-.section-1-link {
+.section-link {
     display: flex;
     height: 70rem;
     align-items: center;
 }
 
-.section-1-title{
-    display: inline-block;
+.section-title {
+    display: block;
     font-size: 9rem;
     color: var(--white);
-    font-weight: 600;
-    margin-left: 1.5vw;
+    font-weight: 800;
+    text-align: center;
 }
 
-.section-1-play {
-    padding-left: 2rem;
+.section-icon {
     font-size: 8rem;
+    padding-left: 2.5rem;
+}
+
+.splash-section-1 {
+    background-image: linear-gradient(105deg,
+    rgba(29, 80, 192, 0.3) 0%,
+    rgba(29, 80, 192, 0.3) 50%,
+    transparent 50%),url('../../images/splash2.jpg');
+}
+
+
+.section-1-title{
+    /* margin-left: 1.5vw; */
+    width: 50%;
+}
+
+
+.splash-section-2 {
+    background-image: linear-gradient(90deg,
+    /* transparent 0%, */
+    transparent 60%,
+    rgba(159, 29, 192, 0.3) 60%,
+    rgba(159, 29, 192, 0.3) 100%),url('../../images/splash1.jpg');
+}
+
+.section-2-link {
+    justify-content: flex-end;
+}
+
+.section-2-title {
+    /* margin-right: 10vw; */
+    width: 40%;
 }
