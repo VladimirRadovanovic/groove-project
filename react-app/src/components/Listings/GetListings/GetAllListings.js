@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+
 import { getAllListings } from '../../../store/listings';
 
 import './GetAllListings.css'
 
-function GetAllListings() {
+function GetAllListings({ user }) {
     const dispatch = useDispatch()
-    const user = useSelector(state => state.session.user)
+    const url = window.location.href
+
     useEffect(() => {
         dispatch(getAllListings())
-    }, [user])
+    }, [user, url])
     const listings = useSelector(state => state.listings)
     const listingsList = Object.values(listings)
 
