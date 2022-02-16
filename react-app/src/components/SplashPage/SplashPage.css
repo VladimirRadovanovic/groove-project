@@ -1,0 +1,10 @@
+.splash-section-1 {
+    background-image: linear-gradient(105deg,
+    rgba(29, 80, 192, 0.3) 0%,
+    rgba(29, 80, 192, 0.3) 50%,
+    transparent 50%),url('../../images/splash2.jpg');
+    width: 100%;
+    min-height: 70rem;
+    background-size:cover;
+
+}

@@ -12,6 +12,7 @@ import Profile from './components/Profile/Profile';
 import { authenticate } from './store/session';
 import GetAllListings from './components/Listings/GetListings/GetAllListings';
 import CreateListing from './components/Listings/CreateListing/CreateListing';
+import SplashPage from './components/SplashPage/SplashPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -27,7 +28,7 @@ function App() {
   }, [dispatch, url]);
 
   const user = useSelector(state => state.session.user)
-  
+
   if (!loaded) {
     return null;
   }
@@ -49,7 +50,8 @@ function App() {
           <Profile />
         </ProtectedRoute>
         <Route path='/' exact={true} >
-          <GetAllListings user={user} />
+          <SplashPage user={user} />
+          {/* <GetAllListings user={user} /> */}
         </Route>
         <ProtectedRoute path='/users/:userId/records/sell-record'>
             <CreateListing user={user} />
