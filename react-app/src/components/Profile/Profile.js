@@ -37,7 +37,7 @@ function Profile() {
 
 
   return (
-    <>
+    <main>
     <ul>
       <li>
         <strong>User Id</strong> {userId}
@@ -50,7 +50,7 @@ function Profile() {
       </li>
     </ul>
     <ProfileListings listingsList={listingsList} userId={userId} />
-    </>
+    </main>
   );
 }
 export default Profile;

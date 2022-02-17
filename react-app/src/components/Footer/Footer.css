@@ -3,7 +3,9 @@ footer {
     max-width: 100%;
     background-color: var(--gray-primary);
     border-top: 2px solid var(--white);
-    margin-top: 21rem;
+    margin-top: 5rem;
+    /* position: fixed;
+    bottom: 0; */
 }
 
 .footer-container {

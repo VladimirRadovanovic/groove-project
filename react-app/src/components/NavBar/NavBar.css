@@ -5,6 +5,7 @@ nav {
     max-width: 100%;
     background-color: var(--gray-primary);
     border-bottom: 2px solid var(--white);
+    z-index: 10;
 }
 
 .nav-container {
