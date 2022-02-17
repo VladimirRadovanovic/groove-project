@@ -28,7 +28,7 @@ function GetAllListings({ user }) {
     }
 
     return (
-        <>
+        <main className='all-records-main'>
         <h2 className='section-3-title'>RECORDS</h2>
         {/* <div className='splash-article-container'>
                 {listingsList?.map(listing => (
@@ -68,7 +68,7 @@ function GetAllListings({ user }) {
 
             </div> */}
             <DisplayListings listingsList={listingsList} />
-        </>
+        </main>
     )
 }
 
