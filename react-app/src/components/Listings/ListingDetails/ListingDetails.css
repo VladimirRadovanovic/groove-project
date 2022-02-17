@@ -1,0 +1,22 @@
+.details-main-container {
+    display: flex;
+    margin-bottom: -5rem;
+}
+
+.details-img-container {
+    width: 45%;
+    height: 80vh;
+}
+
+.details-img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.sold-by-img {
+    height: 5rem;
+    width: 5rem;
+    object-fit: cover;
+    border-radius: .2rem;
+}
