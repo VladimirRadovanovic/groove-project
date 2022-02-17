@@ -43,7 +43,7 @@ function DropdownMenu() {
 
                         <div className="profile-dropdown">
                             <div className="user-profile-link-container">
-                                <NavLink className='profile-link' to='/api/user/profile' >Profile</NavLink>
+                                <NavLink className='profile-link' to={`/users/${user.id}/profile`} >Profile</NavLink>
                             </div>
                             <div>
                                 <LogoutButton />

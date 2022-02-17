@@ -1,0 +1,90 @@
+.listing-img-container {
+    min-height: 100vh;
+    width: 60%;
+    background-size: cover;
+    /* margin-bottom: -5rem; */
+}
+
+
+.create-listing-img-container {
+    /* min-height: 100vh;
+    width: 40%; */
+    background-image: url('../../../images/create3.jpg');
+}
+
+.edit-listing-img-container {
+    background-image: url('../../../images/create1.jpg');
+}
+
+
+.create-main-container {
+    display: flex;
+    /* align-items: center; */
+    margin-bottom: -5rem;
+}
+
+.listings-form-main-container {
+    /* display: flex;
+    flex-direction: column; */
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.listings-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.listings-form label{
+    display: block;
+}
+
+.listings-form div {
+    width: 53rem;
+    height: 4.1rem;
+    border: var(--border-dark);
+    margin: .5rem 0;
+    padding: .2rem 1rem;
+    border-radius: .3rem;
+}
+
+/* select {
+    border: none;
+    width: 100%;
+} */
+
+.listings-form input, select, textarea {
+    width: 100%;
+    /* height: inherit; */
+    border: none;
+    outline: none;
+}
+
+.description-container {
+    height: 7rem!important;
+}
+
+.description-container textarea {
+    height: 70%;
+}
+
+.listings-form select {
+    margin-left: -.4rem;
+}
+
+.listing-button {
+    display: inline-block;
+    padding: 1.3rem 3.8rem;
+    background-color: var(--yellow);
+    transition: all .2s;
+    font-weight: bolder;
+    margin-top: 2rem;
+}
+
+.listing-button:hover {
+    background-color: var(--yellow-hover);
+}

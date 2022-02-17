@@ -5,6 +5,7 @@ nav {
     max-width: 100%;
     background-color: var(--gray-primary);
     border-bottom: 2px solid var(--white);
+    z-index: 10;
 }
 
 .nav-container {
@@ -30,6 +31,7 @@ nav {
     height: 100%;
     display: flex;
     align-items: center;
+    font-family: var(--font-logo);
 }
 
 .logo-text {

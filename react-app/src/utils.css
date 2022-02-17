@@ -9,3 +9,8 @@
 .margin-bottom-large {
     margin-bottom: 6rem;
 }
+
+.img-fluid {
+    width: 100%;
+    height: auto;
+}

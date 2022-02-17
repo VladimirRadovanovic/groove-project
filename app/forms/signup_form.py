@@ -22,9 +22,6 @@ def username_exists(form, field):
 
 def match_passswords(form, field):
     password = form.data['password']
-    print(form.data)
-    print(form.data['repeat_password'])
-    print(form.data['password'])
 
     repeat_password = form.data['repeat_password']
 
@@ -35,7 +32,7 @@ def match_passswords(form, field):
 class SignUpForm(FlaskForm):
     username = StringField(
         'Username', validators=[DataRequired(),
-        Length(min=1, max=50, message="Username address must be between 1 and 50 characters long"),
+        Length(min=2, max=50, message="Username must be between 2 and 50 characters long"),
         username_exists])
     email = StringField('Email', validators=[DataRequired(),
         Email(message="Please enter a valid email address"),

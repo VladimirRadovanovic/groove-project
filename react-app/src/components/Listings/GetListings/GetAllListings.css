@@ -1,0 +1,14 @@
+/* .listings-list {
+    width: 50rem;
+    height: 50rem;
+    background-color: pink;
+}
+li {
+    color: black;
+    font-size: 2rem;
+} */
+.all-records-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
