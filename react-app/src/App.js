@@ -13,6 +13,7 @@ import { authenticate } from './store/session';
 import GetAllListings from './components/Listings/GetListings/GetAllListings';
 import CreateListing from './components/Listings/CreateListing/CreateListing';
 import SplashPage from './components/SplashPage/SplashPage';
+import ListingDetails from './components/Listings/ListingDetails/ListingDetails';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -60,6 +61,9 @@ function App() {
         </ProtectedRoute>
         <Route path='/records/all'>
            <GetAllListings user={user} />
+        </Route>
+        <Route path='/records/:recordId/details'>
+          <ListingDetails user={user}/>
         </Route>
       </Switch>
       <Footer />
