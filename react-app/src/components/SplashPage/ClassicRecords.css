@@ -141,3 +141,29 @@
     border: 1px solid #97d9f9;
     background-color: #c5ebfd;
 }
+
+.article-front-text-container {
+    padding-top: 2rem;
+}
+
+.article-front-text-container p {
+    padding: 1rem 1.5rem;
+    overflow: hidden;
+}
+
+.album-text {
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.artist-text {
+    font-size: 1.3rem;
+    color: var(--font-color);
+}
+
+.price-text {
+    font-size: 1.3rem;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}

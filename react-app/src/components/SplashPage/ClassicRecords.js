@@ -37,10 +37,17 @@ function GetClassicRecords({ user }) {
                                 <img src={listing?.images?.img_url ? listing?.images?.img_url : placeholder}
                                     className='section-3-img article-img' alt='record' />
                             </div>
-                            {listing?.id}
-                            {listing?.album}
-                            {listing?.artist}
-                            {listing?.genre}
+                            <div className='article-front-text-container'>
+                            <p className='album-text'>
+                                {listing?.album}
+                            </p>
+                            <p className='artist-text'>
+                                {listing?.artist}
+                            </p>
+                            <p className='price-text'>
+                                ${listing?.price.toFixed(2)}
+                            </p>
+                            </div>
 
                         </div>
                         <div className='article-side article-back'>
