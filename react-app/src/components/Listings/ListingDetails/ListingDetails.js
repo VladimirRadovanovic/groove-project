@@ -5,6 +5,8 @@ import { useEffect } from 'react'
 import placeholder from '../../../images/vinyl.jpg'
 import { getAllListings } from '../../../store/listings'
 import './ListingDetails.css'
+import EditListing from '../EditListing/EditListing'
+import RemoveListing from '../RemoveListing/RemoveListing'
 
 
 function ListingDetails({ user }) {
@@ -24,21 +26,24 @@ function ListingDetails({ user }) {
                 <img className='details-img' src={placeholder} />
             </section>
             <section className='details-data-container'>
-            <div className='sold-by-container'>
-                <p className='sold-by-paragraph'><strong>Sold by:</strong> {listing?.seller?.username}</p>
-                <img className='sold-by-img' src={listing?.seller?.profile_img_url ? listing?.seller?.profile_img_url : placeholder} />
-            </div>
-            <div className='details-info-container'>
-                <p><strong>Posted on:</strong> {listing?.created_at && new Date(listing?.created_at).toDateString()}</p>
-                <p><strong>Album:</strong> {listing?.album}</p>
-                <p><strong>Artist:</strong> {listing?.artist}</p>
-                <p><strong>Genre:</strong> {listing?.genre}</p>
-                <p><strong>Condition:</strong> {listing?.condition}</p>
-                <p><strong>Price:</strong> ${listing?.price}</p>
-                <p><strong>Available copies:</strong> {listing?.num_copies_available}</p>
-                <p><strong>Description:</strong> {listing?.description}</p>
-            </div>
-                <button className='cart-button details-cart-button'>Add to Cart</button>
+                <div className='sold-by-container'>
+                    <p className='sold-by-paragraph'><strong>Sold by:</strong> {listing?.seller?.username}</p>
+                    <img className='sold-by-img' src={listing?.seller?.profile_img_url ? listing?.seller?.profile_img_url : placeholder} />
+                </div>
+                <div className='details-info-container'>
+                    <p><strong>Posted on:</strong> {listing?.created_at && new Date(listing?.created_at).toDateString()}</p>
+                    <p><strong>Album:</strong> {listing?.album}</p>
+                    <p><strong>Artist:</strong> {listing?.artist}</p>
+                    <p><strong>Genre:</strong> {listing?.genre}</p>
+                    <p><strong>Condition:</strong> {listing?.condition}</p>
+                    <p><strong>Price:</strong> ${listing?.price.toFixed(2)}</p>
+                    <p><strong>Available copies:</strong> {listing?.num_copies_available}</p>
+                    <p><strong>Description:</strong> {listing?.description}</p>
+                </div>
+                {listing?.seller_id === user?.id ?
+                    null :
+                    <button className='cart-button details-cart-button'>Add to Cart</button>
+                }
             </section>
         </main>
     )

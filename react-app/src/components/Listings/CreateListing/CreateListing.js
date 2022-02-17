@@ -55,11 +55,13 @@ function CreateListing({ user }) {
 
         const formData = new FormData();
 
-        if(price.startsWith('$')) {
-            price = parseFloat(price.slice(1).split(',').join('')).toFixed(2)
+        console.log(price, 'price starts with ************')
+
+        if(price?.toString().startsWith('$')) {
+            price = parseFloat(price?.toString().slice(1).split(',').join('')).toFixed(2)
 
         }else {
-            price = parseFloat(price.split(',').join('')).toFixed(2)
+            price = parseFloat(price?.toString().split(',').join('')).toFixed(2)
 
         }
 
