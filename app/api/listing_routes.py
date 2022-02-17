@@ -18,7 +18,7 @@ def get_all_listings():
 def edit_listing(id):
     form = CreateListingForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    
+
     if form.validate_on_submit():
         # id = request.id
         listing = Listing.query.get(id)
@@ -42,7 +42,6 @@ def edit_listing(id):
 def create_listing():
     form = CreateListingForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-
     if form.validate_on_submit():
         data = form.data
         new_listing = Listing(

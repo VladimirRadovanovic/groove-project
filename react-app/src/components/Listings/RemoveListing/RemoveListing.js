@@ -7,7 +7,7 @@ function RemoveListing({ listing, handleDelete }) {
 
     return(
         <>
-             <button id={listing?.id} onClick={handleDelete}>Delete</button>
+             <button id={listing?.id} onClick={handleDelete}>Remove Listing</button>
         </>
     )
 }

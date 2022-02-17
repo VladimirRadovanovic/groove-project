@@ -1,0 +1,122 @@
+.profile-header {
+    width: 100%;
+    height: 25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profile-img-container-heading {
+    height: 20rem;
+    width: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 2rem;
+}
+
+.profile-img-heading,
+.profile-article-img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: .2rem;
+}
+
+.profile-listings-section {
+    display: flex;
+    justify-content: center;
+    /* background-image: url('../../images/profile2.jpg');
+    background-size: cover; */
+    margin-bottom: -5rem;
+    /* background-color: antiquewhite; */
+}
+
+.profile-listings-article-container {
+    width: 60%;
+}
+
+.profile-listings-article {
+    width: 100%;
+    height: 20rem;
+    font-size: 1.6rem;
+    margin: 2rem 0;
+    padding: 1rem;
+    display: flex;
+    border-radius: .2rem;
+    border: var(--border-medium);
+    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+    background-color: var(--white);
+}
+
+.profile-article-img-container {
+    width: 20%;
+    height: 100%;
+}
+
+.profile-listings-info-container {
+    width: 70%;
+    display: flex;
+    padding: 2rem;
+}
+
+
+
+.profile-article-album-data {
+    width: 50%;
+}
+
+
+.profile-article-description {
+    width: 50%;
+}
+
+.profile-listings-button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile-listings-button-container a,
+.profile-listings-button-container button {
+    display: block;
+    width: 12rem;
+    height: 4rem;
+    line-height: 4rem;
+    text-align: center;
+    margin: .5rem;
+    font-size: 1.3rem;
+    border-radius: .2rem;
+    transition: all .2s;
+}
+
+.profile-listings-button-container a {
+    border: var(--border-dark);
+    font-weight: bolder;
+}
+
+.profile-listings-button-container a:hover {
+    background-color: var(--gray-hover-light);
+    border: 1px solid var(--gray-hover-light);
+}
+
+.profile-listings-button-container button {
+    background-color: rgb(207, 0, 0);
+    padding: .1rem;
+    color: var(--white);
+}
+
+.profile-listings-button-container button:hover {
+    background-color: rgb(230, 86, 86);
+}
+
+.profile-listings-info-container:first-child {
+    font-weight: bolder;
+}
+
+.article-album-first {
+    font-size: 2.2rem;
+    padding-bottom: 1.5rem;
+}
+.profile-listings-info-container p {
+    padding: .5rem;
+}
