@@ -29,10 +29,10 @@ function GetClassicRecords({ user }) {
     return (
         <section className='splash-section-3'>
             {/* <GetAllListings user={user} /> */}
-            <h2 className='section-3-title'>CLASSIC RECORDS</h2>
+            <h2 className='section-3-title section-title'>CLASSIC RECORDS</h2>
         <div className='splash-article-container'>
                 {listingsList?.map(listing => (
-                    <article className='section-3-article' key={listing?.id}>
+                    <article className='section-3-article article article-side article-front' key={listing?.id}>
                         <div className='section-3-img-container'>
                             <img src={listing?.images?.img_url ? listing?.images?.img_url : placeholder}
                              className='section-3-img' alt='record' />

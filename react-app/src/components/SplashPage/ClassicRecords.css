@@ -23,7 +23,9 @@
     height: 40rem;
     border: var(--border-medium);
     box-shadow: rgba(149, 157, 165, 0.2) 0rem .4rem 1.4rem;
-
+    perspective: 150rem;
+    --moz-perspective: 150rem;
+    position: relative;
 }
 
 .section-3-img-container {

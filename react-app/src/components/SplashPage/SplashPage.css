@@ -16,8 +16,6 @@
     color: var(--white);
     font-weight: 800;
     text-align: center;
-    text-shadow: .3rem .3rem 1.5rem var(--black);
-
 }
 
 .section-icon {
@@ -35,6 +33,7 @@
 
 .section-1-title{
     width: 50%;
+    text-shadow: .3rem .3rem 1.5rem var(--black);
 }
 
 
@@ -51,6 +50,7 @@
 
 .section-2-title {
     width: 40%;
+    text-shadow: .3rem .3rem 1.5rem var(--black);
 }
 
 .section:hover .section-icon {
