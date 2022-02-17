@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
+import NumberFormat from 'react-number-format';
 
 import { editListing, getAllListings, createListing } from '../../../store/listings';
 import './CreateListing.css'
@@ -29,7 +30,7 @@ function CreateListing({ user }) {
     const [album, setAlbum] = useState(listing?.album || '')
     const [genre, setGenre] = useState(listing?.genre || '')
     const [description, setDescription] = useState(listing?.description || '')
-    const [price, setPrice] = useState(listing?.price || '')
+    let [price, setPrice] = useState(listing?.price || '')
     const [condition, setCondition] = useState(listing?.condition || '')
     const [num_copies_available, setNum_copies_available] = useState(listing?.num_copies_available || '')
     const [errors, setErrors] = useState([])
@@ -53,6 +54,14 @@ function CreateListing({ user }) {
         e.preventDefault()
 
         const formData = new FormData();
+
+        if(price.startsWith('$')) {
+            price = parseFloat(price.slice(1).split(',').join('')).toFixed(2)
+
+        }else {
+            price = parseFloat(price.split(',').join('')).toFixed(2)
+
+        }
 
 
         formData.append('artist', artist)
@@ -147,12 +156,26 @@ function CreateListing({ user }) {
                 </div>
                 <div>
                 <label>Price</label>
-                <input
+                {/* <input
                     type='number'
                     placeholder='Price'
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
-                />
+                /> */}
+
+                <NumberFormat
+                            placeholder='Price per night *'
+                            value={price}
+                            onChange={(e) => setPrice(e.target.value)}
+                            thousandSeparator={true}
+                            prefix="$"
+                            className="some"
+                            inputMode="numeric"
+                            decimalScale={2}
+                            fixedDecimalScale={true}
+                            allowNegative={false}
+                        />
+
                 </div>
                 <div>
                 <label>Number of copies available</label>

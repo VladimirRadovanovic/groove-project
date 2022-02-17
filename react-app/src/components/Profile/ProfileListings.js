@@ -41,7 +41,7 @@ function ProfileListings({ listingsList, userId }) {
                                     {listing?.genre}
                                 </p>
                                 <p>
-                                    {listing?.price}
+                                    ${listing?.price.toFixed(2)}
                                 </p>
                             </div>
                             <div className="profile-article-description">
