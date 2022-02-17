@@ -18,7 +18,7 @@ function ProfileListings({ listingsList, userId }) {
     }
 
     return (
-        <>
+        <section>
             <ul>
                 {profileListings?.map(listing => (
                     <li key={listing?.id}>
@@ -32,7 +32,7 @@ function ProfileListings({ listingsList, userId }) {
                     </li>
                 ))}
             </ul>
-        </>
+        </section>
     )
 }
 
