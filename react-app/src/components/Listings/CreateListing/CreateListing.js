@@ -36,7 +36,7 @@ function CreateListing({ user }) {
     // if (!user) return <Redirect to='/login' />
 
     // const url = window.location.href
-    // console.log(url, 'create url')
+
 
 
     const reset = () => {
@@ -125,12 +125,26 @@ function CreateListing({ user }) {
                     onChange={(e) => setDescription(e.target.value)}
                 />
                 <label>Condition</label>
-                <input
+                {/* <input
                     type='text'
                     placeholder='Condition'
                     value={condition}
                     onChange={(e) => setCondition(e.target.value)}
-                />
+                /> */}
+                <select
+                    type='text'
+                    placeholder='Condition'
+                    // selected={condition}
+                    defaultValue={condition}
+                    onChange={(e) => setCondition(e.target.value)}
+                >
+                    <option value=''>Please choose an option</option>
+                    <option value='New'>New</option>
+                    <option value='Used - Like New'>Used - Like New</option>
+                    <option value='Used - Very Good'>Used - Very Good</option>
+                    <option value='Used - Good'>Used - Good</option>
+                    <option value='Used - Acceptable'>Used - Acceptable</option>
+                </select>
                 <label>Price</label>
                 <input
                     type='number'
