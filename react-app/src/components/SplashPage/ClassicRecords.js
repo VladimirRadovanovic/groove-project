@@ -30,22 +30,27 @@ function GetClassicRecords({ user }) {
         <section className='splash-section-3'>
             {/* <GetAllListings user={user} /> */}
             <h2 className='section-3-title section-title'>CLASSIC RECORDS</h2>
-        <div className='splash-article-container'>
+            <div className='splash-article-container'>
                 {listingsList?.map(listing => (
-                    <article className='section-3-article article article-side article-front' key={listing?.id}>
-                        <div className='section-3-img-container'>
-                            <img src={listing?.images?.img_url ? listing?.images?.img_url : placeholder}
-                             className='section-3-img' alt='record' />
+                    <article className='section-3-article article' key={listing?.id}>
+                        <div className='article-side article-front'>
+                            <div className='section-3-img-container article-img-container'>
+                                <img src={listing?.images?.img_url ? listing?.images?.img_url : placeholder}
+                                    className='section-3-img article-img' alt='record' />
+                            </div>
+                            {listing?.id}
+                            {listing?.album}
+                            {listing?.artist}
+                            {listing?.genre}
+                            {listing?.description}
                         </div>
-                        {listing?.id}
-                        {listing?.album}
-                        {listing?.artist}
-                        {listing?.genre}
-                        {listing?.description}
+                        <div className='article-side article-back'>
+                                <label>Add to cart</label>
+                        </div>
                     </article>
                 ))}
 
-        </div>
+            </div>
         </section>
     )
 }
