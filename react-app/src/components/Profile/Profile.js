@@ -41,8 +41,8 @@ function Profile() {
   return (
     <main>
       <section className='profile-header'>
-        <div className='profile-img-container'>
-          <img className='profile-img' src={placeholder} alt='profile' />
+        <div className='profile-img-container-heading'>
+          <img className='profile-img-heading' src={placeholder} alt='profile' />
         </div>
         <div className='profile-info-container'>
           <div>
