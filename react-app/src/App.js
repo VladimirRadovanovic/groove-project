@@ -51,7 +51,6 @@ function App() {
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <SplashPage user={user} />
-          {/* <GetAllListings user={user} /> */}
         </Route>
         <ProtectedRoute path='/users/:userId/records/sell-record'>
             <CreateListing user={user} />
@@ -59,6 +58,9 @@ function App() {
         <ProtectedRoute path='/records/:recordId/edit-record'>
             <CreateListing user={user} />
         </ProtectedRoute>
+        <Route path='/records/all'>
+           <GetAllListings user={user} />
+        </Route>
       </Switch>
       <Footer />
     </BrowserRouter>

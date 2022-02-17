@@ -41,16 +41,25 @@ function GetClassicRecords({ user }) {
                             {listing?.album}
                             {listing?.artist}
                             {listing?.genre}
-                            {listing?.description}
+
                         </div>
                         <div className='article-side article-back'>
+                            <div className='article-back-text-container'>
+                                <h3 className='article-back-heading'>Description</h3>
+                                <p className='article-back-text'>
+                                    {listing?.description}
+                                </p>
+                            </div>
+                            <div className='article-button-box'>
                                 <button id={listing?.id} className='cart-button'>Add to Cart</button>
                                 <NavLink to={`/records/${listing?.id}/details`} className='details-link'>View Details</NavLink>
+                            </div>
                         </div>
                     </article>
                 ))}
 
             </div>
+            <NavLink to='/records/all' className='section-3-more-link'>SEE MORE</NavLink>
         </section>
     )
 }

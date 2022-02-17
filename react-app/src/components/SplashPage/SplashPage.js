@@ -9,7 +9,7 @@ function SplashPage({ user }) {
     return (
         <main className='splash-main-container'>
             <section className='splash-section-1 section'>
-                <NavLink className='section-1-link section-link' to={`/records/buy`}>
+                <NavLink className='section-1-link section-link' to={`/records/all`}>
                     <h2 className='section-1-title section-title'>
                         SHOP NOW
                         <i className="fa-solid fa-play section-1-play section-icon"></i>
@@ -17,7 +17,7 @@ function SplashPage({ user }) {
                 </NavLink>
             </section>
             <section className='splash-section-2 section'>
-                <NavLink className='section-2-link section-link' to={user ? `/records/buy` : '/login'}>
+                <NavLink className='section-2-link section-link' to={`/users/${user?.id}/records/sell-record`}>
                     <h2 className='section-2-title section-title'>
                         SELL
                         <i className="fa-solid fa-play section-2-play section-icon"></i>

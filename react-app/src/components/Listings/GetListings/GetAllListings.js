@@ -27,7 +27,7 @@ function GetAllListings({ user }) {
 
     return (
         <>
-        <h2 className='section-3-title'>CLASSIC RECORDS</h2>
+        <h2 className='section-3-title'>RECORDS</h2>
         <div className='splash-article-container'>
                 {listingsList?.map(listing => (
                     <article className='section-3-article' key={listing?.id}>

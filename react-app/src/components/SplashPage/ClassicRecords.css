@@ -22,8 +22,6 @@
 
 .article {
     height: 40rem;
-    /* border: var(--border-medium);
-    box-shadow: rgba(149, 157, 165, 0.2) 0rem .4rem 1.4rem; */
     perspective: 150rem;
     --moz-perspective: 150rem;
     position: relative;
@@ -54,10 +52,10 @@
 
 .article-back {
     transform: rotateY(180deg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    /* display: flex;
+    align-items: center; */
+    /* justify-content: center; */
+    /* flex-direction: column; */
     font-size: 1.6rem;
 }
 
@@ -103,4 +101,43 @@
 .details-link:hover {
     background-color: var(--gray-hover-light);
     border: 1px solid var(--gray-hover-light);
+}
+
+.article-back-text-container {
+    height: 65%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.article-button-box {
+    height: 35%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.article-back-text {
+    padding: 1.5rem;
+}
+
+.article-back-heading {
+    padding: 1.5rem;
+}
+
+.section-3-more-link {
+    margin-top: 6rem;
+    padding: 1.8rem 3.5rem;
+    background-color: var(--blue-secondary);
+    border: 1px solid var(--blue-secondary);
+    border-radius: .2rem;
+    font-weight: 800;
+    font-size: 1.6rem;
+    transition: all .2s;
+}
+
+.section-3-more-link:hover {
+    border: 1px solid #97d9f9;
+    background-color: #c5ebfd;
 }
