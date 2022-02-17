@@ -17,8 +17,10 @@ function ProfileListings({ listingsList, userId }) {
         dispatch(deleteListing(id))
     }
 
+    // pre push
+
     return (
-        <>
+        <section>
             <ul>
                 {profileListings?.map(listing => (
                     <li key={listing?.id}>
@@ -32,7 +34,7 @@ function ProfileListings({ listingsList, userId }) {
                     </li>
                 ))}
             </ul>
-        </>
+        </section>
     )
 }
 
