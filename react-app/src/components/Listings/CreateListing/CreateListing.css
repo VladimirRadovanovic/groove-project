@@ -30,6 +30,11 @@
     width: 100%;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+}
+
+.listings-form-main-container ul {
+    font-size: 1.6rem;
 }
 
 .listings-form {
