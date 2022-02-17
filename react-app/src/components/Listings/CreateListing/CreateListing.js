@@ -63,7 +63,7 @@ function CreateListing({ user }) {
         formData.append('num_copies_available', num_copies_available)
         formData.append('condition', condition)
 
-        if(!listing) {
+        if (!listing) {
 
             const data = await dispatch(createListing(formData))
 
@@ -90,7 +90,7 @@ function CreateListing({ user }) {
     }
 
     return (
-        <>
+        <main className='create-main-container'>
             <ul>
                 {errors.map(error => (
                     <li key={error}>{error}</li>
@@ -150,7 +150,10 @@ function CreateListing({ user }) {
                     <button>Make a Listing</button>
                 }
             </form>
-        </>
+            <div className={listing ? `create-listing-img-container  listing-img-container` : 'edit-listing-img-container  listing-img-container'}>
+                &nbsp;
+            </div>
+        </main>
     )
 }
 

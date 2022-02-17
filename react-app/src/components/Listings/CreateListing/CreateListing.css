@@ -1,0 +1,23 @@
+.listing-img-container {
+    min-height: 100vh;
+    width: 40%;
+    background-size: cover;
+    margin-bottom: -5rem;
+}
+
+
+.create-listing-img-container {
+    /* min-height: 100vh;
+    width: 40%; */
+    background-image: url('../../../images/create3.jpg');
+}
+
+.edit-listing-img-container {
+    background-image: url('../../../images/create1.jpg');
+}
+
+
+.create-main-container {
+    display: flex;
+
+}
