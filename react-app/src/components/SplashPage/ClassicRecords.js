@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import './ClassicRecords.css'
 import { getAllListings } from '../../store/listings';
 import placeholder from '../../images/vinyl.jpg'
+import DisplayListings from '../Listings/DisplayListings/DisplayListings';
 
 
 function GetClassicRecords({ user }) {
@@ -29,7 +30,7 @@ function GetClassicRecords({ user }) {
     return (
         <section className='splash-section-3'>
             <h2 className='section-3-title section-title margin-bottom-small'>CLASSIC RECORDS</h2>
-            <div className='splash-article-container'>
+            {/* <div className='splash-article-container'>
                 {listingsList?.map(listing => (
                     <article className='section-3-article article' key={listing?.id}>
                         <div className='article-side article-front'>
@@ -65,7 +66,8 @@ function GetClassicRecords({ user }) {
                     </article>
                 ))}
 
-            </div>
+            </div> */}
+            <DisplayListings listingsList={listingsList} />
             <NavLink to='/records/all' className='section-3-more-link'>SEE MORE</NavLink>
         </section>
     )

@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 
 import { getAllListings } from '../../../store/listings';
 import placeholder from '../../../images/vinyl.jpg'
+import DisplayListings from '../DisplayListings/DisplayListings';
 
 import './GetAllListings.css'
 
@@ -29,7 +30,7 @@ function GetAllListings({ user }) {
     return (
         <>
         <h2 className='section-3-title'>RECORDS</h2>
-        <div className='splash-article-container'>
+        {/* <div className='splash-article-container'>
                 {listingsList?.map(listing => (
                     <article className='section-3-article article' key={listing?.id}>
                         <div className='article-side article-front'>
@@ -65,7 +66,8 @@ function GetAllListings({ user }) {
                     </article>
                 ))}
 
-            </div>
+            </div> */}
+            <DisplayListings listingsList={listingsList} />
         </>
     )
 }
