@@ -91,12 +91,17 @@ function CreateListing({ user }) {
 
     return (
         <main className='create-main-container'>
+            <div className='listings-form-main-container'>
+            <div className='listings-errors-container'>
             <ul>
                 {errors.map(error => (
                     <li key={error}>{error}</li>
                 ))}
             </ul>
-            <form onSubmit={handleSubmit}>
+            </div>
+            <div className='listings-form-container'></div>
+            <form className='listings-form' onSubmit={handleSubmit}>
+                <div>
                 <label>Artist</label>
                 <input
                     type='text'
@@ -104,6 +109,8 @@ function CreateListing({ user }) {
                     value={artist}
                     onChange={(e) => setArtist(e.target.value)}
                 />
+                </div>
+                <div>
                 <label>Album</label>
                 <input
                     type='text'
@@ -111,6 +118,8 @@ function CreateListing({ user }) {
                     value={album}
                     onChange={(e) => setAlbum(e.target.value)}
                 />
+                </div>
+                <div>
                 <label>Genre</label>
                 <input
                     type='text'
@@ -118,19 +127,9 @@ function CreateListing({ user }) {
                     value={genre}
                     onChange={(e) => setGenre(e.target.value)}
                 />
-                <label>Description</label>
-                <textarea
-                    placeholder='Description'
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                />
+                </div>
+                <div>
                 <label>Condition</label>
-                {/* <input
-                    type='text'
-                    placeholder='Condition'
-                    value={condition}
-                    onChange={(e) => setCondition(e.target.value)}
-                /> */}
                 <select
                     type='text'
                     placeholder='Condition'
@@ -145,6 +144,8 @@ function CreateListing({ user }) {
                     <option value='Used - Good'>Used - Good</option>
                     <option value='Used - Acceptable'>Used - Acceptable</option>
                 </select>
+                </div>
+                <div>
                 <label>Price</label>
                 <input
                     type='number'
@@ -152,18 +153,31 @@ function CreateListing({ user }) {
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
                 />
+                </div>
+                <div>
                 <label>Number of copies available</label>
                 <input
                     type='number'
+                    min={0}
                     placeholder='Number of copies available'
                     value={num_copies_available}
                     onChange={(e) => setNum_copies_available(e.target.value)}
                 />
+                </div>
+                <div className='description-container'>
+                <label>Description</label>
+                <textarea
+                    placeholder='Description'
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                />
+                </div>
                 {listing ?
-                    <button>Edit Listing</button> :
-                    <button>Make a Listing</button>
+                    <button className='listing-button'>Edit Listing</button> :
+                    <button className='listing-button'>Post a Listing</button>
                 }
             </form>
+            </div>
             <div className={listing ? `create-listing-img-container  listing-img-container` : 'edit-listing-img-container  listing-img-container'}>
                 &nbsp;
             </div>
