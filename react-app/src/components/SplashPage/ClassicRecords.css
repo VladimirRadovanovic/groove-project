@@ -9,7 +9,7 @@
 .splash-article-container {
     width: 70%;
     display: grid;
-    grid-template-columns: repeat(5, minmax(18rem, 1fr));
+    grid-template-columns: repeat(5, minmax(21rem, 1fr));
     gap: 1.8rem;
 }
 
@@ -17,6 +17,7 @@
     text-align: center;
     font-size: 4rem;
     color: var(--font-color);
+    font-weight: 900;
 }
 
 .article {
@@ -53,6 +54,11 @@
 
 .article-back {
     transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 1.6rem;
 }
 
 .article:hover .article-front{
@@ -61,4 +67,40 @@
 
 .article:hover .article-back {
     transform: rotate(0);
+}
+
+.cart-button,
+.details-link {
+    display: block;
+    font-size: 1.6rem;
+    width: 13rem;
+    height: 4rem;
+    text-align: center;
+    line-height: 4rem;
+    margin: .5rem;
+    border-radius: .2rem;
+    transition: all .2s;
+
+}
+
+.details-link {
+    border: var(--border-dark);
+    font-weight: bolder;
+
+}
+
+.cart-button {
+    padding: .1rem;
+    background-color: var(--black);
+    color: var(--white);
+
+}
+
+.cart-button:hover {
+    background-color: var(--gray-hover-dark);
+}
+
+.details-link:hover {
+    background-color: var(--gray-hover-light);
+    border: 1px solid var(--gray-hover-light);
 }

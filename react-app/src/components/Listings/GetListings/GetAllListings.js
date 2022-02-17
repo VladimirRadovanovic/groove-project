@@ -13,7 +13,7 @@ function GetAllListings({ user }) {
 
     useEffect(() => {
         dispatch(getAllListings())
-    }, [user, url])
+    }, [user, url, dispatch])
     const listings = useSelector(state => state.listings)
     let listingsList;
     if (!user) {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
-import GetAllListings from '../Listings/GetListings/GetAllListings'
 import './ClassicRecords.css'
 import { getAllListings } from '../../store/listings';
 import placeholder from '../../images/vinyl.jpg'
@@ -13,7 +13,7 @@ function GetClassicRecords({ user }) {
 
     useEffect(() => {
         dispatch(getAllListings())
-    }, [user])
+    }, [user, dispatch])
 
     const listings = useSelector(state => state.listings)
     let listingsList;
@@ -28,8 +28,7 @@ function GetClassicRecords({ user }) {
 
     return (
         <section className='splash-section-3'>
-            {/* <GetAllListings user={user} /> */}
-            <h2 className='section-3-title section-title'>CLASSIC RECORDS</h2>
+            <h2 className='section-3-title section-title margin-bottom-small'>CLASSIC RECORDS</h2>
             <div className='splash-article-container'>
                 {listingsList?.map(listing => (
                     <article className='section-3-article article' key={listing?.id}>
@@ -45,7 +44,8 @@ function GetClassicRecords({ user }) {
                             {listing?.description}
                         </div>
                         <div className='article-side article-back'>
-                                <label>Add to cart</label>
+                                <button id={listing?.id} className='cart-button'>Add to Cart</button>
+                                <NavLink to={`/records/${listing?.id}/details`} className='details-link'>View Details</NavLink>
                         </div>
                     </article>
                 ))}

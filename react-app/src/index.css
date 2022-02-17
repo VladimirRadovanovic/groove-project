@@ -18,7 +18,8 @@ body {
   font-weight: 400;
   line-height: 1.7;
   color: var(--font-color);
-  font-family: var(--font); */
+  */
+  font-family: var(--font);
 }
 
 #root {
@@ -60,6 +61,3 @@ img {
   max-height: 100%;
 }
 
-h2 {
-  font-family: var(--font);
-}

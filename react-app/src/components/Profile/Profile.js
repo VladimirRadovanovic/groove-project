@@ -19,12 +19,12 @@ function Profile() {
       const user = await response.json();
       setUser(user);
     })();
-  }, [userId]);
+  }, [userId, dispatch]);
 
 
   useEffect(() => {
     dispatch(getAllListings())
-  }, [userId])
+  }, [userId, dispatch])
 
 
   const listings = useSelector(state => state.listings)

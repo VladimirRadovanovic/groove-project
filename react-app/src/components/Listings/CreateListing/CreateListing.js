@@ -14,7 +14,7 @@ function CreateListing({ user }) {
 
     useEffect(() => {
         dispatch(getAllListings())
-    }, [recordId])
+    }, [recordId, dispatch])
 
     const listings = useSelector(state => state.listings)
 
