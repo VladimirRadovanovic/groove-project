@@ -31,7 +31,7 @@ function ProfileListings({ listingsList, userId }) {
                         </div>
                         <div className="profile-listings-info-container">
                             <div className="profile-article-album-data">
-                                <p>
+                                <p className="article-album-first">
                                     {listing?.album}
                                 </p>
                                 <p>
@@ -45,7 +45,12 @@ function ProfileListings({ listingsList, userId }) {
                                 </p>
                             </div>
                             <div className="profile-article-description">
+                                <p className="article-album-first">
+                                    Description:
+                                </p>
+                                <p>
                                 {listing?.description}
+                                </p>
                             </div>
                         </div>
                         <div className="profile-listings-button-container">
