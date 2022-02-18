@@ -6,8 +6,10 @@ import placeholder from '../../../images/vinyl.jpg'
 function Cart({ user }) {
     const [numItems, setNumItems] = useState(1)
     const [itemId, setItemId] = useState('')
-    const [oldState, setOldState] = useState(1)
+    // const [oldState, setOldState] = useState(1)
 
+    // console.log(oldState, 'oldState##############')
+    console.log(numItems, 'numItems##############')
 
     const cartItems = Object.values(localStorage)
     console.log(cartItems.length, 'length')
@@ -17,12 +19,13 @@ function Cart({ user }) {
     ))
 
     const handleChange = (e, prevState) => {
+        console.log(prevState, 'prevState*********')
         setNumItems(e.target.value)
-        setOldState(prevState)
+        // setOldState(prevState)
+
         const eventId = e.target.id.split('-')[1]
         const inputField =document.getElementById(`item-${eventId}`)
-        console.log(inputField, 'eventId**********')
-        // inputField.value = numItems
+
         setItemId(Number(eventId))
     }
 
@@ -58,8 +61,8 @@ function Cart({ user }) {
                              className='cart-input-field'
                              id={`item-${item?.id}`}
                              type='number'
-                            //  defaultValue={oldState}
-                             value={item?.id === itemId ? numItems : oldState}
+                             defaultValue={1}
+                             value={item?.id === itemId ? numItems : null}
                              min={1}
                              placeholder='Quantity'
                              onChange={handleChange}
