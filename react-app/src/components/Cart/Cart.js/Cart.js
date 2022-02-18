@@ -10,7 +10,7 @@ function Cart({ user }) {
 
 
     const cartItems = Object.values(localStorage)
-    console.log(cartItems, '**************numItems*******************')
+
     // console.log(cartItems.length, 'length')
     // console.log(JSON.parse(cartItems[0]), 'cart items')
     const parsedItems = cartItems.map(item => (
@@ -22,6 +22,14 @@ function Cart({ user }) {
         setNumItems({...numItems, [e.target.id]: Number(e.target.value)})
         // setOldState(prevState)
         const eventId = e.target.id
+
+        const storageItem = JSON.parse(localStorage.getItem(eventId))
+        console.log(storageItem, 'storage item*******')
+        storageItem['cart_item_num'] = numItems[eventId] + 1
+        localStorage.removeItem(eventId)
+        localStorage.setItem(eventId, JSON.stringify(storageItem))
+        console.log(storageItem, 'storage item*******@@@@@@@@@@@@@@')
+
         // const eventId = e.target.id.split('-')[1]
         // const inputField =document.getElementById(`item-${eventId}`)
         // const inputField = document.querySelectorAll('.cart-input-field')
