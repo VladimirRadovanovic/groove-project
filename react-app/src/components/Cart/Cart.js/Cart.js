@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import './Cart.css'
 import placeholder from '../../../images/vinyl.jpg'
@@ -6,8 +6,22 @@ import placeholder from '../../../images/vinyl.jpg'
 function Cart({ user }) {
     const [numItems, setNumItems] = useState({'0': 1})
     const [itemId, setItemId] = useState('')
+    // const [storedItems, setStoredItems] = useState('')
     // const [oldState, setOldState] = useState(1)
+    console.log(numItems, 'storedItems!!!!!!')
 
+    useEffect(() => {
+        const renderedItems = Object.values(localStorage)
+        const parsedItemsRender = renderedItems.map(item => (
+            JSON.parse(item)
+        ))
+            const obj = {}
+            parsedItemsRender.forEach(pars => {
+                obj[`${pars.id}`] = pars['cart_item_num']
+            })
+            console.log(obj, 'objobj')
+            setNumItems({...numItems, ...obj})
+    }, [])
 
     const cartItems = Object.values(localStorage)
 
@@ -15,20 +29,28 @@ function Cart({ user }) {
     // console.log(JSON.parse(cartItems[0]), 'cart items')
     const parsedItems = cartItems.map(item => (
         JSON.parse(item)
+
     ))
 
-    const handleChange = (e, prevState) => {
+    const handleChange = async(e, prevState) => {
         // console.log(prevState, 'prevState*********')
         setNumItems({...numItems, [e.target.id]: Number(e.target.value)})
         // setOldState(prevState)
         const eventId = e.target.id
 
-        const storageItem = JSON.parse(localStorage.getItem(eventId))
-        console.log(storageItem, 'storage item*******')
-        storageItem['cart_item_num'] = numItems[eventId] + 1
-        localStorage.removeItem(eventId)
+        const storageItem = await JSON.parse(localStorage.getItem(eventId))
+
+        if (e.target.value < numItems[eventId]) {
+            storageItem['cart_item_num'] = numItems[eventId] - 1
+        } else {
+
+            storageItem['cart_item_num'] = numItems[eventId] + 1
+        }
+
+        //  setStoredItems(numItems[eventId] + 1)
+        await localStorage.removeItem(eventId)
         localStorage.setItem(eventId, JSON.stringify(storageItem))
-        console.log(storageItem, 'storage item*******@@@@@@@@@@@@@@')
+
 
         // const eventId = e.target.id.split('-')[1]
         // const inputField =document.getElementById(`item-${eventId}`)
@@ -71,7 +93,7 @@ function Cart({ user }) {
                              id={item?.id}
                              type='number'
                             //  defaultValue={1}
-                             value={numItems[`${item?.id}`] ? numItems[`${item?.id}`] : numItems['0']}
+                             value={numItems[`${item?.id}`] ? numItems[`${item?.id}`] : (numItems['0'] ? numItems['0'] : 1)}
                              min={1}
                              placeholder='Quantity'
                              onChange={handleChange}
