@@ -99,6 +99,10 @@ function Cart({ user }) {
                              onChange={handleChange}
                              />
                         </div>
+                        <div>
+                        {/* <i className="fa-solid fa-ban remove-item-button"></i> */}
+                        <i className="fa-solid fa-circle-xmark remove-item-button"></i>
+                        </div>
                     </div>
                 ))}
             </div>

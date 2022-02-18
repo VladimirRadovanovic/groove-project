@@ -52,3 +52,14 @@
     width: 22rem;
     border-radius: .2rem;
 }
+
+.remove-item-button {
+    color: var(--gray-primary);
+    font-size: 1.7rem;
+    cursor: pointer;
+    transition: all .2s;
+}
+
+.remove-item-button:hover {
+    color: var(--gray-hover-dark);
+}
