@@ -1,8 +1,18 @@
 import { NavLink } from "react-router-dom"
 
 import placeholder from '../../../images/vinyl.jpg'
+import AddToCart from "../../Cart/AddToCart/AddToCart"
 
 function DisplayListings({ listingsList }) {
+
+    const handleAddToCart = (e) => {
+        const id = Number(e.target.id)
+        const cartListing = listingsList.filter(listing => (
+            listing.id === id
+        ))
+        console.log(cartListing, 'cart listing')
+        localStorage.setItem(id, JSON.stringify(cartListing[0]))
+    }
     return (
         <div className='splash-article-container'>
         {listingsList?.map(listing => (
@@ -33,7 +43,8 @@ function DisplayListings({ listingsList }) {
                         </p>
                     </div>
                     <div className='article-button-box'>
-                        <button id={listing?.id} className='cart-button'>Add to Cart</button>
+                        <button onClick={handleAddToCart} id={listing?.id} className='cart-button'>Add to Cart</button>
+                        {/* <AddToCart listing={listing} /> */}
                         <NavLink to={`/records/${listing?.id}/details`} className='details-link'>View Details</NavLink>
                     </div>
                 </div>

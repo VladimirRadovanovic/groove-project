@@ -9,6 +9,7 @@ import './ListingDetails.css'
 import EditListing from '../EditListing/EditListing'
 import RemoveListing from '../RemoveListing/RemoveListing'
 import { deleteListing } from '../../../store/listings'
+import AddToCart from '../../Cart/AddToCart/AddToCart'
 
 
 function ListingDetails({ user }) {
@@ -28,6 +29,12 @@ function ListingDetails({ user }) {
         dispatch(deleteListing(id))
         history.push(`/users/${user.id}/profile`)
 
+    }
+
+    const handleAddToCart = (e) => {
+        const id = Number(e.target.id)
+        const cartListing = listings[id]
+        localStorage.setItem(id, JSON.stringify(cartListing))
     }
 
     return (
@@ -56,8 +63,8 @@ function ListingDetails({ user }) {
                     <RemoveListing listing={listing} handleDelete={handleDelete} />
                 </div>
                     :
-
-                    <button className='cart-button details-cart-button'>Add to Cart</button>
+                    // <AddToCart listing={listing} />
+                    <button onClick={handleAddToCart} id={listing?.id} className='cart-button details-cart-button'>Add to Cart</button>
                 }
             </section>
         </main>
