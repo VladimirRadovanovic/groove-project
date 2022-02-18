@@ -42,3 +42,23 @@ nav {
 .logo-img {
     height: 7rem;
 }
+
+.shop-now-link-nav {
+    display: inline-block;
+    margin-right: 4rem;
+    font-size: 2rem;
+    font-weight: bolder;
+    padding: .4rem 3rem;
+    border: 1px solid var(--white);
+    transition: all .2s;
+    border-radius: .2rem;
+}
+
+.shop-now-link-nav:hover {
+    background-color: var(--gray-hover-dark);
+}
+
+.nav-right-container {
+    display: flex!important;
+    align-items: center;
+}

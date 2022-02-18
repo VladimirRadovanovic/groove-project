@@ -14,8 +14,12 @@ const NavBar = () => {
               <img className='logo-img' src={logo} alt='logo'/> <h1 className='logo-text'>Groove</h1>
             </NavLink>
           </div>
+          <div className='nav-right-container'>
+            <NavLink className='shop-now-link-nav' to='/records/all'>Shop Now</NavLink>
+
           <div className='dropdown-button-container'>
             <DropdownMenu />
+          </div>
           </div>
           {/* <div> */}
             {/* <NavLink to='/login' exact={true} activeClassName='active'>
