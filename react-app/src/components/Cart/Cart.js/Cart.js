@@ -12,19 +12,21 @@ function Cart({ user }) {
     console.log(numItems, 'numItems##############')
 
     const cartItems = Object.values(localStorage)
-    console.log(cartItems.length, 'length')
-    console.log(JSON.parse(cartItems[0]), 'cart items')
+    // console.log(cartItems.length, 'length')
+    // console.log(JSON.parse(cartItems[0]), 'cart items')
     const parsedItems = cartItems.map(item => (
         JSON.parse(item)
     ))
 
     const handleChange = (e, prevState) => {
-        console.log(prevState, 'prevState*********')
+        // console.log(prevState, 'prevState*********')
         setNumItems(e.target.value)
         // setOldState(prevState)
 
         const eventId = e.target.id.split('-')[1]
-        const inputField =document.getElementById(`item-${eventId}`)
+        // const inputField =document.getElementById(`item-${eventId}`)
+        // const inputField = document.querySelectorAll('.cart-input-field')
+        // console.log(inputField[1].value, 'fields*************')
 
         setItemId(Number(eventId))
     }
