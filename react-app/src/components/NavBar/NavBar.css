@@ -62,3 +62,9 @@ nav {
     display: flex!important;
     align-items: center;
 }
+
+.cart {
+    color: white;
+    font-size: 3.5rem;
+    margin-right: 4rem;
+}

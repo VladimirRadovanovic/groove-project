@@ -14,6 +14,7 @@ import GetAllListings from './components/Listings/GetListings/GetAllListings';
 import CreateListing from './components/Listings/CreateListing/CreateListing';
 import SplashPage from './components/SplashPage/SplashPage';
 import ListingDetails from './components/Listings/ListingDetails/ListingDetails';
+import Cart from './components/Cart/Cart.js/Cart';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -64,6 +65,9 @@ function App() {
         </Route>
         <Route path='/records/:recordId/details'>
           <ListingDetails user={user}/>
+        </Route>
+        <Route path='/cart'>
+          <Cart user={user} />
         </Route>
       </Switch>
       <Footer />

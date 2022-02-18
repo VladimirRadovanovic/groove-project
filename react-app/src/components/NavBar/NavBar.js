@@ -16,6 +16,9 @@ const NavBar = () => {
           </div>
           <div className='nav-right-container'>
             <NavLink className='shop-now-link-nav' to='/records/all'>Shop Now</NavLink>
+            <NavLink to='/cart'>
+            <i className="fa-solid fa-cart-shopping cart"></i>
+            </NavLink>
 
           <div className='dropdown-button-container'>
             <DropdownMenu />
