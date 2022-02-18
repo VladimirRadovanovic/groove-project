@@ -11,15 +11,25 @@ function Cart({ user }) {
     ))
 
     return (
-        <>
+        <main className='main-cart-container'>
+            <div className='cart-page-container'>
+                <div className='cart-heading'>
+                    <h2>
+                        Your Cart
+                    </h2>
+                    <button className='checkout-button-cart'>
+                    <i className="fa-solid fa-cart-shopping"></i>
+                        Checkout
+                    </button>
+                </div>
         {parsedItems.map((item) => (
 
-            <div key={item?.id}>
+            <div className='cart-article-container' key={item?.id}>
                 {item?.album}
             </div>
         ))}
-
-        </>
+            </div>
+        </main>
     )
 
 }
