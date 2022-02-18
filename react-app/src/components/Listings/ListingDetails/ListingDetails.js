@@ -12,7 +12,7 @@ import { deleteListing } from '../../../store/listings'
 import AddToCart from '../../Cart/AddToCart/AddToCart'
 
 
-function ListingDetails({ user }) {
+function ListingDetails({ user, numItemSetter }) {
     const history = useHistory()
     const dispatch = useDispatch()
     const { recordId } = useParams()
@@ -35,6 +35,9 @@ function ListingDetails({ user }) {
         const id = Number(e.target.id)
         const cartListing = listings[id]
         localStorage.setItem(id, JSON.stringify(cartListing))
+        const numItems = Object.values(localStorage).length
+
+        numItemSetter(numItems)
     }
 
     return (

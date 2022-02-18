@@ -18,7 +18,14 @@ import Cart from './components/Cart/Cart.js/Cart';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
+  const [length, setLength] = useState('')
   const dispatch = useDispatch();
+
+  const cartItems = Object.values(localStorage)
+
+  const numItemSetter = (num) => {
+    setLength(num)
+  }
 
   const url = window.location.href
 
@@ -37,7 +44,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+      <NavBar length={length} />
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
@@ -52,7 +59,7 @@ function App() {
           <Profile />
         </ProtectedRoute>
         <Route path='/' exact={true} >
-          <SplashPage user={user} />
+          <SplashPage numItemSetter={numItemSetter} user={user} />
         </Route>
         <ProtectedRoute path='/users/:userId/records/sell-record'>
             <CreateListing user={user} />
@@ -61,10 +68,10 @@ function App() {
             <CreateListing user={user} />
         </ProtectedRoute>
         <Route path='/records/all'>
-           <GetAllListings user={user} />
+           <GetAllListings user={user} numItemSetter={numItemSetter} />
         </Route>
         <Route path='/records/:recordId/details'>
-          <ListingDetails user={user}/>
+          <ListingDetails user={user} numItemSetter={numItemSetter} />
         </Route>
         <Route path='/cart'>
           <Cart user={user} />

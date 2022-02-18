@@ -8,7 +8,7 @@ import placeholder from '../../images/vinyl.jpg'
 import DisplayListings from '../Listings/DisplayListings/DisplayListings';
 
 
-function GetClassicRecords({ user }) {
+function GetClassicRecords({ user, numItemSetter }) {
     const dispatch = useDispatch()
     const url = window.location.href
 
@@ -30,7 +30,7 @@ function GetClassicRecords({ user }) {
     return (
         <section className='splash-section-3'>
             <h2 className='section-3-title section-title margin-bottom-small'>CLASSIC RECORDS</h2>
-            <DisplayListings listingsList={listingsList} />
+            <DisplayListings listingsList={listingsList} numItemSetter={numItemSetter} />
             <NavLink to='/records/all' className='section-3-more-link'>SEE MORE</NavLink>
         </section>
     )

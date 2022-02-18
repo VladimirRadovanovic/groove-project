@@ -68,3 +68,12 @@ nav {
     font-size: 3.5rem;
     margin-right: 4rem;
 }
+
+
+.cart-container {
+    position: relative;
+}
+
+.cart-number {
+    position: absolute;
+}

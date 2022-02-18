@@ -3,15 +3,17 @@ import { NavLink } from "react-router-dom"
 import placeholder from '../../../images/vinyl.jpg'
 import AddToCart from "../../Cart/AddToCart/AddToCart"
 
-function DisplayListings({ listingsList }) {
+function DisplayListings({ listingsList, numItemSetter }) {
 
     const handleAddToCart = (e) => {
         const id = Number(e.target.id)
         const cartListing = listingsList.filter(listing => (
             listing.id === id
         ))
-        console.log(cartListing, 'cart listing')
         localStorage.setItem(id, JSON.stringify(cartListing[0]))
+        const numItems = Object.values(localStorage).length
+
+        numItemSetter(numItems)
     }
     return (
         <div className='splash-article-container'>

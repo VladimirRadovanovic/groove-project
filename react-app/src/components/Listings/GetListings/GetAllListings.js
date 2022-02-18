@@ -9,7 +9,7 @@ import DisplayListings from '../DisplayListings/DisplayListings';
 
 import './GetAllListings.css'
 
-function GetAllListings({ user }) {
+function GetAllListings({ user, numItemSetter }) {
     const dispatch = useDispatch()
     const url = window.location.href
 
@@ -30,7 +30,7 @@ function GetAllListings({ user }) {
     return (
         <main className='all-records-main'>
         <h2 className='section-3-title'>RECORDS</h2>
-            <DisplayListings listingsList={listingsList} />
+            <DisplayListings listingsList={listingsList} numItemSetter={numItemSetter} />
         </main>
     )
 }

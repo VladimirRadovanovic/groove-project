@@ -5,7 +5,7 @@ import GetAllListings from '../Listings/GetListings/GetAllListings';
 import ClassicRecords from './ClassicRecords';
 
 
-function SplashPage({ user }) {
+function SplashPage({ user, numItemSetter }) {
     return (
         <main className='splash-main-container'>
             <section className='splash-section-1 section'>
@@ -24,7 +24,7 @@ function SplashPage({ user }) {
                     </h2>
                 </NavLink>
             </section>
-            <ClassicRecords user={user} />
+            <ClassicRecords numItemSetter={numItemSetter} user={user} />
         </main>
     )
 }
