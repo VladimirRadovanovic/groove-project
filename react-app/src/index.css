@@ -49,6 +49,7 @@ input:-webkit-autofill:active {
 input {
     outline: none;
     font-family: inherit;
+
 }
 
 button {

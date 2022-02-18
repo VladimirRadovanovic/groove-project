@@ -67,6 +67,7 @@
     text-align: center;
     font-size: 1.6rem;
     font-weight: 600;
+    transition: all .2s;
 }
 
 .edit-remove-profile-container {
@@ -79,7 +80,7 @@
 
 .edit-listing-profile {
     border: var(--border-dark);
-    transition: all .2s;
+
 }
 .edit-listing-profile:hover {
     background-color: var(--gray-hover-light);
@@ -92,4 +93,8 @@
     background-color: var(--orange-primary);
     padding: .1rem;
 
+}
+
+.remove-listing-profile:hover {
+    background-color: var(--orange-secondary);
 }

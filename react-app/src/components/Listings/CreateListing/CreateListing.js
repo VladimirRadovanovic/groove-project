@@ -113,8 +113,9 @@ function CreateListing({ user }) {
             <div className='listings-form-container'></div>
             <form className='listings-form' onSubmit={handleSubmit}>
                 <div>
-                <label>Artist</label>
+                <label htmlFor='artist'>Artist</label>
                 <input
+                    id='artist'
                     type='text'
                     placeholder='Artist'
                     value={artist}
@@ -122,8 +123,9 @@ function CreateListing({ user }) {
                 />
                 </div>
                 <div>
-                <label>Album</label>
+                <label htmlFor='album'>Album</label>
                 <input
+                    id='album'
                     type='text'
                     placeholder='Album'
                     value={album}
@@ -131,8 +133,9 @@ function CreateListing({ user }) {
                 />
                 </div>
                 <div>
-                <label>Genre</label>
+                <label htmlFor='genre'>Genre</label>
                 <input
+                    id='genre'
                     type='text'
                     placeholder='Genre'
                     value={genre}
@@ -140,10 +143,11 @@ function CreateListing({ user }) {
                 />
                 </div>
                 <div>
-                <label>Condition</label>
+                <label htmlFor='condition'>Condition</label>
                 <select
+                    placeholder='Please choose an option'
+                    id='condition'
                     type='text'
-                    placeholder='Condition'
                     // selected={condition}
                     defaultValue={condition}
                     onChange={(e) => setCondition(e.target.value)}
@@ -157,7 +161,7 @@ function CreateListing({ user }) {
                 </select>
                 </div>
                 <div>
-                <label>Price</label>
+                <label htmlFor='price'>Price</label>
                 {/* <input
                     type='number'
                     placeholder='Price'
@@ -166,6 +170,7 @@ function CreateListing({ user }) {
                 /> */}
 
                 <NumberFormat
+                            id='price'
                             placeholder='Price per night *'
                             value={price}
                             onChange={(e) => setPrice(e.target.value)}
@@ -180,8 +185,9 @@ function CreateListing({ user }) {
 
                 </div>
                 <div>
-                <label>Number of copies available</label>
+                <label htmlFor='copies'>Number of copies available</label>
                 <input
+                    id='copies'
                     type='number'
                     min={0}
                     placeholder='Number of copies available'
@@ -190,8 +196,9 @@ function CreateListing({ user }) {
                 />
                 </div>
                 <div className='description-container'>
-                <label>Description</label>
+                <label htmlFor='description'>Description</label>
                 <textarea
+                    id='description'
                     placeholder='Description'
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}

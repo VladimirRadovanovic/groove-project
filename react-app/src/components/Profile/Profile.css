@@ -92,11 +92,13 @@
 .profile-listings-button-container a {
     border: var(--border-dark);
     font-weight: bolder;
+    background-color: var(--gray-primary);
+    color: var(--white);
 }
 
 .profile-listings-button-container a:hover {
-    background-color: var(--gray-hover-light);
-    border: 1px solid var(--gray-hover-light);
+    background-color: var(--gray-hover-dark);
+    border: 1px solid var(--gray-hover-dark);
 }
 
 .profile-listings-button-container button {

@@ -79,11 +79,12 @@
 
 .listings-form select {
     margin-left: -.4rem;
+
 }
 
 .listing-button {
     display: inline-block;
-    padding: 1.3rem 3.8rem;
+    padding: 1.3rem 4.8rem;
     background-color: var(--yellow);
     transition: all .2s;
     font-weight: bolder;
