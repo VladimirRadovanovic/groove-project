@@ -7,9 +7,7 @@ import './NavBar.css'
 import DropdownMenu from './DropdownMenu';
 
 const NavBar = ({ length }) => {
-  // const [length, setLength] = useState('')
-  // const cartItems = Object.values(localStorage)
-  // console.log(cartItems.length, 'length cart')
+
 
   useEffect(() => {
     // setLength(cartItems.length)

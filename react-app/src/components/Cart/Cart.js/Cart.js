@@ -4,10 +4,10 @@ import './Cart.css'
 import placeholder from '../../../images/vinyl.jpg'
 
 function Cart({ user }) {
-    const [numItems, setNumItems] = useState(1)
+    const [numItems, setNumItems] = useState({'0': 1})
     const [itemId, setItemId] = useState('')
     // const [oldState, setOldState] = useState(1)
-
+    console.log(numItems, '**************numItems*******************')
     // console.log(oldState, 'oldState##############')
     console.log(numItems, 'numItems##############')
 
@@ -20,10 +20,10 @@ function Cart({ user }) {
 
     const handleChange = (e, prevState) => {
         // console.log(prevState, 'prevState*********')
-        setNumItems(e.target.value)
+        setNumItems({...numItems, [e.target.id]: Number(e.target.value)})
         // setOldState(prevState)
-
-        const eventId = e.target.id.split('-')[1]
+        const eventId = e.target.id
+        // const eventId = e.target.id.split('-')[1]
         // const inputField =document.getElementById(`item-${eventId}`)
         // const inputField = document.querySelectorAll('.cart-input-field')
         // console.log(inputField[1].value, 'fields*************')
@@ -61,10 +61,10 @@ function Cart({ user }) {
                         <div className='quantity-container'>
                              <input
                              className='cart-input-field'
-                             id={`item-${item?.id}`}
+                             id={item?.id}
                              type='number'
-                             defaultValue={1}
-                             value={item?.id === itemId ? numItems : null}
+                            //  defaultValue={1}
+                             value={numItems[`${item?.id}`] ? numItems[`${item?.id}`] : numItems['0']}
                              min={1}
                              placeholder='Quantity'
                              onChange={handleChange}
