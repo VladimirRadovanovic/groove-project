@@ -76,4 +76,24 @@ nav {
 
 .cart-number {
     position: absolute;
+    background-color: rgb(5, 172, 5);
+    width: 2.3rem;
+    height: 2.3rem;
+    line-height: 2.3rem;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 1.4rem;
+    top: -1rem;
+    font-weight: 600;
+    animation: numberShow .3s;
+}
+
+@keyframes numberShow {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }

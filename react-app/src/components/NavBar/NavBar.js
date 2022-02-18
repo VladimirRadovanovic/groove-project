@@ -26,9 +26,15 @@ const NavBar = ({ length }) => {
         <div className='nav-right-container'>
           <NavLink className='shop-now-link-nav' to='/records/all'>Shop Now</NavLink>
           <div className='cart-container'>
+                {length > 0 ?
             <div className='cart-number'>
-                {length > 0 ? length : null}
-            </div>
+               { length}
+                </div>
+
+                :
+
+
+                null}
             <NavLink to='/cart'>
               <i className="fa-solid fa-cart-shopping cart"></i>
             </NavLink>
