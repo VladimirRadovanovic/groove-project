@@ -48,10 +48,10 @@ function Profile() {
           <div>
           </div>
           <div>
-            <strong>Username</strong> {user.username}
+            <strong>Username:</strong> {user.username}
           </div>
           <div>
-            <strong>Email</strong> {user.email}
+            <strong>Email:</strong> {user.email}
           </div>
         </div>
       </section>

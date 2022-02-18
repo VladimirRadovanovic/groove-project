@@ -21,7 +21,7 @@ function App() {
   const [length, setLength] = useState('')
   const dispatch = useDispatch();
 
-  const cartItems = Object.values(localStorage)
+
 
   const numItemSetter = (num) => {
     setLength(num)
@@ -33,6 +33,8 @@ function App() {
     (async() => {
       await dispatch(authenticate());
       setLoaded(true);
+      const cartItems = Object.values(localStorage)
+      setLength(cartItems.length)
     })();
   }, [dispatch, url]);
 

@@ -122,3 +122,8 @@
 .profile-listings-info-container p {
     padding: .5rem;
 }
+
+.profile-info-container {
+    font-size: 2.5rem;
+    padding-left: 2rem;
+}
