@@ -28,10 +28,7 @@ const NavBar = ({ length }) => {
             <div className='cart-number'>
                { length}
                 </div>
-
                 :
-
-
                 null}
             <NavLink to='/cart'>
               <i className="fa-solid fa-cart-shopping cart"></i>

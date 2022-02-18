@@ -7,11 +7,10 @@ function Cart({ user }) {
     const [numItems, setNumItems] = useState({'0': 1})
     const [itemId, setItemId] = useState('')
     // const [oldState, setOldState] = useState(1)
-    console.log(numItems, '**************numItems*******************')
-    // console.log(oldState, 'oldState##############')
-    console.log(numItems, 'numItems##############')
+
 
     const cartItems = Object.values(localStorage)
+    console.log(cartItems, '**************numItems*******************')
     // console.log(cartItems.length, 'length')
     // console.log(JSON.parse(cartItems[0]), 'cart items')
     const parsedItems = cartItems.map(item => (
