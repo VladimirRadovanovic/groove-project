@@ -63,8 +63,8 @@ function Cart({ user }) {
                              className='cart-input-field'
                              id={`item-${item?.id}`}
                              type='number'
-                             defaultValue={1}
-                             value={item?.id === itemId ? numItems : null}
+                            //  defaultValue={1}
+                             value={itemId ? (item?.id === itemId ? numItems : null) : 1}
                              min={1}
                              placeholder='Quantity'
                              onChange={handleChange}
