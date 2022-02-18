@@ -56,3 +56,40 @@
     left: 2rem;
     width: 20rem;
 }
+
+.edit-listing-profile,
+.remove-listing-profile {
+    width: 20rem;
+    height: 4rem;
+    border-radius: .2rem;
+    display: inline-block;
+    line-height: 4rem;
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.edit-remove-profile-container {
+    position: absolute;
+    top: 71vh;
+    display: flex;
+    align-items: center;
+
+}
+
+.edit-listing-profile {
+    border: var(--border-dark);
+    transition: all .2s;
+}
+.edit-listing-profile:hover {
+    background-color: var(--gray-hover-light);
+    border: 1px solid var(--gray-hover-light);
+}
+
+.remove-listing-profile {
+    margin-left: 2rem;
+    color: var(--white);
+    background-color: var(--orange-primary);
+    padding: .1rem;
+
+}

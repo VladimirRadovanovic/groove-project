@@ -100,13 +100,13 @@
 }
 
 .profile-listings-button-container button {
-    background-color: rgb(207, 0, 0);
+    background-color: var(--orange-primary);
     padding: .1rem;
     color: var(--white);
 }
 
 .profile-listings-button-container button:hover {
-    background-color: rgb(230, 86, 86);
+    background-color: var(--orange-secondary);
 }
 
 .profile-listings-info-container:first-child {

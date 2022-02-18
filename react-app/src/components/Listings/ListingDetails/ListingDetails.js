@@ -51,7 +51,7 @@ function ListingDetails({ user }) {
                     <p><strong>Description:</strong> {listing?.description}</p>
                 </div>
                 {listing?.seller_id === user?.id ?
-                <div>
+                <div className='edit-remove-profile-container'>
                     <EditListing listing={listing}/>
                     <RemoveListing listing={listing} handleDelete={handleDelete} />
                 </div>
