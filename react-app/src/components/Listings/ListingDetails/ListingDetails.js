@@ -38,6 +38,7 @@ function ListingDetails({ user, numItemSetter }) {
         const numItems = Object.values(localStorage).length
 
         numItemSetter(numItems)
+        history.push('/cart')
     }
 
     return (

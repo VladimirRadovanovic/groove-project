@@ -1,9 +1,13 @@
-import { NavLink } from "react-router-dom"
+import { NavLink, useHistory } from "react-router-dom"
+import { useState } from "react"
+
 
 import placeholder from '../../../images/vinyl.jpg'
-import AddToCart from "../../Cart/AddToCart/AddToCart"
+
 
 function DisplayListings({ listingsList, numItemSetter }) {
+    const [showAdded, setShowAdded] = useState(false)
+    const history = useHistory()
 
     const handleAddToCart = (e) => {
         const id = Number(e.target.id)
@@ -14,6 +18,8 @@ function DisplayListings({ listingsList, numItemSetter }) {
         const numItems = Object.values(localStorage).length
 
         numItemSetter(numItems)
+        history.push('/cart')
+
     }
     return (
         <div className='splash-article-container'>
@@ -45,7 +51,9 @@ function DisplayListings({ listingsList, numItemSetter }) {
                         </p>
                     </div>
                     <div className='article-button-box'>
+
                         <button onClick={handleAddToCart} id={listing?.id} className='cart-button'>Add to Cart</button>
+                    
                         {/* <AddToCart listing={listing} /> */}
                         <NavLink to={`/records/${listing?.id}/details`} className='details-link'>View Details</NavLink>
                     </div>
