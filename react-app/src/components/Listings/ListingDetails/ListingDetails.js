@@ -1,15 +1,18 @@
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
+
 
 import placeholder from '../../../images/vinyl.jpg'
 import { getAllListings } from '../../../store/listings'
 import './ListingDetails.css'
 import EditListing from '../EditListing/EditListing'
 import RemoveListing from '../RemoveListing/RemoveListing'
+import { deleteListing } from '../../../store/listings'
 
 
 function ListingDetails({ user }) {
+    const history = useHistory()
     const dispatch = useDispatch()
     const { recordId } = useParams()
     const listingId = Number(recordId)
@@ -19,6 +22,13 @@ function ListingDetails({ user }) {
 
     const listings = useSelector(state => state.listings)
     const listing = listings[listingId]
+
+    const handleDelete = (e) => {
+        const id = Number(e.target.id)
+        dispatch(deleteListing(id))
+        history.push(`/users/${user.id}/profile`)
+
+    }
 
     return (
         <main className='details-main-container'>
@@ -41,7 +51,12 @@ function ListingDetails({ user }) {
                     <p><strong>Description:</strong> {listing?.description}</p>
                 </div>
                 {listing?.seller_id === user?.id ?
-                    null :
+                <div>
+                    <EditListing listing={listing}/>
+                    <RemoveListing listing={listing} handleDelete={handleDelete} />
+                </div>
+                    :
+
                     <button className='cart-button details-cart-button'>Add to Cart</button>
                 }
             </section>
