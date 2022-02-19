@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import './Cart.css'
 import placeholder from '../../../images/vinyl.jpg'
 
-function Cart({ user }) {
+function Cart({ user, numItemSetter }) {
     const [numItems, setNumItems] = useState({'0': 1})
     const [itemId, setItemId] = useState('')
     // const [storedItems, setStoredItems] = useState('')
@@ -46,6 +46,8 @@ function Cart({ user }) {
         localStorage.removeItem(id)
         delete numItems[id]
         setNumItems({...numItems})
+        const len = Object.keys(localStorage).length
+        numItemSetter(len)
             console.log(parsedItems, 'parsedItems******* in remove')
     }
 

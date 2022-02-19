@@ -76,7 +76,7 @@ function App() {
           <ListingDetails user={user} numItemSetter={numItemSetter} />
         </Route>
         <Route path='/cart'>
-          <Cart user={user} />
+          <Cart user={user} numItemSetter={numItemSetter} />
         </Route>
       </Switch>
       <Footer />
