@@ -27,10 +27,28 @@ function Cart({ user }) {
 
     // console.log(cartItems.length, 'length')
     // console.log(JSON.parse(cartItems[0]), 'cart items')
-    const parsedItems = cartItems.map(item => (
+    let parsedItems = cartItems.map(item => (
         JSON.parse(item)
 
     ))
+
+    // useEffect(() => {
+    //     console.log('inUseEffet**********************')
+    // }, [Object.keys(numItems).length])
+
+
+    const handleRemoveItem = (e) => {
+        const id = e.target.id
+        console.log(id, 'in remove id')
+        // parsedItems = Object.values(localStorage).filter(item => (
+        //     item.id !== Number(id)
+        // ))
+        localStorage.removeItem(id)
+        delete numItems[id]
+        setNumItems({...numItems})
+            console.log(parsedItems, 'parsedItems******* in remove')
+    }
+
 
     const handleChange = async(e, prevState) => {
         // console.log(prevState, 'prevState*********')
@@ -59,6 +77,8 @@ function Cart({ user }) {
 
         setItemId(Number(eventId))
     }
+
+
 
     return (
         <main className='main-cart-container'>
@@ -101,7 +121,7 @@ function Cart({ user }) {
                         </div>
                         <div>
                         {/* <i className="fa-solid fa-ban remove-item-button"></i> */}
-                        <i className="fa-solid fa-circle-xmark remove-item-button"></i>
+                        <i id={item?.id} onClick={handleRemoveItem} className="fa-solid fa-circle-xmark remove-item-button"></i>
                         </div>
                     </div>
                 ))}
