@@ -7,8 +7,31 @@ import placeholder from '../../../images/vinyl.jpg'
 function Cart({ user, numItemSetter }) {
     const [numItems, setNumItems] = useState({'0': 1})
     const [itemId, setItemId] = useState('')
+    const [calcPrice, setCalcPrice] = useState(0)
 
     console.log(numItems, 'storedItems!!!!!!')
+    // console.log(calcPrice, 'total price********')
+
+    useEffect(() => {
+        const itemPricesArr = document.querySelectorAll('.item-price-added')
+        if (itemPricesArr?.length > 0) {
+            let total = 0
+            itemPricesArr.forEach(field => {
+                total += parseFloat(field?.innerHTML.slice(1))
+            })
+            // console.log(parseFloat(itemPricesArr[0]?.innerHTML.slice(1)), 'item price arrrr')
+            console.log(total, 'total')
+            setCalcPrice(total)
+
+        }
+
+    }, [numItems, itemId])
+
+    // if (itemPricesArr.length > 0) {
+        // let price = itemPricesArr[0]?.innerText?.slice(1).
+        // console.log(parseFloat(price).toFixed(2), 'sliced price')
+
+    // }
 
     useEffect(() => {
         const renderedItems = Object.values(localStorage)
@@ -16,10 +39,14 @@ function Cart({ user, numItemSetter }) {
             JSON.parse(item)
         ))
             const obj = {}
+            // let totalPrice;
             parsedItemsRender.forEach(pars => {
                 obj[`${pars.id}`] = pars['cart_item_num'] || 1
+                // obj[`${pars.id}`] = {}
+                // console.log(pars['price'], pars['cart_item_num'] || 1, 'my math*****')
+                // totalPrice += pars['price'] * pars['cart_item_num'] || 1
             })
-
+            // setCalcPrice(totalPrice)
             setNumItems({...numItems, ...obj})
     }, [])
 
@@ -106,8 +133,11 @@ function Cart({ user, numItemSetter }) {
                             <p>
                                 ${item?.price.toFixed(2)}
                             </p>
+                            <p className='item-price-added'>
+                                ${(item?.price * numItems[item.id] || item?.price).toFixed(2)}
+                            </p>
                             <p>
-                                ${item?.price.toFixed(2) * numItems[item.id] || 1}
+                                total = {calcPrice === 0 ? item?.price.toFixed(2) : calcPrice.toFixed(2)}
                             </p>
                         </div>
                         <div className='quantity-container'>
