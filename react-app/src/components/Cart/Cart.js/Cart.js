@@ -17,7 +17,7 @@ function Cart({ user, numItemSetter }) {
         ))
             const obj = {}
             parsedItemsRender.forEach(pars => {
-                obj[`${pars.id}`] = pars['cart_item_num']
+                obj[`${pars.id}`] = pars['cart_item_num'] || 1
             })
 
             setNumItems({...numItems, ...obj})
