@@ -106,6 +106,9 @@ function Cart({ user, numItemSetter }) {
                             <p>
                                 ${item?.price.toFixed(2)}
                             </p>
+                            <p>
+                                ${item?.price.toFixed(2) * numItems[item.id] || 1}
+                            </p>
                         </div>
                         <div className='quantity-container'>
                              <input
