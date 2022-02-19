@@ -91,6 +91,7 @@ function Cart({ user, numItemSetter }) {
                         Checkout
                     </button>
                 </div>
+                {parsedItems.length === 0 && <h2 className='cart-empty-heading'>Your cart is empty.</h2>}
                 {parsedItems.map((item) => (
 
                     <div className='cart-article-container' key={item?.id}>

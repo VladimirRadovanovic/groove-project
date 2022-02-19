@@ -99,3 +99,13 @@
 .continue-shopping-button:hover {
     background-color: var(--gray-hover-dark);
 }
+
+.cart-empty-heading {
+    border: var(--border-medium);
+    border-radius: .2rem;
+    margin-top: 2rem;
+    font-size: 2.4rem;
+    padding: 4rem 0;
+    text-align: center;
+    color: #1dafff;
+}
