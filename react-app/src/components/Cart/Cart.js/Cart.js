@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 import './Cart.css'
 import placeholder from '../../../images/vinyl.jpg'
+import Checkout from './Checkout'
 
 function Cart({ user, numItemSetter }) {
     const [numItems, setNumItems] = useState({'0': 1})
@@ -53,6 +54,8 @@ function Cart({ user, numItemSetter }) {
         JSON.parse(item)
 
     ))
+
+    console.log(parsedItems, 'checkout items *************')
 
     const handelClearCart = (e) => {
         const storageKeys = Object.keys(localStorage)
@@ -109,10 +112,11 @@ function Cart({ user, numItemSetter }) {
                     <h2>
                         Your Cart
                     </h2>
-                    <button className='checkout-button-cart'>
+                    {/* <button className='checkout-button-cart'>
                         <i className="fa-solid fa-cart-shopping"></i>
                         Checkout
-                    </button>
+                    </button> */}
+                    <Checkout user={user} clearCart={handelClearCart} items={parsedItems} />
                 </div>
                 {parsedItems.length === 0 && <h2 className='cart-empty-heading'>Your cart is empty.</h2>}
                 {parsedItems.map((item) => (
@@ -152,7 +156,7 @@ function Cart({ user, numItemSetter }) {
                         </div>
                     </div>
                 ))}
-                <h2>${calcPrice === 0 || Object.keys(numItems).length === 1 ? null : calcPrice.toFixed(2)}</h2>
+                <h2>{calcPrice === 0 || Object.keys(numItems).length === 1 ? null : `$${calcPrice.toFixed(2)}`}</h2>
                 <button onClick={handelClearCart} className='clear-cart-button'>Clear Cart</button>
                 <NavLink to='/records/all' className='continue-shopping-button'>Continue Shopping</NavLink>
             </div>
