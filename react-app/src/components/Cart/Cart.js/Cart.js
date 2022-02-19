@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { NavLink } from 'react-router-dom'
 
 import './Cart.css'
 import placeholder from '../../../images/vinyl.jpg'
@@ -127,6 +128,8 @@ function Cart({ user, numItemSetter }) {
                         </div>
                     </div>
                 ))}
+                <button className='clear-cart-button'>Clear Cart</button>
+                <NavLink to='/records/all' className='continue-shopping-button'>Continue Shopping</NavLink>
             </div>
         </main>
     )

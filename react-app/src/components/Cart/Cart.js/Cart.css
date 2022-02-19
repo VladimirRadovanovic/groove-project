@@ -29,10 +29,10 @@
 }
 
 .checkout-button-cart {
-    background-color: var(--gray-primary);
+    background-color: var(--yellow);
     padding: 0 5rem;
     border-radius: .2rem;
-    color: var(--white);
+    color: var(--gray-primary);
     font-size: 2rem;
     font-weight: 600;
     transition: all .2s;
@@ -43,7 +43,7 @@
 }
 
 .checkout-button-cart:hover {
- background-color: var(--gray-hover-dark);
+ background-color: var(--yellow-hover);
 }
 
 
@@ -62,4 +62,39 @@
 
 .remove-item-button:hover {
     color: var(--gray-hover-dark);
+}
+
+
+.clear-cart-button,
+.continue-shopping-button {
+    width: 12.4rem;
+    height: 4.4rem;
+    color: var(--white);
+    position: absolute;
+    font-size: 1.4rem;
+    border-radius: .2rem;
+    font-weight: 600;
+    padding: 0 5rem;
+    transition: all .2s;
+}
+
+
+.clear-cart-button {
+    background-color: var(--orange-primary);
+    right: 15%;
+}
+
+.continue-shopping-button {
+    background-color: var(--gray-primary);
+    right: 15%;
+    line-height: 4.4rem;
+    margin-right: 25rem;
+}
+
+.clear-cart-button:hover {
+    background-color: var(--orange-secondary);
+}
+
+.continue-shopping-button:hover {
+    background-color: var(--gray-hover-dark);
 }
