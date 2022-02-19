@@ -9,7 +9,7 @@ const addOrder = (order) => {
 
 
 export const checkout = (payload) => async(dispatch) => {
-    console.log(payload, 'payload******')
+    console.log(JSON.stringify(payload), 'payload******')
     const response = await fetch('/api/orders/checkout', {
         method: 'POST',
         headers: {
@@ -18,19 +18,21 @@ export const checkout = (payload) => async(dispatch) => {
         body: JSON.stringify(payload)
     })
 
-    console.log(response, 'response****')
-    if (response.ok) {
-        const data = await response.json()
-        dispatch(checkout(data.order))
-        return null
-    } else if (response.status < 500) {
-        const data = await response.json();
-        if (data.errors) {
-            return data.errors;
-        }
-    } else {
-        return ['An error occurred. Please try again.']
-    }
+    const data = await response.json()
+    console.log(data.order, 'response****')
+    // if (response.ok) {
+    //     const data = await response.json()
+    //     console.log(data.order, 'order data')
+    //     dispatch(checkout(data.order))
+    //     return null
+    // } else if (response.status < 500) {
+    //     const data = await response.json();
+    //     if (data.errors) {
+    //         return data.errors;
+    //     }
+    // } else {
+    //     return ['An error occurred. Please try again.']
+    // }
 }
 
 const orderReducer = (state = {}, action) => {

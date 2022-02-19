@@ -15,10 +15,10 @@ function Checkout({ user, clearCart, items }) {
         }
         const payload = {
             user_id: user.id,
-            items: JSON.stringify(items)
+            items//: JSON.stringify(items)
         }
         dispatch(checkout(payload))
-        clearCart()
+        // clearCart()
 
     }
 

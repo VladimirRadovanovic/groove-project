@@ -8,8 +8,10 @@ from app.models import db, Listing
 order_routes = Blueprint('orders', __name__)
 
 
-order_routes.route('/checkout', methods=['POST'])
+@order_routes.route('/checkout', methods=['POST'])
 @login_required
 def make_order():
-    print(request.data)
-    return {'order': 'in route'}
+    req = request.json
+    print('**************in the routein the routein the routein the routein the routein the routein the route***************')
+    print(req['items'][0]['album'],'request data ***********************************************************')
+    return {'order': 'sent back'}
