@@ -9,9 +9,6 @@ function Cart({ user, numItemSetter }) {
     const [itemId, setItemId] = useState('')
     const [calcPrice, setCalcPrice] = useState(0)
 
-    console.log(numItems, 'storedItems!!!!!!')
-    console.log(calcPrice, 'total price********')
-    console.log(Object.keys(numItems).length, 'length888888888')
 
     useEffect(() => {
         const itemPricesArr = document.querySelectorAll('.item-price-added')
@@ -20,7 +17,6 @@ function Cart({ user, numItemSetter }) {
             itemPricesArr.forEach(field => {
                 total += parseFloat(field?.innerHTML.slice(1))
             })
-            // console.log(parseFloat(itemPricesArr[0]?.innerHTML.slice(1)), 'item price arrrr')
 
             setCalcPrice(total)
 
@@ -71,7 +67,6 @@ function Cart({ user, numItemSetter }) {
 
     const handleRemoveItem = (e) => {
         const id = e.target.id
-        console.log(id, 'in remove id')
 
         localStorage.removeItem(id)
         delete numItems[id]
