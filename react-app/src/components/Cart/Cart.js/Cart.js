@@ -7,8 +7,7 @@ import placeholder from '../../../images/vinyl.jpg'
 function Cart({ user, numItemSetter }) {
     const [numItems, setNumItems] = useState({'0': 1})
     const [itemId, setItemId] = useState('')
-    // const [storedItems, setStoredItems] = useState('')
-    // const [oldState, setOldState] = useState(1)
+
     console.log(numItems, 'storedItems!!!!!!')
 
     useEffect(() => {
@@ -20,43 +19,45 @@ function Cart({ user, numItemSetter }) {
             parsedItemsRender.forEach(pars => {
                 obj[`${pars.id}`] = pars['cart_item_num']
             })
-            console.log(obj, 'objobj')
+
             setNumItems({...numItems, ...obj})
     }, [])
 
     const cartItems = Object.values(localStorage)
 
-    // console.log(cartItems.length, 'length')
-    // console.log(JSON.parse(cartItems[0]), 'cart items')
     let parsedItems = cartItems.map(item => (
         JSON.parse(item)
 
     ))
 
-    // useEffect(() => {
-    //     console.log('inUseEffet**********************')
-    // }, [Object.keys(numItems).length])
+    const handelClearCart = (e) => {
+        const storageKeys = Object.keys(localStorage)
+        storageKeys.forEach(key => {
+            localStorage.removeItem(key)
+        })
+        setNumItems({'0': 1})
+        numItemSetter(0)
+    }
+
 
 
     const handleRemoveItem = (e) => {
         const id = e.target.id
         console.log(id, 'in remove id')
-        // parsedItems = Object.values(localStorage).filter(item => (
-        //     item.id !== Number(id)
-        // ))
+
         localStorage.removeItem(id)
         delete numItems[id]
         setNumItems({...numItems})
         const len = Object.keys(localStorage).length
         numItemSetter(len)
-            console.log(parsedItems, 'parsedItems******* in remove')
+
     }
 
 
-    const handleChange = async(e, prevState) => {
-        // console.log(prevState, 'prevState*********')
+    const handleChange = async(e) => {
+
         setNumItems({...numItems, [e.target.id]: Number(e.target.value)})
-        // setOldState(prevState)
+
         const eventId = e.target.id
 
         const storageItem = await JSON.parse(localStorage.getItem(eventId))
@@ -68,15 +69,10 @@ function Cart({ user, numItemSetter }) {
             storageItem['cart_item_num'] = numItems[eventId] + 1
         }
 
-        //  setStoredItems(numItems[eventId] + 1)
+
         await localStorage.removeItem(eventId)
         localStorage.setItem(eventId, JSON.stringify(storageItem))
 
-
-        // const eventId = e.target.id.split('-')[1]
-        // const inputField =document.getElementById(`item-${eventId}`)
-        // const inputField = document.querySelectorAll('.cart-input-field')
-        // console.log(inputField[1].value, 'fields*************')
 
         setItemId(Number(eventId))
     }
@@ -115,7 +111,6 @@ function Cart({ user, numItemSetter }) {
                              className='cart-input-field'
                              id={item?.id}
                              type='number'
-                            //  defaultValue={1}
                              value={numItems[`${item?.id}`] ? numItems[`${item?.id}`] : (numItems['0'] ? numItems['0'] : 1)}
                              min={1}
                              placeholder='Quantity'
@@ -123,12 +118,11 @@ function Cart({ user, numItemSetter }) {
                              />
                         </div>
                         <div>
-                        {/* <i className="fa-solid fa-ban remove-item-button"></i> */}
                         <i id={item?.id} onClick={handleRemoveItem} className="fa-solid fa-circle-xmark remove-item-button"></i>
                         </div>
                     </div>
                 ))}
-                <button className='clear-cart-button'>Clear Cart</button>
+                <button onClick={handelClearCart} className='clear-cart-button'>Clear Cart</button>
                 <NavLink to='/records/all' className='continue-shopping-button'>Continue Shopping</NavLink>
             </div>
         </main>
