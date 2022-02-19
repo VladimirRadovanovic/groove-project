@@ -9,7 +9,7 @@ const addOrder = (order) => {
 
 
 export const checkout = (payload) => async(dispatch) => {
-    console.log(JSON.stringify(payload), 'payload******')
+    console.log(payload, 'payload******')
     const response = await fetch('/api/orders/checkout', {
         method: 'POST',
         headers: {

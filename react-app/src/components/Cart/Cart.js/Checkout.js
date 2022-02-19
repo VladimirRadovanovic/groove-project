@@ -13,9 +13,15 @@ function Checkout({ user, clearCart, items }) {
             history.push('/login')
             return null
         }
+        const mappedItems = items.map(item => {
+            if(!item.cart_item_num) {
+                item.cart_item_num = 1
+            }
+            return item
+        })
         const payload = {
             user_id: user.id,
-            items//: JSON.stringify(items)
+            items: mappedItems
         }
         dispatch(checkout(payload))
         // clearCart()

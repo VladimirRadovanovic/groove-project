@@ -12,6 +12,7 @@ order_routes = Blueprint('orders', __name__)
 @login_required
 def make_order():
     req = request.json
+    
     print('**************in the routein the routein the routein the routein the routein the routein the route***************')
-    print(req['items'][0]['album'],'request data ***********************************************************')
+    print(req['items'][0],'request data ***********************************************************')
     return {'order': 'sent back'}
