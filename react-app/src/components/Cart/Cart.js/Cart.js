@@ -10,7 +10,8 @@ function Cart({ user, numItemSetter }) {
     const [calcPrice, setCalcPrice] = useState(0)
 
     console.log(numItems, 'storedItems!!!!!!')
-    // console.log(calcPrice, 'total price********')
+    console.log(calcPrice, 'total price********')
+    console.log(Object.keys(numItems).length, 'length888888888')
 
     useEffect(() => {
         const itemPricesArr = document.querySelectorAll('.item-price-added')
@@ -20,12 +21,12 @@ function Cart({ user, numItemSetter }) {
                 total += parseFloat(field?.innerHTML.slice(1))
             })
             // console.log(parseFloat(itemPricesArr[0]?.innerHTML.slice(1)), 'item price arrrr')
-            console.log(total, 'total')
+
             setCalcPrice(total)
 
         }
 
-    }, [numItems, itemId])
+    }, [numItems, itemId, calcPrice])
 
     // if (itemPricesArr.length > 0) {
         // let price = itemPricesArr[0]?.innerText?.slice(1).
@@ -136,9 +137,9 @@ function Cart({ user, numItemSetter }) {
                             <p className='item-price-added'>
                                 ${(item?.price * numItems[item.id] || item?.price).toFixed(2)}
                             </p>
-                            <p>
+                            {/* <p>
                                 total = {calcPrice === 0 ? item?.price.toFixed(2) : calcPrice.toFixed(2)}
-                            </p>
+                            </p> */}
                         </div>
                         <div className='quantity-container'>
                              <input
@@ -156,6 +157,7 @@ function Cart({ user, numItemSetter }) {
                         </div>
                     </div>
                 ))}
+                <h2>${calcPrice === 0 || Object.keys(numItems).length === 1 ? null : calcPrice.toFixed(2)}</h2>
                 <button onClick={handelClearCart} className='clear-cart-button'>Clear Cart</button>
                 <NavLink to='/records/all' className='continue-shopping-button'>Continue Shopping</NavLink>
             </div>
