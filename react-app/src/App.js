@@ -46,7 +46,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar length={length} />
+      <NavBar length={length} user={user} />
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />

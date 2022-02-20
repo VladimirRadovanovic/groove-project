@@ -6,7 +6,7 @@ import logo from '../../images/logo.svg'
 import './NavBar.css'
 import DropdownMenu from './DropdownMenu';
 
-const NavBar = ({ length }) => {
+const NavBar = ({ length, user }) => {
 
 
   useEffect(() => {
@@ -22,7 +22,8 @@ const NavBar = ({ length }) => {
           </NavLink>
         </div>
         <div className='nav-right-container'>
-          <NavLink className='shop-now-link-nav' to='/records/all'>Shop Now</NavLink>
+          <NavLink className='shop-now-link-nav' to={`/users/${user?.id}/records/sell-record`}>Sell Records</NavLink>
+          <NavLink className='shop-now-link-nav' to='/records/all'>Shop Records</NavLink>
           <div className='cart-container'>
                 {length > 0 ?
             <div className='cart-number'>
