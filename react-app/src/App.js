@@ -9,6 +9,7 @@ import NavBar from './components/NavBar/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import Profile from './components/Profile/Profile';
+import SessionProfile from './components/SessionProfile/SessionPreofile';
 import { authenticate } from './store/session';
 import GetAllListings from './components/Listings/GetListings/GetAllListings';
 import CreateListing from './components/Listings/CreateListing/CreateListing';
@@ -58,7 +59,8 @@ function App() {
           <UsersList/>
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId/profile' exact={true} >
-          <Profile />
+          {/* <Profile /> */}
+          <SessionProfile user={user} />
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <SplashPage numItemSetter={numItemSetter} user={user} />
