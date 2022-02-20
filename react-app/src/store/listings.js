@@ -116,7 +116,7 @@ const listingReducer = (state = {}, action) => {
             newState = {...state, [action.listing.id]: action.listing}
             return newState
         case LOAD_ALL_LISTINGS:
-            newState = {...action.listings}
+            newState = {...state, ...action.listings}
             return newState
         default:
             return newState
