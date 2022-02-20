@@ -4,7 +4,7 @@
     color: var(--blue-tertiary);
     display: inline-flex;
     flex-direction: row;
-    width: 20rem;
+    width: fit-content;
     align-items: center;
     position: absolute;
     top: 12rem;
