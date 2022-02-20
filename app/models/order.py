@@ -9,7 +9,7 @@ class Order(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
     buyer = db.relationship('User', back_populates='orders')
-    ordered_items = db.relationship('OrderItem', back_populates='order')
+    ordered_items = db.relationship('OrderItem', back_populates='order', cascade="all, delete-orphan")
 
 
 class OrderItem(db.Model):
