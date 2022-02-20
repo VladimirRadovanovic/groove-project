@@ -23,6 +23,8 @@ def make_order():
             print(item, 'item *****************')
             errors.append(f'Only {available_copies} copies of the "{album}" by "{artist}" are available for sale.')
             # return {'errors' :[f'Only {available_copies} copies of the "{album}" by "{artist}" are available for sale.']}
+        if item['cart_item_num'] < 1:
+            errors.append('You may not purchase less then 1 copy')
     if errors:
         return {'errors': errors}
 
