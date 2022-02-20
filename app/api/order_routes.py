@@ -14,11 +14,13 @@ def make_order():
     req = request.json
     errors = []
     for item in req['items']:
+        available_copies = item['num_copies_available']
+        album = item['album']
+        artist = item['artist']
+        if item['seller_id'] == req['user_id']:
+            errors.append(f'"{album}" by "{artist}" is your listing. You may not purchase records you advertised.')
         if item['num_copies_available'] < item['cart_item_num']:
             print(item, 'item *****************')
-            available_copies = item['num_copies_available']
-            album = item['album']
-            artist = item['artist']
             errors.append(f'Only {available_copies} copies of the "{album}" by "{artist}" are available for sale.')
             # return {'errors' :[f'Only {available_copies} copies of the "{album}" by "{artist}" are available for sale.']}
     if errors:
