@@ -2,7 +2,7 @@ from crypt import methods
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.api.auth_routes import validation_errors_to_error_messages
-from app.models import db, Listing
+from app.models import db, Listing, Order, OrderItem
 
 
 order_routes = Blueprint('orders', __name__)
@@ -27,6 +27,16 @@ def make_order():
             errors.append('You may not purchase less then 1 copy')
     if errors:
         return {'errors': errors}
+
+    order = Order(user_id=req['user_id'])
+    db.session.add(order)
+    db.session.commit()
+
+    for item in req['items']:
+        ordered_item = OrderItem(listing_id=item['id'], order_id=order.id, num_items_ordered=item['cart_item_num'])
+        db.session.add(ordered_item)
+    db.session.commit()
+
 
     print('**************in the routein the routein the routein the routein the routein the routein the route***************')
     print(req['items'][0],'request data ***********************************************************')
