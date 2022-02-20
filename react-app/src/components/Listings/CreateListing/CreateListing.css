@@ -95,8 +95,8 @@
     background-color: var(--yellow-hover);
 }
 
-.back-button-container{
-    /* display: inline-block; */
+/* .back-button-container{
+
     transition: all 0.2s;
     cursor: pointer;
     color: var(--blue-tertiary);
@@ -114,7 +114,7 @@
     padding-left: 1rem;
     font-size: 1.9em;
     font-weight: 500;
-    /* line-height: 1.6rem; */
+
     margin-bottom: .2rem;
 }
 
@@ -129,4 +129,4 @@
 
 .back-button-container:hover {
     color: var(--blue-secondary);
-}
+} */

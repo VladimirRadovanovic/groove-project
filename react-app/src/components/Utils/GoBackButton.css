@@ -1,0 +1,33 @@
+.back-button-container{
+    transition: all 0.2s;
+    cursor: pointer;
+    color: var(--blue-tertiary);
+    display: inline-flex;
+    flex-direction: row;
+    width: 20rem;
+    align-items: center;
+    position: absolute;
+    top: 12rem;
+    left: 5rem;
+
+}
+
+.back-button-container span {
+    padding-left: 1rem;
+    font-size: 1.9em;
+    font-weight: 500;
+    margin-bottom: .2rem;
+}
+
+
+
+.back-button {
+    font-size: 1.3rem;
+    display: inline-block;
+    height: fit-content;
+    width: fit-content;
+}
+
+.back-button-container:hover {
+    color: var(--blue-secondary);
+}

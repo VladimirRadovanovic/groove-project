@@ -5,6 +5,7 @@ import { getAllListings } from '../../store/listings';
 import ProfileListings from '../Profile/ProfileListings';
 import './SessionProfile.css';
 import placeholder from '../../images/vinyl.jpg'
+import GoBackButton from '../Utils/GoBackButton';
 
 function SessionProfile({ user }) {
     const dispatch = useDispatch()
@@ -24,6 +25,7 @@ function SessionProfile({ user }) {
 
     return (
         <main>
+            <GoBackButton />
         <section className='profile-header'>
           <div className='profile-img-container-heading'>
             <img className='profile-img-heading' src={placeholder} alt='profile' />
