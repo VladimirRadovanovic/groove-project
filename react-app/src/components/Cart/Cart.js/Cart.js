@@ -11,6 +11,7 @@ function Cart({ user, numItemSetter }) {
     const [calcPrice, setCalcPrice] = useState(0)
     const [errors, setErrors] = useState([])
     console.log(errors, 'errors !!!!!!!!!!!!!!!!!!')
+    console.log(numItems, 'numItems*********')
 
     const errorSetter = (data) => {
         setErrors(data)
@@ -86,13 +87,17 @@ function Cart({ user, numItemSetter }) {
     }
 
 
-    const handleChange = async (e) => {
-
-        setNumItems({ ...numItems, [e.target.id]: Number(e.target.value) })
-
+    const handleChange = (e) => {
         const eventId = e.target.id
 
-        const storageItem = await JSON.parse(localStorage.getItem(eventId))
+        // if(e.target.value < numItems[eventId]) {
+        //     setNumItems({ ...numItems, [e.target.id]: Number(e.target.value) - 1 })
+        // } else {
+
+        setNumItems({ ...numItems, [e.target.id]: Number(e.target.value)})
+        // }
+
+        const storageItem = JSON.parse(localStorage.getItem(eventId))
 
         if (e.target.value < numItems[eventId]) {
             storageItem['cart_item_num'] = numItems[eventId] - 1
@@ -102,7 +107,7 @@ function Cart({ user, numItemSetter }) {
         }
 
 
-        await localStorage.removeItem(eventId)
+        localStorage.removeItem(eventId)
         localStorage.setItem(eventId, JSON.stringify(storageItem))
 
 
