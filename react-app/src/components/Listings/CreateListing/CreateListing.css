@@ -1,5 +1,5 @@
 .listing-img-container {
-    min-height: 100vh;
+    min-height: 80vh;
     width: 60%;
     background-size: cover;
     /* margin-bottom: -5rem; */
@@ -94,3 +94,39 @@
 .listing-button:hover {
     background-color: var(--yellow-hover);
 }
+
+/* .back-button-container{
+
+    transition: all 0.2s;
+    cursor: pointer;
+    color: var(--blue-tertiary);
+    display: inline-flex;
+    flex-direction: row;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    width: 20rem;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-button-container span {
+    padding-left: 1rem;
+    font-size: 1.9em;
+    font-weight: 500;
+
+    margin-bottom: .2rem;
+}
+
+
+
+.back-button {
+    font-size: 1.3rem;
+    display: inline-block;
+    height: fit-content;
+    width: fit-content;
+}
+
+.back-button-container:hover {
+    color: var(--blue-secondary);
+} */

@@ -10,6 +10,7 @@ import EditListing from '../EditListing/EditListing'
 import RemoveListing from '../RemoveListing/RemoveListing'
 import { deleteListing } from '../../../store/listings'
 import AddToCart from '../../Cart/AddToCart/AddToCart'
+import GoBackButton from '../../Utils/GoBackButton'
 
 
 function ListingDetails({ user, numItemSetter }) {
@@ -46,6 +47,10 @@ function ListingDetails({ user, numItemSetter }) {
             <section className='details-img-container'>
                 <img className='details-img' src={placeholder} />
             </section>
+                <div className='details-back'>
+                <GoBackButton  />
+
+                </div>
             <section className='details-data-container'>
                 <div className='sold-by-container'>
                     <p className='sold-by-paragraph'><strong>Sold by:</strong> {listing?.seller?.username}</p>

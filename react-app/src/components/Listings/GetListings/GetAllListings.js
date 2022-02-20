@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 import { getAllListings } from '../../../store/listings';
 import placeholder from '../../../images/vinyl.jpg'
 import DisplayListings from '../DisplayListings/DisplayListings';
+import GoBackButton from '../../Utils/GoBackButton';
 
 import './GetAllListings.css'
 
@@ -29,6 +30,7 @@ function GetAllListings({ user, numItemSetter }) {
 
     return (
         <main className='all-records-main'>
+            <GoBackButton />
         <h2 className='section-3-title'>RECORDS</h2>
             <DisplayListings listingsList={listingsList} numItemSetter={numItemSetter} />
         </main>

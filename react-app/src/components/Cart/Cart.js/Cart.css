@@ -29,10 +29,10 @@
 }
 
 .checkout-button-cart {
-    background-color: var(--gray-primary);
+    background-color: var(--yellow);
     padding: 0 5rem;
     border-radius: .2rem;
-    color: var(--white);
+    color: var(--gray-primary);
     font-size: 2rem;
     font-weight: 600;
     transition: all .2s;
@@ -43,7 +43,7 @@
 }
 
 .checkout-button-cart:hover {
- background-color: var(--gray-hover-dark);
+ background-color: var(--yellow-hover);
 }
 
 
@@ -51,4 +51,61 @@
     object-fit: cover;
     width: 22rem;
     border-radius: .2rem;
+}
+
+.remove-item-button {
+    color: var(--gray-primary);
+    font-size: 1.7rem;
+    cursor: pointer;
+    transition: all .2s;
+}
+
+.remove-item-button:hover {
+    color: var(--gray-hover-dark);
+}
+
+
+.clear-cart-button,
+.continue-shopping-button {
+    width: 12.4rem;
+    height: 4.4rem;
+    color: var(--white);
+    position: absolute;
+    font-size: 1.4rem;
+    border-radius: .2rem;
+    font-weight: 600;
+    padding: 0 5rem;
+    transition: all .2s;
+    margin-top: 2rem;
+}
+
+
+.clear-cart-button {
+    background-color: var(--orange-primary);
+    right: 15%;
+}
+
+.continue-shopping-button {
+    background-color: var(--gray-primary);
+    right: 15%;
+    line-height: 4.4rem;
+    margin-right: 25rem;
+}
+
+.clear-cart-button:hover {
+    background-color: var(--orange-secondary);
+}
+
+.continue-shopping-button:hover {
+    background-color: var(--gray-hover-dark);
+}
+
+.cart-empty-heading {
+    border: var(--border-medium);
+    border-radius: .2rem;
+    margin-top: 2rem;
+    font-size: 2.4rem;
+    padding: 4.5rem 0;
+    text-align: center;
+    color: var(--blue-tertiary);
 }

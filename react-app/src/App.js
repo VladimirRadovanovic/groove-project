@@ -9,6 +9,7 @@ import NavBar from './components/NavBar/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import Profile from './components/Profile/Profile';
+import SessionProfile from './components/SessionProfile/SessionPreofile';
 import { authenticate } from './store/session';
 import GetAllListings from './components/Listings/GetListings/GetAllListings';
 import CreateListing from './components/Listings/CreateListing/CreateListing';
@@ -46,7 +47,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar length={length} />
+      <NavBar length={length} user={user} />
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
@@ -59,6 +60,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId/profile' exact={true} >
           <Profile />
+        </ProtectedRoute>
+        <ProtectedRoute path='/user/profile'>
+          <SessionProfile user={user} />
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <SplashPage numItemSetter={numItemSetter} user={user} />
@@ -76,7 +80,7 @@ function App() {
           <ListingDetails user={user} numItemSetter={numItemSetter} />
         </Route>
         <Route path='/cart'>
-          <Cart user={user} />
+          <Cart user={user} numItemSetter={numItemSetter} />
         </Route>
       </Switch>
       <Footer />

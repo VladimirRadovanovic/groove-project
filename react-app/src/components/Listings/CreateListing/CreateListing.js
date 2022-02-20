@@ -5,6 +5,7 @@ import NumberFormat from 'react-number-format';
 
 import { editListing, getAllListings, createListing } from '../../../store/listings';
 import './CreateListing.css'
+import GoBackButton from '../../Utils/GoBackButton';
 
 
 
@@ -100,8 +101,17 @@ function CreateListing({ user }) {
 
     }
 
+    // const handleBack = () => {
+    //     history.goBack()
+    // }
+
     return (
         <main className='create-main-container'>
+            {/* <div onClick={handleBack} className='back-button-container'>
+            <i className="fa-solid fa-arrow-left-long back-button"></i>
+            <span>Go back</span>
+            </div> */}
+            <GoBackButton />
             <div className='listings-form-main-container'>
             <div className='listings-errors-container'>
             <ul>

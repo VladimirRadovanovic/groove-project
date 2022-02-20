@@ -15,6 +15,7 @@ class User(db.Model, UserMixin):
     created_at = db.Column(db.DateTime, default=datetime.now())
 
     listings = db.relationship('Listing', back_populates='seller')
+    orders = db.relationship('Order', back_populates='buyer')
 
     @property
     def password(self):
@@ -34,7 +35,8 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'profile_img_url': self.profile_img_url,
             'created_at': self.created_at,
-            'listings': {listing.to_dict()['id']: listing.to_dict() for listing in self.listings}
+            'listings': {listing.to_dict()['id']: listing.to_dict() for listing in self.listings},
+            'orders': {order.to_dict()['id']: order.to_dict() for order in self.orders}
         }
 
     def to_dict_first(self):
@@ -44,4 +46,5 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'profile_img_url': self.profile_img_url,
             'created_at': self.created_at,
+            'orders': {order.to_dict()['id']: order.to_dict() for order in self.orders}
         }
