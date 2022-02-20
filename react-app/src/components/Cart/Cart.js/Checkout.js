@@ -24,7 +24,7 @@ function Checkout({ user, clearCart, items }) {
             items: mappedItems
         }
         dispatch(checkout(payload))
-        // clearCart()
+        clearCart()
 
     }
 

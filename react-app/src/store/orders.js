@@ -19,7 +19,7 @@ export const checkout = (payload) => async(dispatch) => {
     })
 
     const data = await response.json()
-    console.log(data.order, 'response****')
+    console.log(data.errors, 'response****')
     // if (response.ok) {
     //     const data = await response.json()
     //     console.log(data.order, 'order data')
