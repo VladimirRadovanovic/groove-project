@@ -71,6 +71,7 @@ function Cart({ user, numItemSetter }) {
         })
         setNumItems({ '0': 1 })
         numItemSetter(0)
+        setErrors([])
     }
 
 
