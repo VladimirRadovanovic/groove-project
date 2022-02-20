@@ -6,9 +6,15 @@ import placeholder from '../../../images/vinyl.jpg'
 import Checkout from './Checkout'
 
 function Cart({ user, numItemSetter }) {
-    const [numItems, setNumItems] = useState({'0': 1})
+    const [numItems, setNumItems] = useState({ '0': 1 })
     const [itemId, setItemId] = useState('')
     const [calcPrice, setCalcPrice] = useState(0)
+    const [errors, setErrors] = useState([])
+    console.log(errors, 'errors !!!!!!!!!!!!!!!!!!')
+
+    const errorSetter = (data) => {
+        setErrors(data)
+    }
 
 
     useEffect(() => {
@@ -26,8 +32,8 @@ function Cart({ user, numItemSetter }) {
     }, [numItems, itemId, calcPrice])
 
     // if (itemPricesArr.length > 0) {
-        // let price = itemPricesArr[0]?.innerText?.slice(1).
-        // console.log(parseFloat(price).toFixed(2), 'sliced price')
+    // let price = itemPricesArr[0]?.innerText?.slice(1).
+    // console.log(parseFloat(price).toFixed(2), 'sliced price')
 
     // }
 
@@ -36,16 +42,16 @@ function Cart({ user, numItemSetter }) {
         const parsedItemsRender = renderedItems.map(item => (
             JSON.parse(item)
         ))
-            const obj = {}
-            // let totalPrice;
-            parsedItemsRender.forEach(pars => {
-                obj[`${pars.id}`] = pars['cart_item_num'] || 1
-                // obj[`${pars.id}`] = {}
-                // console.log(pars['price'], pars['cart_item_num'] || 1, 'my math*****')
-                // totalPrice += pars['price'] * pars['cart_item_num'] || 1
-            })
-            // setCalcPrice(totalPrice)
-            setNumItems({...numItems, ...obj})
+        const obj = {}
+        // let totalPrice;
+        parsedItemsRender.forEach(pars => {
+            obj[`${pars.id}`] = pars['cart_item_num'] || 1
+            // obj[`${pars.id}`] = {}
+            // console.log(pars['price'], pars['cart_item_num'] || 1, 'my math*****')
+            // totalPrice += pars['price'] * pars['cart_item_num'] || 1
+        })
+        // setCalcPrice(totalPrice)
+        setNumItems({ ...numItems, ...obj })
     }, [])
 
     const cartItems = Object.values(localStorage)
@@ -62,7 +68,7 @@ function Cart({ user, numItemSetter }) {
         storageKeys.forEach(key => {
             localStorage.removeItem(key)
         })
-        setNumItems({'0': 1})
+        setNumItems({ '0': 1 })
         numItemSetter(0)
     }
 
@@ -73,16 +79,16 @@ function Cart({ user, numItemSetter }) {
 
         localStorage.removeItem(id)
         delete numItems[id]
-        setNumItems({...numItems})
+        setNumItems({ ...numItems })
         const len = Object.keys(localStorage).length
         numItemSetter(len)
 
     }
 
 
-    const handleChange = async(e) => {
+    const handleChange = async (e) => {
 
-        setNumItems({...numItems, [e.target.id]: Number(e.target.value)})
+        setNumItems({ ...numItems, [e.target.id]: Number(e.target.value) })
 
         const eventId = e.target.id
 
@@ -116,13 +122,20 @@ function Cart({ user, numItemSetter }) {
                         <i className="fa-solid fa-cart-shopping"></i>
                         Checkout
                     </button> */}
-                    <Checkout user={user} clearCart={handelClearCart} items={parsedItems} />
+                    <Checkout user={user} clearCart={handelClearCart} items={parsedItems} errorSetter={errorSetter} />
+                </div>
+                <div className='listings-errors-container'>
+                    <ul>
+                        {errors.map(error => (
+                            <li key={error}>{error}</li>
+                        ))}
+                    </ul>
                 </div>
                 {parsedItems.length === 0 && <h2 className='cart-empty-heading'>Your cart is empty.</h2>}
                 {parsedItems.map((item) => (
 
                     <div className='cart-article-container' key={item?.id}>
-                         <img className='cart-img' src={placeholder} />
+                        <img className='cart-img' src={placeholder} />
                         <div className='cart-data-container'>
                             <p>
                                 {item?.album}
@@ -141,18 +154,18 @@ function Cart({ user, numItemSetter }) {
                             </p> */}
                         </div>
                         <div className='quantity-container'>
-                             <input
-                             className='cart-input-field'
-                             id={item?.id}
-                             type='number'
-                             value={numItems[`${item?.id}`] ? numItems[`${item?.id}`] : (numItems['0'] ? numItems['0'] : 1)}
-                             min={1}
-                             placeholder='Quantity'
-                             onChange={handleChange}
-                             />
+                            <input
+                                className='cart-input-field'
+                                id={item?.id}
+                                type='number'
+                                value={numItems[`${item?.id}`] ? numItems[`${item?.id}`] : (numItems['0'] ? numItems['0'] : 1)}
+                                min={1}
+                                placeholder='Quantity'
+                                onChange={handleChange}
+                            />
                         </div>
                         <div>
-                        <i id={item?.id} onClick={handleRemoveItem} className="fa-solid fa-circle-xmark remove-item-button"></i>
+                            <i id={item?.id} onClick={handleRemoveItem} className="fa-solid fa-circle-xmark remove-item-button"></i>
                         </div>
                     </div>
                 ))}

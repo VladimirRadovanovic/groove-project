@@ -13,6 +13,7 @@ order_routes = Blueprint('orders', __name__)
 def make_order():
     req = request.json
     errors = []
+    print('********************',req, 'request pre if&&&&&&&&&*********((((((((((((')
     for item in req['items']:
         available_copies = item['num_copies_available']
         album = item['album']
@@ -26,7 +27,7 @@ def make_order():
         if item['cart_item_num'] < 1:
             errors.append('You may not purchase less then 1 copy')
     if errors:
-        return {'errors': errors}
+        return {'errors': errors}, 401
 
     order = Order(user_id=req['user_id'])
     db.session.add(order)
@@ -40,4 +41,4 @@ def make_order():
 
     print('**************in the routein the routein the routein the routein the routein the routein the route***************')
     print(req['items'][0],'request data ***********************************************************')
-    return {'order': 'sent back'}
+    return {'order': order.to_dict()}

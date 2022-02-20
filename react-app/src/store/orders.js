@@ -18,21 +18,23 @@ export const checkout = (payload) => async(dispatch) => {
         body: JSON.stringify(payload)
     })
 
-    const data = await response.json()
-    console.log(data.errors, 'response****')
-    // if (response.ok) {
-    //     const data = await response.json()
-    //     console.log(data.order, 'order data')
-    //     dispatch(checkout(data.order))
-    //     return null
-    // } else if (response.status < 500) {
-    //     const data = await response.json();
-    //     if (data.errors) {
-    //         return data.errors;
-    //     }
-    // } else {
-    //     return ['An error occurred. Please try again.']
-    // }
+    // const data = await response.json()
+    // console.log(data.errors, 'response****')
+    if (response.ok) {
+        const data = await response.json()
+        // console.log(data.order, 'order data')
+        dispatch(addOrder(data.order))
+        return null
+    }
+    else if (response.status < 500) {
+        const data = await response.json();
+        console.log(data.errors, 'presed error data')
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ['An error occurred. Please try again.']
+    }
 }
 
 const orderReducer = (state = {}, action) => {

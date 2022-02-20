@@ -3,11 +3,11 @@ import { checkout } from "../../../store/orders";
 import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
-function Checkout({ user, clearCart, items }) {
+function Checkout({ user, clearCart, items, errorSetter }) {
     const dispatch = useDispatch()
     const history = useHistory()
 
-    const handleCheckout = () => {
+    const handleCheckout = async() => {
         console.log('in handle checkout')
         if (!user) {
             history.push('/login')
@@ -23,8 +23,14 @@ function Checkout({ user, clearCart, items }) {
             user_id: user.id,
             items: mappedItems
         }
-        dispatch(checkout(payload))
-        clearCart()
+        const data = await dispatch(checkout(payload))
+        if(data) {
+            errorSetter(data)
+        } else {
+            clearCart()
+            errorSetter([])
+        }
+
 
     }
 

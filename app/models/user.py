@@ -35,7 +35,8 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'profile_img_url': self.profile_img_url,
             'created_at': self.created_at,
-            'listings': {listing.to_dict()['id']: listing.to_dict() for listing in self.listings}
+            'listings': {listing.to_dict()['id']: listing.to_dict() for listing in self.listings},
+            'orders': {order.to_dict()['id']: order.to_dict() for order in self.orders}
         }
 
     def to_dict_first(self):
@@ -45,4 +46,5 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'profile_img_url': self.profile_img_url,
             'created_at': self.created_at,
+            'orders': {order.to_dict()['id']: order.to_dict() for order in self.orders}
         }
