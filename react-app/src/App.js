@@ -59,7 +59,9 @@ function App() {
           <UsersList/>
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId/profile' exact={true} >
-          {/* <Profile /> */}
+          <Profile />
+        </ProtectedRoute>
+        <ProtectedRoute path='/user/profile'>
           <SessionProfile user={user} />
         </ProtectedRoute>
         <Route path='/' exact={true} >
