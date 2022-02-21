@@ -64,7 +64,7 @@ function GetUserOrders({ user }) {
                         <div className='middle-container'>
 
                             <div>
-                                <strong>Total cost:</strong> ${order?.total_cost.toFixed(2)}
+                                <strong>Order total:</strong> ${order?.total_cost.toFixed(2)}
                             </div>
                             <div>
                                 <strong>Ordered on: </strong> {order?.created_at && new Date(order?.created_at)?.toDateString()}
