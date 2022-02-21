@@ -44,7 +44,7 @@ function GetUserOrders({ user }) {
                         <div>
                             Expected delivery {new Date(new Date(orderItem?.created_at)?.setDate(new Date(orderItem?.created_at)?.getDate() + 2))?.toDateString()}
                         </div>
-                        
+
                         } */}         <p><strong><NavLink className='order-link-detail' to={`/records/${orderItem?.item.id}/details`}>Order item {i + 1}</NavLink></strong></p>
                                     <p>
                                         <strong>Album:</strong> {orderItem?.item?.album}
@@ -70,7 +70,7 @@ function GetUserOrders({ user }) {
                                 <strong>Ordered on: </strong> {order?.created_at && new Date(order?.created_at)?.toDateString()}
                             </div>
                             {order?.created_at && new Date(new Date(order?.created_at)?.setDate(new Date(order?.created_at)?.getDate() + 2)) < new Date() ?
-                                <div>Item delivered</div>
+                                <div className='item-delivered-label'>Order delivered</div>
                                 :
                                 <div>
                                     <strong>Expected delivery: </strong> {new Date(new Date(order?.created_at)?.setDate(new Date(order?.created_at)?.getDate() + 2))?.toDateString()}
@@ -78,8 +78,10 @@ function GetUserOrders({ user }) {
                             }
                         </div>
 
+                        {order?.created_at && new Date(new Date(order?.created_at)?.setDate(new Date(order?.created_at)?.getDate() + 2)) < new Date() ? null :
 
-                        <button className='cancel-order-profile-button' id={`cancel-${order?.id}`} onClick={handleCancelOrder}>Cancel order</button>
+                            <button className='cancel-order-profile-button' id={`cancel-${order?.id}`} onClick={handleCancelOrder}>Cancel order</button>
+                        }
                     </article>
                 ))}
             </div>
