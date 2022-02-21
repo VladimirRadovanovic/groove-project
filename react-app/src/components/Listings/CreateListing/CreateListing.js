@@ -114,7 +114,7 @@ function CreateListing({ user }) {
             <GoBackButton />
             <div className='listings-form-main-container'>
             <div className='listings-errors-container'>
-            <ul>
+            <ul className='all-errors-list'>
                 {errors.map(error => (
                     <li key={error}>{error}</li>
                 ))}

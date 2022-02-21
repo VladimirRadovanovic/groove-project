@@ -16,6 +16,7 @@
     margin: 2rem 0;
     padding: 1rem;
     display: flex;
+    position: relative;
 }
 
 .cart-heading {
@@ -108,4 +109,49 @@
     padding: 4.5rem 0;
     text-align: center;
     color: var(--blue-tertiary);
+}
+
+
+.cart-data-container {
+    /* position: absolute;
+    top: 50%;
+    right: 3rem; */
+    width: 60%;
+    font-size: 1.2rem;
+    padding-left: 1rem;
+    overflow: hidden;
+}
+
+.quantity-container {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+}
+.quantity-container label {
+    padding-right: .5rem;
+    font-size: 1.2rem;
+}
+
+.quantity-container input {
+    width: 6rem;
+}
+
+.cart-remove-button-container {
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+}
+
+.order-total-cart {
+    font-size: 3.5rem;
+}
+
+.delivery {
+    font-size: 2rem;
+    color: var(--blue-tertiary);
+}
+
+.all-errors-list {
+    font-size: 1.6rem;
+    color: var(--orange-primary);
 }

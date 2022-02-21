@@ -131,7 +131,7 @@ function Cart({ user, numItemSetter }) {
                     <Checkout user={user} clearCart={handelClearCart} items={parsedItems} errorSetter={errorSetter} totalCost={calcPrice} />
                 </div>
                 <div className='listings-errors-container'>
-                    <ul>
+                    <ul className='all-errors-list'>
                         {errors.map(error => (
                             <li key={error}>{error}</li>
                         ))}
@@ -144,22 +144,28 @@ function Cart({ user, numItemSetter }) {
                         <img className='cart-img' src={placeholder} />
                         <div className='cart-data-container'>
                             <p>
-                                {item?.album}
+                                <strong>Album:</strong> {item?.album}
                             </p>
                             <p>
-                                {item?.artist}
+                            <strong>Artist:</strong> {item?.artist}
                             </p>
                             <p>
-                                ${item?.price.toFixed(2)}
+                            <strong>Price: </strong>${item?.price.toFixed(2)}
                             </p>
-                            <p className='item-price-added'>
-                                ${(item?.price * numItems[item.id] || item?.price).toFixed(2)}
+                            <p>
+                            <strong>Available copies:</strong> {item?.num_copies_available}
+                            </p>
+                            <p >
+                            <strong>Price * Copies: </strong><span className='item-price-added'>${(item?.price * numItems[item.id] || item?.price).toFixed(2)}</span>
                             </p>
                             {/* <p>
                                 total = {calcPrice === 0 ? item?.price.toFixed(2) : calcPrice.toFixed(2)}
                             </p> */}
                         </div>
                         <div className='quantity-container'>
+                            <label>
+                            <strong>Number of copies:</strong>
+                            </label>
                             <input
                                 className='cart-input-field'
                                 id={item?.id}
@@ -170,13 +176,13 @@ function Cart({ user, numItemSetter }) {
                                 onChange={handleChange}
                             />
                         </div>
-                        <div>
+                        <div className='cart-remove-button-container'>
                             <i id={item?.id} onClick={handleRemoveItem} className="fa-solid fa-circle-xmark remove-item-button"></i>
                         </div>
                     </div>
                 ))}
-                <h2>{calcPrice === 0 || Object.keys(numItems).length === 1 ? null : `$${calcPrice.toFixed(2)}`}</h2>
-                <div>Guaranteed two day delivery!</div>
+                <div className='order-total-cart'>Order total: {calcPrice === 0 || Object.keys(numItems).length === 1 ? null : `$${calcPrice.toFixed(2)}`}</div>
+                <div className='delivery'>Guaranteed two day delivery!</div>
                 <button onClick={handelClearCart} className='clear-cart-button'>Clear Cart</button>
                 <NavLink to='/records/all' className='continue-shopping-button'>Continue Shopping</NavLink>
             </div>
