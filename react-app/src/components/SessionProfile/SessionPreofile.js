@@ -46,6 +46,10 @@ function SessionProfile({ user }) {
                         <strong>Email:</strong> {user.email}
                     </div>
                 </div>
+                <div className='session-heading-button-container'>
+                    <button className='session-heading-button session-heading-button-edit'>Edit profile</button>
+
+                </div>
             </section>
             <div className='session-profile-link-container'>
                 <NavLink exact={true} to='/user/profile'>Your Listings</NavLink>
