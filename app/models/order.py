@@ -17,7 +17,8 @@ class Order(db.Model):
             'created_at': self.created_at,
             'user_id': self.user_id,
             # 'buyer': self.buyer.to_dict(),
-            'ordered_items': {order_item.to_dict()['id']: order_item.to_dict() for order_item in self.ordered_items}
+            # 'ordered_items': {order_item.to_dict()['id']: order_item.to_dict() for order_item in self.ordered_items}
+            'ordered_items': [order_item.to_dict() for order_item in self.ordered_items]
         }
 
 
@@ -28,6 +29,7 @@ class OrderItem(db.Model):
     listing_id = db.Column(db.Integer, db.ForeignKey("listings.id"), nullable=False)
     order_id = db.Column(db.Integer, db.ForeignKey("orders.id"), nullable=False)
     num_items_ordered = db.Column(db.Integer, nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.now())
 
     order = db.relationship('Order', back_populates='ordered_items')
     item = db.relationship('Listing', back_populates='ordered_by')
@@ -39,5 +41,6 @@ class OrderItem(db.Model):
             'listing_id': self.listing_id,
             'order_id': self.order_id,
             'item': self.item.to_dict(),
-            'num_items_ordered': self.num_items_ordered
+            'num_items_ordered': self.num_items_ordered,
+            'created_at': self.created_at
         }

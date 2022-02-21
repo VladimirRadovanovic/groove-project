@@ -10,7 +10,7 @@ function GetUserOrders({ user }) {
 
     useEffect(() => {
         dispatch(loadUserOrders())
-    }, [])
+    }, [user, dispatch])
 
     const orders = useSelector(state => state.orders)
     const ordersList = Object.values(orders)
@@ -18,11 +18,28 @@ function GetUserOrders({ user }) {
         order?.user_id === user?.id
     ))
 
+    console.log(sessionUserOrdersList[0]?.ordered_items, 'session rders list*********')
+
     return (
         <>
         <h1 className='h1tag'>
-            {user?.id}
         </h1>
+        {sessionUserOrdersList?.map(order => (
+            <div className='order-container' key={order?.id}>
+                {user?.id}
+                {order?.created_at}
+                {order?.ordered_items?.map(orderItem => (
+                    <div key={orderItem?.id}>
+                        {orderItem?.item?.album}
+                        {orderItem?.item?.artist}
+                        {orderItem?.item?.num_items_ordered}
+                        ${orderItem?.item?.price?.toFixed(2)}
+                    </div>
+                ))}
+
+                    <button>Cancel order</button>
+            </div>
+    ))}
         </>
     )
 }
