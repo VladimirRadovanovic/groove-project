@@ -33,7 +33,11 @@ def make_order():
     if errors:
         return {'errors': errors}, 401
 
-    order = Order(user_id=req['user_id'], total_cost=req['total_cost'], delivery_instructions=req['delivery_instructions'])
+    if req['delivery_instructions']:
+        order = Order(user_id=req['user_id'], total_cost=req['total_cost'], delivery_instructions=req['delivery_instructions'])
+    else:
+        order = Order(user_id=req['user_id'], total_cost=req['total_cost'])
+        
     db.session.add(order)
     db.session.commit()
 
