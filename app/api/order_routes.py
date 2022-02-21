@@ -3,6 +3,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.api.auth_routes import validation_errors_to_error_messages
 from app.models import db, Listing, Order, OrderItem
+from app.forms import EditOrderForm
 
 
 order_routes = Blueprint('orders', __name__)
@@ -37,7 +38,7 @@ def make_order():
         order = Order(user_id=req['user_id'], total_cost=req['total_cost'], delivery_instructions=req['delivery_instructions'])
     else:
         order = Order(user_id=req['user_id'], total_cost=req['total_cost'])
-        
+
     db.session.add(order)
     db.session.commit()
 
@@ -67,3 +68,26 @@ def cancel_order(id):
     db.session.delete(order)
     db.session.commit()
     return {"message": "Deleted"}
+
+
+@order_routes.route('/<int:id>/edit', methods=['PATCH'])
+@login_required
+def edit_order(id):
+    print(request.json, '&&&&&&&&&&&&&&&&&&&&edit instructions*********^^^^^^^^^^^')
+    form = EditOrderForm()
+    print(form, 'form form form &&&^^^^^^^^^^^^^^^^^')
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        print( 'order&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
+        order = Order.query.get(id)
+        data = form.data
+        print(data, 'data json see&&&&&&&&&&&&&***********************')
+        if len(data['instructions']) > 0:
+            order.delivery_instructions=data['instructions']
+        else:
+            order.delivery_instructions="Leave at front door."
+
+
+        db.session.commit()
+        return {'order': order.to_dict()}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401

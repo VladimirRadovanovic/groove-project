@@ -12,6 +12,13 @@ function GetUserOrders({ user }) {
     const dispatch = useDispatch()
     const [showUpdateModal, setShowUpdateModal] = useState(false)
 
+    const onClose = () => {
+        setShowUpdateModal(false)
+    }
+    const onOpen = () => {
+        setShowUpdateModal(true)
+    }
+
     useEffect(() => {
         dispatch(loadUserOrders())
     }, [user, dispatch])
@@ -76,10 +83,10 @@ function GetUserOrders({ user }) {
                                 :
                                 <div>
                                     <p>
-                                    <strong>Expected delivery: </strong> {new Date(new Date(order?.created_at)?.setDate(new Date(order?.created_at)?.getDate() + 2))?.toDateString()}
+                                        <strong>Expected delivery: </strong> {new Date(new Date(order?.created_at)?.setDate(new Date(order?.created_at)?.getDate() + 2))?.toDateString()}
                                     </p>
                                     <p>
-                                    <strong>Delivery instructions:</strong> {order?.delivery_instructions}
+                                        <strong>Delivery instructions:</strong> {order?.delivery_instructions}
 
                                     </p>
                                 </div>
@@ -89,9 +96,12 @@ function GetUserOrders({ user }) {
                         {order?.created_at && new Date(new Date(order?.created_at)?.setDate(new Date(order?.created_at)?.getDate() + 2)) < new Date() ? null :
                             <div>
                                 <button className='cancel-order-profile-button' id={`cancel-${order?.id}`} onClick={handleCancelOrder}>Cancel order</button>
-                                <button onClick={() => setShowUpdateModal(true)}>Update delivery instructions</button>
+                                <button id={`order-${order?.id}`} onClick={() => setShowUpdateModal(true)}>Update delivery instructions</button>
                             </div>
                         }
+                        {showUpdateModal && (
+                            <UpdateOrderForm onClose={onClose} onOpen={onOpen} instructions={order?.delivery_instructions} id={order?.id} />
+                        )}
                     </article>
                 ))}
             </div>
