@@ -44,6 +44,7 @@ function GetUserOrders({ user }) {
                         <div>
                             Expected delivery {new Date(new Date(orderItem?.created_at)?.setDate(new Date(orderItem?.created_at)?.getDate() + 2))?.toDateString()}
                         </div>
+                        
                         } */}         <p><strong><NavLink className='order-link-detail' to={`/records/${orderItem?.item.id}/details`}>Order item {i + 1}</NavLink></strong></p>
                                     <p>
                                         <strong>Album:</strong> {orderItem?.item?.album}
