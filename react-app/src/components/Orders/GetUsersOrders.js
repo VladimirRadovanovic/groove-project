@@ -38,7 +38,7 @@ function GetUserOrders({ user }) {
                 {order?.ordered_items?.map(orderItem => (
                     <div key={orderItem?.id}>
                         {orderItem?.created_at && new Date(orderItem?.created_at)?.toDateString()}
-                        {orderItem?.created_at && new Date(new Date(orderItem?.created_at).setDate(new Date(orderItem?.created_at).getDate() + 2)).toDateString()}
+                        {orderItem?.created_at && new Date(new Date(orderItem?.created_at)?.setDate(new Date(orderItem?.created_at)?.getDate() + 2))?.toDateString()}
                         {orderItem?.item?.album}
                         {orderItem?.item?.artist}
                         {orderItem?.item?.num_items_ordered}

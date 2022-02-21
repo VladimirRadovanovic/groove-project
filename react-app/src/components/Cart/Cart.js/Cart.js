@@ -176,6 +176,7 @@ function Cart({ user, numItemSetter }) {
                     </div>
                 ))}
                 <h2>{calcPrice === 0 || Object.keys(numItems).length === 1 ? null : `$${calcPrice.toFixed(2)}`}</h2>
+                <div>Guaranteed two day delivery!</div>
                 <button onClick={handelClearCart} className='clear-cart-button'>Clear Cart</button>
                 <NavLink to='/records/all' className='continue-shopping-button'>Continue Shopping</NavLink>
             </div>
