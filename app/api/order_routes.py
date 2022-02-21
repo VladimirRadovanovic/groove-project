@@ -49,3 +49,13 @@ def make_order():
 def get_orders():
     orders = Order.query.all() #add .options(joinedload(Order.ordered_items)).all() maybe attach the listin as well
     return {'orders': {order.to_dict()['id']: order.to_dict() for order in orders}}
+
+
+@order_routes.route('/<int:id>/remove', methods=['DELETE'])
+@login_required
+def cancel_order(id):
+    order = Order.query.get(id)
+
+    db.session.delete(order)
+    db.session.commit()
+    return {"message": "Deleted"}

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import './GetUsersOrders.css'
 import { loadUserOrders } from '../../store/orders';
+import { cancelOrder } from '../../store/orders';
 
 
 function GetUserOrders({ user }) {
@@ -18,7 +19,13 @@ function GetUserOrders({ user }) {
         order?.user_id === user?.id
     ))
 
-    console.log(sessionUserOrdersList[0]?.ordered_items, 'session rders list*********')
+    const handleCancelOrder = (e) => {
+        const id = e.target.id.split('-')[1]
+        const orderId = Number(id)
+        dispatch(cancelOrder(id))
+    }
+
+    // console.log(sessionUserOrdersList[0]?.ordered_items, 'session rders list*********')
 
     return (
         <>
@@ -37,7 +44,7 @@ function GetUserOrders({ user }) {
                     </div>
                 ))}
 
-                    <button>Cancel order</button>
+                    <button id={`cancel-${order?.id}`} onClick={handleCancelOrder}>Cancel order</button>
             </div>
     ))}
         </>

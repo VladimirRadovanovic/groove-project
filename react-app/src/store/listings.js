@@ -65,9 +65,12 @@ export const deleteListing = (id) => async(dispatch) => {
         },
         body: JSON.stringify(id)
     })
-    const data = await response.json()
-    if (data.message === 'Deleted') {
-        dispatch(removeListing(id))
+    if(response.ok) {
+
+        const data = await response.json()
+        if (data.message === 'Deleted') {
+            dispatch(removeListing(id))
+        }
     }
 }
 
