@@ -31,7 +31,7 @@ def make_order():
     if errors:
         return {'errors': errors}, 401
 
-    order = Order(user_id=req['user_id'])
+    order = Order(user_id=req['user_id'], total_cost=req['total_cost'])
     db.session.add(order)
     db.session.commit()
 

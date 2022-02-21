@@ -128,7 +128,7 @@ function Cart({ user, numItemSetter }) {
                         <i className="fa-solid fa-cart-shopping"></i>
                         Checkout
                     </button> */}
-                    <Checkout user={user} clearCart={handelClearCart} items={parsedItems} errorSetter={errorSetter} />
+                    <Checkout user={user} clearCart={handelClearCart} items={parsedItems} errorSetter={errorSetter} totalCost={calcPrice} />
                 </div>
                 <div className='listings-errors-container'>
                     <ul>

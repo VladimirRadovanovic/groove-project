@@ -7,6 +7,7 @@ class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     created_at = db.Column(db.DateTime, default=datetime.now())
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    total_cost = db.Column(db.Float, nullable=False)
 
     buyer = db.relationship('User', back_populates='orders')
     ordered_items = db.relationship('OrderItem', back_populates='order', cascade="all, delete-orphan")
@@ -18,7 +19,8 @@ class Order(db.Model):
             'user_id': self.user_id,
             # 'buyer': self.buyer.to_dict(),
             # 'ordered_items': {order_item.to_dict()['id']: order_item.to_dict() for order_item in self.ordered_items}
-            'ordered_items': [order_item.to_dict() for order_item in self.ordered_items]
+            'ordered_items': [order_item.to_dict() for order_item in self.ordered_items],
+            'total_cost': self.total_cost
         }
 
 

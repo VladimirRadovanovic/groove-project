@@ -181,7 +181,7 @@ function CreateListing({ user }) {
 
                 <NumberFormat
                             id='price'
-                            placeholder='Price per night *'
+                            placeholder='Price'
                             value={price}
                             onChange={(e) => setPrice(e.target.value)}
                             thousandSeparator={true}
