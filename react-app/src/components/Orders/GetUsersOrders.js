@@ -5,10 +5,12 @@ import { NavLink } from 'react-router-dom';
 import './GetUsersOrders.css'
 import { loadUserOrders } from '../../store/orders';
 import { cancelOrder } from '../../store/orders';
+import UpdateOrderForm from './UpdateOrderForm';
 
 
 function GetUserOrders({ user }) {
     const dispatch = useDispatch()
+    const [showUpdateModal, setShowUpdateModal] = useState(false)
 
     useEffect(() => {
         dispatch(loadUserOrders())
@@ -73,14 +75,22 @@ function GetUserOrders({ user }) {
                                 <div className='item-delivered-label'>Order delivered <i className="fa-solid fa-check"></i></div>
                                 :
                                 <div>
+                                    <p>
                                     <strong>Expected delivery: </strong> {new Date(new Date(order?.created_at)?.setDate(new Date(order?.created_at)?.getDate() + 2))?.toDateString()}
+                                    </p>
+                                    <p>
+                                    <strong>Delivery instructions:</strong> {order?.delivery_instructions}
+
+                                    </p>
                                 </div>
                             }
                         </div>
 
                         {order?.created_at && new Date(new Date(order?.created_at)?.setDate(new Date(order?.created_at)?.getDate() + 2)) < new Date() ? null :
-
-                            <button className='cancel-order-profile-button' id={`cancel-${order?.id}`} onClick={handleCancelOrder}>Cancel order</button>
+                            <div>
+                                <button className='cancel-order-profile-button' id={`cancel-${order?.id}`} onClick={handleCancelOrder}>Cancel order</button>
+                                <button onClick={() => setShowUpdateModal(true)}>Update delivery instructions</button>
+                            </div>
                         }
                     </article>
                 ))}
