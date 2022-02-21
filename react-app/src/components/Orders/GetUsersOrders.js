@@ -51,6 +51,9 @@ function GetUserOrders({ user }) {
                         </div>
                     ))}
                     <div>
+                        Total cost: ${order?.total_cost.toFixed(2)}
+                    </div>
+                    <div>
                         Ordered on {order?.created_at && new Date(order?.created_at)?.toDateString()}
                     </div>
                     {order?.created_at && new Date(new Date(order?.created_at)?.setDate(new Date(order?.created_at)?.getDate() + 2)) < new Date() ? 'Item delivered' :
