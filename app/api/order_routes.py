@@ -13,7 +13,9 @@ order_routes = Blueprint('orders', __name__)
 def make_order():
     req = request.json
     errors = []
-    # print('********************',req, 'request pre if&&&&&&&&&*********((((((((((((')
+    print('********************',req, 'request pre if&&&&&&&&&*********((((((((((((')
+    if len(req['items']) <= 0:
+        errors.append('Your cart is empty.')
     for item in req['items']:
         available_copies = item['num_copies_available']
         album = item['album']

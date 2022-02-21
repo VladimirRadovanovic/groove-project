@@ -29,9 +29,9 @@ function Checkout({ user, clearCart, items, errorSetter }) {
         } else {
             clearCart()
             errorSetter([])
+            history.push('/user/profile/orders')
         }
 
-        history.push('/user/profile/orders')
     }
 
 
