@@ -65,9 +65,12 @@ export const deleteListing = (id) => async(dispatch) => {
         },
         body: JSON.stringify(id)
     })
-    const data = await response.json()
-    if (data.message === 'Deleted') {
-        dispatch(removeListing(id))
+    if(response.ok) {
+
+        const data = await response.json()
+        if (data.message === 'Deleted') {
+            dispatch(removeListing(id))
+        }
     }
 }
 
@@ -116,7 +119,7 @@ const listingReducer = (state = {}, action) => {
             newState = {...state, [action.listing.id]: action.listing}
             return newState
         case LOAD_ALL_LISTINGS:
-            newState = {...action.listings}
+            newState = {...state, ...action.listings}
             return newState
         default:
             return newState

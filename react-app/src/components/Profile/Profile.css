@@ -68,6 +68,8 @@
 
 .profile-article-description {
     width: 50%;
+    overflow-wrap: break-word;
+    overflow-y: auto;
 }
 
 .profile-listings-button-container {

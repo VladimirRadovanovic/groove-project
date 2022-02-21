@@ -1,0 +1,24 @@
+.session-profile-link-container {
+    text-align: center;
+    font-size: 2.2rem;
+}
+
+.session-profile-link-container a {
+    display: inline-block;
+    padding: .3rem 2rem;
+    /* border: var(--border-dark); */
+    border: 1px solid var(--blue-primary);
+    border-radius: .2rem;
+    width: 14rem;
+    margin: 1rem;
+    color: var(--blue-primary);
+    font-weight: 500;
+    /* box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em; */
+}
+
+.session-profile-link-container .active {
+    color: var(--font-color);
+    border: 1px solid var(--blue-tertiary);
+    background-color: var(--blue-primary);
+}
+

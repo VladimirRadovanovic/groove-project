@@ -83,7 +83,7 @@ function CreateListing({ user }) {
                 setErrors(data);
             } else {
                 reset()
-                history.push(`/users/${user?.id}/profile`)
+                history.push(`/user/profile`)
             }
 
         } else {
@@ -94,7 +94,7 @@ function CreateListing({ user }) {
                 setErrors(data);
             } else {
                 reset()
-                history.push(`/users/${user?.id}/profile`)
+                history.push(`/user/profile`)
             }
         }
 
@@ -114,7 +114,7 @@ function CreateListing({ user }) {
             <GoBackButton />
             <div className='listings-form-main-container'>
             <div className='listings-errors-container'>
-            <ul>
+            <ul className='all-errors-list'>
                 {errors.map(error => (
                     <li key={error}>{error}</li>
                 ))}
@@ -181,7 +181,7 @@ function CreateListing({ user }) {
 
                 <NumberFormat
                             id='price'
-                            placeholder='Price per night *'
+                            placeholder='Price'
                             value={price}
                             onChange={(e) => setPrice(e.target.value)}
                             thousandSeparator={true}

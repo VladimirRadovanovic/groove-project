@@ -14,6 +14,8 @@ def make_order():
     req = request.json
     errors = []
     print('********************',req, 'request pre if&&&&&&&&&*********((((((((((((')
+    if len(req['items']) <= 0:
+        errors.append('Your cart is empty.')
     for item in req['items']:
         available_copies = item['num_copies_available']
         album = item['album']
@@ -21,7 +23,7 @@ def make_order():
         if item['seller_id'] == req['user_id']:
             errors.append(f'"{album}" by "{artist}" is your listing. You may not purchase records you advertised.')
         if item['num_copies_available'] < item['cart_item_num']:
-            print(item, 'item *****************')
+            # print(item, 'item *****************')
             errors.append(f'Only {available_copies} copies of the "{album}" by "{artist}" are available for sale.')
             # return {'errors' :[f'Only {available_copies} copies of the "{album}" by "{artist}" are available for sale.']}
         if item['cart_item_num'] < 1:
@@ -29,7 +31,7 @@ def make_order():
     if errors:
         return {'errors': errors}, 401
 
-    order = Order(user_id=req['user_id'])
+    order = Order(user_id=req['user_id'], total_cost=req['total_cost'])
     db.session.add(order)
     db.session.commit()
 
@@ -39,6 +41,23 @@ def make_order():
     db.session.commit()
 
 
-    print('**************in the routein the routein the routein the routein the routein the routein the route***************')
-    print(req['items'][0],'request data ***********************************************************')
+    # print('**************in the routein the routein the routein the routein the routein the routein the route***************')
+    # print(req['items'][0],'request data ***********************************************************')
     return {'order': order.to_dict()}
+
+
+@order_routes.route('/all')
+@login_required
+def get_orders():
+    orders = Order.query.all() #add .options(joinedload(Order.ordered_items)).all() maybe attach the listin as well
+    return {'orders': {order.to_dict()['id']: order.to_dict() for order in orders}}
+
+
+@order_routes.route('/<int:id>/remove', methods=['DELETE'])
+@login_required
+def cancel_order(id):
+    order = Order.query.get(id)
+
+    db.session.delete(order)
+    db.session.commit()
+    return {"message": "Deleted"}

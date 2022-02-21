@@ -25,6 +25,8 @@
 
 .details-info-container{
     padding-top: 3rem;
+    word-wrap: break-word;
+    overflow-y: auto;
 }
 
 .details-info-container p {
