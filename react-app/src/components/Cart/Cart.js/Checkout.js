@@ -31,7 +31,7 @@ function Checkout({ user, clearCart, items, errorSetter }) {
             errorSetter([])
         }
 
-
+        history.push('/user/profile/orders')
     }
 
 
