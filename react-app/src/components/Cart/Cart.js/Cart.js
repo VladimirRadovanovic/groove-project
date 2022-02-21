@@ -11,7 +11,9 @@ function Cart({ user, numItemSetter }) {
     const [itemId, setItemId] = useState('')
     const [calcPrice, setCalcPrice] = useState(0)
     const [errors, setErrors] = useState([])
-    console.log(errors, 'errors !!!!!!!!!!!!!!!!!!')
+    const [deliveryInstructions, setDeliveryInstructions] = useState('')
+    const [showDeliveryInstructions, setShowDeliveryInstructions] = useState(false)
+    console.log(deliveryInstructions, 'errors !!!!!!!!!!!!!!!!!!')
     console.log(numItems, 'numItems*********')
 
     const errorSetter = (data) => {
@@ -116,6 +118,18 @@ function Cart({ user, numItemSetter }) {
         setItemId(Number(eventId))
     }
 
+    const handleShowInstructions = () => {
+        if(showDeliveryInstructions) {
+            setShowDeliveryInstructions(false)
+        } else {
+            setShowDeliveryInstructions(true)
+        }
+    }
+
+    const handelDeliveryInstructions = (e) => {
+        setDeliveryInstructions(e.target.value)
+    }
+
 
 
     return (
@@ -130,7 +144,7 @@ function Cart({ user, numItemSetter }) {
                         <i className="fa-solid fa-cart-shopping"></i>
                         Checkout
                     </button> */}
-                    <Checkout user={user} clearCart={handelClearCart} items={parsedItems} errorSetter={errorSetter} totalCost={calcPrice} />
+                    <Checkout user={user} clearCart={handelClearCart} items={parsedItems} errorSetter={errorSetter} totalCost={calcPrice} deliveryInstructions={deliveryInstructions} />
                 </div>
                 <div className='listings-errors-container'>
                     <ul className='all-errors-list'>
@@ -183,6 +197,18 @@ function Cart({ user, numItemSetter }) {
                         </div>
                     </div>
                 ))}
+                <div>
+                    <p>We will always deliver to your front door, unless instructed differently. <span className='set-delivery-span' onClick={handleShowInstructions}>Set Delivery Instruction <i className="fa-solid fa-chevron-down"></i></span></p>
+                    {showDeliveryInstructions &&
+                        <textarea
+                        className='delivery-instructions-text'
+                        type='text'
+                        placeholder='Delivery instructions'
+                        value={deliveryInstructions}
+                        onChange={handelDeliveryInstructions}
+                        ></textarea>
+                    }
+                </div>
                 <div className='order-total-cart'>Order total: {calcPrice === 0 || Object.keys(numItems).length === 1 ? null : `$${calcPrice.toFixed(2)}`}</div>
                 <div className='delivery'>Guaranteed two day delivery!</div>
                 <button onClick={handelClearCart} className='clear-cart-button'>Clear Cart</button>

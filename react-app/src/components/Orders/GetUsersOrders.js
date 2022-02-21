@@ -70,7 +70,7 @@ function GetUserOrders({ user }) {
                                 <strong>Ordered on: </strong> {order?.created_at && new Date(order?.created_at)?.toDateString()}
                             </div>
                             {order?.created_at && new Date(new Date(order?.created_at)?.setDate(new Date(order?.created_at)?.getDate() + 2)) < new Date() ?
-                                <div className='item-delivered-label'>Order delivered</div>
+                                <div className='item-delivered-label'>Order delivered <i className="fa-solid fa-check"></i></div>
                                 :
                                 <div>
                                     <strong>Expected delivery: </strong> {new Date(new Date(order?.created_at)?.setDate(new Date(order?.created_at)?.getDate() + 2))?.toDateString()}

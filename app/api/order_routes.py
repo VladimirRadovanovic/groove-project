@@ -16,6 +16,8 @@ def make_order():
     print('********************',req, 'request pre if&&&&&&&&&*********((((((((((((')
     if len(req['items']) <= 0:
         errors.append('Your cart is empty.')
+    if len(req['delivery_instructions']) > 100:
+        errors.append('Delivery instructions must be less than 100 characters long.')
     for item in req['items']:
         available_copies = item['num_copies_available']
         album = item['album']
@@ -31,7 +33,7 @@ def make_order():
     if errors:
         return {'errors': errors}, 401
 
-    order = Order(user_id=req['user_id'], total_cost=req['total_cost'])
+    order = Order(user_id=req['user_id'], total_cost=req['total_cost'], delivery_instructions=req['delivery_instructions'])
     db.session.add(order)
     db.session.commit()
 

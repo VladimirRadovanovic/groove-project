@@ -3,7 +3,7 @@ import { checkout } from "../../../store/orders";
 import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
-function Checkout({ user, clearCart, items, errorSetter, totalCost }) {
+function Checkout({ user, clearCart, items, errorSetter, totalCost, deliveryInstructions }) {
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -22,7 +22,8 @@ function Checkout({ user, clearCart, items, errorSetter, totalCost }) {
         const payload = {
             user_id: user.id,
             items: mappedItems,
-            total_cost: totalCost
+            total_cost: totalCost,
+            delivery_instructions: deliveryInstructions
         }
         const data = await dispatch(checkout(payload))
         if(data) {
