@@ -59,3 +59,8 @@
     color: var(--white);
     font-weight: 600;
 }
+
+.order-link-detail {
+    color: var(--blue-tertiary);
+    text-decoration: underline;
+}

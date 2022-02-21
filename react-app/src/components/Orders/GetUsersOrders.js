@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 import './GetUsersOrders.css'
 import { loadUserOrders } from '../../store/orders';
@@ -43,7 +44,7 @@ function GetUserOrders({ user }) {
                         <div>
                             Expected delivery {new Date(new Date(orderItem?.created_at)?.setDate(new Date(orderItem?.created_at)?.getDate() + 2))?.toDateString()}
                         </div>
-                        } */}         <p><strong>Order item {i + 1}</strong></p>
+                        } */}         <p><strong><NavLink className='order-link-detail' to={`/records/${orderItem?.item.id}/details`}>Order item {i + 1}</NavLink></strong></p>
                                     <p>
                                         <strong>Album:</strong> {orderItem?.item?.album}
                                     </p>
