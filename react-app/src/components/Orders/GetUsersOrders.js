@@ -29,43 +29,59 @@ function GetUserOrders({ user }) {
     // console.log(sessionUserOrdersList[0]?.ordered_items, 'session rders list*********')
 
     return (
-        <>
-            <h1 className='h1tag'>
-            </h1>
-            {sessionUserOrdersList?.map(order => (
-                <div className='order-container' key={order?.id}>
-                    {/* {order?.created_at} */}
-                    {order?.ordered_items?.map(orderItem => (
-                        <div key={orderItem?.id}>
-                            {/* {orderItem?.created_at && new Date(orderItem?.created_at)?.toDateString()} */}
-                            {/* {orderItem?.created_at && new Date(new Date(orderItem?.created_at)?.setDate(new Date(orderItem?.created_at)?.getDate() + 2))?.toDateString()} */}
-                            {/* {orderItem?.created_at && new Date(new Date(orderItem?.created_at)?.setDate(new Date(orderItem?.created_at)?.getDate() + 2)) < new Date() ? 'Item delivered' :
+        <section className='profile-orders-section-container'>
+            <div className='profile-orders-container'>
+                {sessionUserOrdersList?.map(order => (
+                    <article className='order-article-container' key={order?.id}>
+                        {/* {order?.created_at} */}
+                        <div className='left-container'>
+                            {order?.ordered_items?.map((orderItem, i) => (
+                                <div className='article-order-data-1' key={orderItem?.id}>
+                                    {/* {orderItem?.created_at && new Date(orderItem?.created_at)?.toDateString()} */}
+                                    {/* {orderItem?.created_at && new Date(new Date(orderItem?.created_at)?.setDate(new Date(orderItem?.created_at)?.getDate() + 2))?.toDateString()} */}
+                                    {/* {orderItem?.created_at && new Date(new Date(orderItem?.created_at)?.setDate(new Date(orderItem?.created_at)?.getDate() + 2)) < new Date() ? 'Item delivered' :
                         <div>
                             Expected delivery {new Date(new Date(orderItem?.created_at)?.setDate(new Date(orderItem?.created_at)?.getDate() + 2))?.toDateString()}
                         </div>
-                        } */}
-                            {orderItem?.item?.album}
-                            {orderItem?.item?.artist}
-                            {orderItem?.item?.num_items_ordered}
-                            ${orderItem?.item?.price?.toFixed(2)}
+                        } */}         <p><strong>Order item {i + 1}</strong></p>
+                                    <p>
+                                        <strong>Album:</strong> {orderItem?.item?.album}
+                                    </p>
+                                    <p>
+                                        <strong>Artist:</strong> {orderItem?.item?.artist}
+                                    </p>
+                                    <p>
+                                        <strong>Copies ordered:</strong> {orderItem?.num_items_ordered}
+                                    </p>
+                                    <p>
+                                        <strong>Record price:</strong> ${orderItem?.item?.price?.toFixed(2)}
+                                    </p>
+                                </div>
+                            ))}
                         </div>
-                    ))}
-                    <div>
-                        Total cost: ${order?.total_cost.toFixed(2)}
-                    </div>
-                    <div>
-                        Ordered on {order?.created_at && new Date(order?.created_at)?.toDateString()}
-                    </div>
-                    {order?.created_at && new Date(new Date(order?.created_at)?.setDate(new Date(order?.created_at)?.getDate() + 2)) < new Date() ? 'Item delivered' :
-                        <div>
-                            Expected delivery {new Date(new Date(order?.created_at)?.setDate(new Date(order?.created_at)?.getDate() + 2))?.toDateString()}
-                        </div>
-                    }
+                        <div className='middle-container'>
 
-                    <button id={`cancel-${order?.id}`} onClick={handleCancelOrder}>Cancel order</button>
-                </div>
-            ))}
-        </>
+                            <div>
+                                <strong>Total cost:</strong> ${order?.total_cost.toFixed(2)}
+                            </div>
+                            <div>
+                                <strong>Ordered on: </strong> {order?.created_at && new Date(order?.created_at)?.toDateString()}
+                            </div>
+                            {order?.created_at && new Date(new Date(order?.created_at)?.setDate(new Date(order?.created_at)?.getDate() + 2)) < new Date() ?
+                                <div>Item delivered</div>
+                                :
+                                <div>
+                                    <strong>Expected delivery: </strong> {new Date(new Date(order?.created_at)?.setDate(new Date(order?.created_at)?.getDate() + 2))?.toDateString()}
+                                </div>
+                            }
+                        </div>
+
+
+                        <button className='cancel-order-profile-button' id={`cancel-${order?.id}`} onClick={handleCancelOrder}>Cancel order</button>
+                    </article>
+                ))}
+            </div>
+        </section>
     )
 }
 

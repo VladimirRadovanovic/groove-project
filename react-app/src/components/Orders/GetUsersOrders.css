@@ -1,5 +1,61 @@
+.profile-orders-section-container {
+    display: flex;
+    justify-content: center;
 
-.order-container {
-    border: 1px solid black;
+}
+
+.profile-orders-container {
+    width: 60%;
+
+}
+
+.order-article-container {
+    border: var(--border-medium);
+    box-shadow: rgb(67 71 85 / 27%) 0px 0px 0.25em, rgb(90 125 188 / 5%) 0px 0.25em 1em;
+    border-radius: .2rem;
+    width: 100%;
+    font-size: 1.6rem;
     padding: 1rem;
+    margin: 2rem 0;
+    /* min-height: 20rem; */
+    display: flex;
+    position: relative;
+    /* flex-direction: column; */
+}
+
+.article-order-data-1 {
+
+    padding: .5rem;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    /* flex-direction: row; */
+}
+
+.article-order-data-1:not(:last-child) {
+    border-bottom: var(--border-light);
+}
+
+.order-article-container > div {
+    display: inline-block;
+}
+
+.left-container {
+    width: 40%;
+}
+
+.middle-container {
+    width: 40%;
+    font-size: 2rem;
+}
+
+.cancel-order-profile-button {
+    position: absolute;
+    width: 15rem;
+    height: 4rem;
+    border-radius: .2rem;
+    right: 1rem;
+    background-color: var(--orange-primary);
+    color: var(--white);
+    font-weight: 600;
 }

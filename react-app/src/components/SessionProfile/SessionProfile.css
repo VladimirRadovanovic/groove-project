@@ -13,6 +13,7 @@
     margin: 1rem;
     color: var(--blue-primary);
     font-weight: 500;
+    /* box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em; */
 }
 
 .session-profile-link-container .active {
@@ -20,3 +21,4 @@
     border: 1px solid var(--blue-tertiary);
     background-color: var(--blue-primary);
 }
+

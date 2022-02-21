@@ -5,6 +5,7 @@
 
 .cart-page-container {
     width: 70%;
+    margin-bottom: 11rem;
 }
 
 
@@ -78,6 +79,7 @@
     padding: 0 5rem;
     transition: all .2s;
     margin-top: 2rem;
+
 }
 
 
@@ -155,4 +157,3 @@
     font-size: 1.6rem;
     color: var(--orange-primary);
 }
-
