@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom'
 import './Cart.css'
 import placeholder from '../../../images/vinyl.jpg'
 import Checkout from './Checkout'
+import GoBackButton from '../../Utils/GoBackButton'
 
 function Cart({ user, numItemSetter }) {
     const [numItems, setNumItems] = useState({ '0': 1 })
@@ -119,6 +120,7 @@ function Cart({ user, numItemSetter }) {
 
     return (
         <main className='main-cart-container'>
+            <GoBackButton />
             <div className='cart-page-container'>
                 <div className='cart-heading'>
                     <h2>

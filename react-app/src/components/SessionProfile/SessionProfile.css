@@ -1,0 +1,22 @@
+.session-profile-link-container {
+    text-align: center;
+    font-size: 2.2rem;
+}
+
+.session-profile-link-container a {
+    display: inline-block;
+    padding: .3rem 2rem;
+    /* border: var(--border-dark); */
+    border: 1px solid var(--blue-tertiary);
+    border-radius: .2rem;
+    width: 14rem;
+    margin: 1rem;
+    color: var(--blue-tertiary);
+    font-weight: 500;
+}
+
+.session-profile-link-container .active {
+    color: var(--font-color);
+    border: 1px solid var(--blue-tertiary);
+    background-color: var(--blue-primary);
+}

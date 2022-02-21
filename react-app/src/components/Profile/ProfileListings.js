@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 
@@ -6,10 +6,17 @@ import { deleteListing } from "../../store/listings";
 import RemoveListing from "../Listings/RemoveListing/RemoveListing";
 import EditListing from "../Listings/EditListing/EditListing";
 import placeholder from '../../images/vinyl.jpg'
+import { getAllListings } from "../../store/listings";
 
 
 function ProfileListings({ listingsList, userId }) {
+
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getAllListings())
+    }, [])
+
     const profileListings = listingsList.filter(listing => (
         listing.seller_id === Number(userId)
     ))

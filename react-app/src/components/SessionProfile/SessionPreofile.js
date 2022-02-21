@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { Switch } from 'react-router-dom';
+import { Switch, NavLink } from 'react-router-dom';
+
 
 import { getAllListings } from '../../store/listings';
 import ProfileListings from '../Profile/ProfileListings';
@@ -13,6 +14,7 @@ import GetUserOrders from '../Orders/GetUsersOrders';
 
 function SessionProfile({ user }) {
     const dispatch = useDispatch()
+    // const url = window.location.href
 
     useEffect(() => {
         dispatch(getAllListings())
@@ -45,6 +47,10 @@ function SessionProfile({ user }) {
                     </div>
                 </div>
             </section>
+            <div className='session-profile-link-container'>
+                <NavLink exact={true} to='/user/profile'>Your Listings</NavLink>
+                <NavLink to='/user/profile/orders'>Your Orders</NavLink>
+            </div>
             <Switch>
                 <ProtectedRoute exact={true} path='/user/profile' >
                     <ProfileListings listingsList={listingsList} userId={user.id} />
