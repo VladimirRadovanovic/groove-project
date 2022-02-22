@@ -42,7 +42,6 @@ function CreateListing({ user }) {
     const [imageLoading, setImageLoading] = useState(false);
     const [photoPrev, setPhotoPrev] = useState('#')
     const [showModal, setShowModal] = useState(false)
-    const [uploadImgErrors, setUploadImgErrors] = useState([])
     // if (!user) return <Redirect to='/login' />
 
     // const url = window.location.href
@@ -88,13 +87,18 @@ function CreateListing({ user }) {
         formData.append('num_copies_available', num_copies_available)
         formData.append('condition', condition)
         formData.append("image", image);
+
+        setImageLoading(true)
+
         if (!listing) {
 
             const data = await dispatch(createListing(formData))
 
             if (data) {
                 setErrors(data);
+                setImageLoading(false)
             } else {
+                setImageLoading(false)
                 reset()
                 history.push(`/user/profile`)
             }
@@ -105,7 +109,9 @@ function CreateListing({ user }) {
 
             if (data) {
                 setErrors(data);
+                setImageLoading(false)
             } else {
+                setImageLoading(false)
                 reset()
                 history.push(`/user/profile`)
             }
@@ -129,7 +135,11 @@ function CreateListing({ user }) {
     }
 
     const handleUploadConfirm = () => {
-        setShowModal(false)
+        setImageLoading(true)
+        setTimeout(() => {
+            setImageLoading(false)
+            setShowModal(false)
+        },400)
     }
 
     return (
@@ -261,11 +271,6 @@ function CreateListing({ user }) {
             </div>
             {showModal && (
                 <Modal onClose={onClose}>
-                    {/* <ul className='all-errors-list'>
-                        {uploadImgErrors?.map(error => (
-                            <li key={error}>{error}</li>
-                        ))}
-                    </ul> */}
                     <img src={photoPrev} />
                     <button className="upload-photo-button" onClick={handleUploadConfirm} type="submit">Confirm photo selection</button>
                     {(imageLoading) && (
