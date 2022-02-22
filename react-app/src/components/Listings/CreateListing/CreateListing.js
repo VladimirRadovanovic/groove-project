@@ -239,9 +239,9 @@ function CreateListing({ user }) {
                             onChange={(e) => setDescription(e.target.value)}
                         />
                     </div>
-                    <label className="photo-upload-label session-heading-button" htmlFor="photo-upload">
+                    <label className="photo-listing-upload-button" htmlFor="photo-listing-upload">
                         <input
-                            id='photo-upload'
+                            id='photo-listing-upload'
                             type="file"
                             accept="image/*"
                             onChange={updateImage}
