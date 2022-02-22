@@ -45,7 +45,7 @@ function ListingDetails({ user, numItemSetter }) {
     return (
         <main className='details-main-container'>
             <section className='details-img-container'>
-                <img className='details-img' src={placeholder} />
+                <img className='details-img' src={listing?.img_url ? listing.img_url : placeholder} />
             </section>
                 <div className='details-back'>
                 <GoBackButton  />

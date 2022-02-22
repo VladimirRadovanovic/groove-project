@@ -46,7 +46,7 @@ function ProfileListings({ listingsList, userId }) {
                 {profileListings?.map(listing => (
                     <article className="profile-listings-article" key={listing?.id}>
                         <div className="profile-article-img-container">
-                            <img className="profile-article-img" src={placeholder} />
+                            <img className="profile-article-img" src={listing.img_url ? listing.img_url : placeholder} />
                         </div>
                         <div className="profile-listings-info-container">
                             <div className="profile-article-album-data">

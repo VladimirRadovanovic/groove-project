@@ -157,7 +157,7 @@ function Cart({ user, numItemSetter }) {
                 {parsedItems.map((item) => (
 
                     <div className='cart-article-container' key={item?.id}>
-                        <img className='cart-img' src={placeholder} />
+                        <img className='cart-img' src={item?.img_url ? item?.img_url : placeholder} />
                         <div className='cart-data-container'>
                             <p>
                                 <strong>Album:</strong> {item?.album}
