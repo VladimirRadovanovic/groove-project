@@ -96,7 +96,7 @@ function GetUserOrders({ user }) {
                         {order?.created_at && new Date(new Date(order?.created_at)?.setDate(new Date(order?.created_at)?.getDate() + 2)) < new Date() ? null :
                             <div>
                                 <button className='cancel-order-profile-button' id={`cancel-${order?.id}`} onClick={handleCancelOrder}>Cancel order</button>
-                                <button id={`order-${order?.id}`} onClick={() => setShowUpdateModal(true)}>Update delivery instructions</button>
+                                <button className='update-order-profile-button' id={`order-${order?.id}`} onClick={() => setShowUpdateModal(true)}>Update delivery instructions</button>
                             </div>
                         }
                         {showUpdateModal && (

@@ -49,15 +49,33 @@
     font-size: 2rem;
 }
 
-.cancel-order-profile-button {
+.cancel-order-profile-button,
+.update-order-profile-button {
     position: absolute;
     width: 15rem;
     height: 4rem;
     border-radius: .2rem;
     right: 1rem;
-    background-color: var(--orange-primary);
     color: var(--white);
     font-weight: 600;
+    transition: all .2s;
+}
+
+.update-order-profile-button {
+    background-color: var(--gray-primary);
+    top: 6rem;
+}
+
+.update-order-profile-button:hover {
+    background-color: var(--gray-hover-dark);
+}
+
+.cancel-order-profile-button {
+    background-color: var(--orange-primary);
+}
+
+.cancel-order-profile-button:hover {
+    background-color: var(--orange-secondary);
 }
 
 .order-link-detail {
