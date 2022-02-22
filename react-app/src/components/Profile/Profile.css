@@ -52,6 +52,7 @@
 .profile-article-img-container {
     width: 20%;
     height: 100%;
+    min-width: 16rem;
 }
 
 .profile-listings-info-container {
@@ -129,4 +130,7 @@
 .profile-info-container {
     font-size: 1.6rem;
     padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    padding-top: 4rem;
 }

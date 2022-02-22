@@ -86,11 +86,15 @@ function UploadProfilePicture() {
 
     return (
         <form>
+            <label className="photo-upload-label session-heading-button" htmlFor="photo-upload">
             <input
+                id='photo-upload'
                 type="file"
                 accept="image/*"
                 onChange={updateImage}
             />
+            Upload photo
+            </label>
             {showModal && (
                 <Modal onClose={onClose}>
                     <ul className='all-errors-list'>

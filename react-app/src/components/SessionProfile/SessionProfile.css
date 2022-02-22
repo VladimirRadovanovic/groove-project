@@ -23,16 +23,32 @@
 }
 
 .session-heading-button-container {
-    padding-left: 1.5rem;
+    padding-left: 2.5rem;
+    display: inline-flex;
+    /* align-items: center; */
+    position: absolute;
+    left: 50%;
 }
 
-.session-heading-button-edit {
+.session-heading-button-edit,
+.photo-upload-label {
+    display: inline-block;
     width: 13rem;
     height: 3rem;
     border-radius: .2rem;
     border: var(--border-medium);
     background-color: var(--white);
     font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.photo-upload-label {
+    /* font-size: 1.6rem; */
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    margin-left: .5rem;
+    line-height: 3rem;
 }
 
 .upload-photo-logo {
@@ -74,4 +90,8 @@
 
 .upload-photo-button:hover {
     background-color: var(--yellow-hover);
+}
+
+#photo-upload {
+    display: none;
 }
