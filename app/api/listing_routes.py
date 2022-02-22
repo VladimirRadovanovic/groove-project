@@ -4,6 +4,8 @@ from flask_login import login_required, current_user
 from app.api.auth_routes import validation_errors_to_error_messages
 from app.models import db, Listing
 from app.forms import CreateListingForm
+from app.aws import (
+    upload_file_to_s3, allowed_file, get_unique_filename)
 
 listing_routes = Blueprint('listings', __name__)
 
@@ -30,6 +32,7 @@ def edit_listing(id):
         listing.condition=data['condition']
         listing.price=data['price']
         listing.num_copies_available=data['num_copies_available']
+        listing.img_url = data['image']
 
         db.session.add(listing)
         db.session.commit()
@@ -42,23 +45,66 @@ def edit_listing(id):
 def create_listing():
     form = CreateListingForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
-        data = form.data
-        new_listing = Listing(
-            seller_id=current_user.id,
-            artist=data['artist'],
-            album=data['album'],
-            genre=data['genre'],
-            description=data['description'],
-            condition=data['condition'],
-            price=data['price'],
-            num_copies_available=data['num_copies_available']
-        )
+    print(request.files, '****************************printing files from request*************************')
+    if "image" in request.files:
+        image = request.files["image"]
+        if not allowed_file(image.filename):
+            return {"errors": ["File type not permitted"]}, 400
 
-        db.session.add(new_listing)
-        db.session.commit()
-        return {'listing': new_listing.to_dict()}
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
+
+        if "url" not in upload:
+            # if the dictionary doesn't have a filename key
+            # it means that there was an error when we tried to upload
+            # so we send back that error message
+            return upload, 400
+
+
+        url = upload["url"]
+
+
+        if form.validate_on_submit():
+            data = form.data
+
+            new_listing = Listing(
+                seller_id=current_user.id,
+                artist=data['artist'],
+                album=data['album'],
+                genre=data['genre'],
+                description=data['description'],
+                condition=data['condition'],
+                price=data['price'],
+                num_copies_available=data['num_copies_available'],
+                img_url = url
+            )
+
+            db.session.add(new_listing)
+            db.session.commit()
+            return {'listing': new_listing.to_dict()}
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+    else:
+        if form.validate_on_submit():
+            data = form.data
+
+            new_listing = Listing(
+                seller_id=current_user.id,
+                artist=data['artist'],
+                album=data['album'],
+                genre=data['genre'],
+                description=data['description'],
+                condition=data['condition'],
+                price=data['price'],
+                num_copies_available=data['num_copies_available'],
+            )
+
+            db.session.add(new_listing)
+            db.session.commit()
+            return {'listing': new_listing.to_dict()}
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
 
 
 @listing_routes.route('/<int:id>/remove', methods=['DELETE'])
