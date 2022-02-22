@@ -73,3 +73,38 @@
     font-weight: 500;
     color: var(--white);
 }
+
+.update-instructions-container {
+    width: 80%;
+    height: 100%;
+    padding: 2rem;
+}
+
+.modal-heading {
+    font-size: 2rem;
+    padding: 1rem 0;
+}
+
+.modal-textarea {
+    border: var(--border-light);
+    border-radius: .2rem;
+    width: calc(100% - 2rem);
+    padding: 1rem;
+    height: 10rem;
+
+}
+
+.update-instructions-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.update-instructions-button {
+    margin-top: 1rem;
+    background-color: var(--yellow);
+    padding: .7rem 3rem;
+    font-weight: 600;
+}
