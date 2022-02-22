@@ -198,7 +198,7 @@ function Cart({ user, numItemSetter }) {
                     </div>
                 ))}
                 <div>
-                    <p>We will always deliver to your front door, unless instructed differently. <span className='set-delivery-span' onClick={handleShowInstructions}>Set Delivery Instruction <i className="fa-solid fa-chevron-down"></i></span></p>
+                    <p className='delivery-paragraph'>We will always deliver to your front door, unless instructed differently. <span className='set-delivery-span' onClick={handleShowInstructions}>Set Delivery Instruction <i className="fa-solid fa-chevron-down"></i></span></p>
                     {showDeliveryInstructions &&
                         <textarea
                         className='delivery-instructions-text'

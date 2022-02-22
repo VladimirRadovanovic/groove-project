@@ -151,6 +151,7 @@
 .delivery {
     font-size: 2rem;
     color: var(--blue-tertiary);
+    font-weight: 600;
 }
 
 .all-errors-list {
@@ -163,4 +164,18 @@
     color: var(--blue-tertiary);
     cursor: pointer;
     text-decoration: underline;
+}
+
+.delivery-instructions-text {
+    border: var(--border-light);
+    border-radius: .2rem;
+    width: 64rem;
+    height: 10rem;
+    margin-top: .5rem;
+    padding: 1rem;
+}
+
+.delivery-paragraph {
+    font-size: 1.6rem;
+    margin-top: 1rem;
 }
