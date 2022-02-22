@@ -18,11 +18,10 @@
     background-color: rgba(0, 0, 0, 0.2);
   }
 
-  #modal-content {
+  #modal-content,
+  #confirm-modal-content {
     position: absolute;
     background-color:white;
-    width: 45rem;
-    min-height: 27rem;
     /* width: fit-content; */
     height: fit-content;
     border-radius: .2rem;
@@ -31,11 +30,14 @@
     align-items: center;
     justify-content: center;
     animation: moveDown .6s;
-
   }
 
-  /* @keyframes updateOrderModal {
-    0% {
-      transform: translateY(-20rem);
-    }
-  } */
+  #modal-content {
+    width: 45rem;
+    min-height: 27rem;
+  }
+
+  #confirm-modal-content {
+    width: 45rem;
+    min-height: 27rem;
+  }

@@ -37,3 +37,18 @@ export function ModalProvider({ children }) {
       modalNode
     );
   }
+
+  export function ConfirmModal({ onClose, children }) {
+    const modalNode = useContext(ModalContext);
+    if (!modalNode) return null;
+
+    return ReactDOM.createPortal(
+      <div id="modal">
+        <div id="modal-background" onClick={onClose} />
+        <div id="confirm-modal-content">
+          {children}
+        </div>
+      </div>,
+      modalNode
+    );
+  }

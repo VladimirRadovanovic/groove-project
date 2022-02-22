@@ -6,18 +6,16 @@ import './GetUsersOrders.css'
 import { loadUserOrders } from '../../store/orders';
 import { cancelOrder } from '../../store/orders';
 import UpdateOrderForm from './UpdateOrderForm';
+import CancelOrderModal from './CancelOrderModal';
 
 
 function GetUserOrders({ user }) {
     const dispatch = useDispatch()
     const [showUpdateModal, setShowUpdateModal] = useState(false)
-
-    const onClose = () => {
-        setShowUpdateModal(false)
-    }
-    const onOpen = () => {
-        setShowUpdateModal(true)
-    }
+    const [showConfirmModal, setShowConfirmModal] = useState(false)
+    const [updateId, setUpdateId] = useState('')
+    const [deleteId, setDeleteId] = useState('')
+    const [instruction, setInstruction] = useState('')
 
     useEffect(() => {
         dispatch(loadUserOrders())
@@ -29,13 +27,36 @@ function GetUserOrders({ user }) {
         order?.user_id === user?.id
     ))
 
+    console.log(orders, 'orderssssssss')
+
+    const onCloseConfirm = () => {
+        setShowConfirmModal(false)
+    }
+
+    const onOpenConfirm = (e) => {
+        setShowConfirmModal(true)
+        setDeleteId(e.target.id)
+    }
+
+    const onClose = () => {
+        setShowUpdateModal(false)
+    }
+    const onOpen = (e) => {
+        setShowUpdateModal(true)
+        const id = Number(e.target.id.split('-')[1])
+        setInstruction(orders[id]?.delivery_instructions)
+        setUpdateId(id)
+    }
+
+
     const handleCancelOrder = (e) => {
         const id = e.target.id.split('-')[1]
         const orderId = Number(id)
         dispatch(cancelOrder(id))
+        onCloseConfirm()
     }
-    const date = new Date();
-    console.log(new Date() < new Date(date.setDate(date.getDate() + 2)), 'datedate********')
+    // const date = new Date();
+    // console.log(new Date() < new Date(date.setDate(date.getDate() + 2)), 'datedate********')
     // console.log(sessionUserOrdersList[0]?.ordered_items, 'session rders list*********')
 
     return (
@@ -95,12 +116,15 @@ function GetUserOrders({ user }) {
 
                         {order?.created_at && new Date(new Date(order?.created_at)?.setDate(new Date(order?.created_at)?.getDate() + 2)) < new Date() ? null :
                             <div>
-                                <button className='cancel-order-profile-button' id={`cancel-${order?.id}`} onClick={handleCancelOrder}>Cancel order</button>
-                                <button className='update-order-profile-button' id={`order-${order?.id}`} onClick={() => setShowUpdateModal(true)}>Update delivery instructions</button>
+                                <button className='cancel-order-profile-button' id={`cancel-${order?.id}`} onClick={onOpenConfirm}>Cancel order</button>
+                                <button className='update-order-profile-button' id={`order-${order?.id}`} onClick={onOpen}>Update delivery instructions</button>
                             </div>
                         }
                         {showUpdateModal && (
-                            <UpdateOrderForm onClose={onClose} onOpen={onOpen} instructions={order?.delivery_instructions} id={order?.id} />
+                            <UpdateOrderForm onClose={onClose} onOpen={onOpen} instructions={instruction} id={updateId} />
+                        )}
+                        {showConfirmModal && (
+                            <CancelOrderModal onCloseConfirm={onCloseConfirm} handleCancelOrder={handleCancelOrder} id={deleteId} />
                         )}
                     </article>
                 ))}
