@@ -60,3 +60,18 @@
         transform:rotate(360deg);
     }
 }
+
+
+.upload-photo-button {
+    font-size: 1.6rem;
+    font-weight: 600;
+    background-color: var(--yellow);
+    width: 17rem;
+    height: 4rem;
+    margin: 1rem auto;
+    transition: all .2s;
+}
+
+.upload-photo-button:hover {
+    background-color: var(--yellow-hover);
+}

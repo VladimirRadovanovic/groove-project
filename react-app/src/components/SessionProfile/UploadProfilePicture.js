@@ -99,7 +99,7 @@ function UploadProfilePicture() {
                         ))}
                     </ul>
                     <img src={photoPrev} />
-                    <button onClick={handleSubmit} type="submit">Submit</button>
+                    <button className="upload-photo-button" onClick={handleSubmit} type="submit">Upload</button>
                     {(imageLoading) && (
                     <p>
                         Loading...
