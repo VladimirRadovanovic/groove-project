@@ -79,6 +79,7 @@
     padding: 0 5rem;
     transition: all .2s;
     margin-top: 2rem;
+    line-height: 4.4rem;
 
 }
 
@@ -86,6 +87,7 @@
 .clear-cart-button {
     background-color: var(--orange-primary);
     right: 15%;
+
 }
 
 .continue-shopping-button {

@@ -83,7 +83,7 @@ function ListingDetails({ user, numItemSetter }) {
                     <div className='edit-remove-profile-container'>
                         <EditListing listing={listing} />
                         {/* <ConfirmRemoveListing listing={listing} handleDelete={handleDelete} /> */}
-                        <button id={listing?.id} onClick={onOpen} >Remove listing</button>
+                        <button className='remove-listing-profile' id={listing?.id} onClick={onOpen} >Remove listing</button>
                     </div>
                     :
                     // <AddToCart listing={listing} />

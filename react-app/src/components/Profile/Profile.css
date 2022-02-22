@@ -34,10 +34,12 @@
 
 .profile-listings-article-container {
     width: 60%;
+    min-width: 110rem;
 }
 
 .profile-listings-article {
     width: 100%;
+    min-width: 110rem;
     min-height: 20rem;
     font-size: 1.6rem;
     margin: 2rem 0;

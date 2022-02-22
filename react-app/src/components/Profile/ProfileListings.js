@@ -43,6 +43,11 @@ function ProfileListings({ listingsList, userId }) {
     return (
         <section className="profile-listings-section">
             <div className="profile-listings-article-container">
+                {profileListings?.length === 0 && (
+                    <div>
+                        <p>No listings available</p>
+                    </div>
+                )}
                 {profileListings?.map(listing => (
                     <article className="profile-listings-article" key={listing?.id}>
                         <div className="profile-article-img-container">
