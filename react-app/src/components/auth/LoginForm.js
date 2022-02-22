@@ -95,7 +95,7 @@ const LoginForm = () => {
             />
           </div>
           <div className='form-button-container margin-bottom-small login-button'>
-            <button disabled={buttonDisabled} type='submit'>Login</button>
+            <button type='submit'>Login</button>
           </div>
           <div className='form-button-container margin-bottom-small demo-button'>
             <button type='button' onClick={handleDemo}>Demo login</button>

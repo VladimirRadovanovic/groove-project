@@ -9,6 +9,11 @@ const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
+  const [address, setAddress] = useState('');
+  const [city, setCity] = useState('')
+  const [state, setState] = useState('')
+  const [zip_code, setZip_code] = useState('')
+  const [country, setCountry] = useState('')
   const [password, setPassword] = useState('');
   const [repeat_password, setRepeat_password] = useState('');
   const [buttonDisabled, setButtonDisabled] = useState(true)
@@ -42,7 +47,9 @@ const SignUpForm = () => {
     e.preventDefault();
     if (password === repeat_password) {
 
-      const data = await dispatch(signUp(username, email, password, repeat_password));
+      const data = await dispatch(signUp(username, email, password, repeat_password,
+        address, city, state, zip_code, country
+        ));
       if (data) {
         setErrors(data)
       }
@@ -56,6 +63,26 @@ const SignUpForm = () => {
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
+
+  const updateAddress = (e) => {
+    setAddress(e.target.value)
+  }
+
+  const updateCity = (e) => {
+    setCity(e.target.value)
+  }
+
+  const updateState = (e) => {
+    setState(e.target.value)
+  }
+
+  const updateZip_code = (e) => {
+    setZip_code(e.target.value)
+  }
+
+  const updateCountry = (e) => {
+    setCountry(e.target.value)
+  }
 
   const updatePassword = (e) => {
     setPassword(e.target.value);
@@ -113,6 +140,61 @@ const SignUpForm = () => {
             ></input>
           </div>
           <div className='form-group'>
+            <label htmlFor='address-signup'>Address</label>
+            <input
+              placeholder='Address'
+              id='address-signup'
+              type='text'
+              name='address'
+              onChange={updateAddress}
+              value={address}
+            ></input>
+          </div>
+          <div className='form-group'>
+            <label htmlFor='city-signup'>City</label>
+            <input
+              placeholder='City'
+              id='city-signup'
+              type='text'
+              name='city'
+              onChange={updateCity}
+              value={city}
+            ></input>
+          </div>
+          <div className='form-group'>
+            <label htmlFor='state-signup'>State</label>
+            <input
+              placeholder='State'
+              id='state-signup'
+              type='text'
+              name='state'
+              onChange={updateState}
+              value={state}
+            ></input>
+          </div>
+          <div className='form-group'>
+            <label htmlFor='zip_code-signup'>Zip code</label>
+            <input
+              placeholder='Zip code'
+              id='zip_code-signup'
+              type='text'
+              name='zip_code'
+              onChange={updateZip_code}
+              value={zip_code}
+            ></input>
+          </div>
+          <div className='form-group'>
+            <label htmlFor='country-signup'>Country</label>
+            <input
+              placeholder='Country'
+              id='country-signup'
+              type='text'
+              name='country'
+              onChange={updateCountry}
+              value={country}
+            ></input>
+          </div>
+          <div className='form-group'>
             <label htmlFor='password-signup'>Password</label>
             <input
               className={validClass}
@@ -138,7 +220,7 @@ const SignUpForm = () => {
             ></input>
           </div>
           <div className='form-button-container margin-bottom-small signup-button'>
-            <button disabled={buttonDisabled} type='submit'>Register</button>
+            <button type='submit'>Register</button>
           </div>
           <div className='form-button-container margin-bottom-small demo-button'>
             <button type='button' onClick={handleDemo}>Demo login</button>

@@ -97,7 +97,7 @@ function UploadProfilePicture() {
             </label>
             {showModal && (
                 <Modal onClose={onClose}>
-                    <ul className='all-errors-list'>
+                    <ul className='all-errors-list modal-errors-list'>
                         {uploadImgErrors?.map(error => (
                             <li key={error}>{error}</li>
                         ))}

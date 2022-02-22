@@ -96,3 +96,7 @@
 #photo-upload {
     display: none;
 }
+
+.modal-errors-list {
+    margin: 1rem;
+}
