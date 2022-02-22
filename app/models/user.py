@@ -13,6 +13,11 @@ class User(db.Model, UserMixin):
     profile_img_url = db.Column(db.String(255))
     hashed_password = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now())
+    address = db.Column(db.String(100), nullable=False)
+    city = db.Column(db.String(100), nullable=False)
+    state = db.Column(db.String(100))
+    zip_code= db.Column(db.String(100), nullable=False)
+    country= db.Column(db.String(100), nullable=False)
 
     listings = db.relationship('Listing', back_populates='seller')
     orders = db.relationship('Order', back_populates='buyer')
@@ -34,6 +39,11 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             'profile_img_url': self.profile_img_url,
+            'address': self.address,
+            'city': self.city,
+            'state': self.state,
+            'zip_code': self.zip_code,
+            'country': self.country,
             'created_at': self.created_at,
             'listings': {listing.to_dict()['id']: listing.to_dict() for listing in self.listings},
             'orders': {order.to_dict()['id']: order.to_dict() for order in self.orders}
