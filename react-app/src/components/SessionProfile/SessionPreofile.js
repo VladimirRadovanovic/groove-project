@@ -35,22 +35,21 @@ function SessionProfile({ user }) {
             <GoBackButton />
             <section className='profile-header'>
                 <div className='profile-img-container-heading'>
-                    <img className='profile-img-heading' src={placeholder} alt='profile' />
+                    <img className='profile-img-heading' src={user?.profile_img_url ? user?.profile_img_url : placeholder} alt='profile' />
                 </div>
                 <div className='profile-info-container'>
                     <div>
                     </div>
                     <div>
-                        <strong>Username:</strong> {user.username}
+                        <strong>Username:</strong> {user?.username}
                     </div>
                     <div>
-                        <strong>Email:</strong> {user.email}
+                        <strong>Email:</strong> {user?.email}
                     </div>
                 </div>
                 <div className='session-heading-button-container'>
                     <button className='session-heading-button session-heading-button-edit'>Edit profile</button>
                     <UploadProfilePicture />
-
                 </div>
             </section>
             <div className='session-profile-link-container'>
@@ -59,7 +58,7 @@ function SessionProfile({ user }) {
             </div>
             <Switch>
                 <ProtectedRoute exact={true} path='/user/profile' >
-                    <ProfileListings listingsList={listingsList} userId={user.id} />
+                    <ProfileListings listingsList={listingsList} userId={user?.id} />
                 </ProtectedRoute>
                 <ProtectedRoute path='/user/profile/orders'>
                     <GetUserOrders user={user} />
