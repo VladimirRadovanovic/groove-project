@@ -46,6 +46,21 @@ function SessionProfile({ user }) {
                     <div>
                         <strong>Email:</strong> {user?.email}
                     </div>
+                    <div>
+                        <strong>Address:</strong> {user?.address}
+                    </div>
+                    <div>
+                        <strong>City:</strong> {user?.city}
+                    </div>
+                    <div>
+                        <strong>State:</strong> {user?.state}
+                    </div>
+                    <div>
+                        <strong>Zip code:</strong> {user?.zip_code}
+                    </div>
+                    <div>
+                        <strong>Country:</strong> {user?.country}
+                    </div>
                 </div>
                 <div className='session-heading-button-container'>
                     <button className='session-heading-button session-heading-button-edit'>Edit profile</button>

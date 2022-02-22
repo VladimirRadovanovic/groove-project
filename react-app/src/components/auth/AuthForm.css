@@ -31,6 +31,10 @@
     border-bottom: .3rem solid transparent;
 }
 
+#state-signup {
+    border-bottom: .3rem solid transparent;
+}
+
 
 .auth-form input:focus:invalid {
     border-bottom: .3rem solid var(--orange-secondary);

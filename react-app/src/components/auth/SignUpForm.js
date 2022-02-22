@@ -164,7 +164,7 @@ const SignUpForm = () => {
           <div className='form-group'>
             <label htmlFor='state-signup'>State</label>
             <input
-              placeholder='State'
+              placeholder='State (Example: MA)'
               id='state-signup'
               type='text'
               name='state'
