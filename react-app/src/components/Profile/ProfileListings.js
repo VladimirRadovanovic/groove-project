@@ -3,13 +3,15 @@ import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 import { deleteListing } from "../../store/listings";
-import RemoveListing from "../Listings/RemoveListing/RemoveListing";
+import ConfirmRemoveListing from '../Listings/RemoveListing/RemoveListing'
 import EditListing from "../Listings/EditListing/EditListing";
 import placeholder from '../../images/vinyl.jpg'
 import { getAllListings } from "../../store/listings";
 
 
 function ProfileListings({ listingsList, userId }) {
+    const [showModal, setShowModal] = useState(false)
+    const [listingId, setListingId] = useState('')
 
     const dispatch = useDispatch()
 
@@ -24,6 +26,16 @@ function ProfileListings({ listingsList, userId }) {
     const handleDelete = (e) => {
         const id = Number(e.target.id)
         dispatch(deleteListing(id))
+        setShowModal(false)
+    }
+
+    const onOpen = (e) => {
+        setShowModal(true)
+        setListingId(Number(e.target.id))
+    }
+
+    const onClose = () => {
+        setShowModal(false)
     }
 
     // pre push
@@ -63,7 +75,11 @@ function ProfileListings({ listingsList, userId }) {
                         <div className="profile-listings-button-container">
                             <NavLink to={`/records/${listing?.id}/details`}>View Details</NavLink>
                             <EditListing listing={listing} userId={userId} />
-                            <RemoveListing listing={listing} handleDelete={handleDelete} />
+                            <button className='remove-listing-profile' id={listing?.id} onClick={onOpen}>Remove Listing</button>
+                            {showModal && (
+                                <ConfirmRemoveListing id={listingId} handleDelete={handleDelete} onClose={onClose} />
+
+                            )}
                         </div>
                     </article>
                 ))}
