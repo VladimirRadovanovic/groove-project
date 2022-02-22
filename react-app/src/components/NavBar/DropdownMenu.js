@@ -36,7 +36,7 @@ function DropdownMenu() {
                     <button className="profile-button" onClick={openMenu}>
                         <i className="fas fa-bars bars" />
                         <div className="profile-img-container">
-                            <img className="profile-img" src={user ? user.profileImgUrl ? user.profileImgUrl : logo : logo} alt='profile' />
+                            <img className="profile-img" src={user ? user?.profile_img_url ? user?.profile_img_url : logo : logo} alt='profile' />
                         </div>
                     </button>
                     {showMenu && (

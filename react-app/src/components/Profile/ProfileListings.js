@@ -76,14 +76,14 @@ function ProfileListings({ listingsList, userId }) {
                             <NavLink to={`/records/${listing?.id}/details`}>View Details</NavLink>
                             <EditListing listing={listing} userId={userId} />
                             <button className='remove-listing-profile' id={listing?.id} onClick={onOpen}>Remove Listing</button>
-                            {showModal && (
-                                <ConfirmRemoveListing id={listingId} handleDelete={handleDelete} onClose={onClose} />
-
-                            )}
                         </div>
                     </article>
                 ))}
             </div>
+                {showModal && (
+                    <ConfirmRemoveListing id={listingId} handleDelete={handleDelete} onClose={onClose} />
+
+                )}
         </section>
     )
 }
