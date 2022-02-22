@@ -138,3 +138,22 @@
     flex-direction: column;
     padding-top: 4rem;
 }
+
+.none-available-container {
+    border: var(--border-medium);
+    width: 60%;
+    min-width: 110rem;
+    height: 22rem;
+    color: var(--blue-tertiary);
+    font-size: 2.7rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.none-available-text {
+    display: inline;
+
+}

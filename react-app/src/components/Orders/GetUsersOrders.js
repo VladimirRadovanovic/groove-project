@@ -62,6 +62,12 @@ function GetUserOrders({ user }) {
     return (
         <section className='profile-orders-section-container'>
             <div className='profile-orders-container'>
+                {sessionUserOrdersList?.length === 0 && (
+                    <div className="none-available-container">
+                        <p className="none-available-text">No orders made.</p>
+                    </div>
+                )
+                }
                 {sessionUserOrdersList?.map(order => (
                     <article className='order-article-container' key={order?.id}>
                         {/* {order?.created_at} */}
