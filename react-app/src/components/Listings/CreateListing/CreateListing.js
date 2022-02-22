@@ -38,7 +38,7 @@ function CreateListing({ user }) {
     const [num_copies_available, setNum_copies_available] = useState(listing?.num_copies_available || '')
     const [errors, setErrors] = useState([])
 
-    const [image, setImage] = useState(null);
+    const [image, setImage] = useState(listing?.img_url || null);
     const [imageLoading, setImageLoading] = useState(false);
     const [photoPrev, setPhotoPrev] = useState('#')
     const [showModal, setShowModal] = useState(false)
@@ -46,9 +46,11 @@ function CreateListing({ user }) {
     // if (!user) return <Redirect to='/login' />
 
     // const url = window.location.href
+    console.log(image, 'image url on create and update')
 
     const onClose = () => {
         setShowModal(false)
+        setImage(null)
     }
 
 
@@ -246,7 +248,7 @@ function CreateListing({ user }) {
                             accept="image/*"
                             onChange={updateImage}
                         />
-                        Upload photo
+                        {listing ? 'Edit listing photo' : 'Upload listing photo'}
                     </label>
                     {listing ?
                         <button className='listing-button'>Edit Listing</button> :
@@ -265,7 +267,7 @@ function CreateListing({ user }) {
                         ))}
                     </ul> */}
                     <img src={photoPrev} />
-                    <button className="upload-photo-button" onClick={handleUploadConfirm} type="submit">Save</button>
+                    <button className="upload-photo-button" onClick={handleUploadConfirm} type="submit">Confirm photo selection</button>
                     {(imageLoading) && (
                     <p>
                         Loading...
