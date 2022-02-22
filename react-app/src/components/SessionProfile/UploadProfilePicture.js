@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import { Modal } from "../../context/Modal";
 import { authenticate } from "../../store/session";
 import { setUser } from "../../store/session";
+import logo from '../../images/logo.svg'
 
 
 function UploadProfilePicture() {
     const dispatch = useDispatch()
-    const history = useHistory(); // so that we can redirect after the image upload is successful
+    // const history = useHistory(); // so that we can redirect after the image upload is successful
     const [image, setImage] = useState(null);
     const [imageLoading, setImageLoading] = useState(false);
     const [photoPrev, setPhotoPrev] = useState('#')
@@ -99,7 +100,11 @@ function UploadProfilePicture() {
                     </ul>
                     <img src={photoPrev} />
                     <button onClick={handleSubmit} type="submit">Submit</button>
-                    {(imageLoading) && <p>Loading...</p>}
+                    {(imageLoading) && (
+                    <p>
+                        Loading...
+                        <img className="upload-photo-logo" src={logo} alt='logo' />
+                    </p>)}
                 </Modal>
             )}
         </form>

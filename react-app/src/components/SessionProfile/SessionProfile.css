@@ -34,3 +34,29 @@
     background-color: var(--white);
     font-weight: 600;
 }
+
+.upload-photo-logo {
+    position: absolute;
+    top: calc(50% - 5rem);
+    left: calc(50% - 5rem);
+    width: 10rem;
+    height: 10rem;
+    /* margin: 0 auto; */
+    /* margin:-60px 0 0 -60px; */
+    /* margin: auto; */
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+}
+@-moz-keyframes spin {
+    100% { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform:rotate(360deg);
+    }
+}
