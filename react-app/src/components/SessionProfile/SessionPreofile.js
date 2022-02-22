@@ -10,6 +10,7 @@ import placeholder from '../../images/vinyl.jpg'
 import GoBackButton from '../Utils/GoBackButton';
 import ProtectedRoute from '../auth/ProtectedRoute';
 import GetUserOrders from '../Orders/GetUsersOrders';
+import UploadProfilePicture from './UploadProfilePicture';
 
 
 function SessionProfile({ user }) {
@@ -48,6 +49,7 @@ function SessionProfile({ user }) {
                 </div>
                 <div className='session-heading-button-container'>
                     <button className='session-heading-button session-heading-button-edit'>Edit profile</button>
+                    <UploadProfilePicture />
 
                 </div>
             </section>

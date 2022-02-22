@@ -43,10 +43,11 @@ def upload_image():
         return upload, 400
 
     url = upload["url"]
+    print(url, 'url not saving&&&&&&&&&&&&*********************')
     # we can use the
     # new_image = Photo(post_id=current_user, photo=url)#post id instead of user
     user = User.query.get(current_user.id)
-    user.profile_image_url = url
-    db.session.add(user)
+    user.profile_img_url = url
+    # db.session.add(user)
     db.session.commit()
     return {"url": url}
