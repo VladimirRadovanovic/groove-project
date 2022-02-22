@@ -3,7 +3,8 @@
     height: 25rem;
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
+    margin-top: 4rem;
 }
 .profile-img-container-heading {
     height: 20rem;
@@ -126,6 +127,6 @@
 }
 
 .profile-info-container {
-    font-size: 2.5rem;
+    font-size: 1.6rem;
     padding-left: 2rem;
 }

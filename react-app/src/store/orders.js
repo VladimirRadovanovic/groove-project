@@ -1,6 +1,14 @@
 const ORDER_CHECKOUT = 'orders/ORDER_CHECKOUT'
 const LOAD_ORDERS = 'orders/LOAD_ORDERS'
 const REMOVE_ORDER = 'orders/REMOVE_ORDER'
+const UPDATE_ORDER = 'orders/UPDATE_ORDER'
+
+const editOrder = (order) => {
+    return {
+        type: UPDATE_ORDER,
+        order
+    }
+}
 
 const addOrder = (order) => {
     return {
@@ -20,6 +28,32 @@ const removeOrder = (id) => {
     return {
         type: REMOVE_ORDER,
         id
+    }
+}
+
+export const updateOrder = (id, instructions) => async(dispatch) => {
+    console.log(id, instructions, 'id and instructions')
+    const response = await fetch(`/api/orders/${id}/edit`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({instructions})
+    })
+    if (response.ok) {
+        const data = await response.json()
+        // console.log(data.order, 'order data')
+        dispatch(editOrder(data.order))
+        return null
+    }
+    else if (response.status < 500) {
+        const data = await response.json();
+        console.log(data.errors, 'presed error data')
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ['An error occurred. Please try again.']
     }
 }
 
@@ -80,6 +114,9 @@ export const checkout = (payload) => async(dispatch) => {
 const orderReducer = (state = {}, action) => {
     let newState = {}
     switch(action.type) {
+        case UPDATE_ORDER:
+            newState = {...state, [action.order.id]: action.order}
+            return newState
         case REMOVE_ORDER:
             newState = {...state}
             delete newState[action.id]

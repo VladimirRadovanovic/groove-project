@@ -22,3 +22,15 @@
     background-color: var(--blue-primary);
 }
 
+.session-heading-button-container {
+    padding-left: 1.5rem;
+}
+
+.session-heading-button-edit {
+    width: 13rem;
+    height: 3rem;
+    border-radius: .2rem;
+    border: var(--border-medium);
+    background-color: var(--white);
+    font-weight: 600;
+}

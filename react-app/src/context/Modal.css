@@ -15,18 +15,30 @@
     right: 0;
     left: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.2);
   }
 
-  #modal-content {
+  #modal-content,
+  #confirm-modal-content {
     position: absolute;
     background-color:white;
-    width: 450px;
-    height: 300px;
-    border-radius: 6px;
+    /* width: fit-content; */
+    height: fit-content;
+    border-radius: .2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    animation: moveDown .4s;
+  }
 
+  #modal-content {
+    width: 45rem;
+    min-height: 27rem;
+  }
+
+  #confirm-modal-content {
+    width: 40rem;
+    min-height: 20rem;
+    font-size: 1.4rem;
   }

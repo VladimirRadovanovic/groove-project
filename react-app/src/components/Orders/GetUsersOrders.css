@@ -49,18 +49,116 @@
     font-size: 2rem;
 }
 
-.cancel-order-profile-button {
+.cancel-order-profile-button,
+.update-order-profile-button {
     position: absolute;
     width: 15rem;
     height: 4rem;
     border-radius: .2rem;
     right: 1rem;
-    background-color: var(--orange-primary);
     color: var(--white);
     font-weight: 600;
+    transition: all .2s;
+}
+
+.update-order-profile-button {
+    background-color: var(--gray-primary);
+    top: 6rem;
+}
+
+.update-order-profile-button:hover {
+    background-color: var(--gray-hover-dark);
+}
+
+.cancel-order-profile-button {
+    background-color: var(--orange-primary);
+}
+
+.cancel-order-profile-button:hover {
+    background-color: var(--orange-secondary);
 }
 
 .order-link-detail {
     color: var(--blue-tertiary);
     text-decoration: underline;
+}
+
+.item-delivered-label {
+    display: inline-block;
+    padding: .4rem 2.5rem;
+    background-color: var(--green);
+    border-radius: .2rem;
+    font-weight: 500;
+    color: var(--white);
+}
+
+.update-instructions-container {
+    width: 80%;
+    height: 100%;
+    padding: 2rem;
+}
+
+.modal-heading {
+    font-size: 2rem;
+    padding: 1rem 0;
+}
+
+.modal-textarea {
+    border: var(--border-light);
+    border-radius: .2rem;
+    width: calc(100% - 2rem);
+    padding: 1rem;
+    height: 10rem;
+
+}
+
+.update-instructions-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.update-instructions-button {
+    margin-top: 1rem;
+    background-color: var(--yellow);
+    padding: .7rem 3rem;
+    font-weight: 600;
+}
+
+.confirm-button-container {
+    margin-top: 1rem;
+}
+
+.confirm-delete,
+.cancel-delete {
+    margin: .5rem;
+    width: 15rem;
+    height: 4rem;
+    border-radius: .2rem;
+    font-weight: 600;
+    font-size: 1.6rem;
+    transition: all .2s;
+}
+
+.confirm-delete {
+    color: var(--white);
+    padding: .1rem;
+    background-color: var(--orange-primary);
+
+}
+
+.confirm-delete:hover {
+    background-color: var(--orange-secondary);
+}
+
+.cancel-delete {
+    border: var(--border-dark);
+    background-color: var(--white);
+}
+
+.cancel-delete:hover {
+    background-color: var(--gray-hover-light);
+    border: 1px solid var(--gray-hover-light);
 }

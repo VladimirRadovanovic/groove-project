@@ -5,10 +5,17 @@ import { NavLink } from 'react-router-dom';
 import './GetUsersOrders.css'
 import { loadUserOrders } from '../../store/orders';
 import { cancelOrder } from '../../store/orders';
+import UpdateOrderForm from './UpdateOrderForm';
+import CancelOrderModal from './CancelOrderModal';
 
 
 function GetUserOrders({ user }) {
     const dispatch = useDispatch()
+    const [showUpdateModal, setShowUpdateModal] = useState(false)
+    const [showConfirmModal, setShowConfirmModal] = useState(false)
+    const [updateId, setUpdateId] = useState('')
+    const [deleteId, setDeleteId] = useState('')
+    const [instruction, setInstruction] = useState('')
 
     useEffect(() => {
         dispatch(loadUserOrders())
@@ -20,13 +27,36 @@ function GetUserOrders({ user }) {
         order?.user_id === user?.id
     ))
 
+    console.log(orders, 'orderssssssss')
+
+    const onCloseConfirm = () => {
+        setShowConfirmModal(false)
+    }
+
+    const onOpenConfirm = (e) => {
+        setShowConfirmModal(true)
+        setDeleteId(e.target.id)
+    }
+
+    const onClose = () => {
+        setShowUpdateModal(false)
+    }
+    const onOpen = (e) => {
+        setShowUpdateModal(true)
+        const id = Number(e.target.id.split('-')[1])
+        setInstruction(orders[id]?.delivery_instructions)
+        setUpdateId(id)
+    }
+
+
     const handleCancelOrder = (e) => {
         const id = e.target.id.split('-')[1]
         const orderId = Number(id)
         dispatch(cancelOrder(id))
+        onCloseConfirm()
     }
-    const date = new Date();
-    console.log(new Date() < new Date(date.setDate(date.getDate() + 2)), 'datedate********')
+    // const date = new Date();
+    // console.log(new Date() < new Date(date.setDate(date.getDate() + 2)), 'datedate********')
     // console.log(sessionUserOrdersList[0]?.ordered_items, 'session rders list*********')
 
     return (
@@ -44,7 +74,7 @@ function GetUserOrders({ user }) {
                         <div>
                             Expected delivery {new Date(new Date(orderItem?.created_at)?.setDate(new Date(orderItem?.created_at)?.getDate() + 2))?.toDateString()}
                         </div>
-                        
+
                         } */}         <p><strong><NavLink className='order-link-detail' to={`/records/${orderItem?.item.id}/details`}>Order item {i + 1}</NavLink></strong></p>
                                     <p>
                                         <strong>Album:</strong> {orderItem?.item?.album}
@@ -64,22 +94,38 @@ function GetUserOrders({ user }) {
                         <div className='middle-container'>
 
                             <div>
-                                <strong>Total cost:</strong> ${order?.total_cost.toFixed(2)}
+                                <strong>Order total:</strong> ${order?.total_cost.toFixed(2)}
                             </div>
                             <div>
                                 <strong>Ordered on: </strong> {order?.created_at && new Date(order?.created_at)?.toDateString()}
                             </div>
                             {order?.created_at && new Date(new Date(order?.created_at)?.setDate(new Date(order?.created_at)?.getDate() + 2)) < new Date() ?
-                                <div>Item delivered</div>
+                                <div className='item-delivered-label'>Order delivered <i className="fa-solid fa-check"></i></div>
                                 :
                                 <div>
-                                    <strong>Expected delivery: </strong> {new Date(new Date(order?.created_at)?.setDate(new Date(order?.created_at)?.getDate() + 2))?.toDateString()}
+                                    <p>
+                                        <strong>Expected delivery: </strong> {new Date(new Date(order?.created_at)?.setDate(new Date(order?.created_at)?.getDate() + 2))?.toDateString()}
+                                    </p>
+                                    <p>
+                                        <strong>Delivery instructions:</strong> {order?.delivery_instructions}
+
+                                    </p>
                                 </div>
                             }
                         </div>
 
-
-                        <button className='cancel-order-profile-button' id={`cancel-${order?.id}`} onClick={handleCancelOrder}>Cancel order</button>
+                        {order?.created_at && new Date(new Date(order?.created_at)?.setDate(new Date(order?.created_at)?.getDate() + 2)) < new Date() ? null :
+                            <div>
+                                <button className='cancel-order-profile-button' id={`cancel-${order?.id}`} onClick={onOpenConfirm}>Cancel order</button>
+                                <button className='update-order-profile-button' id={`order-${order?.id}`} onClick={onOpen}>Update delivery instructions</button>
+                            </div>
+                        }
+                        {showUpdateModal && (
+                            <UpdateOrderForm onClose={onClose} onOpen={onOpen} instructions={instruction} id={updateId} />
+                        )}
+                        {showConfirmModal && (
+                            <CancelOrderModal onCloseConfirm={onCloseConfirm} handleCancelOrder={handleCancelOrder} id={deleteId} />
+                        )}
                     </article>
                 ))}
             </div>

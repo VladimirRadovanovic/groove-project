@@ -157,3 +157,10 @@
     font-size: 1.6rem;
     color: var(--orange-primary);
 }
+
+.set-delivery-span {
+    font-weight: 600;
+    color: var(--blue-tertiary);
+    cursor: pointer;
+    text-decoration: underline;
+}
