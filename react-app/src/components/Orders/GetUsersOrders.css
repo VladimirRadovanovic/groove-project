@@ -126,3 +126,39 @@
     padding: .7rem 3rem;
     font-weight: 600;
 }
+
+.confirm-button-container {
+    margin-top: 1rem;
+}
+
+.confirm-delete,
+.cancel-delete {
+    margin: .5rem;
+    width: 15rem;
+    height: 4rem;
+    border-radius: .2rem;
+    font-weight: 600;
+    font-size: 1.6rem;
+    transition: all .2s;
+}
+
+.confirm-delete {
+    color: var(--white);
+    padding: .1rem;
+    background-color: var(--orange-primary);
+
+}
+
+.confirm-delete:hover {
+    background-color: var(--orange-secondary);
+}
+
+.cancel-delete {
+    border: var(--border-dark);
+    background-color: var(--white);
+}
+
+.cancel-delete:hover {
+    background-color: var(--gray-hover-light);
+    border: 1px solid var(--gray-hover-light);
+}
