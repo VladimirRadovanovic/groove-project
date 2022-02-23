@@ -158,3 +158,27 @@
     display: inline;
 
 }
+
+#user-not-found {
+    font-size: 6rem;
+    font-weight: 800;
+    text-align: center;
+    /* border: var(--border-medium);
+    width: 60%;
+    height: 20rem; */
+}
+
+.other-users-profile-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    flex-direction: column;
+}
+
+.for-sale-by-user {
+    font-size: 3rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}

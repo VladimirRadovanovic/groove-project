@@ -1,6 +1,7 @@
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams, useHistory, NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
+
 
 
 import placeholder from '../../../images/vinyl.jpg'
@@ -69,7 +70,7 @@ function ListingDetails({ user, numItemSetter }) {
             </div>
             <section className='details-data-container'>
                 <div className='sold-by-container'>
-                    <p className='sold-by-paragraph'><strong>Sold by:</strong> {listing?.seller?.username}</p>
+                    <p className='sold-by-paragraph'><strong>Sold by: </strong><NavLink className='link-to-profile-in-details' to={`/users/${listing?.seller?.id}/profile`}>{listing?.seller?.username}</NavLink> </p>
                     <img className='sold-by-img' src={listing?.seller?.profile_img_url ? listing?.seller?.profile_img_url : placeholder} />
                 </div>
                 <div className='details-info-container'>

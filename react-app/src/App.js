@@ -59,7 +59,7 @@ function App() {
           <UsersList/>
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId/profile' exact={true} >
-          <Profile />
+          <Profile numItemSetter={numItemSetter} />
         </ProtectedRoute>
         <ProtectedRoute path='/user/profile'>
           <SessionProfile user={user} />
