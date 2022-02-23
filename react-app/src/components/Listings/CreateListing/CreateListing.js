@@ -160,17 +160,17 @@ function CreateListing({ user }) {
                 <div className='listings-form-container'></div>
                 <form className='listings-form' onSubmit={handleSubmit}>
                     <div>
-                        <label htmlFor='artist'>Artist</label>
+                        <label htmlFor='artist'>Artist*</label>
                         <input
                             id='artist'
                             type='text'
-                            placeholder='Artist*'
+                            placeholder='Artist'
                             value={artist}
                             onChange={(e) => setArtist(e.target.value)}
                         />
                     </div>
                     <div>
-                        <label htmlFor='album'>Album</label>
+                        <label htmlFor='album'>Album*</label>
                         <input
                             id='album'
                             type='text'
@@ -180,17 +180,17 @@ function CreateListing({ user }) {
                         />
                     </div>
                     <div>
-                        <label htmlFor='genre'>Genre</label>
+                        <label htmlFor='genre'>Genre*</label>
                         <input
                             id='genre'
                             type='text'
-                            placeholder='Genre*'
+                            placeholder='Genre'
                             value={genre}
                             onChange={(e) => setGenre(e.target.value)}
                         />
                     </div>
                     <div>
-                        <label htmlFor='condition'>Condition</label>
+                        <label htmlFor='condition'>Condition*</label>
                         <select
                             placeholder='Please choose an option*'
                             id='condition'
@@ -199,7 +199,7 @@ function CreateListing({ user }) {
                             defaultValue={condition}
                             onChange={(e) => setCondition(e.target.value)}
                         >
-                            <option value=''>Please choose an option*</option>
+                            <option value=''>Please choose an option</option>
                             <option value='New'>New</option>
                             <option value='Used - Like New'>Used - Like New</option>
                             <option value='Used - Very Good'>Used - Very Good</option>
@@ -208,7 +208,7 @@ function CreateListing({ user }) {
                         </select>
                     </div>
                     <div>
-                        <label htmlFor='price'>Price</label>
+                        <label htmlFor='price'>Price*</label>
                         {/* <input
                     type='number'
                     placeholder='Price'
@@ -218,7 +218,7 @@ function CreateListing({ user }) {
 
                         <NumberFormat
                             id='price'
-                            placeholder='Price*'
+                            placeholder='Price'
                             value={price}
                             onChange={(e) => setPrice(e.target.value)}
                             thousandSeparator={true}
@@ -232,21 +232,21 @@ function CreateListing({ user }) {
 
                     </div>
                     <div>
-                        <label htmlFor='copies'>Number of copies available</label>
+                        <label htmlFor='copies'>Number of copies available*</label>
                         <input
                             id='copies'
                             type='number'
                             min={0}
-                            placeholder='Number of copies available*'
+                            placeholder='Number of copies available'
                             value={num_copies_available}
                             onChange={(e) => setNum_copies_available(e.target.value)}
                         />
                     </div>
                     <div className='description-container'>
-                        <label htmlFor='description'>Description</label>
+                        <label htmlFor='description'>Description*</label>
                         <textarea
                             id='description'
-                            placeholder='Description*'
+                            placeholder='Description'
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                         />
@@ -258,10 +258,10 @@ function CreateListing({ user }) {
                             accept="image/*"
                             onChange={updateImage}
                         />
-                        {listing ? 'Edit listing photo' : 'Upload listing photo'}
+                        {listing ? 'Edit Listing Photo' : 'Upload Listing Photo'}
                     </label>
                     {listing ?
-                        <button className='listing-button'>Edit Listing</button> :
+                        <button className='listing-button'>Save Changes</button> :
                         <button className='listing-button'>Post a Listing</button>
                     }
                 </form>
