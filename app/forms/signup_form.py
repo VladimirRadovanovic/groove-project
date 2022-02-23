@@ -48,7 +48,7 @@ class SignUpForm(FlaskForm):
         'City', validators=[DataRequired(),
         Length(min=2, max=100, message="City must be between 2 and 100 characters long")])
     state = StringField(
-        'State', validators=[Length(max=100, message="State must be less than 100 characters long")])
+        'State', validators=[Length(max=2, message="If entered, state input should be 2 characters long")])
     zip_code = StringField(
         'Zip code', validators=[DataRequired(),
         Length(min=2, max=100, message="Zip code must be between 2 and 100 characters long")])
