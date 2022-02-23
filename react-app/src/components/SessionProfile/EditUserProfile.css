@@ -1,0 +1,53 @@
+.update-profile-form-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.update-profile-form {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.update-profile-group-container {
+    width: 100%;
+}
+
+.update-profile-form label {
+    display: block;
+    margin-left: -1rem;
+    font-size: 1.2rem;
+}
+
+.update-profile-form input {
+    width: 100%;
+    height: 3.5rem;
+    padding: 0 1rem;
+    margin-left: -1rem;
+}
+
+.update-profile-button {
+    background-color: var(--yellow);
+    width: 16rem;
+    height: 4rem;
+    margin-top: 1.5rem;
+    font-weight: 600;
+    transition: all .2s;
+}
+
+.update-profile-button:hover {
+    background-color: var(--yellow-hover);
+}
+
+.form-group-profile {
+    padding: .2rem;
+}
+
+.update-profile-form h2 {
+    font-size: 2.2rem;
+    display: block;
+}
