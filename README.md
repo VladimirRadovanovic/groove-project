@@ -1,6 +1,8 @@
-# Flask React Project
+# Groove
 
-This is the starter for the Flask React project.
+Groove is the place to find and sell amazing vinyl records. Inspired by The Sound of Vinyl, but with the added benefit of selling vinyl records instead of just purchasing them.
+
+Website: https://groove-project.herokuapp.com/
 
 ## Getting started
 
