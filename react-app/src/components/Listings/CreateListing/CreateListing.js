@@ -273,7 +273,7 @@ function CreateListing({ user }) {
             </div>
             {showModal && (
                 <Modal onClose={onClose}>
-                    <img src={photoPrev} />
+                    <img src={photoPrev} alt='preview' />
                     <button className="upload-photo-button" onClick={handleUploadConfirm} type="submit">Confirm photo selection</button>
                     {(imageLoading) && (
                     <p>

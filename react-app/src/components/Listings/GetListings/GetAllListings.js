@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
+
+
 
 import { getAllListings } from '../../../store/listings';
-import placeholder from '../../../images/vinyl.jpg'
+
 import DisplayListings from '../DisplayListings/DisplayListings';
 import GoBackButton from '../../Utils/GoBackButton';
 

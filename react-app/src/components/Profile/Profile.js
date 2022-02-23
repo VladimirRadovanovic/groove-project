@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import ProfileListings from './ProfileListings';
+
 import { getAllListings } from '../../store/listings';
 // import GetAllListings from '../Listings/GetListings/GetAllListings';
 import GoBackButton from '../Utils/GoBackButton';

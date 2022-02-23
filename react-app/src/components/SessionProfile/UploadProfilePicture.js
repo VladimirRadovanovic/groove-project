@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { Modal } from "../../context/Modal";
-import { authenticate } from "../../store/session";
+
 import { setUser } from "../../store/session";
 import logo from '../../images/logo.svg'
 
@@ -15,7 +15,7 @@ function UploadProfilePicture() {
     const [imageLoading, setImageLoading] = useState(false);
     const [photoPrev, setPhotoPrev] = useState('#')
     const [showModal, setShowModal] = useState(false)
-    const [errors, setErrors] = useState([]);
+
     const [uploadImgErrors, setUploadImgErrors] = useState([])
 
     const onClose = () => {
@@ -102,7 +102,7 @@ function UploadProfilePicture() {
                             <li key={error}>{error}</li>
                         ))}
                     </ul>
-                    <img src={photoPrev} />
+                    <img src={photoPrev} alt='preview'/>
                     <button className="upload-photo-button" onClick={handleSubmit} type="submit">Upload</button>
                     {(imageLoading) && (
                     <p>
