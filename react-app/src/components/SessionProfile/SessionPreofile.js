@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Switch, NavLink } from 'react-router-dom';
 
 
@@ -12,16 +12,25 @@ import GoBackButton from '../Utils/GoBackButton';
 import ProtectedRoute from '../auth/ProtectedRoute';
 import GetUserOrders from '../Orders/GetUsersOrders';
 import UploadProfilePicture from './UploadProfilePicture';
+import EditUserProfile from './EditUserProfile';
 
 
 function SessionProfile({ user }) {
     const dispatch = useDispatch()
+    const [showModal, setShowModal] = useState(false)
     // const url = window.location.href
 
     useEffect(() => {
         dispatch(getAllListings())
     }, [dispatch, user])
 
+    const onOpen = (e) => {
+        setShowModal(true)
+    }
+
+    const onClose = () => {
+        setShowModal(false)
+    }
 
     const listings = useSelector(state => state.listings)
     const listingsList = Object.values(listings)
@@ -64,7 +73,7 @@ function SessionProfile({ user }) {
                     </div>
                 </div>
                 <div className='session-heading-button-container'>
-                    <button className='session-heading-button session-heading-button-edit'>Edit profile</button>
+                    <button onClick={onOpen} id={`user-${user?.id}`} className='session-heading-button session-heading-button-edit'>Edit profile</button>
                     <UploadProfilePicture />
                 </div>
             </section>
@@ -80,6 +89,9 @@ function SessionProfile({ user }) {
                     <GetUserOrders user={user} />
                 </ProtectedRoute>
             </Switch>
+            {showModal && (
+                <EditUserProfile onClose={onClose} user={user} />
+            )}
         </main>
     )
 }
