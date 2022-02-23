@@ -74,17 +74,6 @@ function EditUserProfile({ user, onClose }) {
                             ></input>
                         </div>
                         <div className='form-group-profile'>
-                            <label htmlFor='email-profile'>Email*</label>
-                            <input
-                                placeholder='name@email.com*'
-                                id='email-profile'
-                                type='email'
-                                name='email'
-                                onChange={updateEmail}
-                                value={email}
-                            ></input>
-                        </div>
-                        <div className='form-group-profile'>
                             <label htmlFor='address-profile'>Address*</label>
                             <input
                                 placeholder='Address*'
