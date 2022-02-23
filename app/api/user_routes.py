@@ -1,6 +1,8 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
+from app.forms import EditUserForm
 from app.models import User, db
+from app.api.auth_routes import validation_errors_to_error_messages
 from app.aws import (
     upload_file_to_s3, allowed_file, get_unique_filename)
 
@@ -51,3 +53,24 @@ def upload_image():
     # db.session.add(user)
     db.session.commit()
     return {'user': user.to_dict()}
+
+
+@user_routes.route('/<int:id>/edit', methods=['PATCH'])
+@login_required
+def edit_user(id):
+    form = EditUserForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        data = form.data
+        user = User.query.get(id)
+        user.username=data['username']
+        user.address=data['address']
+        user.city=data['city']
+        user.state=data['state']
+        user.zip_code=data['zip_code']
+        user.country=data['country']
+
+        db.session.commit()
+
+        return {'user': user.to_dict()}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401

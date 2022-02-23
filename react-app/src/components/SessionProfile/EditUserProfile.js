@@ -3,31 +3,27 @@ import { useDispatch } from 'react-redux';
 
 import { ProfileUpdateModal } from '../../context/Modal';
 import './EditUserProfile.css'
+import { updateUserInfo } from '../../store/session';
 
 function EditUserProfile({ user, onClose }) {
+    const dispatch = useDispatch();
 
     const [errors, setErrors] = useState([]);
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [address, setAddress] = useState('');
-    const [city, setCity] = useState('')
-    const [state, setState] = useState('')
-    const [zip_code, setZip_code] = useState('')
-    const [country, setCountry] = useState('')
+    const [username, setUsername] = useState(user?.username || "");
+    const [address, setAddress] = useState(user?.address || "");
+    const [city, setCity] = useState(user?.city || "")
+    const [state, setState] = useState(user?.state || "")
+    const [zip_code, setZip_code] = useState(user?.zip_code || "")
+    const [country, setCountry] = useState(user?.country || "")
 
 
 
     const [validClass, setValidClass] = useState('')
 
     // const user = useSelector(state => state.session.user);
-    const dispatch = useDispatch();
 
     const updateUsername = (e) => {
         setUsername(e.target.value);
-      };
-
-      const updateEmail = (e) => {
-        setEmail(e.target.value);
       };
 
       const updateAddress = (e) => {
@@ -51,10 +47,30 @@ function EditUserProfile({ user, onClose }) {
       }
 
 
+      const handleSubmit = async(e) => {
+        e.preventDefault()
+        const payload = {
+            id: user?.id,
+            username,
+            address,
+            city,
+            state,
+            zip_code,
+            country
+        }
+        const data = await dispatch(updateUserInfo(payload))
+        if(data) {
+            setErrors(data)
+        } else {
+            onClose()
+        }
+      }
+
+
     return (
         <ProfileUpdateModal onClose={onClose} >
             <div className='update-profile-form-container'>
-                <form className='update-profile-form'>
+                <form onSubmit={handleSubmit} className='update-profile-form'>
                     <h2>Update Profile Information</h2>
                     <div className='auth-errors-container'>
                         {errors.map((error, ind) => (
@@ -130,7 +146,7 @@ function EditUserProfile({ user, onClose }) {
                         </div>
 
                     </div>
-                    <button className='update-profile-button'>Save Changes</button>
+                    <button id={`updateuser-${user?.id}`} className='update-profile-button'>Save Changes</button>
                 </form>
             </div>
 
