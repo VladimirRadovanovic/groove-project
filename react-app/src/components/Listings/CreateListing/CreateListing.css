@@ -122,6 +122,11 @@
     display: none;
 }
 
+.optional-paragraph {
+    font-size: 1.2rem;
+    margin-bottom: .3rem;
+}
+
 /* .back-button-container{
 
     transition: all 0.2s;

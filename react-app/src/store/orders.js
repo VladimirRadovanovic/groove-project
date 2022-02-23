@@ -32,7 +32,7 @@ const removeOrder = (id) => {
 }
 
 export const updateOrder = (id, instructions) => async(dispatch) => {
-    console.log(id, instructions, 'id and instructions')
+
     const response = await fetch(`/api/orders/${id}/edit`, {
         method: 'PATCH',
         headers: {
@@ -42,13 +42,12 @@ export const updateOrder = (id, instructions) => async(dispatch) => {
     })
     if (response.ok) {
         const data = await response.json()
-        // console.log(data.order, 'order data')
         dispatch(editOrder(data.order))
         return null
     }
     else if (response.status < 500) {
         const data = await response.json();
-        console.log(data.errors, 'presed error data')
+
         if (data.errors) {
             return data.errors;
         }
@@ -83,7 +82,7 @@ export const loadUserOrders = () => async(dispatch) => {
 
 
 export const checkout = (payload) => async(dispatch) => {
-    console.log(payload, 'payload******')
+
     const response = await fetch('/api/orders/checkout', {
         method: 'POST',
         headers: {
@@ -92,17 +91,16 @@ export const checkout = (payload) => async(dispatch) => {
         body: JSON.stringify(payload)
     })
 
-    // const data = await response.json()
-    // console.log(data.errors, 'response****')
+
     if (response.ok) {
         const data = await response.json()
-        // console.log(data.order, 'order data')
+
         dispatch(addOrder(data.order))
         return null
     }
     else if (response.status < 500) {
         const data = await response.json();
-        console.log(data.errors, 'presed error data')
+
         if (data.errors) {
             return data.errors;
         }

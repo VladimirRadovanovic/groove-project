@@ -13,6 +13,35 @@ const removeUser = () => ({
 
 const initialState = { user: null };
 
+export const updateUserInfo = (payload) => async(dispatch) => {
+    const response = await fetch(`/api/users/${payload.id}/edit`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username: payload.username,
+        address: payload.address,
+        city: payload.city,
+        state: payload.state,
+        zip_code: payload.zip_code,
+        country: payload.country
+      })
+    })
+    if (response.ok) {
+      const data = await response.json()
+      dispatch(setUser(data.user))
+      return null
+  } else if (response.status < 500) {
+      const data = await response.json();
+      if (data.errors) {
+          return data.errors;
+      }
+  } else {
+      return ['An error occurred. Please try again.']
+  }
+}
+
 export const authenticate = () => async (dispatch) => {
   const response = await fetch('/api/auth/', {
     headers: {

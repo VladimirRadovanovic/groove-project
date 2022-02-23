@@ -27,7 +27,7 @@ function GetUserOrders({ user }) {
         order?.user_id === user?.id
     ))
 
-    console.log(orders, 'orderssssssss')
+
 
     const onCloseConfirm = () => {
         setShowConfirmModal(false)
@@ -55,9 +55,8 @@ function GetUserOrders({ user }) {
         dispatch(cancelOrder(id))
         onCloseConfirm()
     }
-    // const date = new Date();
-    // console.log(new Date() < new Date(date.setDate(date.getDate() + 2)), 'datedate********')
-    // console.log(sessionUserOrdersList[0]?.ordered_items, 'session rders list*********')
+
+
 
     return (
         <section className='profile-orders-section-container'>

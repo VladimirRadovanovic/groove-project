@@ -14,7 +14,7 @@ order_routes = Blueprint('orders', __name__)
 def make_order():
     req = request.json
     errors = []
-    print('********************',req, 'request pre if&&&&&&&&&*********((((((((((((')
+
     if len(req['items']) <= 0:
         errors.append('Your cart is empty.')
     if len(req['delivery_instructions']) > 100:
@@ -26,9 +26,9 @@ def make_order():
         if item['seller_id'] == req['user_id']:
             errors.append(f'"{album}" by "{artist}" is your listing. You may not purchase records you advertised.')
         if item['num_copies_available'] < item['cart_item_num']:
-            # print(item, 'item *****************')
+
             errors.append(f'Only {available_copies} copies of the "{album}" by "{artist}" are available for sale.')
-            # return {'errors' :[f'Only {available_copies} copies of the "{album}" by "{artist}" are available for sale.']}
+
         if item['cart_item_num'] < 1:
             errors.append('You may not purchase less then 1 copy')
     if errors:
@@ -48,8 +48,6 @@ def make_order():
     db.session.commit()
 
 
-    # print('**************in the routein the routein the routein the routein the routein the routein the route***************')
-    # print(req['items'][0],'request data ***********************************************************')
     return {'order': order.to_dict()}
 
 
@@ -73,15 +71,15 @@ def cancel_order(id):
 @order_routes.route('/<int:id>/edit', methods=['PATCH'])
 @login_required
 def edit_order(id):
-    print(request.json, '&&&&&&&&&&&&&&&&&&&&edit instructions*********^^^^^^^^^^^')
+
     form = EditOrderForm()
-    print(form, 'form form form &&&^^^^^^^^^^^^^^^^^')
+
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        print( 'order&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
+
         order = Order.query.get(id)
         data = form.data
-        print(data, 'data json see&&&&&&&&&&&&&***********************')
+
         if len(data['instructions']) > 0:
             order.delivery_instructions=data['instructions']
         else:

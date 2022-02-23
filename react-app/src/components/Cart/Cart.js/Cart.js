@@ -13,8 +13,7 @@ function Cart({ user, numItemSetter }) {
     const [errors, setErrors] = useState([])
     const [deliveryInstructions, setDeliveryInstructions] = useState('')
     const [showDeliveryInstructions, setShowDeliveryInstructions] = useState(false)
-    console.log(deliveryInstructions, 'errors !!!!!!!!!!!!!!!!!!')
-    console.log(numItems, 'numItems*********')
+
 
     const errorSetter = (data) => {
         setErrors(data)
@@ -35,11 +34,7 @@ function Cart({ user, numItemSetter }) {
 
     }, [numItems, itemId, calcPrice])
 
-    // if (itemPricesArr.length > 0) {
-    // let price = itemPricesArr[0]?.innerText?.slice(1).
-    // console.log(parseFloat(price).toFixed(2), 'sliced price')
 
-    // }
 
     useEffect(() => {
         const renderedItems = Object.values(localStorage)
@@ -54,7 +49,7 @@ function Cart({ user, numItemSetter }) {
             // console.log(pars['price'], pars['cart_item_num'] || 1, 'my math*****')
             // totalPrice += pars['price'] * pars['cart_item_num'] || 1
         })
-        // setCalcPrice(totalPrice)
+
         setNumItems({ ...numItems, ...obj })
     }, [])
 
@@ -65,7 +60,7 @@ function Cart({ user, numItemSetter }) {
 
     ))
 
-    console.log(parsedItems, 'checkout items *************')
+
 
     const handelClearCart = (e) => {
         const storageKeys = Object.keys(localStorage)

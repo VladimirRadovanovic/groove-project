@@ -19,7 +19,8 @@
   }
 
   #modal-content,
-  #confirm-modal-content {
+  #confirm-modal-content,
+  #profile-modal-content {
     position: absolute;
     background-color:white;
     /* width: fit-content; */
@@ -44,4 +45,9 @@
     width: 40rem;
     min-height: 20rem;
     font-size: 1.4rem;
+  }
+
+  #profile-modal-content {
+    width: 42rem;
+    min-height: 52rem;
   }
