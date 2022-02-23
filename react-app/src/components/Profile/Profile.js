@@ -4,13 +4,17 @@ import { useParams } from 'react-router-dom';
 
 import ProfileListings from './ProfileListings';
 import { getAllListings } from '../../store/listings';
+// import GetAllListings from '../Listings/GetListings/GetAllListings';
+import GoBackButton from '../Utils/GoBackButton';
+import DisplayListings from '../Listings/DisplayListings/DisplayListings';
 import './Profile.css'
 import placeholder from '../../images/vinyl.jpg'
 
-function Profile() {
+function Profile({ numItemSetter }) {
   const dispatch = useDispatch()
   const [user, setUser] = useState({});
   const { userId } = useParams();
+  const [errors, setErrors] = useState([])
 
   useEffect(() => {
     if (!userId) {
@@ -19,7 +23,12 @@ function Profile() {
     (async () => {
       const response = await fetch(`/api/users/${userId}`);
       const user = await response.json();
-      setUser(user);
+      if (user.errors) {
+        setErrors(user.errors)
+
+      } else {
+        setUser(user);
+      }
     })();
   }, [userId, dispatch]);
 
@@ -31,6 +40,9 @@ function Profile() {
 
   const listings = useSelector(state => state.listings)
   const listingsList = Object.values(listings)
+  const landedProfileListings = listingsList.filter(listing => (
+    listing.seller_id === Number(userId)
+  ))
 
 
   if (!user) {
@@ -55,7 +67,23 @@ function Profile() {
           </div>
         </div>
       </section>
-      <ProfileListings listingsList={listingsList} userId={userId} />
+      <div className='auth-errors-container' id='user-not-found'>
+        {errors?.map((error, ind) => (
+          <div key={ind}>{error}</div>
+        ))}
+      </div>
+      <GoBackButton />
+      <section className='other-users-profile-section'>
+        <h2 className='for-sale-by-user'>All vinyl records for sale by {user?.username}. </h2>
+        {landedProfileListings?.length === 0 && (
+          <div className="none-available-container">
+            <p className="none-available-text">This user has no vinyl records for sale at the moment.</p>
+          </div>
+        )}
+        <DisplayListings listingsList={landedProfileListings} numItemSetter={numItemSetter} />
+
+      </section>
+
     </main>
   );
 }

@@ -20,7 +20,10 @@ def users():
 @login_required
 def user(id):
     user = User.query.get(id)
-    return user.to_dict()
+    if user is not None:
+        return user.to_dict()
+    else:
+        return {'errors': ['User not found.']}
 
 
 @user_routes.route("/upload-profile-photo", methods=["PUT"])
