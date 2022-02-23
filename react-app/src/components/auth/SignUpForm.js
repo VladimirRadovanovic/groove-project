@@ -117,6 +117,7 @@ const SignUpForm = () => {
               <div key={ind}>{error}</div>
             ))}
           </div>
+          <div className='signup-form-group-container'>
           <div className='form-group'>
             <label htmlFor='username'>User Name</label>
             <input
@@ -219,11 +220,14 @@ const SignUpForm = () => {
               required={true}
             ></input>
           </div>
+          </div>
+          <div className='signup-button-container'>
           <div className='form-button-container margin-bottom-small signup-button'>
             <button type='submit'>Register</button>
           </div>
           <div className='form-button-container margin-bottom-small demo-button'>
             <button type='button' onClick={handleDemo}>Demo login</button>
+          </div>
           </div>
         </form>
       </div>
