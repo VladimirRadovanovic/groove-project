@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import './DropdownMenu.css'
 import logo from '../../images/logo.svg'
+import avatar from '../../images/avatar.svg'
 
 
 function DropdownMenu() {
@@ -36,7 +37,7 @@ function DropdownMenu() {
                     <button className="profile-button" onClick={openMenu}>
                         <i className="fas fa-bars bars" />
                         <div className="profile-img-container">
-                            <img className="profile-img" src={user ? user.profileImgUrl ? user.profileImgUrl : logo : logo} alt='profile' />
+                            <img className="profile-img" src={user ? user?.profile_img_url ? user?.profile_img_url : avatar : logo} alt='profile' />
                         </div>
                     </button>
                     {showMenu && (

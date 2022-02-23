@@ -23,14 +23,80 @@
 }
 
 .session-heading-button-container {
-    padding-left: 1.5rem;
+    padding-left: 2.5rem;
+    display: inline-flex;
+    /* align-items: center; */
+    position: absolute;
+    left: 50%;
 }
 
-.session-heading-button-edit {
+.session-heading-button-edit,
+.photo-upload-label {
+    display: inline-block;
     width: 13rem;
     height: 3rem;
     border-radius: .2rem;
     border: var(--border-medium);
     background-color: var(--white);
     font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.photo-upload-label {
+    /* font-size: 1.6rem; */
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    margin-left: .5rem;
+    line-height: 2.7rem;
+}
+
+.upload-photo-logo {
+    position: absolute;
+    top: calc(50% - 5rem);
+    left: calc(50% - 5rem);
+    width: 10rem;
+    height: 10rem;
+    /* margin: 0 auto; */
+    /* margin:-60px 0 0 -60px; */
+    /* margin: auto; */
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+}
+@-moz-keyframes spin {
+    100% { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform:rotate(360deg);
+    }
+}
+
+
+.upload-photo-button {
+    font-size: 1.6rem;
+    font-weight: 600;
+    background-color: var(--yellow);
+    width: 17rem;
+    height: 4rem;
+    margin: 1rem auto;
+    transition: all .2s;
+    padding: .6rem 1.3rem;
+}
+
+.upload-photo-button:hover {
+    background-color: var(--yellow-hover);
+}
+
+#photo-upload {
+    display: none;
+}
+
+.modal-errors-list {
+    margin: 1rem;
 }

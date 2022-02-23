@@ -8,8 +8,9 @@ function ConfirmRemoveListing({ id, handleDelete, onClose }) {
 
     return(
         // <>
-        //      <button className='remove-listing-profile' id={listing?.id} onClick={handleDelete}>Remove Listing</button>
+        //      <button className='remove-listing-profile' id={id} onClick={handleDelete}>Remove Listing</button>
         // </>
+
         <ConfirmModal onClose={onClose}>
         <h3>Are you sure you would like to remove this listing?</h3>
         <div className="confirm-button-container">

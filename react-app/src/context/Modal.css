@@ -30,11 +30,14 @@
     align-items: center;
     justify-content: center;
     animation: moveDown .4s;
+    z-index: 150;
   }
 
   #modal-content {
     width: 45rem;
     min-height: 27rem;
+    /* max-height: 65rem; */
+
   }
 
   #confirm-modal-content {

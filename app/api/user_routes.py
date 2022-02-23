@@ -25,12 +25,12 @@ def user(id):
 @login_required
 def upload_image():
     if "image" not in request.files:
-        return {"errors": "image required"}, 400
+        return {"errors": ["image required"]}, 400
 
     image = request.files["image"]
 
     if not allowed_file(image.filename):
-        return {"errors": "file type not permitted"}, 400
+        return {"errors": ["file type not permitted"]}, 400
 
     image.filename = get_unique_filename(image.filename)
 
@@ -43,10 +43,11 @@ def upload_image():
         return upload, 400
 
     url = upload["url"]
+    print(url, 'url not saving&&&&&&&&&&&&*********************')
     # we can use the
     # new_image = Photo(post_id=current_user, photo=url)#post id instead of user
     user = User.query.get(current_user.id)
-    user.profile_image_url = url
-    db.session.add(user)
+    user.profile_img_url = url
+    # db.session.add(user)
     db.session.commit()
-    return {"url": url}
+    return {'user': user.to_dict()}

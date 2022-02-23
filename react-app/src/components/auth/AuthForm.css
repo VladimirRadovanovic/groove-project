@@ -31,6 +31,10 @@
     border-bottom: .3rem solid transparent;
 }
 
+#state-signup {
+    border-bottom: .3rem solid transparent;
+}
+
 
 .auth-form input:focus:invalid {
     border-bottom: .3rem solid var(--orange-secondary);
@@ -102,6 +106,38 @@
 
 .signup-form-container {
     margin-top: 9rem;
+    width: 114rem;
+    min-height: 80rem;
+
+}
+
+.signup-form {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: 90%;
+    margin-bottom: 3rem;
+}
+
+.signup-form div {
+    width: fit-content;
+    margin: 0 2rem;
+}
+
+.signup-form-group-container {
+    /* margin-top: 40rem; */
+    height: 50rem;
+    display: flex;
+    width: fit-content;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.signup-button-container {
+    display: flex;
+    /* margin-bottom: 3rem; */
 }
 
 

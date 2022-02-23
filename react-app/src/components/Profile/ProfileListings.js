@@ -43,10 +43,15 @@ function ProfileListings({ listingsList, userId }) {
     return (
         <section className="profile-listings-section">
             <div className="profile-listings-article-container">
+                {profileListings?.length === 0 && (
+                    <div className="none-available-container">
+                        <p className="none-available-text">No listings available.</p>
+                    </div>
+                )}
                 {profileListings?.map(listing => (
                     <article className="profile-listings-article" key={listing?.id}>
                         <div className="profile-article-img-container">
-                            <img className="profile-article-img" src={placeholder} />
+                            <img className="profile-article-img" src={listing.img_url ? listing.img_url : placeholder} />
                         </div>
                         <div className="profile-listings-info-container">
                             <div className="profile-article-album-data">
@@ -76,14 +81,14 @@ function ProfileListings({ listingsList, userId }) {
                             <NavLink to={`/records/${listing?.id}/details`}>View Details</NavLink>
                             <EditListing listing={listing} userId={userId} />
                             <button className='remove-listing-profile' id={listing?.id} onClick={onOpen}>Remove Listing</button>
-                            {showModal && (
-                                <ConfirmRemoveListing id={listingId} handleDelete={handleDelete} onClose={onClose} />
-
-                            )}
                         </div>
                     </article>
                 ))}
             </div>
+                {showModal && (
+                    <ConfirmRemoveListing id={listingId} handleDelete={handleDelete} onClose={onClose} />
+
+                )}
         </section>
     )
 }

@@ -28,7 +28,7 @@ function DisplayListings({ listingsList, numItemSetter }) {
                 <article className='section-3-article article' key={listing?.id}>
                     <div className='article-side article-front'>
                         <div className='section-3-img-container article-img-container'>
-                            <img src={listing?.images?.img_url ? listing?.images?.img_url : placeholder}
+                            <img src={listing?.img_url ? listing?.img_url : placeholder}
                                 className='section-3-img article-img' alt='record' />
                         </div>
                         <div className='article-front-text-container'>

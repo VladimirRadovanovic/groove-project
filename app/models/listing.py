@@ -15,6 +15,7 @@ class Listing(db.Model):
     condition = db.Column(db.String(50), nullable=False)
     price = db.Column(db.Float, nullable=False)
     num_copies_available = db.Column(db.Integer, nullable=False)
+    img_url = db.Column(db.String(255))
 
     #one seller has many listings
     seller = db.relationship('User', back_populates='listings')
@@ -32,5 +33,6 @@ class Listing(db.Model):
             'price': self.price,
             'created_at': self.created_at,
             'seller': self.seller.to_dict_first(),
-            'num_copies_available': self.num_copies_available
+            'num_copies_available': self.num_copies_available,
+            'img_url': self.img_url
         }

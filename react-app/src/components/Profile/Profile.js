@@ -42,16 +42,16 @@ function Profile() {
     <main>
       <section className='profile-header'>
         <div className='profile-img-container-heading'>
-          <img className='profile-img-heading' src={placeholder} alt='profile' />
+          <img className='profile-img-heading' src={user?.profile_img_url ? user?.profile_img_url : placeholder} alt='profile' />
         </div>
         <div className='profile-info-container'>
           <div>
           </div>
           <div>
-            <strong>Username:</strong> {user.username}
+            <strong>Username:</strong> {user?.username}
           </div>
           <div>
-            <strong>Email:</strong> {user.email}
+            <strong>Email:</strong> {user?.email}
           </div>
         </div>
       </section>

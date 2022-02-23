@@ -1,13 +1,14 @@
 import { useParams, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 
 import placeholder from '../../../images/vinyl.jpg'
 import { getAllListings } from '../../../store/listings'
 import './ListingDetails.css'
 import EditListing from '../EditListing/EditListing'
-import RemoveListing from '../RemoveListing/RemoveListing'
+// import RemoveListing from '../RemoveListing/RemoveListing'
+import ConfirmRemoveListing from '../RemoveListing/RemoveListing'
 import { deleteListing } from '../../../store/listings'
 import AddToCart from '../../Cart/AddToCart/AddToCart'
 import GoBackButton from '../../Utils/GoBackButton'
@@ -16,6 +17,9 @@ import GoBackButton from '../../Utils/GoBackButton'
 function ListingDetails({ user, numItemSetter }) {
     const history = useHistory()
     const dispatch = useDispatch()
+    const [showModal, setShowModal] = useState(false)
+    const [listingIdNum, setListingIdNum] = useState('')
+
     const { recordId } = useParams()
     const listingId = Number(recordId)
     useEffect(() => {
@@ -25,11 +29,23 @@ function ListingDetails({ user, numItemSetter }) {
     const listings = useSelector(state => state.listings)
     const listing = listings[listingId]
 
-    const handleDelete = (e) => {
+    const handleDelete = async(e) => {
         const id = Number(e.target.id)
-        dispatch(deleteListing(id))
-        history.push(`/users/${user.id}/profile`)
+        const data = await dispatch(deleteListing(id))
+        if (data === 'Deleted') {
 
+            history.push(`/user/profile`)
+        }
+
+    }
+
+    const onOpen = (e) => {
+        setShowModal(true)
+        setListingIdNum(Number(e.target.id))
+    }
+
+    const onClose = () => {
+        setShowModal(false)
     }
 
     const handleAddToCart = (e) => {
@@ -45,12 +61,12 @@ function ListingDetails({ user, numItemSetter }) {
     return (
         <main className='details-main-container'>
             <section className='details-img-container'>
-                <img className='details-img' src={placeholder} />
+                <img className='details-img' src={listing?.img_url ? listing.img_url : placeholder} />
             </section>
-                <div className='details-back'>
-                <GoBackButton  />
+            <div className='details-back'>
+                <GoBackButton />
 
-                </div>
+            </div>
             <section className='details-data-container'>
                 <div className='sold-by-container'>
                     <p className='sold-by-paragraph'><strong>Sold by:</strong> {listing?.seller?.username}</p>
@@ -67,14 +83,19 @@ function ListingDetails({ user, numItemSetter }) {
                     <p><strong>Description:</strong> {listing?.description}</p>
                 </div>
                 {listing?.seller_id === user?.id ?
-                <div className='edit-remove-profile-container'>
-                    <EditListing listing={listing}/>
-                    <RemoveListing listing={listing} handleDelete={handleDelete} />
-                </div>
+                    <div className='edit-remove-profile-container'>
+                        <EditListing listing={listing} />
+                        {/* <ConfirmRemoveListing listing={listing} handleDelete={handleDelete} /> */}
+                        <button className='remove-listing-profile' id={listing?.id} onClick={onOpen} >Remove listing</button>
+                    </div>
                     :
                     // <AddToCart listing={listing} />
                     <button onClick={handleAddToCart} id={listing?.id} className='cart-button details-cart-button'>Add to Cart</button>
                 }
+                {showModal && (
+                    <ConfirmRemoveListing id={listingIdNum} handleDelete={handleDelete} onClose={onClose} />
+
+                )}
             </section>
         </main>
     )
