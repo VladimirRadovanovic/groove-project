@@ -47,6 +47,7 @@
 .middle-container {
     width: 40%;
     font-size: 2rem;
+    word-wrap: break-word;
 }
 
 .cancel-order-profile-button,

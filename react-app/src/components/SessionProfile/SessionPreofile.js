@@ -7,6 +7,7 @@ import { getAllListings } from '../../store/listings';
 import ProfileListings from '../Profile/ProfileListings';
 import './SessionProfile.css';
 import placeholder from '../../images/vinyl.jpg'
+import avatar from '../../images/avatar.svg'
 import GoBackButton from '../Utils/GoBackButton';
 import ProtectedRoute from '../auth/ProtectedRoute';
 import GetUserOrders from '../Orders/GetUsersOrders';
@@ -35,7 +36,7 @@ function SessionProfile({ user }) {
             <GoBackButton />
             <section className='profile-header'>
                 <div className='profile-img-container-heading'>
-                    <img className='profile-img-heading' src={user?.profile_img_url ? user?.profile_img_url : placeholder} alt='profile' />
+                    <img className='profile-img-heading' src={user?.profile_img_url ? user?.profile_img_url : avatar} alt='profile' />
                 </div>
                 <div className='profile-info-container'>
                     <div>

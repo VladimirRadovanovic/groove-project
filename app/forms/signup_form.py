@@ -32,7 +32,7 @@ def match_passswords(form, field):
 class SignUpForm(FlaskForm):
     username = StringField(
         'Username', validators=[DataRequired(),
-        Length(min=2, max=50, message="Username must be between 2 and 50 characters long"),
+        Length(min=2, max=40, message="Username must be between 2 and 40 characters long"),
         username_exists])
     email = StringField('Email', validators=[DataRequired(),
         Email(message="Please enter a valid email address"),

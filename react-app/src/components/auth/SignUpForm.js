@@ -121,7 +121,7 @@ const SignUpForm = () => {
           <div className='form-group'>
             <label htmlFor='username'>User Name</label>
             <input
-              placeholder='Username'
+              placeholder='Username*'
               id='username'
               type='text'
               name='username'
@@ -132,7 +132,7 @@ const SignUpForm = () => {
           <div className='form-group'>
             <label htmlFor='email-signup'>Email</label>
             <input
-              placeholder='name@email.com'
+              placeholder='name@email.com*'
               id='email-signup'
               type='email'
               name='email'
@@ -143,7 +143,7 @@ const SignUpForm = () => {
           <div className='form-group'>
             <label htmlFor='address-signup'>Address</label>
             <input
-              placeholder='Address'
+              placeholder='Address*'
               id='address-signup'
               type='text'
               name='address'
@@ -154,7 +154,7 @@ const SignUpForm = () => {
           <div className='form-group'>
             <label htmlFor='city-signup'>City</label>
             <input
-              placeholder='City'
+              placeholder='City*'
               id='city-signup'
               type='text'
               name='city'
@@ -176,7 +176,7 @@ const SignUpForm = () => {
           <div className='form-group'>
             <label htmlFor='zip_code-signup'>Zip code</label>
             <input
-              placeholder='Zip code'
+              placeholder='Zip code*'
               id='zip_code-signup'
               type='text'
               name='zip_code'
@@ -187,7 +187,7 @@ const SignUpForm = () => {
           <div className='form-group'>
             <label htmlFor='country-signup'>Country</label>
             <input
-              placeholder='Country'
+              placeholder='Country*'
               id='country-signup'
               type='text'
               name='country'
@@ -199,7 +199,7 @@ const SignUpForm = () => {
             <label htmlFor='password-signup'>Password</label>
             <input
               className={validClass}
-              placeholder='*********'
+              placeholder='Password*'
               id='password-signup'
               type='password'
               name='password'
@@ -211,7 +211,7 @@ const SignUpForm = () => {
             <label htmlFor='repeat_password'>Repeat Password</label>
             <input
               className={validRepeat_password}
-              placeholder='*********'
+              placeholder='Confirm password*'
               id='repeat_password'
               type='password'
               name='repeat_password'

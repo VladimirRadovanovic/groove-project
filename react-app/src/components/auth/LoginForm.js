@@ -77,7 +77,7 @@ const LoginForm = () => {
               id='email'
               name='email'
               type='email'
-              placeholder='name@email.com'
+              placeholder='name@email.com*'
               value={email}
               onChange={updateEmail}
             />
@@ -89,7 +89,7 @@ const LoginForm = () => {
               id='password'
               name='password'
               type='password'
-              placeholder='*********'
+              placeholder='Password*'
               value={password}
               onChange={updatePassword}
             />
