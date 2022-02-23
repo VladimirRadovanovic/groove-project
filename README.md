@@ -12,7 +12,7 @@ Website: https://groove-project.herokuapp.com/
 
 ![alt](https://imgur.com/3s41OFc.png)
 
-##Technologies Used
+## Technologies Used
 
 ### Frontend
    * JavaScript
