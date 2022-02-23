@@ -35,17 +35,17 @@ To run this project localy, take the following steps:
 
    * Clone the repository from GitHub.
    * Install dependencies
-    ** in the root of the project run: pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
-   ** then: cd react-app && npm install
+     - in the root of the project run: pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
+     - then: cd react-app && npm install
    * Create a .env file based on the .env.example with the proper settings for your development environment
    * Set up your PostgreSQL user and database and make sure it matches the information in the .env
-   * Get into pipenv and get the database up to date:
+   * Get into pipenv shell and update the database by running:
      - pipenv shell
-    - flask db upprade
+     - flask db upprade
      - flask seed all
    * Start development servers
-     ** in the root of the project run: flask run
-     ** then: cd react-app && npm start
+     - in the root of the project run: flask run
+     - then: cd react-app && npm start
       
 ## Adding new dependencies
 
