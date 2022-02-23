@@ -4,6 +4,11 @@ Groove is the place to find and sell amazing vinyl records. Inspired by The Soun
 
 Website: https://groove-project.herokuapp.com/
 
+## Documentation
+  * [1. Database Schema](https://github.com/VladimirRadovanovic/groove-project/wiki/Database-Schema)
+  * [2. User Stories](https://github.com/VladimirRadovanovic/groove-project/wiki/User-Stories)
+  * [3. Feature List](https://github.com/VladimirRadovanovic/groove-project/wiki/Feature-List)
+
 ![alt](https://imgur.com/CwEuDnU.png)
 
 ![alt](https://imgur.com/8jKQFVK.png)
@@ -55,4 +60,4 @@ For production dependencies, run pipenv lock -r > requirements.txt.
 
 For development dependencies, run pipenv lock -r --dev > dev-requirements.txt.
 
-Note: psycopg2-binary MUST remain a dev dependency. 
+Note: psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux. There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
