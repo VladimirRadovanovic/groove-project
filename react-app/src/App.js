@@ -82,6 +82,11 @@ function App() {
         <Route path='/cart'>
           <Cart user={user} numItemSetter={numItemSetter} />
         </Route>
+        <Route path='/'>
+          <main className='page-not-found-container'>
+          <h2 className='page-not-found'>Error 404: page not found!</h2>
+          </main>
+        </Route>
       </Switch>
       <Footer />
     </BrowserRouter>

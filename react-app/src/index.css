@@ -65,3 +65,15 @@ img {
 ul {
   list-style: none;
 }
+
+
+.page-not-found-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-not-found {
+  font-size: 8rem;
+  font-weight: 800;
+}
