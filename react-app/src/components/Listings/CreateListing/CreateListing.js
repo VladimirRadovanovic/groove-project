@@ -149,6 +149,7 @@ function CreateListing({ user }) {
             <span>Go back</span>
             </div> */}
             <GoBackButton />
+
             <div className='listings-form-main-container'>
                 <div className='listings-errors-container'>
                     <ul className='all-errors-list'>
@@ -159,6 +160,7 @@ function CreateListing({ user }) {
                 </div>
                 <div className='listings-form-container'></div>
                 <form className='listings-form' onSubmit={handleSubmit}>
+                <p className='optional-paragraph'>You may optionally upload a photo of the vinyl record that you are selling.</p>
                     <div>
                         <label htmlFor='artist'>Artist*</label>
                         <input

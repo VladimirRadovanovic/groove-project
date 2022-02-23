@@ -18,6 +18,7 @@
     font-size: 4rem;
     color: var(--font-color);
     font-weight: 900;
+    padding: 2rem;
 }
 
 .article {
