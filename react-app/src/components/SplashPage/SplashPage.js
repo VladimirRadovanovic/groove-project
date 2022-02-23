@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 
 import './SplashPage.css'
-import GetAllListings from '../Listings/GetListings/GetAllListings';
+
 import ClassicRecords from './ClassicRecords';
 
 

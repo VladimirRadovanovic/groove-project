@@ -18,8 +18,6 @@ function EditUserProfile({ user, onClose }) {
 
 
 
-    const [validClass, setValidClass] = useState('')
-
     // const user = useSelector(state => state.session.user);
 
     const updateUsername = (e) => {

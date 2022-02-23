@@ -1,6 +1,5 @@
 import { useDispatch } from "react-redux";
 import { checkout } from "../../../store/orders";
-import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
 function Checkout({ user, clearCart, items, errorSetter, totalCost, deliveryInstructions }) {

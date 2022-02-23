@@ -51,7 +51,7 @@ function GetUserOrders({ user }) {
 
     const handleCancelOrder = (e) => {
         const id = e.target.id.split('-')[1]
-        const orderId = Number(id)
+        // const orderId = Number(id)
         dispatch(cancelOrder(id))
         onCloseConfirm()
     }

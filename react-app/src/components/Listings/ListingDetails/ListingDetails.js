@@ -11,7 +11,7 @@ import EditListing from '../EditListing/EditListing'
 // import RemoveListing from '../RemoveListing/RemoveListing'
 import ConfirmRemoveListing from '../RemoveListing/RemoveListing'
 import { deleteListing } from '../../../store/listings'
-import AddToCart from '../../Cart/AddToCart/AddToCart'
+
 import GoBackButton from '../../Utils/GoBackButton'
 
 
@@ -25,7 +25,7 @@ function ListingDetails({ user, numItemSetter }) {
     const listingId = Number(recordId)
     useEffect(() => {
         dispatch(getAllListings())
-    }, [recordId])
+    }, [recordId, dispatch])
 
     const listings = useSelector(state => state.listings)
     const listing = listings[listingId]
@@ -62,7 +62,7 @@ function ListingDetails({ user, numItemSetter }) {
     return (
         <main className='details-main-container'>
             <section className='details-img-container'>
-                <img className='details-img' src={listing?.img_url ? listing.img_url : placeholder} />
+                <img className='details-img' src={listing?.img_url ? listing.img_url : placeholder} alt='profile' />
             </section>
             <div className='details-back'>
                 <GoBackButton />
@@ -71,7 +71,7 @@ function ListingDetails({ user, numItemSetter }) {
             <section className='details-data-container'>
                 <div className='sold-by-container'>
                     <p className='sold-by-paragraph'><strong>Sold by: </strong><NavLink className='link-to-profile-in-details' to={`/users/${listing?.seller?.id}/profile`}>{listing?.seller?.username}</NavLink> </p>
-                    <img className='sold-by-img' src={listing?.seller?.profile_img_url ? listing?.seller?.profile_img_url : placeholder} />
+                    <img className='sold-by-img' src={listing?.seller?.profile_img_url ? listing?.seller?.profile_img_url : placeholder} alt='sold' />
                 </div>
                 <div className='details-info-container'>
                     <p><strong>Posted on:</strong> {listing?.created_at && new Date(listing?.created_at).toDateString()}</p>
