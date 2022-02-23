@@ -8,7 +8,7 @@ function Checkout({ user, clearCart, items, errorSetter, totalCost, deliveryInst
     const history = useHistory()
 
     const handleCheckout = async() => {
-        console.log('in handle checkout')
+
         if (!user) {
             history.push('/login')
             return null

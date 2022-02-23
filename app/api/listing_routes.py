@@ -85,7 +85,7 @@ def edit_listing(id):
 def create_listing():
     form = CreateListingForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print(request.files, '****************************printing files from request*************************')
+
     if "image" in request.files:
         image = request.files["image"]
         if not allowed_file(image.filename):

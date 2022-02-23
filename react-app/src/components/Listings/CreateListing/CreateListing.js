@@ -45,7 +45,7 @@ function CreateListing({ user }) {
     // if (!user) return <Redirect to='/login' />
 
     // const url = window.location.href
-    console.log(image, 'image url on create and update')
+
 
     const onClose = () => {
         setShowModal(false)
@@ -68,7 +68,7 @@ function CreateListing({ user }) {
 
         const formData = new FormData();
 
-        console.log(price, 'price starts with ************')
+
 
         if (price?.toString().startsWith('$')) {
             price = parseFloat(price?.toString().slice(1).split(',').join('')).toFixed(2)

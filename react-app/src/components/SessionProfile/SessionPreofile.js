@@ -6,7 +6,7 @@ import { Switch, NavLink } from 'react-router-dom';
 import { getAllListings } from '../../store/listings';
 import ProfileListings from '../Profile/ProfileListings';
 import './SessionProfile.css';
-import placeholder from '../../images/vinyl.jpg'
+
 import avatar from '../../images/avatar.svg'
 import GoBackButton from '../Utils/GoBackButton';
 import ProtectedRoute from '../auth/ProtectedRoute';

@@ -59,7 +59,7 @@ function UploadProfilePicture() {
         // }
         else if (response.status < 500) {
             const data = await response.json();
-            console.log(data.errors, 'presed error data')
+
             if (data.errors) {
                 setUploadImgErrors(data.errors)
                 setImageLoading(false)
@@ -69,7 +69,7 @@ function UploadProfilePicture() {
         else {
             setUploadImgErrors([['An error occurred. Please try again.']])
             setImageLoading(false)
-            console.log("error");
+
         }
     }
 
