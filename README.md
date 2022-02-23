@@ -6,6 +6,12 @@ Website: https://groove-project.herokuapp.com/
 
 ![alt](https://imgur.com/CwEuDnU.png)
 
+![alt](https://imgur.com/juqmss4.png)
+
+![alt](https://imgur.com/y3mhwDd.png)
+
+![alt](https://imgur.com/3s41OFc.png)
+
 ## Getting started
 
 1. Clone this repository (only this branch)
