@@ -4,6 +4,8 @@ Groove is the place to find and sell amazing vinyl records. Inspired by The Soun
 
 Website: https://groove-project.herokuapp.com/
 
+![alt](https://imgur.com/CwEuDnU)
+
 ## Getting started
 
 1. Clone this repository (only this branch)
