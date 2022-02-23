@@ -29,10 +29,13 @@ function ListingDetails({ user, numItemSetter }) {
     const listings = useSelector(state => state.listings)
     const listing = listings[listingId]
 
-    const handleDelete = (e) => {
+    const handleDelete = async(e) => {
         const id = Number(e.target.id)
-        dispatch(deleteListing(id))
-        history.push(`/user/profile`)
+        const data = await dispatch(deleteListing(id))
+        if (data === 'Deleted') {
+
+            history.push(`/user/profile`)
+        }
 
     }
 
