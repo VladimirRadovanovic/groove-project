@@ -17,7 +17,7 @@ Website: https://groove-project.herokuapp.com/
 ![alt](https://imgur.com/RHCeP7M.png)
 ## 2. Listings Page
 ![alt](https://imgur.com/YQUy040.png)
-## 3. Cart Page
+## 3. Shopping Cart Page
 ![alt](https://imgur.com/IgqkIde.png)
 ## 4. Profile Page
 ![alt](https://imgur.com/3s41OFc.png)
