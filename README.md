@@ -8,6 +8,7 @@ Website: https://groove-project.herokuapp.com/
   * [1. Database Schema](https://github.com/VladimirRadovanovic/groove-project/wiki/Database-Schema)
   * [2. User Stories](https://github.com/VladimirRadovanovic/groove-project/wiki/User-Stories)
   * [3. Feature List](https://github.com/VladimirRadovanovic/groove-project/wiki/Feature-List)
+  * [4. API Documentation](https://github.com/VladimirRadovanovic/groove-project/wiki/API-Documentation)
 
 ![alt](https://imgur.com/CwEuDnU.png)
 
