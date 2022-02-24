@@ -16,12 +16,12 @@ Website: https://groove-project.herokuapp.com/
 ## 1.2. Splash Page
 ![alt](https://imgur.com/RHCeP7M.png)
 ## 2. Listings Page
-![alt](https://imgur.com/8jKQFVK.png)
-## Cart Page
+![alt](https://imgur.com/YQUy040.png)
+## 3. Cart Page
 ![alt](https://imgur.com/IgqkIde.png)
-## Profile Page
+## 4. Profile Page
 ![alt](https://imgur.com/3s41OFc.png)
-## Listing Details Page
+## 5. Listing Details Page
 ![alt](https://imgur.com/TCpFj9p.png)
 
 ## Technologies Used
