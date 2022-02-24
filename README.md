@@ -12,7 +12,7 @@ Website: https://groove-project.herokuapp.com/
 
 ![alt](https://imgur.com/CwEuDnU.png)
 
-![alt](https://imgur.com/OHrNfpY.png)
+![alt](https://imgur.com/Xct8as4.png)
 
 ![alt](https://imgur.com/8jKQFVK.png)
 
