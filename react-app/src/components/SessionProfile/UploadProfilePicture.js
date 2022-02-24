@@ -106,7 +106,6 @@ function UploadProfilePicture() {
                     <button className="upload-photo-button" onClick={handleSubmit} type="submit">Upload</button>
                     {(imageLoading) && (
                     <p>
-                        Loading...
                         <img className="upload-photo-logo" src={logo} alt='logo' />
                     </p>)}
                 </Modal>

@@ -11,7 +11,7 @@ import EditListing from '../EditListing/EditListing'
 // import RemoveListing from '../RemoveListing/RemoveListing'
 import ConfirmRemoveListing from '../RemoveListing/RemoveListing'
 import { deleteListing } from '../../../store/listings'
-
+import DisplayReviews from '../../Reviews/DisplayReviews/DisplayReviews'
 import GoBackButton from '../../Utils/GoBackButton'
 
 
@@ -60,7 +60,8 @@ function ListingDetails({ user, numItemSetter }) {
     }
 
     return (
-        <main className='details-main-container'>
+        <main >
+            <div className='details-main-container'>
             <section className='details-img-container'>
                 <img className='details-img' src={listing?.img_url ? listing.img_url : placeholder} alt='profile' />
             </section>
@@ -98,6 +99,8 @@ function ListingDetails({ user, numItemSetter }) {
 
                 )}
             </section>
+            </div>
+            <DisplayReviews listing={listing} />
         </main>
     )
 }

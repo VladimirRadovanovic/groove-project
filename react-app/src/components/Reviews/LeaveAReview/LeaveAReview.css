@@ -1,0 +1,6 @@
+.review-img {
+    height: 15rem;
+    width: 15rem;
+    object-fit: cover;
+    border-radius: .2rem;
+}

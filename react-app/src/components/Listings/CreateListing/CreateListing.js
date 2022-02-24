@@ -277,7 +277,6 @@ function CreateListing({ user }) {
                     <button className="upload-photo-button" onClick={handleUploadConfirm} type="submit">Confirm photo selection</button>
                     {(imageLoading) && (
                     <p>
-                        Loading...
                         <img className="upload-photo-logo" src={logo} alt='logo' />
                     </p>)}
                 </Modal>

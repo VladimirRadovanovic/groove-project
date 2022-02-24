@@ -1,0 +1,7 @@
+.display-reviews-section {
+    height: 80rem;
+    /* width: 50rem; */
+    /* background-color: antiquewhite; */
+    margin-top: 5rem;
+    border-top: var(--border-light);
+}
