@@ -12,6 +12,8 @@ Website: https://groove-project.herokuapp.com/
 
 ![alt](https://imgur.com/CwEuDnU.png)
 
+![alt](https://imgur.com/OHrNfpY.png)
+
 ![alt](https://imgur.com/8jKQFVK.png)
 
 ![alt](https://imgur.com/IgqkIde.png)
