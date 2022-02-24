@@ -44,7 +44,7 @@ function LeaveAReview({ user }) {
             headline,
             review
         }
-        const data = dispatch(makeReview(payload))
+        const data = await dispatch(makeReview(payload))
         if(data) {
             setErrors(data)
             console.log(data, 'review error data*********')
@@ -56,6 +56,11 @@ function LeaveAReview({ user }) {
 
     return (
         <main>
+            {/* <ul>
+                {errors.map(error => (
+                    <li key={error}>{error}</li>
+                ))}
+            </ul> */}
             <h2>
                 Crate review
             </h2>
