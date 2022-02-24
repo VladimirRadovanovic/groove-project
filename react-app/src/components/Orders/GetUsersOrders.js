@@ -56,6 +56,12 @@ function GetUserOrders({ user }) {
         onCloseConfirm()
     }
 
+    const handleClearOrder  = (e) => {
+        const id = e.target.id.split('-')[1]
+        // const orderId = Number(id)
+        dispatch(cancelOrder(id))
+    }
+
 
 
     return (
@@ -119,7 +125,11 @@ function GetUserOrders({ user }) {
                             }
                         </div>
 
-                        {order?.created_at && new Date(new Date(order?.created_at)?.setDate(new Date(order?.created_at)?.getDate() + 2)) < new Date() ? null :
+                        {order?.created_at && new Date(new Date(order?.created_at)?.setDate(new Date(order?.created_at)?.getDate() + 2)) < new Date() ?
+                            <div>
+                                <button onClick={handleClearOrder} id={`clear-${order?.id}`} className='cancel-order-profile-button'>Clear From History</button>
+                            </div>
+                            :
                             <div>
                                 <button className='cancel-order-profile-button' id={`cancel-${order?.id}`} onClick={onOpenConfirm}>Cancel order</button>
                                 <button className='update-order-profile-button' id={`order-${order?.id}`} onClick={onOpen}>Update delivery instructions</button>
