@@ -9,6 +9,8 @@ Website: https://groove-project.herokuapp.com/
   * [2. User Stories](https://github.com/VladimirRadovanovic/groove-project/wiki/User-Stories)
   * [3. Feature List](https://github.com/VladimirRadovanovic/groove-project/wiki/Feature-List)
   * [4. API Documentation](https://github.com/VladimirRadovanovic/groove-project/wiki/API-Documentation)
+  * [5. Frontend Routes](https://github.com/VladimirRadovanovic/groove-project/wiki/Frontend-Routes)
+
 
 ![alt](https://imgur.com/CwEuDnU.png)
 
