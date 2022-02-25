@@ -16,17 +16,18 @@ def make_review():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         data = form.data
-        print(data, '*************************data*************************')
-        # review = Review(
-        #     user_id=current_user.id,
-        #     listing_id=data['listing_id'],
-        #     headline=data['headline'],
-        #     review=data['review'],
-        #     star_rating=data['star_rating]
-        #     )
+        req = request.json
 
-        # db.session.add(review)
-        # db.session.commit()
-        # return {'review': review.to_dict()}
-        return {'review': 'passed'}
+        review = Review(
+            user_id=current_user.id,
+            listing_id=req['listing_id'],
+            headline=data['headline'],
+            review=data['review'],
+            rating=data['rating']
+            )
+
+        db.session.add(review)
+        db.session.commit()
+        return {'review': review.to_dict()}
+        # return {'review': 'passed'}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401

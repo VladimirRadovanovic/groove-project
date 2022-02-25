@@ -10,3 +10,4 @@ class CreateReviewForm(FlaskForm):
     review = StringField('Review', validators=[DataRequired(),
     Length(min=4, max=500, message='Review must be between 4 and 500 characters long.')
     ])
+    rating= IntegerField('Rating', validators=[DataRequired()])

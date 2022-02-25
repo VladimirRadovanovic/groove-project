@@ -9,6 +9,7 @@ const addReview = (review) => {
 
 
 export const makeReview = (review) => async(dispatch) => {
+    console.log(review, 'in the thunk!!!!!!!')
     const response = await fetch('/api/reviews/create', {
         method: 'POST',
         headers: {
@@ -19,7 +20,7 @@ export const makeReview = (review) => async(dispatch) => {
     if (response.ok) {
         const data = await response.json()
         console.log(data.review, 'review data if passed')
-        // dispatch(addReview(data.review))
+        dispatch(addReview(data.review))
         return null
     }
     else if (response.status < 500) {

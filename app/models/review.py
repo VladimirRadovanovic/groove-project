@@ -10,7 +10,7 @@ class Review(db.Model):
     listing_id = db.Column(db.Integer, db.ForeignKey("listings.id"), nullable=False)
     headline = db.Column(db.String(50), nullable=False)
     review = db.Column(db.String(500), nullable=False)
-    # star_rating = db.Column(db.Float, nullable=False)
+    rating = db.Column(db.Integer, nullable=False)
 
     # user = db.relationship('User', back_populates='reviews')
     # listing = db.relationship('Listing', back_populates='reviews')
@@ -24,5 +24,5 @@ class Review(db.Model):
             'listing_id': self.listing_id,
             'headline': self.headline,
             'review': self.review,
-            # 'star_rating': self.star_rating
+            'rating': self.rating
         }

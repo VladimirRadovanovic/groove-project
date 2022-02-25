@@ -121,3 +121,21 @@
 .star-label .hover-fill {
     color: var(--yellow);
 }
+
+.leave-errors-list-empty {
+    display: none;
+}
+
+.leave-errors-list {
+    border: var(--border-light);
+    height: 15rem;
+    width: 40rem;
+    background-color: rgb(243, 215, 215);
+    /* box-shadow: rgb(255, 0, 0) 0px 30px 60px -12px inset, rgb(255, 0, 0) 0px 30px 60px -12px inset; */
+    box-shadow: -1px 1px 30px rgba(255, 0, 0, .1) inset, 1px 1px 30px rgba(255, 0, 0, .1) inset, 1px 1px 30px rgba(255, 0, 0, .1) inset, 1px -1px 30px rgba(255, 0, 0, .1) inset;
+    /* opacity: .5; */
+    position: fixed;
+    top: 12rem;
+    right: 3rem;
+    border-radius: .2rem;
+}

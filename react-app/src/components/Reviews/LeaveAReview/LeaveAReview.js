@@ -21,10 +21,7 @@ function LeaveAReview({ user }) {
     const [fillStar4, setFillStar4] = useState('')
     const [fillStar5, setFillStar5] = useState('')
     const [errors, setErrors] = useState([])
-    console.log(rating, 'headline***************')
-    console.log(fillStar1, 'fill1')
-    console.log(fillStar2, 'fill2')
-    console.log(fillStar3, 'fill3')
+
 
     useEffect(() => {
         dispatch(getAllListings())
@@ -48,10 +45,12 @@ function LeaveAReview({ user }) {
     const handleReviewSubmit = async(e) => {
         e.preventDefault()
         const listing_id = Number(e.target.id.split('-')[1])
+        console.log(listing_id, 'listing id!!!!!!!')
         const payload = {
             listing_id,
             headline,
-            review
+            review,
+            rating
         }
         const data = await dispatch(makeReview(payload))
         if(data) {
@@ -67,7 +66,7 @@ function LeaveAReview({ user }) {
         const value = Number(e.target.value)
         setRating(value)
         if(value === 1 && !fillStar1) {
-            console.log('in the ifffffffffffff')
+
             setFillStar1('fill')
         } else if (value === 1 && fillStar2 === 'fill') {
             setFillStar2('')
@@ -165,11 +164,11 @@ function LeaveAReview({ user }) {
     return (
         <main className='leave-review-main'>
             <div className='leave-review-container'>
-            {/* <ul>
+            <ul className={errors?.length === 0 ? 'leave-errors-list-empty' : 'leave-errors-list'}>
                 {errors.map(error => (
                     <li key={error}>{error}</li>
                 ))}
-            </ul> */}
+            </ul>
             <h2 className='leave-review-heading'>
                 Create review
             </h2>
@@ -178,10 +177,10 @@ function LeaveAReview({ user }) {
                 <div className='review-user-info-container'>
                     <p><strong>Album </strong>{reviewedListing?.album}<strong> by</strong> {reviewedListing?.artist}</p>
                     <p><NavLink to={`/users/${reviewedListing?.seller?.id}/profile`}><strong>Sold by </strong>{reviewedListing?.seller?.username}</NavLink></p>
-
+                        {/* {reviewedListing?.id} */}
                 </div>
             </div>
-            <form onSubmit={handleReviewSubmit}>
+            <form id={`form-${reviewedListing?.id}`} onSubmit={handleReviewSubmit}>
                 <div className='leave-rating-container'>
                     <h3 className='leave-rating-header'>
                         Rating
