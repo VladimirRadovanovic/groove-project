@@ -55,37 +55,44 @@ function LeaveAReview({ user }) {
     }
 
     return (
-        <main>
+        <main className='leave-review-main'>
+            <div className='leave-review-container'>
             {/* <ul>
                 {errors.map(error => (
                     <li key={error}>{error}</li>
                 ))}
             </ul> */}
-            <h2>
-                Crate review
+            <h2 className='leave-review-heading'>
+                Create review
             </h2>
-            <div>
-                <img className='review-img' src={reviewedListing?.img_url ? reviewedListing?.img_url : placeholder} alt='review' />
-                <p>{reviewedListing?.album} by {reviewedListing?.artist}</p>
-                <p><NavLink to={`/users/${reviewedListing?.seller?.id}/profile`}>{reviewedListing?.seller?.username}</NavLink></p>
+            <div className='leave-review-info-container'>
+                <img className='leave-review-img' src={reviewedListing?.img_url ? reviewedListing?.img_url : placeholder} alt='review' />
+                <div className='review-user-info-container'>
+                    <p><strong>Album </strong>{reviewedListing?.album}<strong> by</strong> {reviewedListing?.artist}</p>
+                    <p><NavLink to={`/users/${reviewedListing?.seller?.id}/profile`}><strong>Sold by </strong>{reviewedListing?.seller?.username}</NavLink></p>
+
+                </div>
             </div>
             <form onSubmit={handleReviewSubmit}>
-                <h3>
-                    Rating
-                </h3>
-                <div>
-                    <h3>
+                <div className='leave-rating-container'>
+                    <h3 className='leave-rating-header'>
+                        Rating
+                    </h3>
+
+                </div>
+                <div className='leave-headline-container'>
+                    <h3 className='leave-headline-header'>
                         Add a headline
+                    </h3>
                         <input
                             type='text'
                             placeholder='What is most important to know?'
                             onChange={handleHeadline}
                             value={headline}
                         />
-                    </h3>
                 </div>
                 <div>
-                    <h3>
+                    <h3 className='leave-review-header'>
                         Text review
                     </h3>
                     <textarea
@@ -96,8 +103,11 @@ function LeaveAReview({ user }) {
                     </textarea>
 
                 </div>
-                <button id={`review-${reviewedListing?.id}`}>Submit Review</button>
+                <div className='leave-button-container'>
+                    <button className='listing-button' id={`review-${reviewedListing?.id}`}>Submit Review</button>
+                </div>
             </form>
+            </div>
         </main>
     )
 }
