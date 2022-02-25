@@ -14,8 +14,9 @@ function LeaveAReview({ user }) {
     const dispatch = useDispatch()
     const [review, setReview] = useState('')
     const [headline, setHeadline] = useState('')
+    const [rating, setRating] = useState('')
     const [errors, setErrors] = useState([])
-    console.log(headline, 'headline***************')
+    console.log(rating, 'headline***************')
 
     useEffect(() => {
         dispatch(getAllListings())
@@ -78,6 +79,54 @@ function LeaveAReview({ user }) {
                     <h3 className='leave-rating-header'>
                         Rating
                     </h3>
+
+
+
+                    <div className="leave-rating" id="rating" onChange={e => setRating(e.target.value)}>
+                        <input
+                            className="leave-star star-1"
+                            type="radio"
+                            name="stars"
+                            id="star-1"
+                            value="1"
+                        />
+                        <label className="leave-star star-1 star-label" htmlFor="star-1"></label>
+                        <input
+                            className="leave-star star-2"
+                            type="radio"
+                            name="stars"
+                            id="star-2"
+                            value="2"
+                        />
+                        <label className="leave-star star-2 star-label" htmlFor="star-2"></label>
+                        <input
+                            className="leave-star star-3"
+                            type="radio"
+                            name="stars"
+                            id="star-3"
+                            value="3"
+                        />
+                        <label className="leave-star star-3 star-label" htmlFor="star-3"></label>
+                        <input
+                            className="star star-4"
+                            type="radio"
+                            name="stars"
+                            id="star-4"
+                            value="4"
+                        />
+                        <label className="leave-star star-4 star-label" htmlFor="star-4"></label>
+                        <input
+                            className="star star-5"
+                            type="radio"
+                            name="stars"
+                            id="star-5"
+                            value="5"
+                        />
+                        <label className="leave-star star-5 star-label" htmlFor="star-5"></label>
+                </div>
+
+
+
 
                 </div>
                 <div className='leave-headline-container'>

@@ -45,7 +45,7 @@
 .leave-review-header,
 .leave-headline-header {
     font-size: 2.2rem;
-    padding-bottom: 2rem;
+    padding: 1rem 0;
 }
 
 .leave-headline-container {
@@ -54,7 +54,7 @@
     height: 12rem;
 }
 
-.leave-review-container input,
+.leave-headline-container input,
 .leave-review-container textarea {
     width: calc(100% - 2rem);
     padding: 0.5rem 1rem;
@@ -71,4 +71,13 @@
     display: flex;
     justify-content: center;
     margin-top: 2rem;
+}
+
+.leave-rating {
+    display: flex;
+    align-items: flex-start;
+}
+
+.leave-star {
+    cursor: pointer;
 }
