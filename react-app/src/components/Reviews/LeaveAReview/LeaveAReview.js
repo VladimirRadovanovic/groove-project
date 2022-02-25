@@ -15,8 +15,16 @@ function LeaveAReview({ user }) {
     const [review, setReview] = useState('')
     const [headline, setHeadline] = useState('')
     const [rating, setRating] = useState('')
+    const [fillStar1, setFillStar1] = useState('')
+    const [fillStar2, setFillStar2] = useState('')
+    const [fillStar3, setFillStar3] = useState('')
+    const [fillStar4, setFillStar4] = useState('')
+    const [fillStar5, setFillStar5] = useState('')
     const [errors, setErrors] = useState([])
     console.log(rating, 'headline***************')
+    console.log(fillStar1, 'fill1')
+    console.log(fillStar2, 'fill2')
+    console.log(fillStar3, 'fill3')
 
     useEffect(() => {
         dispatch(getAllListings())
@@ -55,6 +63,55 @@ function LeaveAReview({ user }) {
 
     }
 
+    const handleSetRating = (e) => {
+        const value = Number(e.target.value)
+        setRating(value)
+        if(value === 1 && !fillStar1) {
+            console.log('in the ifffffffffffff')
+            setFillStar1('fill')
+        } else if (value === 1 && fillStar2 === 'fill') {
+            setFillStar2('')
+            setFillStar3('')
+            setFillStar4('')
+            setFillStar5('')
+        }
+
+        if(value === 2 && !fillStar2) {
+            setFillStar1('fill')
+            setFillStar2('fill')
+        } else if(value === 2 && fillStar3 === 'fill') {
+            setFillStar3('')
+            setFillStar4('')
+            setFillStar5('')
+        }
+
+        if(value === 3 && !fillStar3) {
+            setFillStar1('fill')
+            setFillStar2('fill')
+            setFillStar3('fill')
+        } else if(value === 3 && fillStar4 === 'fill') {
+            setFillStar4('')
+            setFillStar5('')
+        }
+
+        if(value === 4 && !fillStar4) {
+            setFillStar1('fill')
+            setFillStar2('fill')
+            setFillStar3('fill')
+            setFillStar4('fill')
+        } else if (value === 4 && fillStar5 === 'fill') {
+            setFillStar5('')
+        }
+
+        if(value === 5 && !fillStar5) {
+            setFillStar1('fill')
+            setFillStar2('fill')
+            setFillStar3('fill')
+            setFillStar4('fill')
+            setFillStar5('fill')
+        }
+    }
+
     return (
         <main className='leave-review-main'>
             <div className='leave-review-container'>
@@ -82,47 +139,63 @@ function LeaveAReview({ user }) {
 
 
 
-                    <div className="leave-rating" id="rating" onChange={e => setRating(e.target.value)}>
+                    <div className="leave-rating" id="rating" onChange={handleSetRating}>
+                    <label className="leave-star star-1 star-label" htmlFor="star-1">
+                    <i className={`fa-solid fa-star star-1 ${fillStar1}`}>
+
                         <input
                             className="leave-star star-1"
                             type="radio"
                             name="stars"
                             id="star-1"
-                            value="1"
+                            value={1}
                         />
-                        <label className="leave-star star-1 star-label" htmlFor="star-1"></label>
+                        </i>
+                       </label>
+                       <label className="leave-star star-2 star-label" htmlFor="star-2">
+                        <i className={`fa-solid fa-star star-1 ${fillStar2}`}>
                         <input
                             className="leave-star star-2"
                             type="radio"
                             name="stars"
                             id="star-2"
-                            value="2"
+                            value={2}
                         />
-                        <label className="leave-star star-2 star-label" htmlFor="star-2"></label>
+                        </i>
+                       </label>
+                       <label className="leave-star star-3 star-label" htmlFor="star-3">
+                        <i className={`fa-solid fa-star star-1 ${fillStar3}`}>
                         <input
                             className="leave-star star-3"
                             type="radio"
                             name="stars"
                             id="star-3"
-                            value="3"
+                            value={3}
                         />
-                        <label className="leave-star star-3 star-label" htmlFor="star-3"></label>
+                        </i>
+                        </label>
+                        <label className="leave-star star-4 star-label" htmlFor="star-4">
+                        <i className={`fa-solid fa-star star-1 ${fillStar4}`}>
                         <input
                             className="star star-4"
                             type="radio"
                             name="stars"
                             id="star-4"
-                            value="4"
+                            value={4}
                         />
-                        <label className="leave-star star-4 star-label" htmlFor="star-4"></label>
+                        </i>
+                        </label>
+                        <label className="leave-star star-5 star-label" htmlFor="star-5">
+                        <i className={`fa-solid fa-star star-1 ${fillStar5}`}>
                         <input
                             className="star star-5"
                             type="radio"
                             name="stars"
                             id="star-5"
-                            value="5"
+                            value={5}
                         />
-                        <label className="leave-star star-5 star-label" htmlFor="star-5"></label>
+                        </i>
+                        </label>
                 </div>
 
 

@@ -81,3 +81,38 @@
 .leave-star {
     cursor: pointer;
 }
+
+.leave-rating-container input {
+    display: none;
+}
+
+
+.star-label i {
+    /* color: var(--yellow); */
+    /* color: white; */
+    font-size: 2.5rem;
+    /* background-color: var(--yellow);
+    -webkit-text-fill-color: transparent!important;
+    -webkit-background-clip: text!important; */
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    letter-spacing: .5rem;
+    /* transition: all .2s; */
+}
+
+.star-label {
+    transition: all .2s;
+}
+
+/*
+.star-1:hover {
+    color: var(--yellow);
+}
+
+.star-2:hover {
+    color: var(--yellow);
+
+} */
+
+.fill {
+    color: var(--yellow);
+}
