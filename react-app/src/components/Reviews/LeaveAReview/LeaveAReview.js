@@ -8,6 +8,7 @@ import './LeaveAReview.css'
 import { getAllListings } from '../../../store/listings';
 import placeholder from '../../../images/vinyl.jpg'
 import { makeReview } from '../../../store/reviews';
+import GoBackButton from '../../Utils/GoBackButton';
 
 function LeaveAReview({ user }) {
     const history = useHistory()
@@ -163,6 +164,7 @@ function LeaveAReview({ user }) {
 
     return (
         <main className='leave-review-main'>
+            <GoBackButton />
             <div className='leave-review-container'>
             <ul className={errors?.length === 0 ? 'leave-errors-list-empty' : 'leave-errors-list'}>
                 {errors.map(error => (
@@ -176,7 +178,7 @@ function LeaveAReview({ user }) {
                 <img className='leave-review-img' src={reviewedListing?.img_url ? reviewedListing?.img_url : placeholder} alt='review' />
                 <div className='review-user-info-container'>
                     <p><strong>Album </strong>{reviewedListing?.album}<strong> by</strong> {reviewedListing?.artist}</p>
-                    <p><NavLink to={`/users/${reviewedListing?.seller?.id}/profile`}><strong>Sold by </strong>{reviewedListing?.seller?.username}</NavLink></p>
+                    <p><strong>Sold by </strong><NavLink className='sold-by-review' to={`/users/${reviewedListing?.seller?.id}/profile`}>{reviewedListing?.seller?.username}</NavLink></p>
                         {/* {reviewedListing?.id} */}
                 </div>
             </div>
