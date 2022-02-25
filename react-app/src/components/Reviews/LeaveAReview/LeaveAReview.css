@@ -89,7 +89,7 @@
 
 .star-label i {
     /* color: var(--yellow); */
-    /* color: white; */
+    color: white;
     font-size: 2.5rem;
     /* background-color: var(--yellow);
     -webkit-text-fill-color: transparent!important;
@@ -103,16 +103,21 @@
     transition: all .2s;
 }
 
-/*
-.star-1:hover {
+
+/* .star-1:hover {
     color: var(--yellow);
 }
 
-.star-2:hover {
+
+.star-2:hover.star-1 {
     color: var(--yellow);
 
 } */
 
-.fill {
+.star-label .fill {
+    color: var(--yellow);
+}
+
+.star-label .hover-fill {
     color: var(--yellow);
 }

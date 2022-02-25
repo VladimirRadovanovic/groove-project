@@ -112,6 +112,56 @@ function LeaveAReview({ user }) {
         }
     }
 
+    // const handleMouseOver = (e) => {
+    //     const value = Number(e.target.id)
+    //     console.log(value, 'mouser over id')
+    //     setRating(value)
+    //     if(value === 1 && !fillStar1) {
+    //         console.log('in the ifffffffffffff')
+    //         setFillStar1('fill')
+    //     } else if (value === 1 && fillStar2 === 'fill') {
+    //         setFillStar2('')
+    //         setFillStar3('')
+    //         setFillStar4('')
+    //         setFillStar5('')
+    //     }
+
+    //     if(value === 2 && !fillStar2) {
+    //         setFillStar1('fill')
+    //         setFillStar2('fill')
+    //     } else if(value === 2 && fillStar3 === 'fill') {
+    //         setFillStar3('')
+    //         setFillStar4('')
+    //         setFillStar5('')
+    //     }
+
+    //     if(value === 3 && !fillStar3) {
+    //         setFillStar1('fill')
+    //         setFillStar2('fill')
+    //         setFillStar3('fill')
+    //     } else if(value === 3 && fillStar4 === 'fill') {
+    //         setFillStar4('')
+    //         setFillStar5('')
+    //     }
+
+    //     if(value === 4 && !fillStar4) {
+    //         setFillStar1('fill')
+    //         setFillStar2('fill')
+    //         setFillStar3('fill')
+    //         setFillStar4('fill')
+    //     } else if (value === 4 && fillStar5 === 'fill') {
+    //         setFillStar5('')
+    //     }
+
+    //     if(value === 5 && !fillStar5) {
+    //         setFillStar1('fill')
+    //         setFillStar2('fill')
+    //         setFillStar3('fill')
+    //         setFillStar4('fill')
+    //         setFillStar5('fill')
+    //     }
+    // }
+
     return (
         <main className='leave-review-main'>
             <div className='leave-review-container'>
@@ -141,7 +191,7 @@ function LeaveAReview({ user }) {
 
                     <div className="leave-rating" id="rating" onChange={handleSetRating}>
                     <label className="leave-star star-1 star-label" htmlFor="star-1">
-                    <i className={`fa-solid fa-star star-1 ${fillStar1}`}>
+                    <i id='1' className={`fa-solid fa-star star-1 ${fillStar1}`}>
 
                         <input
                             className="leave-star star-1"
@@ -153,7 +203,7 @@ function LeaveAReview({ user }) {
                         </i>
                        </label>
                        <label className="leave-star star-2 star-label" htmlFor="star-2">
-                        <i className={`fa-solid fa-star star-1 ${fillStar2}`}>
+                        <i id='2' className={`fa-solid fa-star star-2 ${fillStar2}`}>
                         <input
                             className="leave-star star-2"
                             type="radio"
@@ -164,7 +214,7 @@ function LeaveAReview({ user }) {
                         </i>
                        </label>
                        <label className="leave-star star-3 star-label" htmlFor="star-3">
-                        <i className={`fa-solid fa-star star-1 ${fillStar3}`}>
+                        <i id='3' className={`fa-solid fa-star star-3 ${fillStar3}`}>
                         <input
                             className="leave-star star-3"
                             type="radio"
@@ -175,7 +225,7 @@ function LeaveAReview({ user }) {
                         </i>
                         </label>
                         <label className="leave-star star-4 star-label" htmlFor="star-4">
-                        <i className={`fa-solid fa-star star-1 ${fillStar4}`}>
+                        <i id='4' className={`fa-solid fa-star star-4 ${fillStar4}`}>
                         <input
                             className="star star-4"
                             type="radio"
@@ -186,7 +236,7 @@ function LeaveAReview({ user }) {
                         </i>
                         </label>
                         <label className="leave-star star-5 star-label" htmlFor="star-5">
-                        <i className={`fa-solid fa-star star-1 ${fillStar5}`}>
+                        <i id='5' className={`fa-solid fa-star star-5 ${fillStar5}`}>
                         <input
                             className="star star-5"
                             type="radio"
