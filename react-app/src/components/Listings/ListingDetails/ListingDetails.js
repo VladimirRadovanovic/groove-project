@@ -13,7 +13,8 @@ import ConfirmRemoveListing from '../RemoveListing/RemoveListing'
 import { deleteListing } from '../../../store/listings'
 import DisplayReviews from '../../Reviews/DisplayReviews/DisplayReviews'
 import GoBackButton from '../../Utils/GoBackButton'
-import { getAllReviews } from '../../../store/reviews'
+import { getListingReviews } from '../../../store/reviews'
+
 
 
 function ListingDetails({ user, numItemSetter }) {
@@ -27,6 +28,7 @@ function ListingDetails({ user, numItemSetter }) {
     useEffect(() => {
 
              dispatch(getAllListings())
+             dispatch(getListingReviews(listingId))
 
     }, [recordId, dispatch])
 

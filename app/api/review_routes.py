@@ -33,8 +33,16 @@ def make_review():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-@review_routes.route('/all')
-def load_reviews():
-    reviews = Review.query.all()
-    print(reviews[0].id, '******************************rev(((((((((()))))))))))))))))))))))))))))))')
+@review_routes.route('/listings/<int:id>')
+def load_reviews(id):
+    print(id, '''
+
+
+
+    in the route
+
+
+    ''')
+    reviews = Review.query.filter(Review.listing_id == int(id)).all()
+    print(reviews, '******************************rev(((((((((()))))))))))))))))))))))))))))))')
     return {'reviews': {str(rev.id): rev.to_dict() for rev in reviews}}

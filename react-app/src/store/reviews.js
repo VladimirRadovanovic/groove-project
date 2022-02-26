@@ -20,8 +20,8 @@ const loadReviews = (reviews) => {
 }
 
 
-export const getAllReviews = () => async(dispatch) => {
-    const response = await fetch('/api/reviews/all')
+export const getListingReviews = (id) => async(dispatch) => {
+    const response = await fetch(`/api/reviews/listings/${id}`)
 
     if (response.ok) {
         const data = await response.json()
