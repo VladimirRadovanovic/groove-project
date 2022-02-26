@@ -13,6 +13,7 @@ import ConfirmRemoveListing from '../RemoveListing/RemoveListing'
 import { deleteListing } from '../../../store/listings'
 import DisplayReviews from '../../Reviews/DisplayReviews/DisplayReviews'
 import GoBackButton from '../../Utils/GoBackButton'
+import { getAllReviews } from '../../../store/reviews'
 
 
 function ListingDetails({ user, numItemSetter }) {
@@ -24,7 +25,9 @@ function ListingDetails({ user, numItemSetter }) {
     const { recordId } = useParams()
     const listingId = Number(recordId)
     useEffect(() => {
-        dispatch(getAllListings())
+
+             dispatch(getAllListings())
+
     }, [recordId, dispatch])
 
     const listings = useSelector(state => state.listings)

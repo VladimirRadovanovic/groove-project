@@ -22,7 +22,7 @@ class User(db.Model, UserMixin):
     # set the cascade delete on the user if you would like the ability to delete a profile
     listings = db.relationship('Listing', back_populates='seller')
     orders = db.relationship('Order', back_populates='buyer')
-    # reviews = db.relationship('Review', back_populates='user')
+    reviews = db.relationship('Review', back_populates='user')
 
     @property
     def password(self):

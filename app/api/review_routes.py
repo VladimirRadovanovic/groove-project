@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.api.auth_routes import validation_errors_to_error_messages
-from app.models import db, Listing, Order, OrderItem, Review
+from app.models import db, Listing, Order, OrderItem, Review, review
 from app.forms.crate_review_form import CreateReviewForm
 
 
@@ -31,3 +31,10 @@ def make_review():
         return {'review': review.to_dict()}
         # return {'review': 'passed'}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@review_routes.route('/all')
+def load_reviews():
+    reviews = Review.query.all()
+    print(reviews[0].id, '******************************rev(((((((((()))))))))))))))))))))))))))))))')
+    return {'reviews': {str(rev.id): rev.to_dict() for rev in reviews}}

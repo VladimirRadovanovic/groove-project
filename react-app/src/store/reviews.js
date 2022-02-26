@@ -1,4 +1,9 @@
+import { loadListings } from "./listings"
+
 const ADD_REVIEW = 'reviews/ADD_REVIEW'
+const LOAD_REVIEWS = 'reviews/LOAD_REVIEWS'
+
+
 
 const addReview = (review) => {
     return {
@@ -7,9 +12,28 @@ const addReview = (review) => {
     }
 }
 
+const loadReviews = (reviews) => {
+    return {
+        type: LOAD_REVIEWS,
+        reviews
+    }
+}
+
+
+export const getAllReviews = () => async(dispatch) => {
+    const response = await fetch('/api/reviews/all')
+
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(loadReviews(data.reviews))
+
+        return null
+    }
+}
+
 
 export const makeReview = (review) => async(dispatch) => {
-    console.log(review, 'in the thunk!!!!!!!')
+
     const response = await fetch('/api/reviews/create', {
         method: 'POST',
         headers: {
@@ -19,15 +43,14 @@ export const makeReview = (review) => async(dispatch) => {
     })
     if (response.ok) {
         const data = await response.json()
-        console.log(data.review, 'review data if passed')
         dispatch(addReview(data.review))
+
         return null
     }
     else if (response.status < 500) {
         const data = await response.json();
 
         if (data.errors) {
-            console.log(data.errors, 'in the thunk error')
             return data.errors;
         }
     } else {
@@ -42,8 +65,11 @@ const reviewReducer = (state = {}, action) => {
         case ADD_REVIEW:
             newState = {...state, [action.review.id]: action.review}
             return newState
-        default:
+        case LOAD_REVIEWS:
+            newState = {...state, ...action.reviews}
             return newState
+        default:
+            return state
     }
 }
 
