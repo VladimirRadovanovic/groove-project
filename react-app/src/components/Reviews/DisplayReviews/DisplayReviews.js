@@ -5,9 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import './DisplayReviews.css'
 import { getListingReviews } from '../../../store/reviews';
+import avatar from '../../../images/avatar.svg'
 
 function DisplayReviews( { listing }) {
     const dispatch = useDispatch()
+
+    const stars = [
+    1, 2, 3, 4, 5
+    ]
 
     useEffect(() => {
         if(listing) {
@@ -22,10 +27,37 @@ function DisplayReviews( { listing }) {
 
     return (
         <section className='display-reviews-section'>
+            <div className='display-reviews-container'>
             <h2>Customer reviews</h2>
             <NavLink to={`/records/${listing?.id}/review`}>Leave a Review</NavLink>
             <div>
+                {reviewsList.map(review => (
+                    <div className='single-review-container' key={review.id}>
+                        <div className='display-reviewer-container'>
+                        <img className='reviewer-img' src={review?.user?.profile_img_url ? review?.user?.profile_img_url : avatar} />
+                        <p className='reviewer-name'>{review?.user?.username}</p>
+                        </div>
+                        <div className='review-headline-container'>
+                            <div>
+                            {stars.map((num) => (
+                                <span key={`star-${num}`}>
+                                    {review?.rating < num ?
+                                    (<i className={`fa-solid fa-star star-display-reviews`}></i>)
+                                    :
+                                    ( <i className={`fa-solid fa-star star-display-reviews review-display--fill`}></i>)
+                                    }
+                                </span>
 
+                            ))}
+
+                            </div>
+                        <p>{review?.headline}</p>
+                        </div>
+                        <p>Reviewed on {new Date(review?.created_at).toDateString()}</p>
+                        <p>{review?.review}</p>
+                    </div>
+                ))}
+            </div>
             </div>
         </section>
     )
