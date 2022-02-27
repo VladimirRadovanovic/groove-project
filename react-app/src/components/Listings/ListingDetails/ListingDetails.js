@@ -32,8 +32,24 @@ function ListingDetails({ user, numItemSetter }) {
 
     }, [recordId, dispatch])
 
+
     const listings = useSelector(state => state.listings)
     const listing = listings[listingId]
+
+    const reviews = useSelector(state => state.reviews)
+    const reviewsList = Object.values(reviews)
+    let totalRating = 0;
+    reviewsList.forEach(review => (
+        totalRating += review.rating
+    ))
+
+    const avgRating = totalRating / reviewsList.length
+
+    let percentRating = (avgRating / 5 * 100).toFixed(0)
+
+    if(reviewsList.length === 0) percentRating = 0
+
+    console.log(percentRating, 'percent rating')
 
     const handleDelete = async(e) => {
         const id = Number(e.target.id)
@@ -79,6 +95,18 @@ function ListingDetails({ user, numItemSetter }) {
                     <p className='sold-by-paragraph'><strong>Sold by: </strong><NavLink className='link-to-profile-in-details' to={`/users/${listing?.seller?.id}/profile`}>{listing?.seller?.username}</NavLink> </p>
                     <img className='sold-by-img' src={listing?.seller?.profile_img_url ? listing?.seller?.profile_img_url : placeholder} alt='sold' />
                 </div>
+                <div  className='avg-rating'>
+                    <div style={{width:`${percentRating}%`}} className='avg-star-container'>
+                        <div className='min-width-content'>
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star"></i>
+                    </div>
+                    </div>
+
+                </div>
                 <div className='details-info-container'>
                     <p><strong>Posted on:</strong> {listing?.created_at && new Date(listing?.created_at).toDateString()}</p>
                     <p><strong>Album:</strong> {listing?.album}</p>
@@ -105,7 +133,7 @@ function ListingDetails({ user, numItemSetter }) {
                 )}
             </section>
             </div>
-            <DisplayReviews listing={listing} />
+            <DisplayReviews listing={listing} reviewsList={reviewsList} />
         </main>
     )
 }

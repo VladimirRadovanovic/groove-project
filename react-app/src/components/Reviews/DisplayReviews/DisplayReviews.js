@@ -8,7 +8,7 @@ import { getListingReviews } from '../../../store/reviews';
 import DeleteReview from '../DeleteReview/DeleteReview';
 import avatar from '../../../images/avatar.svg'
 
-function DisplayReviews( { listing }) {
+function DisplayReviews( { listing, reviewsList }) {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
 
@@ -23,8 +23,8 @@ function DisplayReviews( { listing }) {
         }
     }, [])
 
-    const reviews = useSelector(state => state.reviews)
-    const reviewsList = Object.values(reviews)
+    // const reviews = useSelector(state => state.reviews)
+    // const reviewsList = Object.values(reviews)
 
 
     return (
