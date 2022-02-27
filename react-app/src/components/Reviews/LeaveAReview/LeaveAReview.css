@@ -20,6 +20,9 @@
     margin: 2.5rem 0;
 
 }
+.display-reviews-container {
+    width: fit-content;
+}
 
 .leave-review-info-container {
     /* border-top: var(--border-light); */
@@ -157,7 +160,30 @@
     }
 }
 
+.single-review-container {
+    font-size: 1.2rem;
+    border: var(--border-light);
+    border-radius: .3rem;
+    width: 70rem;
+    padding: 2rem;
+    height: fit-content;
+    margin: 1.5rem 0;
+}
+
 .sold-by-review {
     color: var(--blue-tertiary);
     text-decoration: underline;
+}
+
+.review-headline-container {
+    display: flex;
+}
+
+.display-headline {
+    padding-left: 1rem;
+}
+
+.display-star-container {
+    display: flex;
+    align-items: center;
 }

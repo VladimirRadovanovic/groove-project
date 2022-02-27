@@ -1,8 +1,9 @@
+import DeleteReview from "../components/Reviews/DeleteReview/DeleteReview"
 import { loadListings } from "./listings"
 
 const ADD_REVIEW = 'reviews/ADD_REVIEW'
-const LOAD_REVIEWS = 'reviews/LOAD_REVIEWS'
-
+const LOAD_LISTING_REVIEWS = 'reviews/LOAD_LISTING_REVIEWS'
+const DELETE_REVIEW = 'reviews/DELETE_REVIEWS'
 
 
 const addReview = (review) => {
@@ -14,9 +15,23 @@ const addReview = (review) => {
 
 const loadReviews = (reviews) => {
     return {
-        type: LOAD_REVIEWS,
+        type: LOAD_LISTING_REVIEWS,
         reviews
     }
+}
+
+const removeReview = (id) => {
+    return {
+        type: DELETE_REVIEW,
+        id
+    }
+}
+
+
+export const deleteReview = (id) => async(dispatch) => {
+    const response = await fetch(`/api/reviews/${id}/delete`, {
+        method: 'DELETE'
+    })
 }
 
 
@@ -65,7 +80,7 @@ const reviewReducer = (state = {}, action) => {
         case ADD_REVIEW:
             newState = {...state, [action.review.id]: action.review}
             return newState
-        case LOAD_REVIEWS:
+        case LOAD_LISTING_REVIEWS:
             newState = {...state, ...action.reviews}
             return newState
         default:

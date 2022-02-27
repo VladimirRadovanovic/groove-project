@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import './DisplayReviews.css'
 import { getListingReviews } from '../../../store/reviews';
+import DeleteReview from '../DeleteReview/DeleteReview';
 import avatar from '../../../images/avatar.svg'
 
 function DisplayReviews( { listing }) {
@@ -38,7 +39,7 @@ function DisplayReviews( { listing }) {
                         <p className='reviewer-name'>{review?.user?.username}</p>
                         </div>
                         <div className='review-headline-container'>
-                            <div>
+                            <div className='display-star-container'>
                             {stars.map((num) => (
                                 <span key={`star-${num}`}>
                                     {review?.rating < num ?
@@ -51,10 +52,11 @@ function DisplayReviews( { listing }) {
                             ))}
 
                             </div>
-                        <p>{review?.headline}</p>
+                        <p className='display-headline'><strong>{review?.headline}</strong></p>
                         </div>
                         <p>Reviewed on {new Date(review?.created_at).toDateString()}</p>
                         <p>{review?.review}</p>
+                        <DeleteReview id={review?.id} />
                     </div>
                 ))}
             </div>

@@ -9,6 +9,12 @@ from app.forms.crate_review_form import CreateReviewForm
 review_routes = Blueprint('reviews', __name__)
 
 
+@review_routes.route('/<int:id>/delete', methods=['DELETE'])
+@login_required
+def delete_review(id):
+    pass
+
+
 @review_routes.route('/create', methods=['POST'])
 @login_required
 def make_review():
@@ -35,14 +41,7 @@ def make_review():
 
 @review_routes.route('/listings/<int:id>')
 def load_reviews(id):
-    print(id, '''
 
-
-
-    in the route
-
-
-    ''')
     reviews = Review.query.filter(Review.listing_id == int(id)).all()
-    print(reviews, '******************************rev(((((((((()))))))))))))))))))))))))))))))')
+
     return {'reviews': {str(rev.id): rev.to_dict() for rev in reviews}}

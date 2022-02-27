@@ -13,21 +13,9 @@
 }
 
 .back-button-container span {
-    padding-left: 1rem;
-    font-size: 1.9em;
-    font-weight: 500;
+    padding-left: .6rem;
+    font-size: 1.4rem;
+    font-weight: 400;
     margin-bottom: .2rem;
 }
 
-
-
-.back-button {
-    font-size: 1.3rem;
-    display: inline-block;
-    height: fit-content;
-    width: fit-content;
-}
-
-/* .back-button-container:hover {
-    color: var(--blue-secondary);
-} */
