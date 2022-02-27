@@ -32,6 +32,14 @@ export const deleteReview = (id) => async(dispatch) => {
     const response = await fetch(`/api/reviews/${id}/delete`, {
         method: 'DELETE'
     })
+
+    if(response.ok) {
+        const data = await response.json()
+        if (data.message === 'Deleted') {
+            dispatch(removeReview(id))
+            return 'Deleted'
+        }
+    }
 }
 
 
@@ -77,6 +85,10 @@ export const makeReview = (review) => async(dispatch) => {
 const reviewReducer = (state = {}, action) => {
     let newState = {}
     switch(action.type) {
+        case DELETE_REVIEW:
+            newState = {...state}
+            delete newState[action.id]
+            return newState
         case ADD_REVIEW:
             newState = {...state, [action.review.id]: action.review}
             return newState

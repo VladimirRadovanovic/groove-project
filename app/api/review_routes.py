@@ -12,7 +12,11 @@ review_routes = Blueprint('reviews', __name__)
 @review_routes.route('/<int:id>/delete', methods=['DELETE'])
 @login_required
 def delete_review(id):
-    pass
+    review = Review.query.get(id)
+    db.session.delete(review)
+    db.session.commit()
+    return {"message": "Deleted"}
+
 
 
 @review_routes.route('/create', methods=['POST'])

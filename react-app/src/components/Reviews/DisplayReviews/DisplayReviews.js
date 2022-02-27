@@ -10,6 +10,7 @@ import avatar from '../../../images/avatar.svg'
 
 function DisplayReviews( { listing }) {
     const dispatch = useDispatch()
+    const user = useSelector(state => state.session.user)
 
     const stars = [
     1, 2, 3, 4, 5
@@ -56,7 +57,10 @@ function DisplayReviews( { listing }) {
                         </div>
                         <p>Reviewed on {new Date(review?.created_at).toDateString()}</p>
                         <p>{review?.review}</p>
+                        {user?.id === review?.user?.id && (
+
                         <DeleteReview id={review?.id} />
+                        )}
                     </div>
                 ))}
             </div>
