@@ -45,7 +45,7 @@ function ListingDetails({ user, numItemSetter }) {
 
     let avgRating = Number.isNaN(parseFloat((totalRating / reviewsList.length).toFixed(2)))
     if(avgRating) {
-        avgRating = 0
+        avgRating = 'This record currently has no reviews.'
     } else {
         avgRating = parseFloat((totalRating / reviewsList.length).toFixed(2))
     }
@@ -91,7 +91,7 @@ function ListingDetails({ user, numItemSetter }) {
         <main >
             <div className='details-main-container'>
             <section className='details-img-container'>
-                <img className='details-img' src={listing?.img_url ? listing.img_url : placeholder} alt='profile' />
+                <img  className='details-img' src={listing?.img_url ? listing.img_url : placeholder} alt='profile' />
             </section>
             <div className='details-back'>
                 <GoBackButton />
@@ -99,7 +99,7 @@ function ListingDetails({ user, numItemSetter }) {
             </div>
             <section className='details-data-container'>
                 <div className='sold-by-container'>
-                    <p className='sold-by-paragraph'><strong>Sold by: </strong><NavLink className='link-to-profile-in-details' to={`/users/${listing?.seller?.id}/profile`}>{listing?.seller?.username}</NavLink> </p>
+                    <p id='#img-heading' className='sold-by-paragraph'><strong>Sold by: </strong><NavLink className='link-to-profile-in-details' to={`/users/${listing?.seller?.id}/profile`}>{listing?.seller?.username}</NavLink> </p>
                     <img className='sold-by-img' src={listing?.seller?.profile_img_url ? listing?.seller?.profile_img_url : placeholder} alt='sold' />
                 </div>
                 <div  className='avg-rating'>
@@ -112,8 +112,12 @@ function ListingDetails({ user, numItemSetter }) {
                     <i className="fa-solid fa-star"></i>
                     </div>
                     </div>
-                        <span>{avgRating} out of 5</span>
                 </div>
+                        <span>{typeof(avgRating) === 'number' ?
+                        (<span>{avgRating} out of 5 | <NavLink to='#customer-reviews'>{reviewsList?.length === 1 ? `${reviewsList?.length} review` : `${reviewsList?.length} reviews` } </NavLink></span>)
+                        :
+                        (<span>{avgRating } <NavLink to={`/records/${listing?.id}/review`}>Be the first one to review it.</NavLink></span>)}
+                        </span>
                 <div className='details-info-container'>
                     <p><strong>Posted on:</strong> {listing?.created_at && new Date(listing?.created_at).toDateString()}</p>
                     <p><strong>Album:</strong> {listing?.album}</p>

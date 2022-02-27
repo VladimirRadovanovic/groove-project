@@ -29,8 +29,8 @@ function DisplayReviews( { listing, reviewsList }) {
 
     return (
         <section className='display-reviews-section'>
-            <div className='display-reviews-container'>
-            <h2>Customer reviews</h2>
+            <div id='reviews' className='display-reviews-container'>
+            <h2 id='customer-reviews'>Customer reviews</h2>
             <NavLink to={`/records/${listing?.id}/review`}>Leave a Review</NavLink>
             <div>
                 {reviewsList.map(review => (
@@ -65,6 +65,7 @@ function DisplayReviews( { listing, reviewsList }) {
                 ))}
             </div>
             </div>
+
         </section>
     )
 
