@@ -124,9 +124,10 @@
     background-color: var(--yellow);
     -webkit-text-fill-color: transparent!important;
     -webkit-background-clip: text!important;
-
-
+    -webkit-text-stroke:1px gray;
+    letter-spacing: .1rem;
     position: relative;
+    margin-left: -.1rem;
 }
 
 .avg-rating i {
@@ -135,6 +136,7 @@
     /* position: absolute; */
 }
 .min-width-content {
-    min-width: 11.3rem;
+    min-width: 11.8rem;
+    /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
 
 }
