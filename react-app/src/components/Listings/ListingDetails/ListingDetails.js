@@ -43,13 +43,20 @@ function ListingDetails({ user, numItemSetter }) {
         totalRating += review.rating
     ))
 
-    const avgRating = totalRating / reviewsList.length
-
-    let percentRating = (avgRating / 5 * 100).toFixed(0)
+    let avgRating = Number.isNaN(parseFloat((totalRating / reviewsList.length).toFixed(2)))
+    if(avgRating) {
+        avgRating = 0
+    } else {
+        avgRating = parseFloat((totalRating / reviewsList.length).toFixed(2))
+    }
+    let percentRating = (avgRating / 5 * 100).toFixed(2)
 
     if(reviewsList.length === 0) percentRating = 0
+    // if (avgRating === NaN) avgRating = 0
+    console.log(typeof(avgRating), 'avrage rating')
+    console.log(avgRating, 'rating acr')
 
-    console.log(percentRating, 'percent rating')
+
 
     const handleDelete = async(e) => {
         const id = Number(e.target.id)
@@ -105,7 +112,7 @@ function ListingDetails({ user, numItemSetter }) {
                     <i className="fa-solid fa-star"></i>
                     </div>
                     </div>
-
+                        <span>{avgRating} out of 5</span>
                 </div>
                 <div className='details-info-container'>
                     <p><strong>Posted on:</strong> {listing?.created_at && new Date(listing?.created_at).toDateString()}</p>
