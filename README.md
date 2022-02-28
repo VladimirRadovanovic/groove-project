@@ -11,9 +11,7 @@ Website: https://groove-project.herokuapp.com/
   * [4. API Documentation](https://github.com/VladimirRadovanovic/groove-project/wiki/API-Documentation)
   * [5. Frontend Routes](https://github.com/VladimirRadovanovic/groove-project/wiki/Frontend-Routes)
 
-## 1.1. Splash Page
-![alt](https://imgur.com/CwEuDnU.png)
-## 1.2. Splash Page
+## 1. Splash Page
 ![alt](https://imgur.com/RHCeP7M.png)
 ## 2. Listings Page
 ![alt](https://imgur.com/YQUy040.png)
