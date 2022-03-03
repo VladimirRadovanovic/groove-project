@@ -3,7 +3,15 @@ import { loadListings } from "./listings"
 
 const ADD_REVIEW = 'reviews/ADD_REVIEW'
 const LOAD_LISTING_REVIEWS = 'reviews/LOAD_LISTING_REVIEWS'
+const LOAD_ALL_REVIEWS = 'reviews/LOAD_ALL_REVIEWS'
 const DELETE_REVIEW = 'reviews/DELETE_REVIEWS'
+
+const loadAllReviews = (reviews) => {
+    return {
+        type: LOAD_ALL_REVIEWS,
+        reviews
+    }
+}
 
 
 const addReview = (review) => {
@@ -39,6 +47,16 @@ export const deleteReview = (id) => async(dispatch) => {
             dispatch(removeReview(id))
             return 'Deleted'
         }
+    }
+}
+
+
+export const getAllReviews = () => async(dispatch) => {
+    const response = await fetch ('/api/reviews/all')
+    if(response.ok) {
+        const data= await response.json()
+        dispatch(loadAllReviews(data.reviews))
+        return null
     }
 }
 
@@ -92,6 +110,8 @@ const reviewReducer = (state = {}, action) => {
         case ADD_REVIEW:
             newState = {...state, [action.review.id]: action.review}
             return newState
+        case LOAD_ALL_REVIEWS:
+            newState = {...state, ...action.reviews}
         case LOAD_LISTING_REVIEWS:
             newState = {...action.reviews}
             return newState

@@ -14,6 +14,7 @@ import { deleteListing } from '../../../store/listings'
 import DisplayReviews from '../../Reviews/DisplayReviews/DisplayReviews'
 import GoBackButton from '../../Utils/GoBackButton'
 import { getListingReviews } from '../../../store/reviews'
+import { getAllReviews } from '../../../store/reviews'
 
 
 
@@ -29,7 +30,8 @@ function ListingDetails({ user, numItemSetter }) {
     useEffect(() => {
 
              dispatch(getAllListings())
-             dispatch(getListingReviews(listingId))
+            //  dispatch(getListingReviews(listingId))
+             dispatch(getAllReviews())
 
     }, [recordId, dispatch])
 
@@ -39,20 +41,23 @@ function ListingDetails({ user, numItemSetter }) {
 
     const reviews = useSelector(state => state.reviews)
     const reviewsList = Object.values(reviews)
+    const listingReviewsList = reviewsList.filter(review => (
+        review.listing_id === listingId
+    ))
     let totalRating = 0;
-    reviewsList.forEach(review => (
+    listingReviewsList.forEach(review => (
         totalRating += review.rating
     ))
 
-    let avgRating = Number.isNaN(parseFloat((totalRating / reviewsList.length).toFixed(2)))
+    let avgRating = Number.isNaN(parseFloat((totalRating / listingReviewsList.length).toFixed(2)))
     if(avgRating) {
         avgRating = 'This record currently has no reviews.'
     } else {
-        avgRating = parseFloat((totalRating / reviewsList.length).toFixed(2))
+        avgRating = parseFloat((totalRating / listingReviewsList.length).toFixed(2))
     }
     let percentRating = (avgRating / 5 * 100).toFixed(2)
 
-    if(reviewsList.length === 0) percentRating = 0
+    if(listingReviewsList.length === 0) percentRating = 0
     // if (avgRating === NaN) avgRating = 0
     console.log(typeof(avgRating), 'avrage rating')
     console.log(avgRating, 'rating acr')
@@ -125,7 +130,7 @@ function ListingDetails({ user, numItemSetter }) {
                     </div>
                 </div>
                         <span className='avg-num'>{typeof(avgRating) === 'number' ?
-                        (<span>{avgRating} out of 5 | <NavLink to='#customer-reviews'>{reviewsList?.length === 1 ? `${reviewsList?.length} review` : `${reviewsList?.length} reviews` } </NavLink></span>)
+                        (<span>{avgRating} out of 5 | <NavLink to='#customer-reviews'>{listingReviewsList?.length === 1 ? `${listingReviewsList?.length} review` : `${listingReviewsList?.length} reviews` } </NavLink></span>)
                         :
                         (<span>{avgRating } <NavLink to={`/records/${listing?.id}/review`}>Be the first one to review it.</NavLink></span>)}
                         </span>
@@ -156,7 +161,7 @@ function ListingDetails({ user, numItemSetter }) {
                 </div>
             </section>
             </div>
-            <DisplayReviews listing={listing} reviewsList={reviewsList} />
+            <DisplayReviews listing={listing} reviewsList={listingReviewsList} />
         </main>
     )
 }

@@ -49,3 +49,9 @@ def load_reviews(id):
     reviews = Review.query.filter(Review.listing_id == int(id)).all()
 
     return {'reviews': {str(rev.id): rev.to_dict() for rev in reviews}}
+
+
+@review_routes.route('/all')
+def load_all_reviews():
+    reviews = Review.query.all()
+    return {'reviews': {str(rev.id): rev.to_dict() for rev in reviews}}
