@@ -29,7 +29,7 @@ function ListingDetails({ user, numItemSetter }) {
     useEffect(() => {
 
              dispatch(getAllListings())
-            //  dispatch(getListingReviews(listingId))
+             dispatch(getListingReviews(listingId))
 
     }, [recordId, dispatch])
 

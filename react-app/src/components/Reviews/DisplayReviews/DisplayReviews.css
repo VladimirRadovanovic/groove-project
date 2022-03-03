@@ -52,3 +52,16 @@
 .review-display--fill {
     color: var(--yellow);
 }
+
+.leave-review-link {
+    border-radius: .2rem;
+    border: var(--border-medium);
+    font-weight: 600;
+    padding: .5rem 2.5rem;
+    font-size: 1.5rem;
+
+}
+
+#customer-reviews {
+    margin-bottom: 2rem;
+}

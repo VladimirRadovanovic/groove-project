@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 
 import { deleteReview } from "../../../store/reviews";
+import './DeleteReview.css'
 
 function DeleteReview({ id }) {
     const dispatch = useDispatch()
@@ -10,7 +11,7 @@ function DeleteReview({ id }) {
 
     return (
         <div>
-            <button onClick={handleDeleteReview}>Delete Review</button>
+            <button className="delete-review-button" onClick={handleDeleteReview}>Delete Review</button>
         </div>
     )
 }

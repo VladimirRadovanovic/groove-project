@@ -17,12 +17,12 @@ function DisplayReviews( { listing, reviewsList }) {
     ]
     const { recordId } = useParams()
     const listingId = Number(recordId)
-    useEffect(() => {
-        if(listing) {
+    // useEffect(() => {
+    //     if(listing) {
 
-            dispatch(getListingReviews(listingId))
-        }
-    }, [recordId])
+    //         dispatch(getListingReviews(listingId))
+    //     }
+    // }, [recordId])
 
     // const reviews = useSelector(state => state.reviews)
     // const reviewsList = Object.values(reviews)
@@ -32,7 +32,7 @@ function DisplayReviews( { listing, reviewsList }) {
         <section className='display-reviews-section'>
             <div id='reviews' className='display-reviews-container'>
             <h3 id='customer-reviews'>Customer reviews</h3>
-            <NavLink to={`/records/${listing?.id}/review`}>Leave a Review</NavLink>
+            <NavLink className='leave-review-link' to={`/records/${listing?.id}/review`}>Leave a Review</NavLink>
             <div>
                 {reviewsList.map(review => (
                     <div className='single-review-container' key={review.id}>
