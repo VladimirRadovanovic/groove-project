@@ -161,13 +161,14 @@
 }
 
 .single-review-container {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     border: var(--border-light);
     border-radius: .3rem;
-    width: 70rem;
+    width: 86rem;
     padding: 2rem;
     height: fit-content;
     margin: 1.5rem 0;
+    padding: 1rem 2rem;
 }
 
 .sold-by-review {

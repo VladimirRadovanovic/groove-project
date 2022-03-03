@@ -7,13 +7,14 @@
 .details-main h2 {
     padding: 1rem 0;
     font-size: 2.2rem;
+    display: block;
+    text-align: left;
 }
 
 .details-main-container {
     display: flex;
     /* margin-bottom: -5rem; */
     width: 90rem;
-    margin-top: 5rem;
 }
 
 .details-img-container {
@@ -77,13 +78,15 @@
 }
 
 .sold-by-paragraph {
-    padding-bottom: 2rem;
+    /* padding-bottom: 2rem; */
     display: inline-block;
+    padding-left: 1rem;
+    font-size: 1.5rem;
 }
 
 .details-cart-button{
     position: absolute;
-    top: 71vh;
+    top: 36.5vh;
     left: 2rem;
     width: 20rem;
 }
@@ -172,4 +175,24 @@
 
 .avg-rating {
     font-size: 2rem;
+}
+
+.record-details-container {
+    width: 90rem;
+}
+
+.album-and-artist {
+    font-weight: 600;
+    font-size: 1.7rem;
+}
+
+.record-data-container {
+    padding-top: 1rem;
+}
+.star-avg-container {
+    padding-top: 1rem;
+}
+.avg-num {
+    padding-left: 1rem;
+    font-weight: 600;
 }

@@ -97,19 +97,20 @@ function ListingDetails({ user, numItemSetter }) {
                     <p id='img-heading' className='sold-by-paragraph'><NavLink className='link-to-profile-in-details' to={`/users/${listing?.seller?.id}/profile`}>{listing?.seller?.username}</NavLink> </p>
                  </div>
                 </div>
+                <div className='record-details-container'>
+                <h2>Record details</h2>
+
+                </div>
             <div className='details-main-container'>
+
             <section className='details-img-container'>
                 <img  className='details-img' src={listing?.img_url ? listing.img_url : placeholder} alt='profile' />
             </section>
-            <div className='details-back'>
-
-
-            </div>
             <section className='details-data-container'>
             <div className='album-and-artist'>
             {listing?.album} by {listing?.artist}
             </div>
-
+                <div className='star-avg-container'>
                 <div  className='avg-rating'>
                     <div style={{width:`${percentRating}%`}} className='avg-star-container'>
                         <div className='min-width-content'>
@@ -121,11 +122,13 @@ function ListingDetails({ user, numItemSetter }) {
                     </div>
                     </div>
                 </div>
-                        <span>{typeof(avgRating) === 'number' ?
+                        <span className='avg-num'>{typeof(avgRating) === 'number' ?
                         (<span>{avgRating} out of 5 | <NavLink to='#customer-reviews'>{reviewsList?.length === 1 ? `${reviewsList?.length} review` : `${reviewsList?.length} reviews` } </NavLink></span>)
                         :
                         (<span>{avgRating } <NavLink to={`/records/${listing?.id}/review`}>Be the first one to review it.</NavLink></span>)}
                         </span>
+                        </div>
+                <div className='record-data-container'>
                 <div className='details-info-container'>
                     <p><strong>Listed on:</strong> {listing?.created_at && new Date(listing?.created_at).toDateString()}</p>
                     <p><strong>Genre:</strong> {listing?.genre}</p>
@@ -148,6 +151,7 @@ function ListingDetails({ user, numItemSetter }) {
                     <ConfirmRemoveListing id={listingIdNum} handleDelete={handleDelete} onClose={onClose} />
 
                 )}
+                </div>
             </section>
             </div>
             <DisplayReviews listing={listing} reviewsList={reviewsList} />

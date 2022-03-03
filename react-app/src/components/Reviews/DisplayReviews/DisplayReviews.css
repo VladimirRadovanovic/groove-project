@@ -1,20 +1,21 @@
 .display-reviews-section {
 
-    /* width: 50rem; */
-    /* background-color: antiquewhite; */
+
     margin-top: 5rem;
     border-top: var(--border-light);
-    display: flex;
-    justify-content: center;
+    /* display: flex; */
+    /* justify-content: center; */
+    width: 90rem;
 }
 
 .display-reviews-container {
     width: 90rem;
 }
 
-.single-review-container {
+/* .single-review-container {
     padding: 1rem 0;
-}
+
+} */
 
 .display-reviewer-container {
     display: flex;
