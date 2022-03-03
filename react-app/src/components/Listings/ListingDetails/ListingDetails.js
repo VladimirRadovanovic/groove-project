@@ -88,13 +88,14 @@ function ListingDetails({ user, numItemSetter }) {
     }
 
     return (
-        <main >
+        <main className='details-main' >
+             <GoBackButton />
             <div className='details-main-container'>
             <section className='details-img-container'>
                 <img  className='details-img' src={listing?.img_url ? listing.img_url : placeholder} alt='profile' />
             </section>
             <div className='details-back'>
-                <GoBackButton />
+
 
             </div>
             <section className='details-data-container'>

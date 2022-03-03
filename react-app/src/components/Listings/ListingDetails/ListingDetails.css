@@ -1,11 +1,18 @@
+.details-main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 .details-main-container {
     display: flex;
     margin-bottom: -5rem;
+    width: 100rem;
 }
 
 .details-img-container {
-    width: 45%;
-    height: 80vh;
+    width: 40%;
+    height: 30rem;
 }
 
 .details-img {
