@@ -4,34 +4,42 @@
     flex-direction: column;
 }
 
+.details-main h2 {
+    padding: 1rem 0;
+    font-size: 2.2rem;
+}
+
 .details-main-container {
     display: flex;
-    margin-bottom: -5rem;
-    width: 100rem;
+    /* margin-bottom: -5rem; */
+    width: 90rem;
+    margin-top: 5rem;
 }
 
 .details-img-container {
     width: 40%;
-    height: 30rem;
+    height: 40rem;
+    padding-bottom: 1rem;
 }
 
 .details-img {
     object-fit: cover;
     width: 100%;
     height: 100%;
+    border-radius: .3rem;
 }
 
 .sold-by-img {
-    height: 8rem;
-    width: 8rem;
+    height: 5rem;
+    width: 5rem;
     object-fit: cover;
     border-radius: .2rem;
-    margin-left: 2rem;
-    margin-bottom: 2rem;
+
+
 }
 
 .details-info-container{
-    padding-top: 3rem;
+
     word-wrap: break-word;
     overflow-y: auto;
 }
@@ -41,22 +49,36 @@
 }
 
 .details-data-container {
-    width: 55%;
-    padding: 3rem;
-    font-size: 2rem;
-    font-weight: 500;
+    width: 60%;
+    padding-left: 3rem;
+    font-size: 1.5rem;
+    font-weight: 400;
     position: relative;
 }
 
 .sold-by-container {
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 90rem;
+    border-bottom: var(--border-light);
+}
+
+.sold-by-container div {
     display: flex;
     align-items: center;
-    justify-content: center;
-    border-bottom: 1px solid var(--gray-secondary);
+}
+
+.album-and-artist {
+    border-bottom: var(--border-light);
+    padding-bottom: 1rem;
 }
 
 .sold-by-paragraph {
     padding-bottom: 2rem;
+    display: inline-block;
 }
 
 .details-cart-button{
@@ -146,4 +168,8 @@
     min-width: 11.8rem;
     /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
 
+}
+
+.avg-rating {
+    font-size: 2rem;
 }

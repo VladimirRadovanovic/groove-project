@@ -90,6 +90,13 @@ function ListingDetails({ user, numItemSetter }) {
     return (
         <main className='details-main' >
              <GoBackButton />
+             <div className='sold-by-container'>
+                 <h2>Sold by</h2>
+                 <div>
+                    <img className='sold-by-img' src={listing?.seller?.profile_img_url ? listing?.seller?.profile_img_url : placeholder} alt='sold' />
+                    <p id='img-heading' className='sold-by-paragraph'><NavLink className='link-to-profile-in-details' to={`/users/${listing?.seller?.id}/profile`}>{listing?.seller?.username}</NavLink> </p>
+                 </div>
+                </div>
             <div className='details-main-container'>
             <section className='details-img-container'>
                 <img  className='details-img' src={listing?.img_url ? listing.img_url : placeholder} alt='profile' />
@@ -99,10 +106,10 @@ function ListingDetails({ user, numItemSetter }) {
 
             </div>
             <section className='details-data-container'>
-                <div className='sold-by-container'>
-                    <p id='#img-heading' className='sold-by-paragraph'><strong>Sold by: </strong><NavLink className='link-to-profile-in-details' to={`/users/${listing?.seller?.id}/profile`}>{listing?.seller?.username}</NavLink> </p>
-                    <img className='sold-by-img' src={listing?.seller?.profile_img_url ? listing?.seller?.profile_img_url : placeholder} alt='sold' />
-                </div>
+            <div className='album-and-artist'>
+            {listing?.album} by {listing?.artist}
+            </div>
+
                 <div  className='avg-rating'>
                     <div style={{width:`${percentRating}%`}} className='avg-star-container'>
                         <div className='min-width-content'>
@@ -120,9 +127,7 @@ function ListingDetails({ user, numItemSetter }) {
                         (<span>{avgRating } <NavLink to={`/records/${listing?.id}/review`}>Be the first one to review it.</NavLink></span>)}
                         </span>
                 <div className='details-info-container'>
-                    <p><strong>Posted on:</strong> {listing?.created_at && new Date(listing?.created_at).toDateString()}</p>
-                    <p><strong>Album:</strong> {listing?.album}</p>
-                    <p><strong>Artist:</strong> {listing?.artist}</p>
+                    <p><strong>Listed on:</strong> {listing?.created_at && new Date(listing?.created_at).toDateString()}</p>
                     <p><strong>Genre:</strong> {listing?.genre}</p>
                     <p><strong>Condition:</strong> {listing?.condition}</p>
                     <p><strong>Price:</strong> ${listing?.price.toFixed(2)}</p>
