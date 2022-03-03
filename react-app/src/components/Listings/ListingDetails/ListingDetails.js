@@ -25,10 +25,11 @@ function ListingDetails({ user, numItemSetter }) {
 
     const { recordId } = useParams()
     const listingId = Number(recordId)
+    console.log(listingId, 'from use params')
     useEffect(() => {
 
              dispatch(getAllListings())
-             dispatch(getListingReviews(listingId))
+            //  dispatch(getListingReviews(listingId))
 
     }, [recordId, dispatch])
 
@@ -90,15 +91,16 @@ function ListingDetails({ user, numItemSetter }) {
     return (
         <main className='details-main' >
              <GoBackButton />
+             <h2 className='details-headline'>Listing details</h2>
              <div className='sold-by-container'>
-                 <h2>Sold by</h2>
+                 <h3>Sold by</h3>
                  <div>
                     <img className='sold-by-img' src={listing?.seller?.profile_img_url ? listing?.seller?.profile_img_url : placeholder} alt='sold' />
                     <p id='img-heading' className='sold-by-paragraph'><NavLink className='link-to-profile-in-details' to={`/users/${listing?.seller?.id}/profile`}>{listing?.seller?.username}</NavLink> </p>
                  </div>
                 </div>
                 <div className='record-details-container'>
-                <h2>Record details</h2>
+                <h3>Record details</h3>
 
                 </div>
             <div className='details-main-container'>

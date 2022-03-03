@@ -4,7 +4,13 @@
     flex-direction: column;
 }
 
-.details-main h2 {
+.details-headline {
+    width: 90rem;
+    font-size: 2.9rem;
+    margin-top: 3rem;
+}
+
+.details-main h3 {
     padding: 1rem 0;
     font-size: 2.2rem;
     display: block;
@@ -13,7 +19,7 @@
 
 .details-main-container {
     display: flex;
-    /* margin-bottom: -5rem; */
+    margin-bottom: -2rem;
     width: 90rem;
 }
 
@@ -57,8 +63,13 @@
     position: relative;
 }
 
+.details-data-container a {
+    color: var(--blue-tertiary);
+    text-decoration: underline;
+}
+
 .sold-by-container {
-    padding-top: 3rem;
+    padding-top: 1rem;
     padding-bottom: 1rem;
     display: flex;
     flex-direction: column;

@@ -93,7 +93,7 @@ const reviewReducer = (state = {}, action) => {
             newState = {...state, [action.review.id]: action.review}
             return newState
         case LOAD_LISTING_REVIEWS:
-            newState = {...state, ...action.reviews}
+            newState = {...action.reviews}
             return newState
         default:
             return state
