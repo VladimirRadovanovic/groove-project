@@ -208,3 +208,21 @@
     padding-left: 1rem;
     font-weight: 600;
 }
+
+.let-us-know-container {
+    margin-top: 2rem;
+    width: 90rem;
+    height: 20rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: var(--border-light);
+    border-radius: .3rem;
+    font-size: 2.2rem;
+    /* font-weight: 600; */
+}
+
+.let-us-know-container a {
+    color: var(--blue-tertiary);
+    text-decoration: underline;
+}

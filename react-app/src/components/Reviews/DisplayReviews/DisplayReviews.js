@@ -64,6 +64,11 @@ function DisplayReviews( { listing, reviewsList }) {
                         )}
                     </div>
                 ))}
+                {reviewsList?.length === 0 && (
+                    <div className='let-us-know-container'>
+                        <p>This record has not been reviewed. <NavLink to={`/records/${listing?.id}/review`} >Please let us know what you think of it.</NavLink></p>
+                    </div>
+                )}
             </div>
             </div>
 
