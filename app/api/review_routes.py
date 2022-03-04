@@ -55,3 +55,22 @@ def load_reviews(id):
 def load_all_reviews():
     reviews = Review.query.all()
     return {'reviews': {str(rev.id): rev.to_dict() for rev in reviews}}
+
+
+
+@review_routes.route('/<int:id>/edit', methods=['PATCH'])
+@login_required
+def edit_review(id):
+    form = CreateReviewForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        data = form.data
+        review = Review.query.get(id)
+        review.headline=data['headline']
+        review.review=data['review']
+        review.rating=data['rating']
+
+        db.session.commit()
+        return {'review': review.to_dict()}
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401

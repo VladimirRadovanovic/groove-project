@@ -7,21 +7,83 @@ import { NavLink } from 'react-router-dom';
 import './LeaveAReview.css'
 import { getAllListings } from '../../../store/listings';
 import placeholder from '../../../images/vinyl.jpg'
-import { makeReview } from '../../../store/reviews';
+import { makeReview, getAllReviews, changeReview} from '../../../store/reviews';
 import GoBackButton from '../../Utils/GoBackButton';
+
 
 function LeaveAReview({ user }) {
     const history = useHistory()
     const dispatch = useDispatch()
-    const [review, setReview] = useState('')
-    const [headline, setHeadline] = useState('')
-    const [rating, setRating] = useState('')
+    const { reviewId } = useParams()
+
+    useEffect(() => {
+        dispatch(getAllReviews())
+    }, [reviewId, dispatch])
+
+    const reviews = useSelector(state => state.reviews)
+    let editReview;
+    if(reviewId) {
+        editReview = reviews[Number(reviewId)]
+    }
+    console.log(editReview?.rating, 'ratinggggggggg')
+
+    const [review, setReview] = useState(editReview?.review || '')
+    const [headline, setHeadline] = useState(editReview?.headline || '')
+    const [rating, setRating] = useState(editReview?.rating || '')
     const [fillStar1, setFillStar1] = useState('')
     const [fillStar2, setFillStar2] = useState('')
     const [fillStar3, setFillStar3] = useState('')
     const [fillStar4, setFillStar4] = useState('')
     const [fillStar5, setFillStar5] = useState('')
     const [errors, setErrors] = useState([])
+
+    if(fillStar1 === '' && fillStar2 === '' && fillStar3 === '' && fillStar4 === '' && fillStar5 === '') {
+
+    if(editReview?.rating === 1 && !fillStar1) {
+
+        setFillStar1('fill')
+    } else if (editReview?.rating === 1 && fillStar2 === 'fill') {
+        setFillStar2('')
+        setFillStar3('')
+        setFillStar4('')
+        setFillStar5('')
+    }
+
+    if(editReview?.rating === 2 && !fillStar2) {
+        setFillStar1('fill')
+        setFillStar2('fill')
+    } else if(editReview?.rating === 2 && fillStar3 === 'fill') {
+        setFillStar3('')
+        setFillStar4('')
+        setFillStar5('')
+    }
+
+    if(editReview?.rating === 3 && !fillStar3) {
+        setFillStar1('fill')
+        setFillStar2('fill')
+        setFillStar3('fill')
+    } else if(editReview?.rating === 3 && fillStar4 === 'fill') {
+        setFillStar4('')
+        setFillStar5('')
+    }
+
+    if(editReview?.rating === 4 && !fillStar4) {
+        setFillStar1('fill')
+        setFillStar2('fill')
+        setFillStar3('fill')
+        setFillStar4('fill')
+    } else if (editReview?.rating === 4 && fillStar5 === 'fill') {
+        setFillStar5('')
+    }
+
+    if(editReview?.rating === 5 && !fillStar5) {
+        setFillStar1('fill')
+        setFillStar2('fill')
+        setFillStar3('fill')
+        setFillStar4('fill')
+        setFillStar5('fill')
+    }
+}
 
 
     useEffect(() => {
@@ -32,7 +94,13 @@ function LeaveAReview({ user }) {
     const listingId = Number(recordId)
 
     const listings = useSelector(state => state.listings)
-    const reviewedListing = listings[listingId]
+    let reviewedListing = listings[listingId]
+    console.log(reviewedListing, 'rev')
+    if (!reviewedListing) {
+        reviewedListing = listings[editReview?.listing_id]
+    console.log(reviewedListing, 'ev 2')
+
+    }
 
     const handleReview = (e) => {
         setReview(e.target.value)
@@ -45,27 +113,48 @@ function LeaveAReview({ user }) {
 
     const handleReviewSubmit = async(e) => {
         e.preventDefault()
-        const listing_id = Number(e.target.id.split('-')[1])
-        console.log(listing_id, 'listing id!!!!!!!')
-        const payload = {
-            listing_id,
-            headline,
-            review,
-            rating
-        }
-        const data = await dispatch(makeReview(payload))
-        if(data) {
-            setErrors(data)
-            console.log(data, 'review error data*********')
+
+        if(editReview) {
+            console.log('edit review')
+            const payload = {
+                reviewId,
+                headline,
+                review,
+                rating
+            }
+            const data = await dispatch(changeReview(payload))
+            if(data) {
+                setErrors(data)
+
+            } else {
+                history.push(`/records/${editReview?.listing_id}/details`)
+            }
+
         } else {
-            history.push(`/records/${listingId}/details`)
+            const listing_id = Number(e.target.id.split('-')[1])
+            console.log('crate review')
+            const payload = {
+                listing_id,
+                headline,
+                review,
+                rating
+            }
+            const data = await dispatch(makeReview(payload))
+            if(data) {
+                setErrors(data)
+                console.log(data, 'review error data*********')
+            } else {
+                history.push(`/records/${listingId}/details`)
+            }
+
         }
 
     }
 
     const handleSetRating = (e) => {
-        const value = Number(e.target.value)
+        let value = Number(e.target.value)
         setRating(value)
+
         if(value === 1 && !fillStar1) {
 
             setFillStar1('fill')
@@ -172,7 +261,7 @@ function LeaveAReview({ user }) {
                 ))}
             </ul>
             <h2 className='leave-review-heading'>
-                Create review
+               {editReview ? 'Edit review' : 'Create review'}
             </h2>
             <div className='leave-review-info-container'>
                 <img className='leave-review-img' src={reviewedListing?.img_url ? reviewedListing?.img_url : placeholder} alt='review' />

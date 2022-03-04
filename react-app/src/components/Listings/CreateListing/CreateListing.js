@@ -18,15 +18,18 @@ function CreateListing({ user }) {
     const { recordId } = useParams()
 
     useEffect(() => {
+
         dispatch(getAllListings())
     }, [recordId, dispatch])
 
     const listings = useSelector(state => state.listings)
 
+
     let listing;
     if (recordId) {
         const listingId = Number(recordId)
         listing = listings[listingId]
+
     }
 
 

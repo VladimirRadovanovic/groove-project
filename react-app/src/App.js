@@ -86,6 +86,9 @@ function App() {
         <ProtectedRoute path='/records/:recordId/review'>
             <LeaveAReview user={user} />
         </ProtectedRoute>
+        <ProtectedRoute path='/reviews/:reviewId/edit-review'>
+           <LeaveAReview user={user} />
+        </ProtectedRoute>
         <Route path='/'>
           <main className='page-not-found-container'>
           <h2 className='page-not-found'>Error 404: page not found!</h2>
