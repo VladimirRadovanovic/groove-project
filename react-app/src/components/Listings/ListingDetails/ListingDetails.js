@@ -13,7 +13,7 @@ import ConfirmRemoveListing from '../RemoveListing/RemoveListing'
 import { deleteListing } from '../../../store/listings'
 import DisplayReviews from '../../Reviews/DisplayReviews/DisplayReviews'
 import GoBackButton from '../../Utils/GoBackButton'
-import { getListingReviews } from '../../../store/reviews'
+// import { getListingReviews } from '../../../store/reviews'a
 import { getAllReviews } from '../../../store/reviews'
 
 
