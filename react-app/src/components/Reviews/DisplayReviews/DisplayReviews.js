@@ -72,7 +72,7 @@ function DisplayReviews({ listing, reviewsList }) {
                             {user?.id === review?.user?.id && (
                                  <div>
                                     <button id={`review-${review?.id}`} className="delete-review-button" onClick={onOpen}>Delete Review</button>
-                                    <NavLink to={`/reviews/${review?.id}/edit-review`}>Edit Review</NavLink>
+                                    <NavLink className='edit-review-link' to={`/reviews/${review?.id}/edit-review`}>Edit Review</NavLink>
                                  </div>
 
                                 // <DeleteReview id={review?.id} />
