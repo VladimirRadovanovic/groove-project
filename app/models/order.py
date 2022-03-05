@@ -8,7 +8,7 @@ class Order(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.now())
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     total_cost = db.Column(db.Float, nullable=False)
-    delivery_instructions = db.Column(db.String(100), default='Leave at front door.')
+    delivery_instructions = db.Column(db.String(100), default='Leave at the front door.')
 
     buyer = db.relationship('User', back_populates='orders')
     ordered_items = db.relationship('OrderItem', back_populates='order', cascade="all, delete-orphan")
