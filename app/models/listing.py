@@ -20,6 +20,7 @@ class Listing(db.Model):
     #one seller has many listings
     seller = db.relationship('User', back_populates='listings')
     ordered_by = db.relationship('OrderItem', back_populates='item', cascade="all, delete-orphan")
+    reviews = db.relationship('Review', back_populates='listing', cascade="all, delete-orphan")
 
     def to_dict(self):
         return {
@@ -34,5 +35,5 @@ class Listing(db.Model):
             'created_at': self.created_at,
             'seller': self.seller.to_dict_first(),
             'num_copies_available': self.num_copies_available,
-            'img_url': self.img_url
+            'img_url': self.img_url,
         }

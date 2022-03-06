@@ -3,7 +3,7 @@ const CREATE_LISTING = 'listings/CREATE_LISTING'
 const REMOVE_LISTING = 'listings/REMOVE_LISTING'
 const UPDATE_LISTING = 'listings/UPDATE_LISTING'
 
-const loadListings = (listings) => {
+export const loadListings = (listings) => {
     return {
         type: LOAD_ALL_LISTINGS,
         listings
@@ -123,7 +123,7 @@ const listingReducer = (state = {}, action) => {
             newState = {...state, ...action.listings}
             return newState
         default:
-            return newState
+            return state
     }
 }
 

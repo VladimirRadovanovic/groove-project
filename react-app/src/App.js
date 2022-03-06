@@ -16,6 +16,7 @@ import CreateListing from './components/Listings/CreateListing/CreateListing';
 import SplashPage from './components/SplashPage/SplashPage';
 import ListingDetails from './components/Listings/ListingDetails/ListingDetails';
 import Cart from './components/Cart/Cart.js/Cart';
+import LeaveAReview from './components/Reviews/LeaveAReview/LeaveAReview';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -82,6 +83,12 @@ function App() {
         <Route path='/cart'>
           <Cart user={user} numItemSetter={numItemSetter} />
         </Route>
+        <ProtectedRoute path='/records/:recordId/review'>
+            <LeaveAReview user={user} />
+        </ProtectedRoute>
+        <ProtectedRoute path='/reviews/:reviewId/edit-review'>
+           <LeaveAReview user={user} />
+        </ProtectedRoute>
         <Route path='/'>
           <main className='page-not-found-container'>
           <h2 className='page-not-found'>Error 404: page not found!</h2>

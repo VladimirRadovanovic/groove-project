@@ -11,7 +11,8 @@ function GoBackButton() {
 
     return (
         <div onClick={handleBack} className='back-button-container'>
-        <i className="fa-solid fa-arrow-left-long back-button"></i>
+        {/* <i className="fa-solid fa-arrow-left-long back-button"></i> */}
+        <i className="fa-solid fa-chevron-left"></i>
         <span>Go back</span>
         </div>
     )

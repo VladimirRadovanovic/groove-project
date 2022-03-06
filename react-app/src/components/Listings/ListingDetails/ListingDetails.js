@@ -11,8 +11,11 @@ import EditListing from '../EditListing/EditListing'
 // import RemoveListing from '../RemoveListing/RemoveListing'
 import ConfirmRemoveListing from '../RemoveListing/RemoveListing'
 import { deleteListing } from '../../../store/listings'
-
+import DisplayReviews from '../../Reviews/DisplayReviews/DisplayReviews'
 import GoBackButton from '../../Utils/GoBackButton'
+// import { getListingReviews } from '../../../store/reviews'a
+import { getAllReviews } from '../../../store/reviews'
+
 
 
 function ListingDetails({ user, numItemSetter }) {
@@ -23,12 +26,43 @@ function ListingDetails({ user, numItemSetter }) {
 
     const { recordId } = useParams()
     const listingId = Number(recordId)
+    console.log(listingId, 'from use params')
     useEffect(() => {
-        dispatch(getAllListings())
+
+             dispatch(getAllListings())
+            //  dispatch(getListingReviews(listingId))
+             dispatch(getAllReviews())
+
     }, [recordId, dispatch])
+
 
     const listings = useSelector(state => state.listings)
     const listing = listings[listingId]
+
+    const reviews = useSelector(state => state.reviews)
+    const reviewsList = Object.values(reviews)
+    const listingReviewsList = reviewsList.filter(review => (
+        review.listing_id === listingId
+    ))
+    let totalRating = 0;
+    listingReviewsList.forEach(review => (
+        totalRating += review.rating
+    ))
+
+    let avgRating = Number.isNaN(parseFloat((totalRating / listingReviewsList.length).toFixed(2)))
+    if(avgRating) {
+        avgRating = 'This record currently has no reviews.'
+    } else {
+        avgRating = parseFloat((totalRating / listingReviewsList.length).toFixed(2))
+    }
+    let percentRating = (avgRating / 5 * 100).toFixed(2)
+
+    if(listingReviewsList.length === 0) percentRating = 0
+    // if (avgRating === NaN) avgRating = 0
+    console.log(typeof(avgRating), 'avrage rating')
+    console.log(avgRating, 'rating acr')
+
+
 
     const handleDelete = async(e) => {
         const id = Number(e.target.id)
@@ -60,23 +94,50 @@ function ListingDetails({ user, numItemSetter }) {
     }
 
     return (
-        <main className='details-main-container'>
-            <section className='details-img-container'>
-                <img className='details-img' src={listing?.img_url ? listing.img_url : placeholder} alt='profile' />
-            </section>
-            <div className='details-back'>
-                <GoBackButton />
-
-            </div>
-            <section className='details-data-container'>
-                <div className='sold-by-container'>
-                    <p className='sold-by-paragraph'><strong>Sold by: </strong><NavLink className='link-to-profile-in-details' to={`/users/${listing?.seller?.id}/profile`}>{listing?.seller?.username}</NavLink> </p>
+        <main className='details-main' >
+             <GoBackButton />
+             <h2 className='details-headline'>Listing details</h2>
+             <div className='sold-by-container'>
+                 <h3>Sold by</h3>
+                 <div>
                     <img className='sold-by-img' src={listing?.seller?.profile_img_url ? listing?.seller?.profile_img_url : placeholder} alt='sold' />
+                    <p id='img-heading' className='sold-by-paragraph'><NavLink className='link-to-profile-in-details' to={`/users/${listing?.seller?.id}/profile`}>{listing?.seller?.username}</NavLink> </p>
+                 </div>
                 </div>
+                <div className='record-details-container'>
+                <h3>Record details</h3>
+
+                </div>
+            <div className='details-main-container'>
+
+            <section className='details-img-container'>
+                <img  className='details-img' src={listing?.img_url ? listing.img_url : placeholder} alt='profile' />
+            </section>
+            <section className='details-data-container'>
+            <div className='album-and-artist'>
+            {listing?.album} by {listing?.artist}
+            </div>
+                <div className='star-avg-container'>
+                <div  className='avg-rating'>
+                    <div style={{width:`${percentRating}%`}} className='avg-star-container'>
+                        <div className='min-width-content'>
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star"></i>
+                    </div>
+                    </div>
+                </div>
+                        <span className='avg-num'>{typeof(avgRating) === 'number' ?
+                        (<span>{avgRating} out of 5 | <NavLink to='#customer-reviews'>{listingReviewsList?.length === 1 ? `${listingReviewsList?.length} review` : `${listingReviewsList?.length} reviews` } </NavLink></span>)
+                        :
+                        (<span>{avgRating } <NavLink to={`/records/${listing?.id}/review`}>Be the first one to review it.</NavLink></span>)}
+                        </span>
+                        </div>
+                <div className='record-data-container'>
                 <div className='details-info-container'>
-                    <p><strong>Posted on:</strong> {listing?.created_at && new Date(listing?.created_at).toDateString()}</p>
-                    <p><strong>Album:</strong> {listing?.album}</p>
-                    <p><strong>Artist:</strong> {listing?.artist}</p>
+                    <p><strong>Listed on:</strong> {listing?.created_at && new Date(listing?.created_at).toDateString()}</p>
                     <p><strong>Genre:</strong> {listing?.genre}</p>
                     <p><strong>Condition:</strong> {listing?.condition}</p>
                     <p><strong>Price:</strong> ${listing?.price.toFixed(2)}</p>
@@ -97,7 +158,10 @@ function ListingDetails({ user, numItemSetter }) {
                     <ConfirmRemoveListing id={listingIdNum} handleDelete={handleDelete} onClose={onClose} />
 
                 )}
+                </div>
             </section>
+            </div>
+            <DisplayReviews listing={listing} reviewsList={listingReviewsList} />
         </main>
     )
 }

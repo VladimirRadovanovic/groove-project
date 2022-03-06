@@ -19,8 +19,10 @@ class User(db.Model, UserMixin):
     zip_code= db.Column(db.String(100), nullable=False)
     country= db.Column(db.String(100), nullable=False)
 
+    # set the cascade delete on the user if you would like the ability to delete a profile
     listings = db.relationship('Listing', back_populates='seller')
     orders = db.relationship('Order', back_populates='buyer')
+    reviews = db.relationship('Review', back_populates='user')
 
     @property
     def password(self):

@@ -1,0 +1,20 @@
+.delete-review-button,
+.edit-review-link {
+    border-radius: .3rem;
+    border: var(--border-medium);
+    background-color: var(--white);
+    font-size: 1.2rem;
+    padding: .3rem 1rem;
+    width:11rem;
+    height: 2rem;
+    margin-top: 1rem;
+
+}
+
+
+.edit-review-link {
+    margin-left: 1rem;
+    display: inline-block;
+    text-align: center;
+    font-weight: 500;
+}

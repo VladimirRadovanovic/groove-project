@@ -11,21 +11,25 @@ import logo from '../../../images/logo.svg'
 
 
 
+
 function CreateListing({ user }) {
     const history = useHistory()
     const dispatch = useDispatch()
     const { recordId } = useParams()
 
     useEffect(() => {
+
         dispatch(getAllListings())
     }, [recordId, dispatch])
 
     const listings = useSelector(state => state.listings)
 
+
     let listing;
     if (recordId) {
         const listingId = Number(recordId)
         listing = listings[listingId]
+
     }
 
 
@@ -277,7 +281,6 @@ function CreateListing({ user }) {
                     <button className="upload-photo-button" onClick={handleUploadConfirm} type="submit">Confirm photo selection</button>
                     {(imageLoading) && (
                     <p>
-                        Loading...
                         <img className="upload-photo-logo" src={logo} alt='logo' />
                     </p>)}
                 </Modal>

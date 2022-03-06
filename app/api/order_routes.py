@@ -83,7 +83,7 @@ def edit_order(id):
         if len(data['instructions']) > 0:
             order.delivery_instructions=data['instructions']
         else:
-            order.delivery_instructions="Leave at front door."
+            order.delivery_instructions="Leave at the front door."
 
 
         db.session.commit()
