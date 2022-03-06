@@ -17,13 +17,17 @@ import SplashPage from './components/SplashPage/SplashPage';
 import ListingDetails from './components/Listings/ListingDetails/ListingDetails';
 import Cart from './components/Cart/Cart.js/Cart';
 import LeaveAReview from './components/Reviews/LeaveAReview/LeaveAReview';
+import SearchedListings from './components/Search/SearchedListings';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const [length, setLength] = useState('')
+  const [searchedListings, setSearchedListings] = useState([])
   const dispatch = useDispatch();
 
-
+  const handelSearchListings = (list) => {
+    setSearchedListings(list)
+  }
 
   const numItemSetter = (num) => {
     setLength(num)
@@ -48,7 +52,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar length={length} user={user} />
+      <NavBar length={length} user={user} numItemSetter={numItemSetter} handelSearchListings={handelSearchListings} />
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
@@ -89,6 +93,9 @@ function App() {
         <ProtectedRoute path='/reviews/:reviewId/edit-review'>
            <LeaveAReview user={user} />
         </ProtectedRoute>
+        <Route exact={true} path='/records/searched'>
+          <SearchedListings searchedListings={searchedListings} numItemSetter={numItemSetter} />
+        </Route>
         <Route path='/'>
           <main className='page-not-found-container'>
           <h2 className='page-not-found'>Error 404: page not found!</h2>

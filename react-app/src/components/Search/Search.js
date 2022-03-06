@@ -1,13 +1,16 @@
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, Route } from "react-router-dom";
 import React,{ useState } from "react";
 
-function Search() {
+import SearchedListings from "./SearchedListings";
+
+
+function Search({ handelSearchListings }) {
     const dispatch = useDispatch()
     const history = useHistory()
 
     const [search, setSearch] = useState('')
-    const [searched, setSearched] = useState([])
+    // const [searched, setSearched] = useState([])
 
     const handleSubmit = async(e) => {
         e.preventDefault()
@@ -19,11 +22,13 @@ function Search() {
             body: JSON.stringify(search)
         })
         if(response.ok) {
-            const data = response.json()
-            setSearched(data)
+            const data = await response.json()
+            // setSearched(data.searched)
+            handelSearchListings(data.searched)
+            history.push('/records/searched')
             return null
         } else {
-            setSearched(['Invalid search. Please try again.'])
+            handelSearchListings(['Invalid search. Please try again.'])
         }
     }
 
@@ -42,6 +47,9 @@ function Search() {
             />
             <button>b</button>
         </form>
+
+            {/* <SearchedListings searched={searched} numItemSetter={numItemSetter} /> */}
+
         </>
     )
 }

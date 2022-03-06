@@ -6,7 +6,7 @@ import placeholder from '../../../images/vinyl.jpg'
 
 
 function DisplayListings({ listingsList, numItemSetter }) {
-
+    console.log(listingsList, 'searched listings')
     const history = useHistory()
 
     const handleAddToCart = (e) => {
