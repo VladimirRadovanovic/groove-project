@@ -6,6 +6,7 @@ import logo from '../../images/logo.svg'
 
 import './NavBar.css'
 import DropdownMenu from './DropdownMenu';
+import Search from '../Search/Search';
 
 const NavBar = ({ length, user }) => {
 
@@ -36,7 +37,7 @@ const NavBar = ({ length, user }) => {
               <i className="fa-solid fa-cart-shopping cart"></i>
             </NavLink>
           </div>
-
+                  <Search />
           <div className='dropdown-button-container'>
             <DropdownMenu />
           </div>
