@@ -37,7 +37,9 @@ function Cart({ user, numItemSetter }) {
 
 
     useEffect(() => {
-        const renderedItems = Object.values(localStorage)
+        const renderedItems = Object.values(localStorage).filter(value => (
+            !Array.isArray(JSON.parse(value))
+        ))
         const parsedItemsRender = renderedItems.map(item => (
             JSON.parse(item)
         ))
@@ -53,7 +55,9 @@ function Cart({ user, numItemSetter }) {
         setNumItems({ ...numItems, ...obj })
     }, [])
 
-    const cartItems = Object.values(localStorage)
+    const cartItems = Object.values(localStorage).filter(value => (
+        !Array.isArray(JSON.parse(value))
+    ))
 
     let parsedItems = cartItems.map(item => (
         JSON.parse(item)

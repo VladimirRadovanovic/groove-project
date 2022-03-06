@@ -22,12 +22,35 @@ import SearchedListings from './components/Search/SearchedListings';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const [length, setLength] = useState('')
-  const [searchedListings, setSearchedListings] = useState([])
+  const [searchedList, setSearchedList] = useState('')
+  // const [searchedListings, setSearchedListings] = useState([])
   const dispatch = useDispatch();
 
   const handelSearchListings = (list) => {
-    setSearchedListings(list)
+    if(!localStorage.getItem('searched')) {
+
+      localStorage.setItem('searched', JSON.stringify(list))
+      console.log(localStorage.getItem('searched'), 'in iffffffff')
+    } else {
+      console.log(localStorage.getItem('searched'), 'in else1')
+
+      localStorage.removeItem('searched')
+      console.log(localStorage.getItem('searched'), 'in else2')
+
+      localStorage.setItem('searched', JSON.stringify(list))
+      console.log(localStorage.getItem('searched'), 'in else 3')
+
+    }
+    setSearchedList(localStorage.getItem('searched'))
   }
+     let searchedListings = localStorage.getItem('searched')
+     searchedListings = JSON.parse(searchedListings)
+    if(!searchedListings) searchedListings = []
+
+    console.log(searchedListings, 'in the app after storage')
+
+
+
 
   const numItemSetter = (num) => {
     setLength(num)
@@ -39,8 +62,14 @@ function App() {
     (async() => {
       await dispatch(authenticate());
       setLoaded(true);
-      const cartItems = Object.values(localStorage)
-      setLength(cartItems.length)
+      // const cartItems = Object.values(localStorage)
+      // let cartItems = ''
+      if(localStorage.getItem('searched')) {
+            setLength(Object.values(localStorage).length - 1)
+      } else {
+           setLength(Object.values(localStorage).length)
+      }
+      // setLength(cartItems.length)
     })();
   }, [dispatch, url]);
 

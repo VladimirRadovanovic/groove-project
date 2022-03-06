@@ -87,7 +87,12 @@ function ListingDetails({ user, numItemSetter }) {
         const id = Number(e.target.id)
         const cartListing = listings[id]
         localStorage.setItem(id, JSON.stringify(cartListing))
-        const numItems = Object.values(localStorage).length
+        let numItems = ''
+        if(localStorage.getItem('searched')) {
+             numItems = Object.values(localStorage).length - 1
+        } else {
+            numItems = Object.values(localStorage).length
+        }
 
         numItemSetter(numItems)
         history.push('/cart')
