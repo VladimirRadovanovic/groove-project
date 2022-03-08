@@ -8,7 +8,7 @@ import placeholder from '../../../images/vinyl.jpg'
 function DisplayListings({ listingsList, numItemSetter }) {
     const [searchedListingsState, setSearchedListingsState] = useState('')
 
-    console.log(listingsList, 'searched listings')
+
     const history = useHistory()
 
     const handleAddToCart = (e) => {

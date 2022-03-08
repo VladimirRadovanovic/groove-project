@@ -44,12 +44,10 @@ function Cart({ user, numItemSetter }) {
             JSON.parse(item)
         ))
         const obj = {}
-        // let totalPrice;
+
         parsedItemsRender.forEach(pars => {
             obj[`${pars.id}`] = pars['cart_item_num'] || 1
-            // obj[`${pars.id}`] = {}
-            // console.log(pars['price'], pars['cart_item_num'] || 1, 'my math*****')
-            // totalPrice += pars['price'] * pars['cart_item_num'] || 1
+
         })
 
         setNumItems({ ...numItems, ...obj })
@@ -93,12 +91,9 @@ function Cart({ user, numItemSetter }) {
     const handleChange = (e) => {
         const eventId = e.target.id
 
-        // if(e.target.value < numItems[eventId]) {
-        //     setNumItems({ ...numItems, [e.target.id]: Number(e.target.value) - 1 })
-        // } else {
 
         setNumItems({ ...numItems, [e.target.id]: Number(e.target.value)})
-        // }
+
 
         const storageItem = JSON.parse(localStorage.getItem(eventId))
 

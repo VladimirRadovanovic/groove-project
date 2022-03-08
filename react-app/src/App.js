@@ -30,15 +30,15 @@ function App() {
     if(!localStorage.getItem('searched')) {
 
       localStorage.setItem('searched', JSON.stringify(list))
-      console.log(localStorage.getItem('searched'), 'in iffffffff')
+
     } else {
-      console.log(localStorage.getItem('searched'), 'in else1')
+
 
       localStorage.removeItem('searched')
-      console.log(localStorage.getItem('searched'), 'in else2')
+
 
       localStorage.setItem('searched', JSON.stringify(list))
-      console.log(localStorage.getItem('searched'), 'in else 3')
+
 
     }
     setSearchedList(localStorage.getItem('searched'))
@@ -47,7 +47,7 @@ function App() {
      searchedListings = JSON.parse(searchedListings)
     if(!searchedListings) searchedListings = []
 
-    console.log(searchedListings, 'in the app after storage')
+
 
 
 

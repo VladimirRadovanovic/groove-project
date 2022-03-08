@@ -26,7 +26,7 @@ function ListingDetails({ user, numItemSetter }) {
 
     const { recordId } = useParams()
     const listingId = Number(recordId)
-    console.log(listingId, 'from use params')
+
     useEffect(() => {
 
              dispatch(getAllListings())
@@ -59,8 +59,7 @@ function ListingDetails({ user, numItemSetter }) {
 
     if(listingReviewsList.length === 0) percentRating = 0
     // if (avgRating === NaN) avgRating = 0
-    console.log(typeof(avgRating), 'avrage rating')
-    console.log(avgRating, 'rating acr')
+
 
 
 
