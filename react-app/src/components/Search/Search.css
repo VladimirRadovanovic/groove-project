@@ -1,0 +1,37 @@
+.search-input {
+    /* width: 33rem;
+    height: 3.2rem;
+    padding: 0 1rem; */
+    border: none;
+    padding: 0 1rem;
+    width: 87%;
+    font-size: 1.6rem;
+
+}
+
+.search-button {
+    /* height: 3.2rem;
+    width: 3.5rem;
+    border: none;
+    background-color: var(--white); */
+    border: none;
+    background-color: white;
+    border-left: var(--border-dark);
+
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    width: 43rem;
+    height: 3.8rem;
+    border-radius: .3rem;
+
+}
+
+.search-form i{
+    font-size: 1.9rem;
+    padding-left: .7rem;
+
+}

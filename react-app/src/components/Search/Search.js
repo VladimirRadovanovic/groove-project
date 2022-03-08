@@ -3,6 +3,7 @@ import { useHistory, Route } from "react-router-dom";
 import React,{ useState } from "react";
 
 import SearchedListings from "./SearchedListings";
+import './Search.css'
 
 
 function Search({ handelSearchListings }) {
@@ -45,13 +46,14 @@ function Search({ handelSearchListings }) {
 
     return (
         <>
-        <form onSubmit={handleSubmit}>
+        <form className="search-form" onSubmit={handleSubmit}>
             <input
+            className="search-input"
             type='search'
             value={search}
             onChange={handleChange}
             />
-            <button>b</button>
+            <button className="search-button"><i className="fa-solid fa-magnifying-glass"></i></button>
         </form>
 
             {/* <SearchedListings searched={searched} numItemSetter={numItemSetter} /> */}
