@@ -118,7 +118,7 @@
 
 .edit-remove-profile-container {
     position: absolute;
-    top: 71vh;
+    top: 37vh;
     display: flex;
     align-items: center;
 
@@ -126,6 +126,8 @@
 
 .edit-listing-profile {
     border: var(--border-dark);
+    color: var(--font-color)!important;
+    text-decoration: none!important;
 
 }
 .edit-listing-profile:hover {
