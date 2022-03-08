@@ -48,6 +48,7 @@ function Search({ handelSearchListings }) {
         <>
         <form className="search-form" onSubmit={handleSubmit}>
             <input
+            placeholder="Search by album or artist"
             className="search-input"
             type='search'
             value={search}

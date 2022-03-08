@@ -135,15 +135,15 @@ function GetUserOrders({ user }) {
                                 <button className='update-order-profile-button' id={`order-${order?.id}`} onClick={onOpen}>Update delivery instructions</button>
                             </div>
                         }
-                        {showUpdateModal && (
-                            <UpdateOrderForm onClose={onClose} onOpen={onOpen} instructions={instruction} id={updateId} />
-                        )}
-                        {showConfirmModal && (
-                            <CancelOrderModal onCloseConfirm={onCloseConfirm} handleCancelOrder={handleCancelOrder} id={deleteId} />
-                        )}
                     </article>
                 ))}
             </div>
+                {showUpdateModal && (
+                    <UpdateOrderForm onClose={onClose} onOpen={onOpen} instructions={instruction} id={updateId} />
+                )}
+                {showConfirmModal && (
+                    <CancelOrderModal onCloseConfirm={onCloseConfirm} handleCancelOrder={handleCancelOrder} id={deleteId} />
+                )}
         </section>
     )
 }
