@@ -1,11 +1,13 @@
 import { NavLink, useHistory } from "react-router-dom"
-
+import { useState } from "react"
 
 
 import placeholder from '../../../images/vinyl.jpg'
 
 
 function DisplayListings({ listingsList, numItemSetter }) {
+    const [searchedListingsState, setSearchedListingsState] = useState('')
+
     console.log(listingsList, 'searched listings')
     const history = useHistory()
 
@@ -24,6 +26,7 @@ function DisplayListings({ listingsList, numItemSetter }) {
         }
 
         numItemSetter(numItems)
+        setSearchedListingsState(numItems)
         history.push('/cart')
 
     }

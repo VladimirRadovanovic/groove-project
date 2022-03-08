@@ -1,8 +1,9 @@
-
+import { useState } from "react";
 
 import DisplayListings from "../Listings/DisplayListings/DisplayListings";
 
 function SearchedListings({ searchedListings, numItemSetter }) {
+
 
     return (
         <main>
