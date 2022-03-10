@@ -26,7 +26,7 @@ function ListingDetails({ user, numItemSetter }) {
 
     const { recordId } = useParams()
     const listingId = Number(recordId)
-    console.log(listingId, 'from use params')
+
     useEffect(() => {
 
              dispatch(getAllListings())
@@ -59,8 +59,7 @@ function ListingDetails({ user, numItemSetter }) {
 
     if(listingReviewsList.length === 0) percentRating = 0
     // if (avgRating === NaN) avgRating = 0
-    console.log(typeof(avgRating), 'avrage rating')
-    console.log(avgRating, 'rating acr')
+
 
 
 
@@ -87,7 +86,12 @@ function ListingDetails({ user, numItemSetter }) {
         const id = Number(e.target.id)
         const cartListing = listings[id]
         localStorage.setItem(id, JSON.stringify(cartListing))
-        const numItems = Object.values(localStorage).length
+        let numItems = ''
+        if(localStorage.getItem('searched')) {
+             numItems = Object.values(localStorage).length - 1
+        } else {
+            numItems = Object.values(localStorage).length
+        }
 
         numItemSetter(numItems)
         history.push('/cart')

@@ -25,7 +25,7 @@ function LeaveAReview({ user }) {
     if(reviewId) {
         editReview = reviews[Number(reviewId)]
     }
-    console.log(editReview?.rating, 'ratinggggggggg')
+
 
     const [review, setReview] = useState(editReview?.review || '')
     const [headline, setHeadline] = useState(editReview?.headline || '')
@@ -95,10 +95,10 @@ function LeaveAReview({ user }) {
 
     const listings = useSelector(state => state.listings)
     let reviewedListing = listings[listingId]
-    console.log(reviewedListing, 'rev')
+
     if (!reviewedListing) {
         reviewedListing = listings[editReview?.listing_id]
-    console.log(reviewedListing, 'ev 2')
+
 
     }
 
@@ -115,7 +115,7 @@ function LeaveAReview({ user }) {
         e.preventDefault()
 
         if(editReview) {
-            console.log('edit review')
+
             const payload = {
                 reviewId,
                 headline,
@@ -132,7 +132,7 @@ function LeaveAReview({ user }) {
 
         } else {
             const listing_id = Number(e.target.id.split('-')[1])
-            console.log('crate review')
+
             const payload = {
                 listing_id,
                 headline,
@@ -142,7 +142,7 @@ function LeaveAReview({ user }) {
             const data = await dispatch(makeReview(payload))
             if(data) {
                 setErrors(data)
-                console.log(data, 'review error data*********')
+
             } else {
                 history.push(`/records/${listingId}/details`)
             }

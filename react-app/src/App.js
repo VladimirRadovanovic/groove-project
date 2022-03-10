@@ -17,11 +17,38 @@ import SplashPage from './components/SplashPage/SplashPage';
 import ListingDetails from './components/Listings/ListingDetails/ListingDetails';
 import Cart from './components/Cart/Cart.js/Cart';
 import LeaveAReview from './components/Reviews/LeaveAReview/LeaveAReview';
+import SearchedListings from './components/Search/SearchedListings';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const [length, setLength] = useState('')
+  const [searchedList, setSearchedList] = useState('')
+  // const [searchedListings, setSearchedListings] = useState([])
   const dispatch = useDispatch();
+
+  const handelSearchListings = (list) => {
+    if(!localStorage.getItem('searched')) {
+
+      localStorage.setItem('searched', JSON.stringify(list))
+
+    } else {
+
+
+      localStorage.removeItem('searched')
+
+
+      localStorage.setItem('searched', JSON.stringify(list))
+
+
+    }
+    setSearchedList(localStorage.getItem('searched'))
+  }
+     let searchedListings = localStorage.getItem('searched')
+     searchedListings = JSON.parse(searchedListings)
+    if(!searchedListings) searchedListings = []
+
+
+
 
 
 
@@ -35,8 +62,14 @@ function App() {
     (async() => {
       await dispatch(authenticate());
       setLoaded(true);
-      const cartItems = Object.values(localStorage)
-      setLength(cartItems.length)
+      // const cartItems = Object.values(localStorage)
+      // let cartItems = ''
+      if(localStorage.getItem('searched')) {
+            setLength(Object.values(localStorage).length - 1)
+      } else {
+           setLength(Object.values(localStorage).length)
+      }
+      // setLength(cartItems.length)
     })();
   }, [dispatch, url]);
 
@@ -48,7 +81,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar length={length} user={user} />
+      <NavBar length={length} user={user} numItemSetter={numItemSetter} handelSearchListings={handelSearchListings} />
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
@@ -89,6 +122,9 @@ function App() {
         <ProtectedRoute path='/reviews/:reviewId/edit-review'>
            <LeaveAReview user={user} />
         </ProtectedRoute>
+        <Route exact={true} path='/records/searched'>
+          <SearchedListings searchedListings={searchedListings} numItemSetter={numItemSetter} searchedList={searchedList} />
+        </Route>
         <Route path='/'>
           <main className='page-not-found-container'>
           <h2 className='page-not-found'>Error 404: page not found!</h2>

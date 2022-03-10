@@ -37,23 +37,25 @@ function Cart({ user, numItemSetter }) {
 
 
     useEffect(() => {
-        const renderedItems = Object.values(localStorage)
+        const renderedItems = Object.values(localStorage).filter(value => (
+            !Array.isArray(JSON.parse(value))
+        ))
         const parsedItemsRender = renderedItems.map(item => (
             JSON.parse(item)
         ))
         const obj = {}
-        // let totalPrice;
+
         parsedItemsRender.forEach(pars => {
             obj[`${pars.id}`] = pars['cart_item_num'] || 1
-            // obj[`${pars.id}`] = {}
-            // console.log(pars['price'], pars['cart_item_num'] || 1, 'my math*****')
-            // totalPrice += pars['price'] * pars['cart_item_num'] || 1
+
         })
 
         setNumItems({ ...numItems, ...obj })
     }, [])
 
-    const cartItems = Object.values(localStorage)
+    const cartItems = Object.values(localStorage).filter(value => (
+        !Array.isArray(JSON.parse(value))
+    ))
 
     let parsedItems = cartItems.map(item => (
         JSON.parse(item)
@@ -89,12 +91,9 @@ function Cart({ user, numItemSetter }) {
     const handleChange = (e) => {
         const eventId = e.target.id
 
-        // if(e.target.value < numItems[eventId]) {
-        //     setNumItems({ ...numItems, [e.target.id]: Number(e.target.value) - 1 })
-        // } else {
 
         setNumItems({ ...numItems, [e.target.id]: Number(e.target.value)})
-        // }
+
 
         const storageItem = JSON.parse(localStorage.getItem(eventId))
 

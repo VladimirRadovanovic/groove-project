@@ -102,7 +102,7 @@
     border: var(--border-dark);
     font-weight: bolder;
     background-color: var(--gray-primary);
-    color: var(--white);
+    color: var(--white)!important;
 }
 
 .profile-listings-button-container a:hover {
