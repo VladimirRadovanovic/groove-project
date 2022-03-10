@@ -123,7 +123,7 @@ function App() {
            <LeaveAReview user={user} />
         </ProtectedRoute>
         <Route exact={true} path='/records/searched'>
-          <SearchedListings searchedListings={searchedListings} numItemSetter={numItemSetter} />
+          <SearchedListings searchedListings={searchedListings} numItemSetter={numItemSetter} searchedList={searchedList} />
         </Route>
         <Route path='/'>
           <main className='page-not-found-container'>

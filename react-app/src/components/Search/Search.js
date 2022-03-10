@@ -32,6 +32,7 @@ function Search({ handelSearchListings }) {
                 handelSearchListings(data.searched)
                 // localStorage.setItem('searched', JSON.stringify(data.searched))
                 history.push('/records/searched')
+                setSearch('')
                 return null
             } else {
                 // handelSearchListings(['Invalid search. Please try again.'])

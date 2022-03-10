@@ -35,3 +35,19 @@
     padding-left: .7rem;
 
 }
+
+.searched-listings-main {
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-title {
+
+    text-align: center;
+    font-size: 4rem;
+    color: var(--font-color);
+    font-weight: 900;
+    padding: 2rem;
+}

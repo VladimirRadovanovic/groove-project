@@ -5,8 +5,11 @@ import { useState } from "react"
 import placeholder from '../../../images/vinyl.jpg'
 
 
-function DisplayListings({ listingsList, numItemSetter }) {
+function DisplayListings({ listingsList, numItemSetter, searchedList }) {
     const [searchedListingsState, setSearchedListingsState] = useState('')
+    // const [listSearch, setListSearch] = useState(searchedList)
+
+
 
 
     const history = useHistory()
