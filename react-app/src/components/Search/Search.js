@@ -11,6 +11,9 @@ function Search({ handelSearchListings }) {
     const history = useHistory()
 
     const [search, setSearch] = useState('')
+    const[errors, setErrors] = useState([])
+    const [errorsClass, setErrorsClass] = useState('')
+    console.log(errors, 'seearch errors')
 
     // const [searched, setSearched] = useState([])
 
@@ -36,6 +39,12 @@ function Search({ handelSearchListings }) {
                 return null
             } else {
                 // handelSearchListings(['Invalid search. Please try again.'])
+                const data = await response.json()
+                setErrors(data.errors)
+                setErrorsClass('search-errors-container')
+                setTimeout(() => {
+                     setErrorsClass('clear-errors-container')
+                }, 3000)
             }
 
     }
@@ -48,6 +57,9 @@ function Search({ handelSearchListings }) {
     return (
         <>
         <form className="search-form" onSubmit={handleSubmit}>
+            {errors.map(error => (
+                <div className={errorsClass} key={error}>{error}</div>
+            ))}
             <input
             placeholder="Search by album or artist"
             className="search-input"

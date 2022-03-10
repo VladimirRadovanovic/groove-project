@@ -10,12 +10,9 @@ search_routes = Blueprint('search', __name__)
 @search_routes.route('/', methods=['POST'])
 def search_listings():
     req = request.json
-    print('''dassdasdasddasd
-    asdasdasddsaa
-    sdsadas
-    ''', req, '''dasdasd
-    asdasdasdasdasdasda
-    sdasddsadasd''')
-    searched_listings = Listing.query.filter((Listing.album.ilike(f'%{req}%')) | (Listing.artist.ilike(f'%{req}%'))).all()
+    if len(req) < 1 or len(req) > 50:
+        print(req, 'dadasdasdasdasdas**************dsadasdsad**********')
+        return {'errors': ['Search input must be between 1 and 50 characters long.']}, 401
+    searched_listings = Listing.query.filter((Listing.album.ilike(f'{req}%')) | (Listing.artist.ilike(f'{req}%'))).all()
     print([listing.to_dict() for listing in searched_listings])
     return {'searched': [listing.to_dict() for listing in searched_listings]}
