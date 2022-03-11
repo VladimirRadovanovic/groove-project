@@ -48,7 +48,7 @@ function CreateListing({ user }) {
     const [showModal, setShowModal] = useState(false)
     // if (!user) return <Redirect to='/login' />
 
-    // const url = window.location.href
+
 
 
     const onClose = () => {
@@ -148,10 +148,7 @@ function CreateListing({ user }) {
 
     return (
         <main className='create-main-container'>
-            {/* <div onClick={handleBack} className='back-button-container'>
-            <i className="fa-solid fa-arrow-left-long back-button"></i>
-            <span>Go back</span>
-            </div> */}
+
             <GoBackButton />
 
             <div className='listings-form-main-container'>
@@ -217,12 +214,7 @@ function CreateListing({ user }) {
                     </div>
                     <div>
                         <label htmlFor='price'>Price*</label>
-                        {/* <input
-                    type='number'
-                    placeholder='Price'
-                    value={price}
-                    onChange={(e) => setPrice(e.target.value)}
-                /> */}
+
 
                         <NumberFormat
                             id='price'

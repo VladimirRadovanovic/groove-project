@@ -79,14 +79,7 @@ function GetUserOrders({ user }) {
                         <div className='left-container'>
                             {order?.ordered_items?.map((orderItem, i) => (
                                 <div className='article-order-data-1' key={orderItem?.id}>
-                                    {/* {orderItem?.created_at && new Date(orderItem?.created_at)?.toDateString()} */}
-                                    {/* {orderItem?.created_at && new Date(new Date(orderItem?.created_at)?.setDate(new Date(orderItem?.created_at)?.getDate() + 2))?.toDateString()} */}
-                                    {/* {orderItem?.created_at && new Date(new Date(orderItem?.created_at)?.setDate(new Date(orderItem?.created_at)?.getDate() + 2)) < new Date() ? 'Item delivered' :
-                        <div>
-                            Expected delivery {new Date(new Date(orderItem?.created_at)?.setDate(new Date(orderItem?.created_at)?.getDate() + 2))?.toDateString()}
-                        </div>
-
-                        } */}         <p><strong><NavLink className='order-link-detail' to={`/records/${orderItem?.item.id}/details`}>Order item {i + 1}</NavLink></strong></p>
+                                   <p><strong><NavLink className='order-link-detail' to={`/records/${orderItem?.item.id}/details`}>Order item {i + 1}</NavLink></strong></p>
                                     <p>
                                         <strong>Album:</strong> {orderItem?.item?.album}
                                     </p>
