@@ -1,8 +1,10 @@
 
+
 import { useState } from "react";
 
 
-import './FilterListings.css'
+import './Filter.css'
+
 
 function FilterListings({ filterByPrice }) {
     const [range, setRange] = useState(1000)
