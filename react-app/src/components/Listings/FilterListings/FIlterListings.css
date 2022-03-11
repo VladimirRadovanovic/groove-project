@@ -18,6 +18,7 @@
     height: 30.1rem;
     accent-color: var(--orange-primary);
     background-color: gray;
+
 }
 
 
@@ -29,11 +30,13 @@
 
 .filter-container p {
     padding-bottom: 1rem;
+
 }
 
 .price-1000,
 .price-0 {
     position: absolute;
+    font-weight: 600;
 }
 
 .price-1000 {
@@ -42,6 +45,20 @@
 }
 
 .price-0 {
-    top: 37rem;
+    top: 36.5rem;
     left: 2rem;
+}
+
+.slider-container {
+    position: relative;
+}
+
+.slider-prev {
+    position: absolute;
+    left: 8rem;
+    /* padding-top: -3rem; */
+
+    color: var(--blue-tertiary);
+    font-weight: 600;
+
 }
