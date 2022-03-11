@@ -4,8 +4,7 @@ import DisplayListings from "../Listings/DisplayListings/DisplayListings";
 import GoBackButton from "../Utils/GoBackButton";
 
 function SearchedListings({ searchedListings, numItemSetter, searchedList }) {
-    console.log(searchedList, 'list')
-    console.log(searchedListings, 'listings')
+    
 
     return (
         <main className="searched-listings-main">

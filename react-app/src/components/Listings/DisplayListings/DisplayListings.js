@@ -3,12 +3,24 @@ import { useState } from "react"
 
 
 import placeholder from '../../../images/vinyl.jpg'
+import FilterListings from "../FilterListings/FilterListings"
 
 
 function DisplayListings({ listingsList, numItemSetter, searchedList }) {
     const [searchedListingsState, setSearchedListingsState] = useState('')
     // const [listSearch, setListSearch] = useState(searchedList)
+    const [priceFilter, setPriceFilter] = useState(1000)
+    console.log(priceFilter, 'price filter')
+    console.log(window.location.href)
+    let url = window.location.href
 
+    const filterByPrice = (e) => {
+        setPriceFilter(e.target.value)
+    }
+
+    const filterListingsList = listingsList.filter(listing => (
+        listing?.price <= priceFilter
+    ))
 
 
 
@@ -16,6 +28,7 @@ function DisplayListings({ listingsList, numItemSetter, searchedList }) {
 
     const handleAddToCart = (e) => {
         const id = Number(e.target.id)
+
 
         const cartListing = listingsList.filter(listing => (
             listing.id === id
@@ -34,8 +47,10 @@ function DisplayListings({ listingsList, numItemSetter, searchedList }) {
 
     }
     return (
+        <>
+            {!url?.endsWith('/') && <FilterListings filterByPrice={filterByPrice} />}
         <div className='splash-article-container'>
-            {listingsList?.map(listing => (
+            {filterListingsList?.map(listing => (
                 <article className='section-3-article article' key={listing?.id}>
                     <div className='article-side article-front'>
                         <div className='section-3-img-container article-img-container'>
@@ -75,6 +90,7 @@ function DisplayListings({ listingsList, numItemSetter, searchedList }) {
             ))}
 
         </div>
+    </>
     )
 }
 
