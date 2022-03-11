@@ -13,7 +13,7 @@ function Search({ handelSearchListings }) {
     const [search, setSearch] = useState('')
     const[errors, setErrors] = useState([])
     const [errorsClass, setErrorsClass] = useState('')
-    console.log(errors, 'seearch errors')
+
 
     // const [searched, setSearched] = useState([])
 
