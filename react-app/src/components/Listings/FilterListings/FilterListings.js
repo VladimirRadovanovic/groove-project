@@ -1,8 +1,8 @@
 
-
-// import './FilterListings.css'
-
 import { useState } from "react";
+
+
+import './FilterListings.css'
 
 function FilterListings({ filterByPrice }) {
     const [range, setRange] = useState(1000)
@@ -10,8 +10,13 @@ function FilterListings({ filterByPrice }) {
 
     console.log(range, 'rangeeeeee')
     return (
-        <div>
+        <div className="filter-container">
+            <h3>Filter by Price</h3>
+            <p>Max price: ${Number(range)?.toFixed(2)}</p>
+            <p className="price-1000">$1000.00</p>
+            <p className="price-0">$0.00</p>
         <input
+        // style={{'accent-color': 'red'}}
         value={range}
         onChange={(e) => setRange(e.target.value)}
         onMouseUp={filterByPrice}
@@ -20,7 +25,6 @@ function FilterListings({ filterByPrice }) {
         min='1'
         max='1000'
         />
-        <p>Max price: ${Number(range)?.toFixed(2)}</p>
         </div>
     )
 }

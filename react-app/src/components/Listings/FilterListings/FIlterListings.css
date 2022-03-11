@@ -1,0 +1,47 @@
+
+
+.filter-container {
+    position: fixed;
+    top: 21.1rem;
+    left: 5rem;
+    padding: 1rem 2rem;
+    border: var(--border-medium);
+    border-radius: .2rem;
+    font-size: 1.4rem;
+    width: 12rem;
+    text-align: center;
+
+}
+.price-range {
+    width: 10rem;
+    -webkit-appearance: slider-vertical;
+    height: 30.1rem;
+    accent-color: var(--orange-primary);
+    background-color: gray;
+}
+
+
+
+.filter-container h3 {
+    padding: 1rem 0;
+    font-size: 1.8rem;
+}
+
+.filter-container p {
+    padding-bottom: 1rem;
+}
+
+.price-1000,
+.price-0 {
+    position: absolute;
+}
+
+.price-1000 {
+    top: 8.5rem;
+    left: 1rem;
+}
+
+.price-0 {
+    top: 37rem;
+    left: 2rem;
+}
