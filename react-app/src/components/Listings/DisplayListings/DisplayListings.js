@@ -13,6 +13,7 @@ function DisplayListings({ listingsList, numItemSetter, searchedList }) {
     console.log(priceFilter, 'price filter')
     console.log(window.location.href)
     let url = window.location.href
+    console.log(url, 'url check')
 
     const filterByPrice = (e) => {
         setPriceFilter(e.target.value)
