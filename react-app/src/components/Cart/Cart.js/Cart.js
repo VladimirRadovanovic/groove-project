@@ -141,7 +141,7 @@ function Cart({ user, numItemSetter }) {
                     <Checkout user={user} clearCart={handelClearCart} items={parsedItems} errorSetter={errorSetter} totalCost={calcPrice} deliveryInstructions={deliveryInstructions} />
                 </div>
                 <div className='listings-errors-container'>
-                    <ul className='all-errors-list'>
+                    <ul className={errors?.length > 0 ? ('all-errors-list modal-errors-list') : ('hide-errors')}>
                         {errors.map(error => (
                             <li key={error}>{error}</li>
                         ))}

@@ -26,7 +26,7 @@ function UpdateOrderForm({ onClose, onOpen, instructions, id }) {
             <div className="update-instructions-container">
                 <h3 className="modal-heading">Update delivery instructions</h3>
                 <div className='listings-errors-container'>
-                    <ul className='all-errors-list'>
+                    <ul className={errors?.length > 0 ? ('all-errors-list modal-errors-list') : ('hide-errors')}>
                         {errors.map(error => (
                             <li key={error}>{error}</li>
                         ))}

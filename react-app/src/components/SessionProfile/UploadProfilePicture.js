@@ -20,6 +20,7 @@ function UploadProfilePicture() {
 
     const onClose = () => {
         setShowModal(false)
+        setUploadImgErrors([])
     }
 
     const handleSubmit = async (e) => {
@@ -97,7 +98,7 @@ function UploadProfilePicture() {
             </label>
             {showModal && (
                 <Modal onClose={onClose}>
-                    <ul className='all-errors-list modal-errors-list'>
+                    <ul className={uploadImgErrors?.length > 0 ? ('all-errors-list modal-errors-list') : ('hide-errors')}>
                         {uploadImgErrors?.map(error => (
                             <li key={error}>{error}</li>
                         ))}

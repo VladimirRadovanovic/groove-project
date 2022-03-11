@@ -97,6 +97,10 @@
     display: none;
 }
 
-.modal-errors-list {
+/* .modal-errors-list {
     margin: 1rem;
+} */
+
+.hide-errors {
+    display: none;
 }
