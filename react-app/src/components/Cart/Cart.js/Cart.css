@@ -157,8 +157,25 @@
 }
 
 .all-errors-list {
+    /* font-size: 1.6rem;
+    color: var(--orange-primary); */
+    /* position: absolute; */
+    /* z-index: 52; */
+    border: var(--border-light);
+    height: fit-content;
+    width: fit-content;
+    background-color: rgb(243, 215, 215);
+    box-shadow: -1px 1px 30px rgba(255, 0, 0, .1) inset, 1px 1px 30px rgba(255, 0, 0, .1) inset, 1px 1px 30px rgba(255, 0, 0, .1) inset, 1px -1px 30px rgba(255, 0, 0, .1) inset;
+    top: 7rem;
+    border-radius: .4rem;
     font-size: 1.6rem;
-    color: var(--orange-primary);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: red;
+    animation: showErrors .3s;
+    padding: 3rem 4rem;
+    margin: 2rem 0;
 }
 
 .set-delivery-span {

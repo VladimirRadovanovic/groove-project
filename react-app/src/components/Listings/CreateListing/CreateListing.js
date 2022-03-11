@@ -156,7 +156,7 @@ function CreateListing({ user }) {
 
             <div className='listings-form-main-container'>
                 <div className='listings-errors-container'>
-                    <ul className='all-errors-list'>
+                    <ul className={errors?.length > 0 ? ('all-errors-list modal-errors-list') : ('hide-errors')}>
                         {errors.map(error => (
                             <li key={error}>{error}</li>
                         ))}
