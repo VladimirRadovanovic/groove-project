@@ -198,6 +198,8 @@ function CreateListing({ user }) {
                     <div>
                         <label htmlFor='condition'>Condition*</label>
                         <select
+                            required
+                            className='select-condition-tag'
                             placeholder='Please choose an option*'
                             id='condition'
                             type='text'
