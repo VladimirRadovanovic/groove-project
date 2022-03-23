@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setFollow, stopFollowing } from "../../store/follows";
 
 
-function Follow() {
+function Follow({ user }) {
 
     const dispatch = useDispatch()
 
@@ -25,9 +25,21 @@ function Follow() {
         }
     }
 
+    const handleFollowsModal = async(e) => {
+        const id = e.target.id.split('-')[1]
+        if(alreadyFollowing) {
+            await dispatch(stopFollowing(Number(id), sessionUserId))
+        } else {
+
+            await dispatch(setFollow(Number(id), sessionUserId))
+        }
+    }
+
+    console.log(user, 'user modal follow')
+
     return (
         <>
-        <button onClick={handleFollow}>{alreadyFollowing ? 'Unfollow' : 'Follow'}</button>
+        <button id={`follow-${user?.id}`} onClick={user ? handleFollowsModal : handleFollow}>{alreadyFollowing ? 'Unfollow' : 'Follow'}</button>
         </>
     )
 }
