@@ -149,6 +149,7 @@ const reviewReducer = (state = {}, action) => {
             return newState
         case LOAD_ALL_REVIEWS:
             newState = {...state, ...action.reviews}
+            return newState
         case LOAD_LISTING_REVIEWS:
             newState = {...action.reviews}
             return newState
