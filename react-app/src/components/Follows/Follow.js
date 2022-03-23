@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { setFollow } from "../../store/follows";
 
 function Follow() {
 
@@ -15,7 +16,7 @@ function Follow() {
 
     return (
         <>
-        <button onClick={handelFollow}>Follow</button>
+        <button onClick={handleFollow}>Follow</button>
         </>
     )
 }

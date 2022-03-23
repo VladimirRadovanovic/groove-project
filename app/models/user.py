@@ -64,8 +64,8 @@ class User(db.Model, UserMixin):
             'country': self.country,
             'created_at': self.created_at,
             'listings': {listing.to_dict()['id']: listing.to_dict() for listing in self.listings},
-            'following': {user['id']: user.to_dict_first() for user in self.following},
-            'followers': {user['id']: user.to_dict_first() for user in self.followers}
+            'following': {user.to_dict_first()['id']: user.to_dict_first() for user in self.following},
+            'followers': {user.to_dict_first()['id']: user.to_dict_first() for user in self.followers}
             # 'orders': {order.to_dict()['id']: order.to_dict() for order in self.orders}
         }
 

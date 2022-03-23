@@ -9,6 +9,7 @@ import GoBackButton from '../Utils/GoBackButton';
 import DisplayListings from '../Listings/DisplayListings/DisplayListings';
 import './Profile.css'
 import placeholder from '../../images/vinyl.jpg'
+import Follow from '../Follows/Follow';
 
 function Profile({ numItemSetter }) {
   const dispatch = useDispatch()
@@ -57,6 +58,7 @@ function Profile({ numItemSetter }) {
           <img className='profile-img-heading' src={user?.profile_img_url ? user?.profile_img_url : placeholder} alt='profile' />
         </div>
         <div className='profile-info-container'>
+          <Follow />
           <div>
           </div>
           <div>
