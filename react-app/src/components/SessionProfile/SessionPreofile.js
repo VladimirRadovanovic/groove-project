@@ -13,11 +13,13 @@ import ProtectedRoute from '../auth/ProtectedRoute';
 import GetUserOrders from '../Orders/GetUsersOrders';
 import UploadProfilePicture from './UploadProfilePicture';
 import EditUserProfile from './EditUserProfile';
+import FollowersModal from '../Follows/FollowersModal';
 
 
 function SessionProfile({ user }) {
     const dispatch = useDispatch()
     const [showModal, setShowModal] = useState(false)
+    const [showFollowsModal, setShowFollowsModal] = useState(false)
     // const url = window.location.href
 
     useEffect(() => {
@@ -30,6 +32,10 @@ function SessionProfile({ user }) {
 
     const onClose = () => {
         setShowModal(false)
+    }
+
+    const onCloseFollowsModal = () => {
+        setShowFollowsModal(false)
     }
 
     const listings = useSelector(state => state.listings)
@@ -51,7 +57,7 @@ function SessionProfile({ user }) {
                     <div>
                     </div>
                     <div>
-                        <span>Followers {Object.keys(user?.followers).length}</span>
+                        <span onClick={() => setShowFollowsModal(true)}>Followers {Object.keys(user?.followers).length}</span>
                         <span>Following {Object.keys(user?.following).length}</span>
 
                     </div>
@@ -96,6 +102,10 @@ function SessionProfile({ user }) {
             </Switch>
             {showModal && (
                 <EditUserProfile onClose={onClose} user={user} />
+            )}
+
+            {showFollowsModal && (
+                <FollowersModal onClose={onCloseFollowsModal} user={user} />
             )}
         </main>
     )
