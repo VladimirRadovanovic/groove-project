@@ -51,6 +51,11 @@ function SessionProfile({ user }) {
                     <div>
                     </div>
                     <div>
+                        <span>Followers {Object.keys(user?.followers).length}</span>
+                        <span>Following {Object.keys(user?.following).length}</span>
+
+                    </div>
+                    <div>
                         <strong>Username:</strong> {user?.username}
                     </div>
                     <div>
