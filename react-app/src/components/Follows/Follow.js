@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setFollow, stopFollowing } from "../../store/follows";
+import './Follow.css'
 
 
 function Follow({ user }) {
@@ -40,7 +41,7 @@ function Follow({ user }) {
 
     return (
         <>
-        <button id={`follow-${user?.id}`} onClick={user ? handleFollowsModal : handleFollow}>{alreadyFollowing ? 'Unfollow' : 'Follow'}</button>
+        <button className="follow-button-large follow-button-modal" id={`follow-${user?.id}`} onClick={user ? handleFollowsModal : handleFollow}>{alreadyFollowing ? 'Unfollow' : 'Follow'}</button>
         </>
     )
 }

@@ -1,0 +1,11 @@
+.follow-button-large {
+    border-radius: .5rem;
+    background-color: var(--blue-tertiary);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 1.4rem;
+    width: 10rem;
+    height: 4rem;
+    position: absolute;
+    top: 0
+}

@@ -138,6 +138,11 @@
     display: flex;
     flex-direction: column;
     padding-top: 4rem;
+    position: relative;
+}
+
+.profile-info-container div {
+    padding-top: 1rem;
 }
 
 .none-available-container {
