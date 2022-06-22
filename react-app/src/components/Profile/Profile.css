@@ -141,9 +141,6 @@
     position: relative;
 }
 
-.profile-info-container div {
-    padding-top: 1rem;
-}
 
 .none-available-container {
     border: var(--border-medium);
@@ -186,4 +183,8 @@
     font-size: 3rem;
     padding: 1.5rem;
     margin-bottom: 1.5rem;
+}
+
+.profile-first-div {
+    padding-top: 1rem;
 }

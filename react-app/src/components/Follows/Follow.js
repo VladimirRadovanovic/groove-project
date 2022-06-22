@@ -9,6 +9,7 @@ function Follow({ user }) {
     const dispatch = useDispatch()
 
     const { userId } = useParams()
+    let followsButtonClass = userId ? 'follow-button-large' : 'follow-button-modal'
     // const id = Number(userId)
     const sessionUserId = useSelector(state => state.session.user.id)
     const alreadyFollowing = useSelector(state => state.session.user.following[user ? user.id : userId])
@@ -41,7 +42,7 @@ function Follow({ user }) {
 
     return (
         <>
-        <button className="follow-button-large follow-button-modal" id={`follow-${user?.id}`} onClick={user ? handleFollowsModal : handleFollow}>{alreadyFollowing ? 'Unfollow' : 'Follow'}</button>
+        <button className={followsButtonClass} id={`follow-${user?.id}`} onClick={user ? handleFollowsModal : handleFollow}>{alreadyFollowing ? 'Unfollow' : 'Follow'}</button>
         </>
     )
 }

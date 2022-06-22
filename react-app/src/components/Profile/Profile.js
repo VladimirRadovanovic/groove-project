@@ -59,9 +59,7 @@ function Profile({ numItemSetter }) {
         </div>
         <div className='profile-info-container'>
           <Follow />
-          <div>
-          </div>
-          <div>
+          <div className='profile-first-div'>
             <strong>Username:</strong> {user?.username}
           </div>
           <div>
