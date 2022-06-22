@@ -62,8 +62,8 @@ function SessionProfile({ user }) {
                     <div>
                     </div>
                     <div>
-                        <span onClick={() => setShowFollowsModal(true)}>Followers {Object.keys(user?.followers).length}</span>
-                        <span onClick={() => setShowFollowingModal(true)}>Following {Object.keys(user?.following).length}</span>
+                        <span className='follow-span follow-span-left' onClick={() => setShowFollowsModal(true)}><b>{Object.keys(user?.followers).length}</b> Followers</span>
+                        <span className='follow-span follow-span-right' onClick={() => setShowFollowingModal(true)}><b>{Object.keys(user?.following).length}</b> Following</span>
 
                     </div>
                     <div>
