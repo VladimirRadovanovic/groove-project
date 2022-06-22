@@ -14,12 +14,14 @@ import GetUserOrders from '../Orders/GetUsersOrders';
 import UploadProfilePicture from './UploadProfilePicture';
 import EditUserProfile from './EditUserProfile';
 import FollowersModal from '../Follows/FollowersModal';
+import FollowingModal from '../Follows/FollowingModal';
 
 
 function SessionProfile({ user }) {
     const dispatch = useDispatch()
     const [showModal, setShowModal] = useState(false)
     const [showFollowsModal, setShowFollowsModal] = useState(false)
+    const [showFollowingModal, setShowFollowingModal] = useState(false)
     // const url = window.location.href
 
     useEffect(() => {
@@ -36,6 +38,9 @@ function SessionProfile({ user }) {
 
     const onCloseFollowsModal = () => {
         setShowFollowsModal(false)
+    }
+    const onCloseFollowingModal = () => {
+        setShowFollowingModal(false)
     }
 
     const listings = useSelector(state => state.listings)
@@ -58,7 +63,7 @@ function SessionProfile({ user }) {
                     </div>
                     <div>
                         <span onClick={() => setShowFollowsModal(true)}>Followers {Object.keys(user?.followers).length}</span>
-                        <span>Following {Object.keys(user?.following).length}</span>
+                        <span onClick={() => setShowFollowingModal(true)}>Following {Object.keys(user?.following).length}</span>
 
                     </div>
                     <div>
@@ -106,6 +111,9 @@ function SessionProfile({ user }) {
 
             {showFollowsModal && (
                 <FollowersModal onClose={onCloseFollowsModal} user={user} />
+            )}
+            {showFollowingModal && (
+                <FollowingModal onClose={onCloseFollowingModal} user={user} />
             )}
         </main>
     )
