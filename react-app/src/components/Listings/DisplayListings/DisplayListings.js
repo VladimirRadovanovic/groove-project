@@ -10,8 +10,23 @@ function DisplayListings({ listingsList, numItemSetter, searchedList }) {
     const [searchedListingsState, setSearchedListingsState] = useState('')
     // const [listSearch, setListSearch] = useState(searchedList)
     const [priceFilter, setPriceFilter] = useState(1000)
+    const [news, setNews] = useState([])
+    console.log(news[1]?.title.split('=')[3])
 
-    fetch('/api/news')
+
+    useEffect(() => {
+
+        const fetchNews = async() => {
+            const response = await fetch('/api/news')
+            if (response.ok) {
+                const news = await response.json()
+                setNews(news.news)
+                console.log(news)
+            }
+        }
+        fetchNews()
+
+    }, [])
 
 
     let url = window.location.href
@@ -51,6 +66,7 @@ function DisplayListings({ listingsList, numItemSetter, searchedList }) {
     }
     return (
         <>
+            <img src={`${news[4]?.title.split('=')[3].slice(1)}`} />
             {!url?.endsWith('/') && <FilterListings filterByPrice={filterByPrice} />}
         <div className='splash-article-container'>
             {filterListingsList?.map(listing => (
