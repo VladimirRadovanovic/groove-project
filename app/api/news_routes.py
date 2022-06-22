@@ -1,5 +1,6 @@
 import requests
 from flask import Blueprint
+import os
 
 news_routes = Blueprint('news', __name__)
 
@@ -8,10 +9,12 @@ def get_news():
     url = "https://music-news-api.p.rapidapi.com/news"
 
     headers = {
-        "X-RapidAPI-Key": "f0d3fc5a7dmshda164a3281ef468p1f59eajsn01b0f19daa3e",
-        "X-RapidAPI-Host": "music-news-api.p.rapidapi.com"
+        "X-RapidAPI-Key": os.environ.get('X_RapidAPI_Key'),
+        "X-RapidAPI-Host": os.environ.get('X_RapidAPI_Host')
     }
 
     response = requests.request("GET", url, headers=headers)
 
     print(response.text, '\n news coming !!!!!#############################\n')
+
+
