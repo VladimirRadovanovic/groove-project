@@ -13,11 +13,15 @@ import ProtectedRoute from '../auth/ProtectedRoute';
 import GetUserOrders from '../Orders/GetUsersOrders';
 import UploadProfilePicture from './UploadProfilePicture';
 import EditUserProfile from './EditUserProfile';
+import FollowersModal from '../Follows/FollowersModal';
+import FollowingModal from '../Follows/FollowingModal';
 
 
 function SessionProfile({ user }) {
     const dispatch = useDispatch()
     const [showModal, setShowModal] = useState(false)
+    const [showFollowsModal, setShowFollowsModal] = useState(false)
+    const [showFollowingModal, setShowFollowingModal] = useState(false)
     // const url = window.location.href
 
     useEffect(() => {
@@ -30,6 +34,13 @@ function SessionProfile({ user }) {
 
     const onClose = () => {
         setShowModal(false)
+    }
+
+    const onCloseFollowsModal = () => {
+        setShowFollowsModal(false)
+    }
+    const onCloseFollowingModal = () => {
+        setShowFollowingModal(false)
     }
 
     const listings = useSelector(state => state.listings)
@@ -49,6 +60,11 @@ function SessionProfile({ user }) {
                 </div>
                 <div className='profile-info-container'>
                     <div>
+                    </div>
+                    <div>
+                        <span className='follow-span follow-span-left' onClick={() => setShowFollowsModal(true)}><b>{Object.keys(user?.followers).length}</b> Followers</span>
+                        <span className='follow-span follow-span-right' onClick={() => setShowFollowingModal(true)}><b>{Object.keys(user?.following).length}</b> Following</span>
+
                     </div>
                     <div>
                         <strong>Username:</strong> {user?.username}
@@ -91,6 +107,13 @@ function SessionProfile({ user }) {
             </Switch>
             {showModal && (
                 <EditUserProfile onClose={onClose} user={user} />
+            )}
+
+            {showFollowsModal && (
+                <FollowersModal onClose={onCloseFollowsModal} user={user} />
+            )}
+            {showFollowingModal && (
+                <FollowingModal onClose={onCloseFollowingModal} user={user} />
             )}
         </main>
     )

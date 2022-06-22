@@ -4,6 +4,14 @@ from flask_login import UserMixin
 from datetime import datetime
 
 
+follows = db.Table(
+    "follows",
+    db.Column("follower_id", db.Integer, db.ForeignKey("users.id")),
+    db.Column("followed_id", db.Integer, db.ForeignKey("users.id"))
+)
+
+
+
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
@@ -23,6 +31,14 @@ class User(db.Model, UserMixin):
     listings = db.relationship('Listing', back_populates='seller')
     orders = db.relationship('Order', back_populates='buyer')
     reviews = db.relationship('Review', back_populates='user')
+    followers = db.relationship(
+        "User",
+        secondary=follows,
+        primaryjoin=(follows.c.follower_id == id),
+        secondaryjoin=(follows.c.followed_id == id),
+        backref=db.backref("following", lazy="dynamic"),
+        lazy="dynamic"
+    )
 
     @property
     def password(self):
@@ -48,6 +64,8 @@ class User(db.Model, UserMixin):
             'country': self.country,
             'created_at': self.created_at,
             'listings': {listing.to_dict()['id']: listing.to_dict() for listing in self.listings},
+            'following': {user.to_dict_first()['id']: user.to_dict_first() for user in self.following},
+            'followers': {user.to_dict_first()['id']: user.to_dict_first() for user in self.followers}
             # 'orders': {order.to_dict()['id']: order.to_dict() for order in self.orders}
         }
 

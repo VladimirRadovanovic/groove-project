@@ -106,6 +106,8 @@ def create_listing():
 
         if form.validate_on_submit():
             data = form.data
+            # print(dir(current_user), '\\\ndakdopasdkapodsadpkasdpaksdpokasdpokpsdk\\\\\\\
+            #     \n/!!!!!!!!!!!!!!!!!!!!!!!!rwerreerewrwerwerwerwerwerwerwerwerwerwer//////')
 
             new_listing = Listing(
                 seller_id=current_user.id,

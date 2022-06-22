@@ -83,7 +83,6 @@ function Cart({ user, numItemSetter }) {
         delete numItems[id]
         setNumItems({ ...numItems })
         const len = Object.keys(localStorage).length
-        // console.log(len, 'len num items')
         numItemSetter(len)
 
     }

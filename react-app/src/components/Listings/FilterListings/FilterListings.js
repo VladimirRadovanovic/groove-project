@@ -11,9 +11,9 @@ function FilterListings({ filterByPrice }) {
     const[drag,setDrag] = useState(1000)
 
     let sliderRange = (range / 10 - 3).toString()
-    console.log('slider', sliderRange)
 
-    console.log(range, 'rangeeeeee')
+
+
     return (
         <div className="filter-container">
             <h3>Filter by Price</h3>
