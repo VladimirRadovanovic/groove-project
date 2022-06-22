@@ -4,15 +4,15 @@ import { setFollow, stopFollowing } from "../../store/follows";
 
 
 function Follow({ user }) {
-
+    console.log(user, '!!!!!!!USSER(((((((((((((((((')
     const dispatch = useDispatch()
 
     const { userId } = useParams()
     // const id = Number(userId)
     const sessionUserId = useSelector(state => state.session.user.id)
-    const alreadyFollowing = useSelector(state => state.session.user.following[userId])
+    const alreadyFollowing = useSelector(state => state.session.user.following[user ? user.id : userId])
+    console.log(alreadyFollowing, 'lready following@@@@@@@@@@@@@@')
 
-    console.log(alreadyFollowing, ' already following!!!!!!!!!')
 
 
     const handleFollow = async() => {
@@ -26,16 +26,18 @@ function Follow({ user }) {
     }
 
     const handleFollowsModal = async(e) => {
-        const id = e.target.id.split('-')[1]
+        const id = Number(e.target.id.split('-')[1])
+        console.log('following test_____________++++++++++++++++', user.id, user.username)
         if(alreadyFollowing) {
-            await dispatch(stopFollowing(Number(id), sessionUserId))
-        } else {
+        console.log('following test_____________++++++++++++++++ in the if', user.id, id,  user.username)
 
-            await dispatch(setFollow(Number(id), sessionUserId))
+            await dispatch(stopFollowing(id, sessionUserId))
+        } else {
+            await dispatch(setFollow(id, sessionUserId))
         }
     }
 
-    console.log(user, 'user modal follow')
+
 
     return (
         <>

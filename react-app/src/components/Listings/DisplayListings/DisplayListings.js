@@ -10,10 +10,10 @@ function DisplayListings({ listingsList, numItemSetter, searchedList }) {
     const [searchedListingsState, setSearchedListingsState] = useState('')
     // const [listSearch, setListSearch] = useState(searchedList)
     const [priceFilter, setPriceFilter] = useState(1000)
-    console.log(priceFilter, 'price filter')
-    console.log(window.location.href)
+
+
     let url = window.location.href
-    console.log(url, 'url check')
+
 
     const filterByPrice = (e) => {
         setPriceFilter(e.target.value)

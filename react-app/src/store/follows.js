@@ -6,7 +6,7 @@ const STOP_FOLLOWING = 'follows/stop_following'
 
 
 export const stopFollowing = (visitedProfileUserId, sessionUserId) => async(dispatch) => {
-    console.log(visitedProfileUserId, sessionUserId, 'in the thunk session id')
+    console.log(visitedProfileUserId, sessionUserId, 'in the thunk')
     const response = await fetch('/api/follows/unfollow', {
         method: 'DELETE',
         headers: {
@@ -14,10 +14,11 @@ export const stopFollowing = (visitedProfileUserId, sessionUserId) => async(disp
         },
         body: JSON.stringify({visitedProfileUserId, sessionUserId})
     })
+    console.log(response, 'respose!!!!!!!!!')
 
     if (response.ok) {
         const data = await response.json()
-
+        console.log(data, 'data ############')
         dispatch(setUser(data.user))
     }
 }
@@ -25,7 +26,7 @@ export const stopFollowing = (visitedProfileUserId, sessionUserId) => async(disp
 
 
 export const setFollow = (visitedProfileUserId, sessionUserId) => async(dispatch) => {
-    console.log(visitedProfileUserId, sessionUserId, 'in the thunk session id')
+
     const response = await fetch('/api/follows/follow', {
         method: 'POST',
         headers: {
@@ -33,7 +34,6 @@ export const setFollow = (visitedProfileUserId, sessionUserId) => async(dispatch
         },
         body: JSON.stringify({visitedProfileUserId, sessionUserId})
     })
-
     if (response.ok) {
         const data = await response.json()
 

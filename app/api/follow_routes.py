@@ -25,9 +25,13 @@ def follow_user():
 @login_required
 def unfollow_user():
     req = request.json
+    print('in the route@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@', req)
 
     user = User.query.get(req['sessionUserId'])
+    print(user.to_dict(), user.following, 'in the route@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
     user.following = [still_following for still_following in user.following if still_following.to_dict()['id'] != req['visitedProfileUserId']]
+    print([still_following for still_following in user.following if still_following.to_dict()['id'] != req['visitedProfileUserId']], 'test comprehansion!!!!!!!!!!!!!!!!!!!')
+
     db.session.commit()
 
     return {'user': user.to_dict()}
