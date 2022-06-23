@@ -1,5 +1,6 @@
-import { NavLink, useHistory } from "react-router-dom"
+import { NavLink, useHistory, Link } from "react-router-dom"
 import { useState, useEffect } from "react"
+
 
 
 import placeholder from '../../../images/vinyl.jpg'
@@ -11,7 +12,7 @@ function DisplayListings({ listingsList, numItemSetter, searchedList }) {
     // const [listSearch, setListSearch] = useState(searchedList)
     const [priceFilter, setPriceFilter] = useState(1000)
     const [news, setNews] = useState([])
-    console.log(news[1]?.title.split('=')[3])
+    console.log(news[1]?.title.split('=')[1].split('"')[1])
 
 
     useEffect(() => {
@@ -66,7 +67,14 @@ function DisplayListings({ listingsList, numItemSetter, searchedList }) {
     }
     return (
         <>
-            <img src={`${news[4]?.title.split('=')[3].slice(1)}`} />
+        {news.map(n => (
+        <Link target="_blank" to={{pathname: 'https://www.kerrang.com' + n?.url }}>
+
+            <img alt={n?.title.split('=')[1].split('"')[1]} src={`${n?.title.split('=')[3].slice(1)}`} />
+            {n?.title.split('=')[1].split('"')[1]}
+        </Link>
+
+        ))}
             {!url?.endsWith('/') && <FilterListings filterByPrice={filterByPrice} />}
         <div className='splash-article-container'>
             {filterListingsList?.map(listing => (
