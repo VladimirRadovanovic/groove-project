@@ -8,7 +8,7 @@ import { getListingReviews } from '../../../store/reviews';
 import DeleteReview from '../DeleteReview/DeleteReview';
 import avatar from '../../../images/avatar.svg'
 
-function DisplayReviews({ listing, reviewsList }) {
+function DisplayReviews({ listing, reviewsList, reviewHeadlineRef }) {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
     const [showModal, setShowModal] = useState(false)
@@ -42,7 +42,7 @@ function DisplayReviews({ listing, reviewsList }) {
     return (
         <section className='display-reviews-section'>
             <div id='reviews' className='display-reviews-container'>
-                <h3 id='customer-reviews'>Customer reviews</h3>
+                <h3 ref={reviewHeadlineRef} id='customer-reviews'>Customer reviews</h3>
                 <NavLink className='leave-review-link' to={`/records/${listing?.id}/review`}>Leave a Review</NavLink>
                 <div>
                     {reviewsList.map(review => (

@@ -1,6 +1,7 @@
 import { useParams, useHistory, NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useLayoutEffect, useRef } from 'react'
+
 
 
 
@@ -26,6 +27,12 @@ function ListingDetails({ user, numItemSetter }) {
 
     const { recordId } = useParams()
     const listingId = Number(recordId)
+
+    const reviewHeadlineRef = useRef()
+
+    useLayoutEffect(() => {
+        window.scrollTo(0, 0)
+    },[]);
 
     useEffect(() => {
 
@@ -134,7 +141,7 @@ function ListingDetails({ user, numItemSetter }) {
                     </div>
                 </div>
                         <span className='avg-num'>{typeof(avgRating) === 'number' ?
-                        (<span>{avgRating} out of 5 | <NavLink to='#customer-reviews'>{listingReviewsList?.length === 1 ? `${listingReviewsList?.length} review` : `${listingReviewsList?.length} reviews` } </NavLink></span>)
+                        (<span>{avgRating} out of 5 | <span className='scroll-to-reviews' onClick={() => reviewHeadlineRef.current?.scrollIntoView({ behavior: 'smooth' })}>{listingReviewsList?.length === 1 ? `${listingReviewsList?.length} review` : `${listingReviewsList?.length} reviews` } </span></span>)
                         :
                         (<span>{avgRating } <NavLink to={`/records/${listing?.id}/review`}>Be the first one to review it.</NavLink></span>)}
                         </span>
@@ -165,7 +172,7 @@ function ListingDetails({ user, numItemSetter }) {
                 </div>
             </section>
             </div>
-            <DisplayReviews listing={listing} reviewsList={listingReviewsList} />
+            <DisplayReviews reviewHeadlineRef={reviewHeadlineRef} listing={listing} reviewsList={listingReviewsList} />
         </main>
     )
 }
