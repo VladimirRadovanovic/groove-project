@@ -4,6 +4,8 @@ footer {
     background-color: var(--gray-primary);
     border-top: 2px solid var(--white);
     margin-top: 5rem;
+    position: relative;
+    z-index: 100;
     /* position: fixed;
     bottom: 0; */
 }

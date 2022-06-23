@@ -4,6 +4,7 @@ import session from './session'
 import listings from './listings'
 import orders from './orders'
 import reviews from './reviews'
+import news from './news'
 
 
 const rootReducer = combineReducers({
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   listings,
   orders,
   reviews,
+  news,
 });
 
 
