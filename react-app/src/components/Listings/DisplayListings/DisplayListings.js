@@ -1,32 +1,37 @@
 import { NavLink, useHistory, Link } from "react-router-dom"
 import { useState, useEffect } from "react"
+import { useSelector, useDispatch } from "react-redux"
 
 
 
 import placeholder from '../../../images/vinyl.jpg'
 import FilterListings from "../FilterListings/FilterListings"
 import './DisplayListings.css'
+import { getNews } from "../../../store/news"
 
 
 function DisplayListings({ listingsList, numItemSetter, searchedList }) {
     const [searchedListingsState, setSearchedListingsState] = useState('')
     // const [listSearch, setListSearch] = useState(searchedList)
     const [priceFilter, setPriceFilter] = useState(1000)
-    const [news, setNews] = useState([])
-    console.log(news[1]?.title.split('=')[1].split('"')[1])
+    // const [news, setNews] = useState([])
+    const news = useSelector(state => state.news)
+
+    const dispatch = useDispatch()
+    console.log(news, 'news!!!!')
 
 
     useEffect(() => {
-
-        const fetchNews = async () => {
-            const response = await fetch('/api/news')
-            if (response.ok) {
-                const news = await response.json()
-                setNews(news.news)
-                console.log(news)
-            }
-        }
-        fetchNews()
+        dispatch(getNews())
+    //     const fetchNews = async () => {
+    //         const response = await fetch('/api/news')
+    //         if (response.ok) {
+    //             const news = await response.json()
+    //             setNews(news.news)
+    //             console.log(news)
+    //         }
+    //     }
+    //     fetchNews()
 
     }, [])
 

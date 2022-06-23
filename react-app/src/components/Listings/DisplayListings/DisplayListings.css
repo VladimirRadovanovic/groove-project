@@ -1,6 +1,6 @@
 .news-card {
 
-    width: 13re;
+    width: 18rem;
     height: 17rem;
     border-radius: .5rem;
     border: var(--border-medium);
@@ -15,12 +15,12 @@
 }
 
 .news-card img {
-    width: 13rem;
+    width: 18rem;
     height: 11rem;
 }
 
 .news-card span {
-    width: 13rem;
+    width: 18rem;
     word-wrap: break-word;
 }
 .news-container {
