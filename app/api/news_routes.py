@@ -1,3 +1,4 @@
+from distutils.log import error
 import requests
 from flask import Blueprint
 import os
@@ -15,5 +16,12 @@ def get_news():
     }
 
     response = requests.request("GET", url, headers=headers)
+    if response.headers['Content-Type'] == 'text/html; charset=utf-8':
+        return {'errors': ['There was a problem with the API. More news soon...']}, 401
+
+    # print(response.headers['Content-Type'] == 'text/html; charset=utf-8', "$$$$$$$$$$$$$$$$$$$$$$$", response.text)
 
     return {'news': response.json()}
+
+    # FOR TESTING SO I DON'T MAX OUT THE API CALLS
+    # return {'news': []}
