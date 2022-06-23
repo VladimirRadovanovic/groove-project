@@ -152,7 +152,7 @@ function ListingDetails({ user, numItemSetter }) {
                     <p><strong>Genre:</strong> {listing?.genre}</p>
                     <p><strong>Condition:</strong> {listing?.condition}</p>
                     <p><strong>Price:</strong> ${listing?.price.toFixed(2)}</p>
-                    <p><strong>Available copies:</strong> {listing?.num_copies_available}</p>
+                    <p><strong>Available copies:</strong> {listing?.num_copies_available !== 0 ? listing?.num_copies_available : "Out of stock"}</p>
                     <p><strong>Description:</strong> {listing?.description}</p>
                 </div>
                 {listing?.seller_id === user?.id ?

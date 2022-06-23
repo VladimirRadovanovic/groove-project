@@ -22,3 +22,6 @@ def get_news():
     # print(response.headers['Content-Type'] == 'text/html; charset=utf-8', "$$$$$$$$$$$$$$$$$$$$$$$", response.text)
 
     return {'news': response.json()}
+
+    # FOR TESTING SO I DON'T MAX OUT THE API CALLS
+    # return {'news': []}

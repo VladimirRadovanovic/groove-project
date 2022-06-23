@@ -26,8 +26,10 @@ def make_order():
         if item['seller_id'] == req['user_id']:
             errors.append(f'"{album}" by "{artist}" is your listing. You may not purchase records you advertised.')
         if item['num_copies_available'] < item['cart_item_num']:
-
-            errors.append(f'Only {available_copies} copies of the "{album}" by "{artist}" are available for sale.')
+            if item['num_copies_available'] == 0:
+                errors.append(f'"{album}" by "{artist}" is out of stock.')
+            else:
+                errors.append(f'Only {available_copies} copies of the "{album}" by "{artist}" are available for sale.')
 
         if item['cart_item_num'] < 1:
             errors.append('You may not purchase less then 1 copy')
@@ -44,6 +46,8 @@ def make_order():
 
     for item in req['items']:
         ordered_item = OrderItem(listing_id=item['id'], order_id=order.id, num_items_ordered=item['cart_item_num'])
+        listing = Listing.query.get(item['id'])
+        listing.num_copies_available = listing.num_copies_available - item['cart_item_num']
         db.session.add(ordered_item)
     db.session.commit()
 

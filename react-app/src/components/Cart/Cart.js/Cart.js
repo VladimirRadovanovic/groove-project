@@ -163,7 +163,7 @@ function Cart({ user, numItemSetter }) {
                             <strong>Price: </strong>${item?.price.toFixed(2)}
                             </p>
                             <p>
-                            <strong>Available copies:</strong> {item?.num_copies_available}
+                            <strong>Available copies:</strong> {item?.num_copies_available !== 0 ? item?.num_copies_available : "Out of stock"}
                             </p>
                             <p >
                             <strong>Price * Copies: </strong><span className='item-price-added'>${(item?.price * numItems[item.id] || item?.price).toFixed(2)}</span>
