@@ -1,11 +1,15 @@
 .news-card {
 
-    width: 18rem;
+    width: 25rem;
     height: 17rem;
-    border-radius: .5rem;
+    /* border-radius: .5rem; */
     border: var(--border-medium);
     margin-bottom: 1.5rem;
-
+    margin-right: 1rem;
+    /* padding-right: 1rem; */
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-overflow: ellipsis;
 }
 
 .news-card-link {
@@ -15,18 +19,28 @@
 }
 
 .news-card img {
-    width: 18rem;
-    height: 11rem;
+    width: 25rem;
+    height: 13rem;
 }
 
 .news-card span {
-    width: 18rem;
-    word-wrap: break-word;
+    width: 23rem;
+    height: 6rem;
+    /* word-wrap: break-word; */
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    /* width: 100px; */
+    display: block;
+    overflow: hidden;
+    padding: .5rem
+
 }
 .news-container {
-    position: absolute;
-    right: 5rem;
-    top: 15rem;
+    position: fixed;
+
+    right: 2rem;
+    top: 21.2rem;
     overflow-y: auto;
     height: 70vh;
+    overflow-x: hidden;
 }

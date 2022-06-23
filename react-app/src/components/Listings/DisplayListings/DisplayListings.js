@@ -22,16 +22,9 @@ function DisplayListings({ listingsList, numItemSetter, searchedList }) {
 
 
     useEffect(() => {
+
+
         dispatch(getNews())
-    //     const fetchNews = async () => {
-    //         const response = await fetch('/api/news')
-    //         if (response.ok) {
-    //             const news = await response.json()
-    //             setNews(news.news)
-    //             console.log(news)
-    //         }
-    //     }
-    //     fetchNews()
 
     }, [])
 
@@ -73,19 +66,19 @@ function DisplayListings({ listingsList, numItemSetter, searchedList }) {
     }
     return (
         <>
-         <div className="news-container">
-            {news?.map((n, i) => (
-                <div className="news-card" key={i}>
-                    <Link className="news-card-link" target="_blank" to={{ pathname: 'https://www.kerrang.com' + n?.url }}>
-                        <img alt={n?.title.split('=')[1].split('"')[1]} src={`${n?.title.split('=')[3].slice(1)}`} />
-                        <span>
-                        {n?.title.split('=')[1].split('"')[1]}
+            {!url?.endsWith('/') && <div className="news-container">
+                {news?.map((n, i) => (
+                    <div className="news-card" key={i}>
+                        <Link className="news-card-link" target="_blank" to={{ pathname: 'https://www.kerrang.com' + n?.url }}>
+                            <img alt={n?.title.split('=')[1].split('"')[1]} src={`${n?.title.split('=')[3].slice(1)}`} />
+                            <span>
+                                {n?.title.split('=')[1].split('"')[1]}
 
-                        </span>
-                    </Link>
-                </div>
-            ))}
-            </div>
+                            </span>
+                        </Link>
+                    </div>
+                ))}
+            </div>}
             {!url?.endsWith('/') && <FilterListings filterByPrice={filterByPrice} />}
             <div className='splash-article-container'>
                 {filterListingsList?.map(listing => (
