@@ -15,6 +15,7 @@ function DisplayListings({ listingsList, numItemSetter, searchedList }) {
     const [searchedListingsState, setSearchedListingsState] = useState('')
     const [priceFilter, setPriceFilter] = useState(1000)
     const news = useSelector(state => state.news)
+    let url = window.location.href
 
     const dispatch = useDispatch()
 
@@ -23,11 +24,12 @@ function DisplayListings({ listingsList, numItemSetter, searchedList }) {
     },[]);
 
     useEffect(() => {
-        dispatch(getNews())
+        if (!url?.endsWith('/')) {
+            dispatch(getNews())
+        }
     },[])
 
 
-    let url = window.location.href
 
 
     const filterByPrice = (e) => {
