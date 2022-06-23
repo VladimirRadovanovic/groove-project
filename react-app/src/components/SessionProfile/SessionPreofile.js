@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useLayoutEffect } from 'react';
 import { Switch, NavLink } from 'react-router-dom';
 
 
@@ -22,7 +22,10 @@ function SessionProfile({ user }) {
     const [showModal, setShowModal] = useState(false)
     const [showFollowsModal, setShowFollowsModal] = useState(false)
     const [showFollowingModal, setShowFollowingModal] = useState(false)
-    // const url = window.location.href
+
+    useLayoutEffect(() => {
+        window.scrollTo(0, 0)
+    },[]);
 
     useEffect(() => {
         dispatch(getAllListings())

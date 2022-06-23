@@ -228,3 +228,11 @@
     color: var(--blue-tertiary);
     text-decoration: underline;
 }
+
+.scroll-to-reviews {
+    color: var(--blue-tertiary);
+    cursor: pointer;
+}
+/* .scroll-to-reviews:hover {
+    text-decoration: underline;
+} */
