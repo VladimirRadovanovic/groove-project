@@ -1,6 +1,6 @@
 import { useParams, useHistory, NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useLayoutEffect } from 'react'
 
 
 
@@ -26,6 +26,10 @@ function ListingDetails({ user, numItemSetter }) {
 
     const { recordId } = useParams()
     const listingId = Number(recordId)
+
+    useLayoutEffect(() => {
+        window.scrollTo(0, 0)
+    },[]);
 
     useEffect(() => {
 
