@@ -1,0 +1,32 @@
+.news-card {
+
+    width: 13re;
+    height: 17rem;
+    border-radius: .5rem;
+    border: var(--border-medium);
+    margin-bottom: 1.5rem;
+
+}
+
+.news-card-link {
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+}
+
+.news-card img {
+    width: 13rem;
+    height: 11rem;
+}
+
+.news-card span {
+    width: 13rem;
+    word-wrap: break-word;
+}
+.news-container {
+    position: absolute;
+    right: 5rem;
+    top: 15rem;
+    overflow-y: auto;
+    height: 70vh;
+}
