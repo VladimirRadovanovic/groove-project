@@ -8,25 +8,23 @@ import placeholder from '../../../images/vinyl.jpg'
 import FilterListings from "../FilterListings/FilterListings"
 import './DisplayListings.css'
 import { getNews } from "../../../store/news"
+import { useLayoutEffect } from "react"
 
 
 function DisplayListings({ listingsList, numItemSetter, searchedList }) {
     const [searchedListingsState, setSearchedListingsState] = useState('')
-    // const [listSearch, setListSearch] = useState(searchedList)
     const [priceFilter, setPriceFilter] = useState(1000)
-    // const [news, setNews] = useState([])
     const news = useSelector(state => state.news)
 
     const dispatch = useDispatch()
-    console.log(news, 'news!!!!')
 
+    useLayoutEffect(() => {
+        window.scrollTo(0, 0)
+    },[]);
 
     useEffect(() => {
-
-
         dispatch(getNews())
-
-    }, [])
+    },[])
 
 
     let url = window.location.href
