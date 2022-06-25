@@ -29,7 +29,9 @@ const LoginForm = () => {
   }, [email, password])
 
 
-
+  const googleLogin = () => {
+    window.open('https://groove-project.herokuapp.com:5000/login/google', '_self')
+  }
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -101,6 +103,7 @@ const LoginForm = () => {
             <button type='button' onClick={handleDemo}>Demo login</button>
           </div>
         </form>
+        <button onClick={googleLogin}>Google Login</button>
       </div>
     </main>
   );
