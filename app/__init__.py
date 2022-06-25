@@ -140,7 +140,7 @@ google = oauth.register(
 @app.route('/login/google')
 def google_login():
     google = oauth.create_client('google')
-    redirect_uri = url_for('authorize', _external=True)
+    redirect_uri = url_for('authorize', _external=True,  _scheme='https')
     return google.authorize_redirect(redirect_uri)
 
 
