@@ -187,10 +187,11 @@
     margin-top: 3rem;
     width: 42rem;
     height: 2.6rem;
-    padding: 1.2rem 1.6rem;
+    padding: 1.1rem 1.5rem;
     border-radius: .2rem;
     font-weight: 600;
     background-color: var(--white);
+    border: .1rem solid white;
     /* text-align: center; */
     /* vertical-align: middle; */
     /* align-items: center; */
@@ -199,9 +200,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all .3s;
 }
 
 .google-login-button img {
     height: 3rem;
     margin-left: .3rem;
+}
+
+
+.google-login-button:hover {
+    border-color: black;
 }
