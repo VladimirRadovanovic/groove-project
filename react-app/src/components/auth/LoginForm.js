@@ -30,7 +30,7 @@ const LoginForm = () => {
 
 
   const googleLogin = () => {
-    window.open('https://groove-project.herokuapp.com:5000/login/google', '_self')
+    window.open('https://groove-project.herokuapp.com/login/google', '_self')
   }
 
   const onLogin = async (e) => {
