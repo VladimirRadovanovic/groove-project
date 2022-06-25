@@ -5,6 +5,7 @@ import { login } from '../../store/session';
 
 
 import './AuthForm.css'
+import google from '../../images/google.svg'
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -65,7 +66,7 @@ const LoginForm = () => {
       <div className='login-form-container form-container'>
         <form className='login-form auth-form' onSubmit={onLogin}>
           <h2 className='form-header margin-bottom-small'>
-            Login
+            Log In
           </h2>
           <p className='margin-bottom-small'>Don't have an account?<Link to='/sign-up'> Register here</Link> </p>
           <div className='auth-errors-container'>
@@ -97,13 +98,16 @@ const LoginForm = () => {
             />
           </div>
           <div className='form-button-container margin-bottom-small login-button'>
-            <button type='submit'>Login</button>
+            <button type='submit'>Log in</button>
           </div>
           <div className='form-button-container margin-bottom-small demo-button'>
-            <button type='button' onClick={handleDemo}>Demo login</button>
+            <button type='button' onClick={handleDemo}>Demo log in</button>
           </div>
         </form>
-        <button onClick={googleLogin}>Google Login</button>
+          <p className='or-tag'>OR</p>
+        {/* <div className='oauth-button-container'> */}
+          <button type='button' className='google-login-button' onClick={googleLogin}>Continue with Google <img src={google} alt='google login' /></button>
+        {/* </div> */}
       </div>
     </main>
   );
