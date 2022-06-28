@@ -158,8 +158,8 @@ def authorize():
     user = User.query.filter(User.email == profile['email']).first()
     print(user, 'user in the request!!!!!!!!!!!!!!!')
     if user:
-        if not user['profile_img_url']:
-            user['profile_img_url'] = profile['picture']
+        if not user.profile_img_url:
+            user.profile_img_url = profile['picture']
             db.session.commit()
         login_user(user)
     else:
