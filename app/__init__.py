@@ -150,10 +150,8 @@ def authorize():
 
     google = oauth.create_client('google')
     token = google.authorize_access_token()
-    print(google, 'google$$$$$$$$!!!!!!!!!!!!!!!!!!!!!')
     resp = google.get('userinfo')
     profile = resp.json()
-    print(profile, 'profile in the request!!!!!!!!!!!!!!!')
 
     user = User.query.filter(User.email == profile['email']).first()
     print(user, 'user in the request!!!!!!!!!!!!!!!')

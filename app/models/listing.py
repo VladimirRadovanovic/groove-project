@@ -16,6 +16,7 @@ class Listing(db.Model):
     price = db.Column(db.Float, nullable=False)
     num_copies_available = db.Column(db.Integer, nullable=False)
     img_url = db.Column(db.String(255))
+    aws_img_key = db.Column(db.String())
 
     #one seller has many listings
     seller = db.relationship('User', back_populates='listings')

@@ -5,7 +5,10 @@ from app.api.auth_routes import validation_errors_to_error_messages
 from app.models import db, Listing
 from app.forms import CreateListingForm
 from app.aws import (
-    upload_file_to_s3, allowed_file, get_unique_filename)
+    delete_from_s3_bucket, upload_file_to_s3, allowed_file, get_unique_filename, delete_from_s3_bucket)
+import boto3
+
+
 
 listing_routes = Blueprint('listings', __name__)
 
@@ -93,6 +96,7 @@ def create_listing():
 
         image.filename = get_unique_filename(image.filename)
         upload = upload_file_to_s3(image)
+        print(upload, image, image.filename, 'upload!!'*50)
 
         if "url" not in upload:
             # if the dictionary doesn't have a filename key
@@ -118,7 +122,8 @@ def create_listing():
                 condition=data['condition'],
                 price=data['price'],
                 num_copies_available=data['num_copies_available'],
-                img_url = url
+                img_url = url,
+                aws_img_key=image.filename
             )
 
             db.session.add(new_listing)
@@ -153,6 +158,8 @@ def create_listing():
 @login_required
 def remove_listing(id):
     listing = Listing.query.get(id)
+    if listing.aws_img_key is not None:
+        delete_from_s3_bucket(listing.aws_img_key)
     db.session.delete(listing)
     db.session.commit()
     return {"message": "Deleted"}
