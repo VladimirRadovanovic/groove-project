@@ -4,7 +4,7 @@ from app.forms import EditUserForm
 from app.models import User, db
 from app.api.auth_routes import validation_errors_to_error_messages
 from app.aws import (
-    upload_file_to_s3, allowed_file, get_unique_filename)
+    upload_file_to_s3, allowed_file, get_unique_filename, delete_from_s3_bucket)
 
 user_routes = Blueprint('users', __name__)
 
@@ -48,12 +48,13 @@ def upload_image():
         return upload, 400
 
     url = upload["url"]
-    print(url, 'url not saving&&&&&&&&&&&&*********************')
     # we can use the
-    # new_image = Photo(post_id=current_user, photo=url)#post id instead of user
     user = User.query.get(current_user.id)
+    if user.aws_profile_img_key is not None:
+        delete_from_s3_bucket(user.aws_profile_img_key)
     user.profile_img_url = url
-    # db.session.add(user)
+    user.aws_profile_img_key = image.filename
+
     db.session.commit()
     return {'user': user.to_dict()}
 

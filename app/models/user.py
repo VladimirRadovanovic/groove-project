@@ -19,6 +19,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     profile_img_url = db.Column(db.String(255))
+    aws_profile_img_key = db.Column(db.String())
     hashed_password = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now())
     address = db.Column(db.String(100), nullable=False)
